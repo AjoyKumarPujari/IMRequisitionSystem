@@ -27,46 +27,49 @@
 </head>
 <body class="wrapper" style="display:flex; justify-content:center; align-items: center;); ">
 
-    <div class="loginWrapper " style="width:700px">
+    <div class="loginWrapper " style="width:1400px">
         <div class="card ">
             <div class="card-header">
                 <h1>Add Material Category</h1>
-                <div class="card-toolbar">
-                    <div class="justify-content-center">
+                <!--<div class="card-toolbar">
+                    <div class="justify-content-center">-->
                         @*<span class="example-toggle" data-toggle="tooltip" title="View code"></span>
-                        <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>*@
-                    </div>
-                </div>
+                            <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>*@
+                    <!--</div>
+                </div>-->
             </div>
             <!--begin::Form-->
             <form>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label>
-                            Category Name
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input class="form-control" type="text" value="" id="CategoryName" />
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Location
-                            <span class="text-danger">*</span>
-                        </label>
-                        <select class="form-control form-control-lg" id="location">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Description
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input class="form-control" type="text" value="" id="Description" />
+                    <div class="row">
+                        <div class="col-lg-4 form-group">
+                            <label>
+                                Category Name
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input class="form-control" type="text" value="" id="CategoryName" />
+                        </div>
+                        <div class="col-lg-4 form-group">
+                            <label>
+                                Location
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-control form-control-lg" id="location">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class=" col-lg-4 form-group">
+                            <label>
+                                Description
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input class="form-control" type="text" value="" id="Description" />
+                        </div>
+
                     </div>
 
                 </div>
@@ -79,22 +82,54 @@
             <!--end::Form-->
         </div>
 
-        <div class="card ">
-            <div class="card-header">
-                Category Table
-
-            </div>
-            <div class="card-body">
-                <table>
+        <div class="card mt-10">
+            <div class="card card-custom gutter-b">
+                <div class="card-header flex-wrap py-3">
+                    <div class="card-title">
+                        <h1>Category Master table</h1>
+                    </div>
                    
-                        
-                    
+                </div>
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <table class="table table-bordered table-checkable" id="IM_datatable">
+                        <thead>
+                            <tr>
+                                <th>Sl No:</th>
+                                <th>Category Name </th>
+                                <th>Location</th>
+                                <th>Category Description</th>
 
-                   
-                </table>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+
+                            <tr>
+                                <td>1</td>
+                                <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                    <!--end: Datatable-->
+                </div>
             </div>
-
-
         </div>
 
 
@@ -102,9 +137,33 @@
 
 
 
+
+
+
     <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
     <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="~/lib/assets/js/scripts.bundle.js"></script>
+    <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script>
+        var table = $('#IM_datatable');
+        table.DataTable({
+            responsive: true,
+            pagingType: 'full_numbers',
+            order: [],
+            dom: 'lBfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ],
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+            ]
+        });
+        table.init();
+    </script>
 
 </body>
 

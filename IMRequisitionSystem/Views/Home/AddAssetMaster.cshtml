@@ -2,12 +2,10 @@
 @{
     ViewBag.Title = "AddAssetMaster";
 }
-
-
 <head>
     <base href="../../../">
     <meta charset="utf-8" />
-    <title>Base Controls | Keenthemes</title>
+    <title>AddAssetMaster</title>
     <meta name="description" content="Base form control examples" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -29,105 +27,182 @@
 </head>
 <body class="wrapper" style="display:flex; justify-content:center; align-items: center;); ">
 
-    <div class="loginWrapper " style="width:800px">
+    <div class="loginWrapper " style="width:1400px">
         <div class="card ">
             <div class="card-header">
-                <h1>Add Asset </h1>
-                <div class="card-toolbar">
-                    <div class="justify-content-center">
-                        @*<span class="example-toggle" data-toggle="tooltip" title="View code"></span>
-                    <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>*@
-                    </div>
-                </div>
+                <h1>Add Asset Master</h1>
+                
             </div>
             <!--begin::Form-->
-            <div class="card-body">
-                <form>
-
-                    <div class="form-group">
-                        <label>
-                            Asset Serial No
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input class="form-control" type="text" value="" id="slNo" />
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Make No
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input class="form-control" type="text" value="" id="MakeNo" />
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Model No
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input class="form-control" type="text" value="" id="ModelNo" />
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Received Date
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input class="form-control" type="date" value="2011-08-19" id="example-date-input" />
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Category
-                            <span class="text-danger">*</span>
-                        </label>
-                        <select class="form-control form-control-lg" id="Category">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Asset Status/Condition
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input class="form-control" type="text" value="" id="AssetStatus" />
-                    </div>
-                    <div class="form-group">
-                        <label>Is Allocated </label>
-                        <div class="radio-inline">
-                            <label class="radio">
-                                <input type="radio" checked="checked" name="IsAllocated" />
-                                <span></span>Yes
+            <form>
+                <div class="card-body">
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label>
+                                Asset Serial No
+                                <span class="text-danger">*</span>
                             </label>
-                            <label class="radio">
-                                <input type="radio" name="IsAllocated" />
-                                <span></span>No
+                            <input class="form-control" type="text" value="" id="slNo" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Make No
+                                <span class="text-danger">*</span>
                             </label>
+                            <input class="form-control" type="text" value="" id="MakeNo" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Model No
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input class="form-control" type="text" value="" id="ModelNo" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Received Date
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input class="form-control" type="date" value="2011-08-19" id="example-date-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Category
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-control form-control-lg" id="Category">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Asset Status/Condition
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input class="form-control" type="text" value="" id="AssetStatus" />
+                        </div>
+                        <div class="form-group">
+                            <label>Is Allocated </label>
+                            <div class="radio-inline">
+                                <label class="radio">
+                                    <input type="radio" checked="checked" name="IsAllocated" />
+                                    <span></span>Yes
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="IsAllocated" />
+                                    <span></span>No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Asset Original Location
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input class="form-control" type="text" value="" id="orgLocation" />
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>
-                            Asset Original Location
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input class="form-control" type="text" value="" id="orgLocation" />
+                       
+
+                    
+                </div>
+                
+                <div class="card-footer">
+                    <button type="reset" class="btn btn-primary mr-2">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+
+           
+        </div>
+
+        <div class="card mt-10">
+            <div class="card card-custom gutter-b">
+                <div class="card-header flex-wrap py-3">
+                    <div class="card-title">
+                        <h1>Category Master table</h1>
                     </div>
 
-                </form>
-            </div>
-            <!--end::Form-->
-            <div class="card-footer">
-                <button type="reset" class="btn btn-primary mr-2">Submit</button>
-                <button type="reset" class="btn btn-secondary">Cancel</button>
+                </div>
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <table class="table table-bordered table-checkable" id="IM_datatable">
+                        <thead>
+                            <tr>
+                                <th>Sl No:</th>
+                                <th>Category Name </th>
+                                <th>Location</th>
+                                <th>Category Description</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+
+                            <tr>
+                                <td>1</td>
+                                <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                    <!--end: Datatable-->
+                </div>
             </div>
         </div>
+
+
     </div>
+
+
+
 
 
 
     <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
     <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="~/lib/assets/js/scripts.bundle.js"></script>
+    <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script>
+        var table = $('#IM_datatable');
+        table.DataTable({
+            responsive: true,
+            pagingType: 'full_numbers',
+            order: [],
+            dom: 'lBfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ],
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+            ]
+        });
+        table.init();
+    </script>
 
 </body>
 
