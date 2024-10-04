@@ -1,60 +1,42 @@
 ﻿
 @{
     ViewBag.Title = "AddRoleMaster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<head>
-    <base href="../../../">
-    <meta charset="utf-8" />
-    <title>Base Controls | Keenthemes</title>
-    <meta name="description" content="Base form control examples" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="canonical" href="https://keenthemes.com/metronic" />
-    <!--begin::Fonts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <!--end::Fonts-->
-    <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="~/lib/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="~/lib/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    <!--end::Global Theme Styles-->
-    <!--begin::Layout Themes(used by all pages)-->
-    <link href="~/lib/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
-    <link href="~/lib/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
-    <link href="~/lib/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
-    <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
-    <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
-</head>
-<body class="wrapper" style="display:flex; justify-content:center; align-items: center;); ">
 
-    <div class="loginWrapper " style="width:700px">
-        <div class="card ">
-            <div class="card-header">
-                <h1>Add Role </h1>
-                <div class="card-toolbar">
-                    <div class="justify-content-center">
-                        @*<span class="example-toggle" data-toggle="tooltip" title="View code"></span>
-                            <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>*@
-                    </div>
-                </div>
-            </div>
+
+
+<div class="d-flex flex-column-fluid" style="margin-top:-30px">
+    <div class="container-fluid">
+        <div class="card card-custom gutter-b example example-compact" style="border-radius:20px;">
             <!--begin::Form-->
-            <form>
-                <div class="card-body">
-                    <div class="form-group">
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="form-group col-lg-4">
                         <label>
-                           Role Name
+                            Role Name
                             <span class="text-danger">*</span>
                         </label>
-                        <input class="form-control" type="text" value="" id="RoleName" />
+                        <select class="form-control form-control-lg" id="Username">
+                            <option>Super Admin</option>
+                            <option>Location Admin</option>
+                            <option>HOD</option>
+                            <option>IM Approver</option>
+                            <option>Approver</option>
+                            <option>Issuer</option>
+                            <option>Allocator</option>
+                        </select>
                     </div>
-                    <div class="form-group">
+
+                    <div class="form-group col-lg-4">
                         <label>
-                            User Name
+                            Username
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control form-control-lg" id="UserName">
+                        <select class="form-control form-control-lg" id="Username">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -62,32 +44,103 @@
                             <option>5</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>
-                            Role Description
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input class="form-control" type="text" value="" id="RoleDescription" />
+
+
+
+                    <div class="col-lg-4 col-md-12 mt-7">
+                        <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-primary mr-2">Search</button>
+                        @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
+                        <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-outline-success ml-2">Generate Excel</button>
+
+
                     </div>
 
                 </div>
-                <div class="card-footer">
-                    <button type="reset" class="btn btn-primary mr-2">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Cancel</button>
-                </div>
-            </form>
+            </div>
 
-            <!--end::Form-->
+
+        </div>
+        <div class="card card-custom gutter-b" style="border-radius:20px;">
+            <div class="card-header flex-wrap py-3">
+                <div class="card-title">
+                    <h3 class="card-label">
+                        Admin Report
+                    </h3>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <!--begin: Datatable-->
+                <table class="table table-bordered table-checkable" id="IM_datatable">
+                    <thead>
+                        <tr>
+                            <th>Sl No:</th>
+                            <th>Role Name </th>
+                            <th>User Name</th>
+                            <th>Assign By</th>
+                            <th>Action</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>64616-103</td>
+                            <td>Brazil</td>
+                            <td>São Félix do Xingu</td>
+                            <td><button>Edit</button><button>Delete</button></td>
+
+
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>64616-103</td>
+                            <td>Brazil</td>
+                            <td>São Félix do Xingu</td>
+                            <td><button>Edit</button><button>Delete</button></td>
+
+
+                        <tr>
+                            <td>1</td>
+                            <td>64616-103</td>
+                            <td>Brazil</td>
+                            <td>São Félix do Xingu</td>
+                            <td><button>Edit</button><button>Delete</button></td>
+
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+                <!--end: Datatable-->
+            </div>
         </div>
     </div>
-
-
-
+    
+    </div>
     <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
     <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="~/lib/assets/js/scripts.bundle.js"></script>
-
-</body>
-
-
-
+    <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script>
+        var table = $('#IM_datatable');
+        table.DataTable({
+            responsive: true,
+            pagingType: 'full_numbers',
+            order: [],
+            dom: 'lBfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ],
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+            ]
+        });
+        table.init();
+    </script>

@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/IMRequisitionSystem/config/applicationhost.config
+/.vs/IMRequisitionSystem/v16
+/.vs/IMRequisitionSystem/v17
+/.vs/IMRequisitionSystem/FileContentIndex/84e0bdb1-4f2b-4ef4-b605-8fc381785d8d.vsidx
+*.vsidx
