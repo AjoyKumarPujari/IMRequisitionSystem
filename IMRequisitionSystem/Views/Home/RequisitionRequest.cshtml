@@ -18,119 +18,252 @@
     <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
 </head>
-<body class="wrapper " style="display:flex; justify-content:center; align-items: center; ">
-
-    <div class="categoryWrapper  mt-10" style="width:1400px ">
-        <div class="card ">
-            <div class="card-header">
-                <h1>Create Requisition</h1>
-
-            </div> <!--begin::Form-->
-            <form>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-3 form-group">
-                            <label>
-                                Type of Device
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="TypeofDevice">
-                                <option>VF</option>
-                                <option>VHF</option>
-                                <option>UHF</option>
-                                
-                            </select>
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <label>
-                                Requisition Date
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="date" value="2011-08-19" id="example-date-input" />
-                        </div>
-                        <div class="col-lg-6 form-group">
-                            <label>
-                                Purpose of Use
-                                <span class="text-danger">*</span>
-                            </label>
-                            <textarea class="form-control" id="PurposeofUse" rows="3"></textarea>
-                        </div>
-
-                        <div class="col-lg-3 form-group">
-                            <label>
-                                Location
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="Location">
-                                <option>NRL</option>
-                                <option>SMT</option>
-                                <option>NRL (Guwahati)</option>
-                               
-                            </select>
-                        </div>
-                        <div class="col-lg-3 form-group">
-                            <label>
-                                Department
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="Department">
-                                <option>Refinery Mechanical Maintenance</option>
-                                <option>Refinery Operation</option>
-                                <option>SMT Control Room</option>
-                                <option>Refinery Electrical</option>
-                                <option>Refinery P&U Operation</option>
-                                <option>NRMT Operation</option>
-                                <option>Refinery P&U Operation</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 form-group">
-                            <label>
-                                Area
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="Area">
-                                <option>CPP</option>
-                                <option>SRB</option>
-                                <option>CDU-VDU</option>
-                                <option>H2U</option>
-                                <option>MSP</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 form-group">
-                            <label>
-                                Approver/HOD
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="UnitInCharge">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <div class=" col-lg-12 form-group">
-                            <label>
-                                Description
-                                <span class="text-danger">*</span>
-                            </label>
-                            <textarea class="form-control" id="Description" rows="3"></textarea>
-                        </div>
 
 
-                    </div>
 
-                </div>
-                <div class="card-footer">
-                    <button type="reset" class="btn btn-primary mr-2">Create</button>
-                    <button type="reset" class="btn btn-secondary">Cancel</button>
-                </div>
-            </form>
+<div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
 
+    <div class="card-header">
+
+        <div class="card-title">
+
+            <h3 class="card-label roboto-bold font-weight-bolder">
+
+                <span>CREATE  REQUEST</span>
+
+            </h3>
 
         </div>
 
     </div>
+
+    <div class="card-body">
+
+        <form class="form">
+
+            <div class="card-body">
+
+                <div class="form-group row">
+
+                    <div class="col-lg-4">
+
+                        <label>Type of Devive:</label>
+
+                        <select class="form-control select2" style="width:100%" id="kt_select2_2" name="kt_select2_1">
+                            <option value=""></option>
+                            <option value="HF">HF</option>
+                            <option value="UHF">UHF</option>
+                            <option value="VHF">VHF</option>
+
+                        </select>
+
+                        <span class="form-text text-muted">Device Type</span>
+
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <label>Requisition Date</label>
+
+                        <div class="input-group date">
+
+                            <input type="text" class="form-control" placeholder="Select date" id="kt_datepicker_1" readonly />
+
+                            <div class="input-group-append">
+
+                                <span class="input-group-text">
+
+                                    <i class="la la-calendar-check-o"></i>
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <span class="form-text text-muted">Date of Requisition</span>
+
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <label>Location</label>
+
+                        <select class="form-control select2" style="width:100%" id="location" name="location">
+                            <option value=""></option>
+                            <option value="NL">Numaligarh</option>
+                            <option value="SMT">Siliguri Marketing Terminal</option>
+                            <option value="GHY">Guwahati Corp Office</option>
+                            <option value="PD">Paradeep</option>
+                        </select>
+
+                        <span class="form-text text-muted">Requisition Location</span>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-lg-4">
+
+                        <label>Area:</label>
+
+                        <select class="form-control select2" style="width:100%" id="area" name="area">
+                            <option value="Ref">Refinery</option>
+                            <option value="NRMT">NRMT</option>
+                            <option value="NREP">NREP</option>
+                            <option value="TWSHIP">Township</option>
+                        </select>
+
+
+                        <span class="form-text text-muted">Area of use</span>
+
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <label>Department</label>
+
+                        <select class="form-control select2" style="width:100%" id="department" name="department">
+                            <option value="HF">Mechanical Maintenance</option>
+                            <option value="UHF">Instrumentation Maintenance</option>
+                            <option value="VHF">Electrical Maintenance</option>
+                            <option value="VHF">Integrated Information Services</option>
+                        </select>
+
+                        <span class="form-text text-muted">Requestor Name</span>
+
+                    </div>
+
+
+                    <div class="col-lg-4">
+
+                        <label>Requisition For:</label>
+
+                        <div class="radio-inline">
+                            <label class="radio radio-outline radio-success">
+                                <input type="radio" name="toggle" value="hide" onclick="toggleVisibility(true)" checked />
+                                <span></span>
+                                Self
+                            </label>
+                            <label class="radio radio-outline radio-success">
+                                <input type="radio" name="toggle" value="show" onclick="toggleVisibility(false)" />
+                                <span></span>
+                                Others
+                            </label>
+                        </div>
+
+                        <span class="form-text text-muted">Requisition for Self/Others</span>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+
+                    <div class="col-lg-4" id="additionalInput" hidden>
+
+                        <label>Others Whom:</label>
+
+                        <select class="form-control select2" style="width:100%" id="req_for_oth" name="req_for_oth" onchange="toggleVisibility2()">
+
+                            <option value=""></option>
+
+                            <option value="NM">Non-Management Staff</option>
+
+                            <option value="TP">Third Party</option>
+
+                        </select>
+
+                        <span class="form-text text-muted">Select for Third Party/Non Management staff</span>
+
+                    </div>
+
+
+                    <div class="col-lg-4" id="tpOrg" hidden>
+
+                        <label>Enter Third Party Details:</label>
+
+                        <input type="text" class="form-control" placeholder="Third Party Details" />
+
+                        <span class="form-text text-muted">Third Party Details</span>
+
+                    </div>
+
+
+                    <div class="col-lg-4" id="nmStaff" hidden>
+
+                        <label>Select Non Management Staff:</label>
+
+                        <select class="form-control select2" style="width:100%" id="nm_staff" name="nm_staff" visible="false">
+                            <option value=""></option>
+
+                            <option value="AK">Bhagadatta Bangthai</option>
+
+                            <option value="HI">Pranab Saikia</option>
+
+                        </select>
+
+                        <span class="form-text text-muted">Select for Third Party/Non Management staff</span>
+
+                    </div>
+
+
+                    <div class="col-lg-4">
+
+                        <label>Approver Name:</label>
+
+                        <select class="form-control select2" style="width:100%" id="kt_select2_1" name="kt_select2_1">
+
+                            <option value="AK">Sanjeev Dibragede</option>
+
+                            <option value="HI">Usha Kakati</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-lg-8">
+
+                        <label for="purpose">Purpose of Requisition:</label>
+
+                        <textarea class="form-control form-control-solid" rows="1" required></textarea>
+
+                        <span class="form-text text-muted">Purpose of requisition</span>
+
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+
+                    <div class="row">
+
+                        <div class="col-lg-4"></div>
+
+                        <div class="col-lg-8">
+
+                            <button type="submit" class="btn btn-lg btn-outline-primary mr-2">Submit</button>
+
+                            <button type="reset" class="btn btn-lg btn-outline-warning mr-2">Reset</button>
+
+                            <button type="" class="btn btn-lg btn-outline-danger mr-2">Close</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+                
+        </form>
+
+    </div>
+   
+</div>
 
     <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
     <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
@@ -157,5 +290,97 @@
         table.init();
     </script>
 
-</body>
+    <script>
+        $(document).ready(function () {
+
+            $('.select2').select2();
+
+
+
+            $('#kt_select2_1').select2({
+
+                placeholder: "Select Type of Device"
+
+            });
+            $('#kt_select2_2').select2({
+
+                placeholder: "Select type of device"
+
+            });
+
+            $('#location').select2({
+
+                placeholder: "Select Location"
+
+            });
+
+            $('#area').select2({
+
+                placeholder: "Select Area"
+
+            });
+
+            $('#department').select2({
+
+                placeholder: "Select Department"
+
+            });
+
+            $('#req_for_oth').select2({
+
+               placeholder: "Select to whom requisition is for"
+
+            });
+
+            $('#nm_staff').select2({
+
+                placeholder: "Select Non_Management Staff personnel"
+
+            });
+
+
+
+        });
+
+
+        function toggleVisibility(hide) {
+
+            debugger;
+            const additionalInput = document.getElementById('additionalInput');
+            const nmStaffDD = document.getElementById('nmStaff');
+            const tpOrdDet = document.getElementById('tpOrg');
+            const dropdown = document.getElementById('req_for_oth');
+
+            if (hide === true) {
+                additionalInput.hidden = true;
+                tpOrdDet.hidden = true; // Hide the content
+                nmStaffDD.hidden = true;
+            }
+            else {
+                additionalInput.hidden = false;
+            }
+             // Set the hidden property based on the radio button
+        }
+
+        function toggleVisibility2() {
+            const dropdown = document.getElementById('req_for_oth');
+            const nmStaffDD = document.getElementById('nmStaff');
+            const tpOrdDet = document.getElementById('tpOrg');
+
+            // Check the selected value of the dropdown
+            if (dropdown.value === 'NM') {
+                nmStaffDD.hidden = false; // Show the content
+                tpOrdDet.hidden = true;
+            } else if (dropdown.value === 'TP') {
+                tpOrdDet.hidden = false; // Hide the content
+                nmStaffDD.hidden = true;
+            } else if (dropdown.value === '') {
+                tpOrdDet.hidden = true; // Hide the content
+                nmStaffDD.hidden = true;
+            }
+        }
+
+    </script>
+
+
 
