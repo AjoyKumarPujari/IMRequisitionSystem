@@ -29,164 +29,357 @@
 <body class="wrapper  mt-40" style="display:flex; justify-content:center; align-items: center; ">
 
     <div class="assetWrapper  mt-40" style="width:1400px">
-        <div class="card ">
+        <div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
+
             <div class="card-header">
-                <h1>Add Asset Master</h1>
-                
+
+                <div class="card-title">
+
+                    <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
+
+                        <span> ASSET MASTER ENTRY</span>
+
+                    </h2>
+
+                </div>
             </div>
-            <!--begin::Form-->
-            <form>
-                <div class="card-body">
-                    
-                    <div class="row">
-                        <div class="form-group col-lg-3">
-                            <label>
-                                Asset Serial No
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="text" value="" id="slNo" />
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <label>
-                                Make No
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="text" value="" id="MakeNo" />
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <label>
-                                Model No
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="text" value="" id="ModelNo" />
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <label>
-                                Received Date
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="date" value="2011-08-19" id="example-date-input" />
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <label>
-                                Category
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="Category">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <label>
-                                Asset Status/Condition
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="text" value="" id="AssetStatus" />
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <label>Is Allocated </label>
-                            <div class="radio-inline">
-                                <label class="radio">
-                                    <input type="radio" checked="checked" name="IsAllocated" />
-                                    <span></span>Yes
+
+            <div class="card-body">
+
+                <form>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Asset Serial No
+                                    <span class="text-danger">*</span>
                                 </label>
-                                <label class="radio">
-                                    <input type="radio" name="IsAllocated" />
-                                    <span></span>No
-                                </label>
+                                <input class="form-control" type="text" value="" id="slNo" />
                             </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Make
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="MakeNo" />
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Model
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="ModelNo" />
+                            </div>
+
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Asset id
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="AssetId" />
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Category
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="Category">
+                                    <option>VF</option>
+                                    <option>VHF</option>
+                                    <option>UHF</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Installation Date
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="date" value="2011-08-19" id="InstallationDate" />
+                            </div>
+                            <div class="form-group col-lg-6">
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Vendor Code
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="VendorCode" />
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Vendor Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="VendorName" />
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    PO No
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="PoNo" />
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    PO Date
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="date" value="2011-08-19" id="InstallationDate" />
+                            </div>
+
+
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Asset Delivered Location
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="AssetDeliveredLocation">
+                                    <option>NRL</option>
+                                    <option>SMT</option>
+                                    <option>NRL (Guwahati)</option>
+
+                                </select>
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Asset Delivered Department
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="AssetDeliveredDepartment">
+                                    <option>Refinery Mechanical Maintenance</option>
+                                    <option>Refinery Operation</option>
+                                    <option>SMT Control Room</option>
+                                    <option>Refinery Electrical</option>
+                                    <option>Refinery P&U Operation</option>
+                                    <option>NRMT Operation</option>
+                                    <option>Refinery P&U Operation</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Asset Delivered Area
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="AssetDeliveredArea">
+                                    <option>CPP</option>
+                                    <option>SRB</option>
+                                    <option>CDU-VDU</option>
+                                    <option>H2U</option>
+                                    <option>MSP</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Warranty Till
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="date" value="2011-08-19" id="WarrantyTill" />
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>Under AMC </label>
+                                <div class="radio-inline">
+                                    <label class="radio">
+                                        <input type="radio" checked="checked" name="UnderAMC" />
+                                        <span></span>Yes
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="UnderAMC" />
+                                        <span></span>No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    AMC Vendor Code
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="AMCVendorCode" />
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    AMC Vendor Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="AMCVendorName" />
+                            </div>
+
+
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    AMC Expiry Date
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="date" value="2011-10-14" id="AMCExpiryDate" />
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Asset Custodian Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="asset_custodian_name" />
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Custodian Location
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="CustodianLocation">
+                                    <option>NRL</option>
+                                    <option>SMT</option>
+                                    <option>NRL (Guwahati)</option>
+
+                                </select>
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Custodian Department
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="CustodianDepartment">
+                                    <option>Refinery Mechanical Maintenance</option>
+                                    <option>Refinery Operation</option>
+                                    <option>SMT Control Room</option>
+                                    <option>Refinery Electrical</option>
+                                    <option>Refinery P&U Operation</option>
+                                    <option>NRMT Operation</option>
+                                    <option>Refinery P&U Operation</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Custodian Area
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="CustodianArea">
+                                    <option>CPP</option>
+                                    <option>SRB</option>
+                                    <option>CDU-VDU</option>
+                                    <option>H2U</option>
+                                    <option>MSP</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Asset Physical Condition
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="AssetPhysicalCondition">
+                                    <option>Good</option>
+                                    <option>Damage</option>
+
+                                </select>
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Issue Status
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="IssueStatus">
+                                    <option>Not Issued</option>
+                                    <option>Issued</option>
+                                    <option>Returned</option>
+
+                                </select>
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Asset Status
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="IssueStatus">
+                                    <option>Fresh</option>
+                                    <option>Active</option>
+                                    <option>Deactive</option>
+                                    <option>Scrap</option>
+                                    <option>Dispose</option>
+
+                                </select>
+                            </div>
+
                         </div>
-                        <div class="form-group col-lg-3">
-                            <label>
-                                Asset Original Location
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="text" value="" id="orgLocation" />
-                        </div>
-                    </div>
-                       
 
-                    
-                </div>
-                
-                <div class="card-footer">
-                    <button type="reset" class="btn btn-primary mr-2">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Cancel</button>
-                </div>
-            </form>
 
-           
-        </div>
 
-        <div class="card mt-2">
-            <div class="card card-custom gutter-b">
-                <div class="card-header flex-wrap py-3">
-                    <div class="card-title">
-                        <h1>Category Master table</h1>
                     </div>
 
-                </div>
-                <div class="card-body">
-                    <!--begin: Datatable-->
-                    <table class="table table-bordered table-checkable" id="IM_datatable">
-                        <thead>
-                            <tr>
-                                <th>Sl No:</th>
-                                <th>Make No </th>
-                                <th>Model No</th>
-                                <th>Received Date</th>
-                                <th>Category </th>
-                                <th>Assets Status </th>
-                                <th>Is Allocated  </th>
-                                <th>Assets Original Location </th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-
-                            <tr>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-                    <!--end: Datatable-->
-                </div>
+                    <div class="card-footer">
+                        <button type="reset" class="btn btn-primary mr-2">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
             </div>
+
+
+
         </div>
+
+        <!--<div class="card mt-2">
+        <div class="card card-custom gutter-b">
+            <div class="card-header flex-wrap py-3">
+                <div class="card-title">
+                    <h1>Category Master table</h1>
+                </div>
+
+            </div>
+            <div class="card-body">-->
+        <!--begin: Datatable-->
+        <!--<table class="table table-bordered table-checkable" id="IM_datatable">
+        <thead>
+            <tr>
+                <th>Sl No:</th>
+                <th>Make No </th>
+                <th>Model No</th>
+                <th>Received Date</th>
+                <th>Category </th>
+                <th>Assets Status </th>
+                <th>Is Allocated  </th>
+                <th>Assets Original Location </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>64616-103</td>
+                <td>Brazil</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>64616-103</td>
+                <td>Brazil</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+
+            <tr>
+                <td>1</td>
+                <td>64616-103</td>
+                <td>Brazil</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+                <td>São Félix do Xingu</td>
+
+            </tr>
+
+
+        </tbody>
+    </table>-->
+        <!--end: Datatable-->
+        <!--</div>
+        </div>
+    </div>-->
 
 
     </div>

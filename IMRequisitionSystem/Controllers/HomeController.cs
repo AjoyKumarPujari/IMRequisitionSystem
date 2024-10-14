@@ -40,6 +40,12 @@ namespace IMRequisitionSystem.Controllers
 
             return View();
         }
+        public ActionResult AssetMasterTable()
+        {
+
+
+            return View();
+        }
 
         public ActionResult AddRoleMaster()
         {
@@ -60,6 +66,12 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
         public ActionResult RequisitionApproveList()
+        {
+
+
+            return View();
+        }
+        public ActionResult RequisitionApprovedList()
         {
 
 

@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "RequisitionApproveList";
+    ViewBag.Title = "RequisitionApprovedList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <head>
     <base href="../../../">
@@ -28,7 +27,7 @@
             <div class="card card-custom gutter-b">
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
-                        <h1>Requisition List For Approval</h1>
+                        <h1>Requisition Approved List</h1>
                     </div>
 
                 </div>
@@ -45,9 +44,10 @@
                                 <th>Requisition Department </th>
                                 <th>Requisition Area </th>
                                 <th>Requisition For</th>
-                                <th>Approver Name</th>
+                                <th>Approved By</th>
+                                <th>Approval Remarks</th>
                                 <th>Requisition Status</th>
-                                <th>Action</th>
+                               
 
                             </tr>
                         </thead>
@@ -62,17 +62,15 @@
                                 <td>CDU-VDU</td>
                                 <td>Self</td>
                                 <td>Sanjeev Dibragede </td>
-                                <td><span class="label label-inline label-light-primary font-weight-bold">
-                                        Requested
-                                    </span></td>
+                                <td> Requisition Approved Done </td>
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"style="width: 90px;">Approved</button>
-                                    <button type="button" class="btn btn-outline-warning  mt-1 "style="width:90px;">Return</button>
-                                    <button type="button" class="btn btn-outline-danger  mt-1  "style="width: 90px;">Reject</button>
+                                    <span class="label label-inline label-light-success font-weight-bold">
+                                        Approved
+                                    </span>
                                 </td>
-
+                               
                             </tr>
-                          
+
                         </tbody>
                     </table>
                 </div>
@@ -106,6 +104,8 @@
     </script>
 
 </body>
+
+
 
 
 
