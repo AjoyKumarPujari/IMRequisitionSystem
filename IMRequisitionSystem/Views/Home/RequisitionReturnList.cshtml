@@ -1,12 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "AddCategoryMaster";
+    ViewBag.Title = "RequisitionReturnList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+
+
 <head>
     <base href="../../../">
     <meta charset="utf-8" />
-    
+
     <link rel="canonical" href="https://keenthemes.com/metronic" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link href="~/lib/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
@@ -20,72 +24,31 @@
 </head>
 <body class="wrapper " style="display:flex; justify-content:center; align-items: center; ">
 
-    <div class="categoryWrapper  mt-40" style="width:1400px ">
-        <div class="card ">
-            <div class="card-header">
-                <h1>Add Material Category</h1>
-                
-            </div> <!--begin::Form-->
-            <form>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-4 form-group">
-                            <label>
-                                Category Name
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="text" value="" id="CategoryName" />
-                        </div>
-                        <div class="col-lg-4 form-group">
-                            <label>
-                                Location
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="location">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <div class=" col-lg-4 form-group">
-                            <label>
-                                Description
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="text" value="" id="Description" />
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="card-footer">
-                    <button type="reset" class="btn btn-primary mr-2">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Cancel</button>
-                </div>
-            </form>
-
-           
-        </div>
+    <div class="categoryWrapper  mt-10" style="width:1400px ">
 
         <div class="card mt-10">
             <div class="card card-custom gutter-b">
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
-                        <h1>Category Master table</h1>
+                        <h1>Requisition Return List</h1>
                     </div>
-                   
+
                 </div>
                 <div class="card-body">
-                 
+
                     <table class="table table-bordered table-checkable" id="IM_datatable">
                         <thead>
                             <tr>
                                 <th>Sl No:</th>
-                                <th>Category Name </th>
+                                <th>Requisition ID </th>
+                                <th>Requisition Date </th>
+                                <th>Requisition Department </th>
+                                <th>Purpose of use</th>
+                                <th>Type of Device</th>
                                 <th>Location</th>
-                                <th>Category Description</th>
+                                <th>Return By</th>
+                                <th>Return Remarks</th>
+                                <th>Requisition Status</th>
 
                             </tr>
                         </thead>
@@ -93,19 +56,64 @@
                             <tr>
                                 <td>1</td>
                                 <td>64616-103</td>
+                                <td>10-01-2024l</td>
+                                <td>São Félix do Xingu</td>
+                                <td>1</td>
+                                <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
                                 <td>Brazil</td>
                                 <td>São Félix do Xingu</td>
 
                             </tr>
                             <tr>
+                                <td>2</td>
+                                <td>64616-103</td>
+                                <td>10-01-2024l</td>
+                                <td>São Félix do Xingu</td>
                                 <td>1</td>
                                 <td>64616-103</td>
                                 <td>Brazil</td>
                                 <td>São Félix do Xingu</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
 
+                            </tr>
                             <tr>
+                                <td>3</td>
+                                <td>64616-103</td>
+                                <td>10-01-2024l</td>
+                                <td>São Félix do Xingu</td>
                                 <td>1</td>
                                 <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>64616-103</td>
+                                <td>10-01-2024l</td>
+                                <td>São Félix do Xingu</td>
+                                <td>1</td>
+                                <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
+
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>64616-103</td>
+                                <td>10-01-2024l</td>
+                                <td>São Félix do Xingu</td>
+                                <td>1</td>
+                                <td>64616-103</td>
+                                <td>Brazil</td>
+                                <td>São Félix do Xingu</td>
                                 <td>Brazil</td>
                                 <td>São Félix do Xingu</td>
 
@@ -143,4 +151,7 @@
     </script>
 
 </body>
+
+
+
 

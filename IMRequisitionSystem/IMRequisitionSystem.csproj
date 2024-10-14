@@ -413,6 +413,7 @@
     <Content Include="lib\assets\media\logos\stars.png" />
     <Content Include="lib\assets\media\misc\bg-1.jpg" />
     <Content Include="lib\assets\media\misc\bg-2.jpg" />
+    <Content Include="lib\assets\media\misc\bg-3.jpg" />
     <Content Include="lib\assets\media\misc\invoice 5 bar.jpg" />
     <Content Include="lib\assets\media\plugins\jstree\32px.png" />
     <Content Include="lib\assets\media\products\1.png" />
@@ -2159,6 +2160,11 @@
     <Content Include="Views\Home\AddCategoryMaster.cshtml" />
     <Content Include="Views\Home\AddAssetMaster.cshtml" />
     <Content Include="Views\Home\AddRoleMaster.cshtml" />
+    <None Include="Views\.editorconfig" />
+    <Content Include="Views\Home\RequisitionRequest.cshtml" />
+    <Content Include="Views\Home\RequisitionList.cshtml" />
+    <Content Include="Views\Home\RequisitionApproveList.cshtml" />
+    <Content Include="Views\Home\RequisitionReturnList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

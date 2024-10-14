@@ -47,7 +47,31 @@ namespace IMRequisitionSystem.Controllers
 
             return View();
         }
-       
+        public ActionResult RequisitionRequest()
+        {
+
+
+            return View();
+        }
+        public ActionResult RequisitionList()
+        {
+
+
+            return View();
+        }
+        public ActionResult RequisitionApproveList()
+        {
+
+
+            return View();
+        }
+        public ActionResult RequisitionReturnList()
+        {
+
+
+            return View();
+        }
+
 
     }
 }
