@@ -84,6 +84,30 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
+        public ActionResult DetailsPageForHODUnitInCharge()
+        {
+            return View();
+        }
+
+        public ActionResult DetailsPageForRequisitioner()
+        {
+            return View();
+        }
+           
+        public ActionResult AllocatedAssetList()
+        {
+            return View();
+        }
+
+        public ActionResult RequisitionRequestListIMApprover()
+        {
+            return View();
+        }
+
+        public ActionResult DetailsPageForIMApprover()
+        {
+            return View();
+        }
 
     }
 }

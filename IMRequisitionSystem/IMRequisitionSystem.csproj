@@ -2167,6 +2167,11 @@
     <Content Include="Views\Home\RequisitionReturnList.cshtml" />
     <Content Include="Views\Home\AssetMasterTable.cshtml" />
     <Content Include="Views\Home\RequisitionApprovedList.cshtml" />
+    <Content Include="Views\Home\DetailsPageForHODUnitInCharge.cshtml" />
+    <Content Include="Views\Home\DetailsPageForRequisitioner.cshtml" />
+    <Content Include="Views\Home\AllocatedAssetList.cshtml" />
+    <Content Include="Views\Home\RequisitionRequestListIMApprover.cshtml" />
+    <Content Include="Views\Home\DetailsPageForIMApprover.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
