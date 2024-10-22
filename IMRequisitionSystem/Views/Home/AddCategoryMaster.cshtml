@@ -18,156 +18,184 @@
     <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
 </head>
-<body class="wrapper " style="display:flex; justify-content:center; align-items: center; ">
 
-    <div class="categoryWrapper  mt-40" style="width:1400px ">
-        <div class="card ">
-            <div class="card-header">
-                <h1>Add Material Category</h1>
-                
-            </div> <!--begin::Form-->
-            <form>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-3 form-group">
-                            <label>
-                                Category Name
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="text" value="" id="CategoryName" />
-                        </div>
-                        <div class="col-lg-3 form-group">
-                            <label>
-                                Location
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="Location">
-                                <option>NRL</option>
-                                <option>SMT</option>
-                                <option>NRL (Guwahati)</option>
+<div class="d-flex flex-column-fluid">
+    <div class="container-fluid">
 
-                            </select>
-                        </div>
-                        <div class="col-lg-3 form-group">
-                            <label>
-                                Department
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="Department">
-                                <option>Refinery Mechanical Maintenance</option>
-                                <option>Refinery Operation</option>
-                                <option>SMT Control Room</option>
-                                <option>Refinery Electrical</option>
-                                <option>Refinery P&U Operation</option>
-                                <option>NRMT Operation</option>
-                                <option>Refinery P&U Operation</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 form-group">
-                            <label>
-                                Area
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="Area">
-                                <option>CPP</option>
-                                <option>SRB</option>
-                                <option>CDU-VDU</option>
-                                <option>H2U</option>
-                                <option>MSP</option>
-                            </select>
-                        </div>
-                        <div class=" col-lg-12 form-group">
-                            <label>
-                                Description
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input class="form-control" type="text" value="" id="Description" />
+        <div class="card card-custom gutter-b example example-compact"  style="border-radius:30px;">
+            <div class="card "  style="border-radius:30px;">
+                <div class="card-header"  style="border-radius:30px;">
+                    <h1>ADD MATERIAL CATEGORY</h1>
+                </div> <!--begin::Form-->
+                <form>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Category Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="CategoryName" />
+                                <span class="form-text text-muted">Name of the category</span>
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label>
+                                    Location
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control form-control-lg" id="location">
+                                    <option>NRL</option>
+                                    <option>SMT</option>
+                                    <option>NRL (Guwahati)</option>
+                                </select>
+                                <span class="form-text text-muted">Location Name</span>
+                            </div>
+
+                            @*<div class="col-lg-3 form-group">
+                                    <label>
+                                        Department
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <select class="form-control form-control-lg" id="Department">
+                                        <option>Refinery Mechanical Maintenance</option>
+                                        <option>Refinery Operation</option>
+                                        <option>SMT Control Room</option>
+                                        <option>Refinery Electrical</option>
+                                        <option>Refinery P&U Operation</option>
+                                        <option>NRMT Operation</option>
+                                        <option>Refinery P&U Operation</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 form-group">
+                                    <label>
+                                        Area
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <select class="form-control form-control-lg" id="Area">
+                                        <option>CPP</option>
+                                        <option>SRB</option>
+                                        <option>CDU-VDU</option>
+                                        <option>H2U</option>
+                                        <option>MSP</option>
+                                    </select>
+                                </div>*@
+
+
+                            <div class=" col-lg-12 form-group">
+
+                                    <label for="purpose">Description:</label>
+
+                                    <textarea class="form-control form-control-solid" rows="1" required></textarea>
+
+                                    <span class="form-text text-muted">Description of the asset category</span>
+
+                            </div>
+
                         </div>
 
                     </div>
-
-                </div>
-                <div class="card-footer">
-                    <button type="reset" class="btn btn-primary mr-2">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Cancel</button>
-                </div>
-            </form>
-
-           
+                    <div class="card-footer"  style="border-radius:30px;">
+                        <button type="reset" class="btn btn-primary mr-2">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
+        <div class="card card-custom gutter-b" style="border-radius:30px;">
+            <div class="card mt-10"  style="border-radius:30px;">
+                <div class="card card-custom gutter-b"  style="border-radius:30px;">
+                    <div class="card-header flex-wrap py-3"  style="border-radius:30px;">
+                        <div class="card-title font-weight-bold">
+                            <h1>CATEGORY MASTER TABLE</h1>
+                        </div>
 
-        <div class="card mt-10">
-            <div class="card card-custom gutter-b">
-                <div class="card-header flex-wrap py-3">
-                    <div class="card-title">
-                        <h1>Category Master table</h1>
                     </div>
-                   
-                </div>
-                <div class="card-body">
-                 
-                    <table class="table table-bordered table-checkable" id="IM_datatable">
-                        <thead>
-                            <tr>
-                                <th>Sl No:</th>
-                                <th>Category Name </th>
-                                <th>Location</th>
-                                <th>Category Description</th>
+                    <div class="card-body"  style="border-radius:30px;">
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
+                        <table class="table table-bordered table-checkable font-weight-bold" id="IM_datatable">
+                            <thead>
+                                <tr>
+                                    <th>Sl No:</th>
+                                    <th>Category Name </th>
+                                    <th>Location</th>
+                                    <th>Category Description</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>HF</td>
+                                    <td>Refinery</td>
+                                    <td>Lorem Ipsum Dolor Imit.</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-success mr-1">Update</button>
+                                        <button class="btn btn-sm btn-outline-danger mr-1">Deactivate</button>
+                                    </td>
 
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>UHF</td>
+                                    <td>Paradeep</td>
+                                    <td>Lorem Ipsum Dolor Imit.</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-success mr-1">Update</button>
+                                        <button class="btn btn-sm btn-outline-danger mr-1">Deactivate</button>
+                                    </td>
+                                </tr>
 
-                            <tr>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
+                                <tr>
+                                    <td>3</td>
+                                    <td>VHF</td>
+                                    <td>SMT</td>
+                                    <td>Lorem Ipsum Dolor Imit.</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-success mr-1">Update</button>
+                                        <button class="btn btn-sm btn-outline-danger mr-1">Deactivate</button>
+                                    </td>
 
-                            </tr>
-                        </tbody>
-                    </table>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
-    <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
-    <script src="~/lib/assets/js/scripts.bundle.js"></script>
-    <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
-    <script>
-        var table = $('#IM_datatable');
-        table.DataTable({
-            responsive: true,
-            pagingType: 'full_numbers',
-            order: [],
-            dom: 'lBfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ],
-            lengthMenu: [
-                [10, 25, 50, 100, -1],
-                ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
-            ]
-        });
-        table.init();
-    </script>
+        <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+        <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+        <script src="~/lib/assets/js/scripts.bundle.js"></script>
+        <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+        <script>
+            var table = $('#IM_datatable');
+            table.DataTable({
+                responsive: true,
+                pagingType: 'full_numbers',
+                order: [],
+                dom: 'lBfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                lengthMenu: [
+                    [10, 25, 50, 100, -1],
+                    ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+                ]
+            });
+            table.init();
+        </script>
 
-</body>
+        <script>
+            $('#location').select2({
+
+                placeholder: "Select Location"
+
+            });
+        </script>
+
 

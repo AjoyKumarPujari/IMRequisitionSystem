@@ -20,145 +20,158 @@
     <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
 </head>
-<body class="wrapper " style="display:flex; justify-content:center; align-items: center; ">
 
-    <div class="categoryWrapper  mt-10" style="width:1400px ">
 
-        <div class="card mt-10">
-            <div class="card card-custom gutter-b">
-                <div class="card-header flex-wrap py-3">
-                    <div class="card-title">
-                        <h1>Asset Master Table</h1>
-                    </div>
+<div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
 
-                </div>
-                <div class="card-body">
+    <div class="card-header">
 
-                    <table class="table table-bordered table-checkable" id="IM_datatable">
-                        <thead>
-                            <tr>
-                                <th>Sl No:</th>
-                                <th>Asset Serial No </th>
-                                <th>Make </th>
-                                <th>Model </th>
-                                <th>Asset id </th>
-                                <th>Category</th>
-                                <th>Installation Date</th>
-                                <th>Vendor Code </th>
-                                <th>Vendor Name</th>
-                                <th>PO No</th>
-                                <th>PO Date</th>
-                                <th>Asset Delivered Location</th>
-                                <th>Asset Delivered Department</th>
-                                <th>Asset Delivered Area</th>
-                                <th>Warranty Till</th>
-                                <th>Under AMC</th>
-                                <th>AMC Vendor Code </th>
-                                <th>AMC Vendor Name  </th>
-                                <th>AMC Expiry Date  </th>
-                                <th>Asset Custodian Name  </th>
-                                <th>Asset Custodian Location  </th>
-                                <th>Asset Custodian Department  </th>
-                                <th>Asset Custodian Area  </th>
-                                <th>Asset Physical Condition  </th>
-                                <th>Issue Status  </th>
-                                <th>Asset Status  </th>
+        <div class="card-title">
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>10-01-2024l</td>
-                                <td>São Félix do Xingu</td>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>10-01-2024l</td>
-                                <td>São Félix do Xingu</td>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
+            <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
 
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>10-01-2024l</td>
-                                <td>São Félix do Xingu</td>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>10-01-2024l</td>
-                                <td>São Félix do Xingu</td>
-                                <td>1</td>
-                                <td>64616-103</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>Brazil</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
-                                <td>São Félix do Xingu</td>
+                <span> ASSET MASTER TABLE</span>
 
-                            </tr>
+            </h2>
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
 
-    <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
-    <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
-    <script src="~/lib/assets/js/scripts.bundle.js"></script>
-    <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
-    <script>
-        var table = $('#IM_datatable');
-        table.DataTable({
-            responsive: true,
-            pagingType: 'full_numbers',
-            order: [],
-            dom: 'lBfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ],
-            lengthMenu: [
-                [10, 25, 50, 100, -1],
-                ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
-            ]
-        });
-        table.init();
-    </script>
+    <div class="card-body">
+        <div class="card-body">
 
-</body>
+            <table class="table table-bordered table-checkable" id="IM_datatable">
+                <thead>
+                    <tr>
+                        <th>Sl No:</th>
+                        <th>Asset id </th>
+                        <th>Asset Serial No </th>
+                        <th>Make </th>
+                        <th>Model </th>
+                        <th>Category</th>
+                        <th>Installation Date</th>
+                        <th>Vendor Code </th>
+                        <th>Vendor Name</th>
+                        <th>PO No</th>
+                        <th>PO Date</th>
+                        <th>Asset Delivered Location</th>
+                        <th>Asset Delivered Department</th>
+                        <th>Asset Delivered Area</th>
+                        <th>Warranty Till</th>
+                        <th>Under AMC</th>
+                        <th>AMC Vendor Code </th>
+                        <th>AMC Vendor Name  </th>
+                        <th>AMC Expiry Date  </th>
+                        <th>Asset Custodian Name  </th>
+                        <th>Asset Custodian Location  </th>
+                        <th>Asset Custodian Department  </th>
+                        <th>Asset Custodian Area  </th>
+                        <th>Asset Physical Condition  </th>
+                        <th>Issue Status  </th>
+                        <th>Asset Status  </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>64616-103</td>
+                        <td>10-01-2024l</td>
+                        <td>São Félix do Xingu</td>
+                        <td>1</td>
+                        <td>64616-103</td>
+                        <td>Brazil</td>
+                        <td>São Félix do Xingu</td>
+                        <td>Brazil</td>
+                        <td>São Félix do Xingu</td>
+                        <td>1</td>
+                        <td>64616-103</td>
+                        <td>10-01-2024l</td>
+                        <td>São Félix do Xingu</td>
+                        <td>1</td>
+                        <td>64616-103</td>
+                        <td>Brazil</td>
+                        <td>São Félix do Xingu</td>
+                        <td>Brazil</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>64616-103</td>
+                        <td>10-01-2024l</td>
+                        <td>São Félix do Xingu</td>
+                        <td>1</td>
+                        <td>64616-103</td>
+                        <td>Brazil</td>
+                        <td>São Félix do Xingu</td>
+                        <td>Brazil</td>
+                        <td>São Félix do Xingu</td>
+                        <td>1</td>
+                        <td>64616-103</td>
+                        <td>10-01-2024l</td>
+                        <td>São Félix do Xingu</td>
+                        <td>1</td>
+                        <td>64616-103</td>
+                        <td>Brazil</td>
+                        <td>São Félix do Xingu</td>
+                        <td>Brazil</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+                        <td>São Félix do Xingu</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="~/lib/assets/js/scripts.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+    var table = $('#IM_datatable');
+    table.DataTable({
+        responsive: true,
+        pagingType: 'full_numbers',
+        order: [],
+        dom: 'lBfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+        ]
+    });
+    table.init();
+</script>
+
 
 
 
