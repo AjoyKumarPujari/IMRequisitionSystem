@@ -2172,6 +2172,8 @@
     <Content Include="Views\Home\AllocatedAssetList.cshtml" />
     <Content Include="Views\Home\RequisitionRequestListIMApprover.cshtml" />
     <Content Include="Views\Home\DetailsPageForIMApprover.cshtml" />
+    <Content Include="Views\Home\AddMaster.cshtml" />
+    <Content Include="Views\Home\AddUserRoleMapping.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

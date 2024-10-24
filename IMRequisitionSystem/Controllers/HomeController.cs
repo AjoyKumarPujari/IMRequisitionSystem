@@ -53,6 +53,12 @@ namespace IMRequisitionSystem.Controllers
 
             return View();
         }
+        public ActionResult AddUserRoleMapping()
+        {
+
+
+            return View();
+        }
         public ActionResult RequisitionRequest()
         {
 
