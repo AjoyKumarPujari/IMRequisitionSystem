@@ -31,15 +31,30 @@
 
             <div class="card-header">
 
-                <div class="card-title">
+                <div class="card-title d-flex justify-content-between align-items-center w-100">
 
-                    <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
-
-                        <span> ASSET MASTER ENTRY</span>
-
-                    </h2>
-
-                </div>
+                     <div class="card-title">
+                            <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
+                                <span>ASSET MASTER ENTRY</span>
+                            </h2>
+                     </div>
+                    
+                     
+                     <button onclick="location.href='@Url.Action("AssetMasterTable", "Home")'" class="btn btn-primary d-flex align-items-center">
+                         <span class="svg-icon menu-icon">
+                             <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                     <rect x="0" y="0" width="24" height="24" />
+                                     <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+                                     <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+                                 </g>
+                             </svg>
+                             <!--end::Svg Icon-->
+                         </span>
+                         ASSET MASTER LIST
+                     </button>
+</div>
             </div>
 
             <div class="card-body">
@@ -48,12 +63,17 @@
                     <div class="card-body">
 
                         <div class="row">
-                            <div class="form-group col-lg-3">
-                                <label>
-                                    Asset Serial No:
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input class="form-control" type="text" value="" id="slNo" />
+                            <div class="col-lg-3">
+
+                                <label>Type of Devive:</label>
+
+                                <select class="form-control select2" style="width:100%" id="Category" name="Category">
+                                    <option value=""></option>
+                                    <option value="HF">HF</option>
+                                    <option value="UHF">UHF</option>
+                                    <option value="VHF">VHF</option>
+
+                                </select>
                             </div>
                             <div class="form-group col-lg-3">
                                 <label>
@@ -69,7 +89,13 @@
                                 </label>
                                 <input class="form-control" type="text" value="" id="ModelNo" />
                             </div>
-
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Asset Serial No:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="slNo" />
+                            </div>
                             <div class="form-group col-lg-3">
                                 <label>
                                     Asset id:
@@ -79,38 +105,27 @@
                             </div>
                             <div class="form-group col-lg-3">
                                 <label>
-                                    Category:
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control form-control-lg" id="Category">
-                                    <option>VF</option>
-                                    <option>VHF</option>
-                                    <option>UHF</option>
-
-                                </select>
-                            </div>
-                            <div class="form-group col-lg-3">
-                                <label>
                                     Installation Date:
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input class="form-control" type="date" value="2011-08-19" id="InstallationDate" />
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-3">
+                                <label>Is Charger set Inside </label>
+                                <div class="radio-inline">
+                                    <label class="radio">
+                                        <input type="radio" name="ISChargerSet" checked="checked" @*onchange="toggleVisibility(true)*@ />
+                                        <span></span>Yes
+                                    </label>
+
+                                    <label class="radio">
+                                        <input type="radio" name="ISChargerSet" @*onchange="toggleVisibility(false)"*@ />
+                                        <span></span>No
+                                    </label>
+                                </div>
                             </div>
                             <div class="form-group col-lg-3">
-                                <label>
-                                    Vendor Code:
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input class="form-control" type="text" value="" id="VendorCode" />
-                            </div>
-                            <div class="form-group col-lg-3">
-                                <label>
-                                    Vendor Name:
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input class="form-control" type="text" value="" id="VendorName" />
+
                             </div>
                             <div class="form-group col-lg-3">
                                 <label>
@@ -126,26 +141,39 @@
                                 </label>
                                 <input class="form-control" type="date" value="2011-08-19" id="InstallationDate" />
                             </div>
-
-
-                            <div class="col-lg-3 form-group">
+                            <div class="form-group col-lg-3">
                                 <label>
-                                    Asset Delivered Location:
+                                    Vendor Code:
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select class="form-control form-control-lg" id="AssetDeliveredLocation">
+                                <input class="form-control" type="text" value="" id="VendorCode" />
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Vendor Name:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" id="VendorName" />
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <label> Asset Delivered Location:</label>
+
+                                <select class="form-control select2" style="width:100%" id="AssetDeliveredLocation" name="AssetDeliveredLocation">
+                                    <option value=""></option>
                                     <option>NRL</option>
                                     <option>SMT</option>
                                     <option>NRL (Guwahati)</option>
 
                                 </select>
                             </div>
-                            <div class="col-lg-3 form-group">
-                                <label>
-                                    Asset Delivered Department:
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control form-control-lg" id="AssetDeliveredDepartment">
+                            <div class="col-lg-3">
+
+                                <label> Asset Delivered Location:</label>
+
+                                <select class="form-control select2" style="width:100%" id="AssetDeliveredDepartment" name="AssetDeliveredDepartment">
+                                    <option value=""></option>
                                     <option>Refinery Mechanical Maintenance</option>
                                     <option>Refinery Operation</option>
                                     <option>SMT Control Room</option>
@@ -153,19 +181,21 @@
                                     <option>Refinery P&U Operation</option>
                                     <option>NRMT Operation</option>
                                     <option>Refinery P&U Operation</option>
+
                                 </select>
                             </div>
-                            <div class="col-lg-3 form-group">
-                                <label>
-                                    Asset Delivered Area
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control form-control-lg" id="AssetDeliveredArea">
+                            <div class="col-lg-3">
+
+                                <label> Asset Delivered Location:</label>
+
+                                <select class="form-control select2" style="width:100%" id="AssetDeliveredArea" name="AssetDeliveredArea">
+                                    <option value=""></option>
                                     <option>CPP</option>
                                     <option>SRB</option>
                                     <option>CDU-VDU</option>
                                     <option>H2U</option>
                                     <option>MSP</option>
+
                                 </select>
                             </div>
                             <div class="form-group col-lg-3">
@@ -175,21 +205,8 @@
                                 </label>
                                 <input class="form-control" type="date" value="2011-08-19" id="WarrantyTill" />
                             </div>
-                            <div class="form-group col-lg-3">
-                                <label>Under AMC </label>
-                                <div class="radio-inline">
-                                    <label class="radio">
-                                        <input type="radio" name="UnderAMC" checked="checked" onchange="toggleVisibility(true)" />
-                                        <span></span>No
-                                    </label>
 
-                                    <label class="radio">
-                                        <input type="radio" name="UnderAMC" onchange="toggleVisibility(false)" />
-                                        <span></span>Yes
-                                    </label>
-                                </div>
-                            </div>
-                           <div class="form-group col-lg-3" id="VC" hidden>
+                            @*<div class="form-group col-lg-3" id="VC" hidden>
                                 <label>
                                     AMC Vendor Code
                                     <span class="text-danger">*</span>
@@ -211,8 +228,8 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input class="form-control" type="date" value="2011-10-14" id="AMCExpiryDate" />
-                            </div>
-                            @*<div class="form-group col-lg-3">
+                            </div>*@
+                                                @*<div class="form-group col-lg-3">
                                 <label>
                                     Asset Custodian Name
                                     <span class="text-danger">*</span>
@@ -282,12 +299,13 @@
 
                                 </select>
                             </div>*@
-                            <div class="col-lg-3 form-group">
-                                <label>
-                                    Asset Status
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control form-control-lg" id="AssetStatus">
+                           
+                            <div class="col-lg-3">
+
+                                <label>  Asset Status:</label>
+
+                                <select class="form-control select2" style="width:100%" id="AssetStatus" name="AssetStatus">
+                                    <option value=""></option>
                                     <option>Fresh</option>
                                     <option>Active</option>
                                     <option>Deactive</option>
@@ -398,6 +416,59 @@
     <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="~/lib/assets/js/scripts.bundle.js"></script>
     <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('.select2').select2();
+
+
+
+        $('#Category').select2({
+
+            placeholder: "Select Type of Device"
+
+        });
+        $('#AssetStatus').select2({
+
+            placeholder: "Select Asset Status"
+
+        });
+
+        $('#AssetDeliveredLocation').select2({
+
+            placeholder: "Select Asset Delivered Location"
+
+        });
+
+        $('#AssetDeliveredDepartment').select2({
+
+            placeholder: "Asset Delivered Department"
+
+        });
+
+        $('#AssetDeliveredArea').select2({
+
+            placeholder: "Select Asset Delivered Area"
+
+        });
+
+        $('#req_for_oth').select2({
+
+            placeholder: "Select to whom requisition is for"
+
+        });
+
+        $('#nm_staff').select2({
+
+            placeholder: "Select Non_Management Staff personnel"
+
+        });
+
+
+
+    });
+
+</script>
     <script>
         var table = $('#IM_datatable');
         table.DataTable({

@@ -2174,6 +2174,7 @@
     <Content Include="Views\Home\DetailsPageForIMApprover.cshtml" />
     <Content Include="Views\Home\AddMaster.cshtml" />
     <Content Include="Views\Home\AddUserRoleMapping.cshtml" />
+    <Content Include="Views\Home\RequisitionIssueList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

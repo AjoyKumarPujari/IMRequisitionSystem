@@ -115,5 +115,12 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
+
+        public ActionResult RequisitionIssueList()
+        {
+
+
+            return View();
+        }
     }
 }
