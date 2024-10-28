@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "AddRoleMaster";
+    ViewBag.Title = "AddUserRoleMapping";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 
 
@@ -15,23 +14,36 @@
 
                 <div class="row">
                     <div class="form-group col-lg-4">
+                        <label>
+                            Role Name
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-control form-control-lg" id="UserName">
+                            <option></option>
+                            <option>HOD</option>
+                            <option>Area In-Charge</option>
+                            <option>IM Issuer</option>
+                            <option>IM Approver</option>
+                            <option>Requester</option>
+                        </select>
 
-                        <label>Role Name:</label>
-
-                        <input type="text" class="form-control" placeholder="Enter Role Name" />
-
-
-
+                        <span class="form-text text-muted">Select the Role.</span>
                     </div>
-
                     <div class="form-group col-lg-4">
+                        <label>
+                            Assign To 
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-control form-control-lg" id="UserName">
+                            <option></option>
+                            <option>Sanjeev Dibragede</option>
+                            <option>Anjan Bora</option>
+                            <option>Bibhuti Sharma</option>
+                            <option>Ajit Das</option>
+                            <option>Tamanna Fernaz Hussain</option>
+                        </select>
 
-                        <label>Role Description:</label>
-
-                        <input type="text" class="form-control" placeholder="Enter Role Description" />
-
-
-
+                        <span class="form-text text-muted">Select the user to whom role to be assigned.</span>
                     </div>
                     <div class="form-group col-lg-4">
                         <label>
@@ -39,30 +51,15 @@
                             <span class="text-danger">*</span>
                         </label>
                         <select class="form-control form-control-lg" id="UserName">
-                          
+
                             <option>Active</option>
                             <option>Deactive</option>
                         </select>
 
-                       
+                        <span class="form-text text-muted">Select Role Status.</span>
                     </div>
 
-                    @*<div class="form-group col-lg-4">
-            <label>
-                Employee Name
-                <span class="text-danger">*</span>
-            </label>
-            <select class="form-control form-control-lg" id="UserName">
-                <option></option>
-                <option>Sanjeev Dibragede</option>
-                <option>Anjan Bora</option>
-                <option>Bibhuti Sharma</option>
-                <option>Ajit Das</option>
-                <option>Tamanna Fernaz Hussain</option>
-            </select>
-
-            <span class="form-text text-muted">Select the user to whom role to be assigned.</span>
-        </div>*@
+                   
 
 
 
@@ -105,7 +102,7 @@
             <div class="card-header flex-wrap py-3">
                 <div class="card-title">
                     <h3 class="card-label">
-                        Role Master Details 
+                        Role Assign Details
                     </h3>
                 </div>
             </div>
@@ -117,7 +114,8 @@
                         <tr>
                             <th>Sl No:</th>
                             <th>Role Name </th>
-                            <th>Role Description</th>
+                            <th>Assign To</th>
+                            <th>Assign By</th>
                             <th>Role Status</th>
                             <th>Action</th>
 
@@ -127,39 +125,36 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>HOD</td>
-                            <td>HOD of respective area</td>
-                            <td>Active</td>
+                            <td>HOD/Unit In-Charge</td>
+                            <td>SanjeevDibragede</td>
+                            <td>Saranga Pani Nath</td>
+                            <td><a href="#" class="btn btn-hover-bg-success btn-text-success btn-hover-text-white border-0 font-weight-bold mr-2">Active</a></td>
                             <td>
-                                <!--<button class="btn btn-md btn-success mr-1" id="activateButton">
-        <span class="svg-icon svg-icon-white svg-icon-2x">-->
-                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Done-circle.svg-->
-                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <rect x="0" y="0" width="24" height="24" />
-            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-        </g>
-    </svg>-->
-                                <!--end::Svg Icon-->
-                                <!--</span>
-        Activate
-    </button>
+                                <button class="btn btn-md btn-success mr-1" id="activateButton">
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Done-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                    Activate
+                                </button>
 
-    <button class="btn btn-md btn-danger" id="deactivateButton" hidden>
-        <span class="svg-icon svg-icon-white svg-icon-2x">-->
-                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Error-circle.svg-->
-                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <rect x="0" y="0" width="24" height="24" />
-            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
-        </g>
-    </svg>-->
-                                <!--end::Svg Icon-->
-                                <!--</span>
-        Deactivate
-    </button>-->
+                                <button class="btn btn-md btn-danger" id="deactivateButton" hidden>
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Error-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                    Deactivate
+                                </button>
 
                                 <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editUserRole">
                                     <span class="svg-icon svg-icon-white svg-icon-2x">
@@ -172,18 +167,6 @@
                                         </svg><!--end::Svg Icon-->
                                     </span>
                                     Edit
-                                </button>
-                                <button class="btn btn-md btn-danger" data-toggle="modal" data-target="#deleteUserRole">
-                                    <span class="svg-icon svg-icon-white svg-icon-2x">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\Deleted-file.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <polygon points="0 0 24 0 24 24 0 24" />
-                                                <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                <path d="M10.5857864,13 L9.17157288,11.5857864 C8.78104858,11.1952621 8.78104858,10.5620972 9.17157288,10.1715729 C9.56209717,9.78104858 10.1952621,9.78104858 10.5857864,10.1715729 L12,11.5857864 L13.4142136,10.1715729 C13.8047379,9.78104858 14.4379028,9.78104858 14.8284271,10.1715729 C15.2189514,10.5620972 15.2189514,11.1952621 14.8284271,11.5857864 L13.4142136,13 L14.8284271,14.4142136 C15.2189514,14.8047379 15.2189514,15.4379028 14.8284271,15.8284271 C14.4379028,16.2189514 13.8047379,16.2189514 13.4142136,15.8284271 L12,14.4142136 L10.5857864,15.8284271 C10.1952621,16.2189514 9.56209717,16.2189514 9.17157288,15.8284271 C8.78104858,15.4379028 8.78104858,14.8047379 9.17157288,14.4142136 L10.5857864,13 Z" fill="#000000" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
-                                    </span>
-                                    Delete
                                 </button>
 
                             </td>
@@ -394,3 +377,4 @@
         deactivateButton.hidden = true;
     }
 </script>
+
