@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "RequisitionIssueList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/lib/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
+</head>
+
+
+
+<div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
+
+    <div class="card-header">
+
+        <div class="card-title">
+
+            <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
+
+                <span> REQUISITION ISSUE LIST</span>
+
+            </h2>
+
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="card-body">
+
+            <table class="table table-bordered table-checkable" id="IM_datatable">
+                <thead>
+                    <tr>
+                        <th>Sl No:</th>
+                        <th>Requisition ID </th>
+                        <th>Requisition By </th>
+                        <th>Requisition Date </th>
+                        <th>Type of Device </th>
+                        @*<th>Requisition Location </th>*@
+                        <th>Requisition Department </th>
+                        @*<th>Requisition Area </th>*@
+                        <th>Requisition For</th>
+                        @*<th>Approver Name</th>*@
+                        <th>Requisition Status</th>
+                        <th style="width: 100px;">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>NRL-IM-0001</td>
+                        <td>Jyotirmoy Deka</td>
+                        <td>12-10-2024</td>
+                        <td>VHF</td>
+                        @*<td>NRL</td>*@
+                        <td>Mechanical Maintenance</td>
+                        @*<td>CDU-VDU</td>*@
+                        <td>Self</td>
+                        @*<td>Sanjeev Dibragede </td>*@
+                        <td>
+                            <span class="label label-inline label-light-warning font-weight-bold">
+                                Requested
+                            </span>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary" style="width:120px" onclick="ViewDetails()">View Details</button>
+                            <button type="button" class="btn  btn-outline-warning  mt-1" style="width:120px" >ISSUE</button>
+                            <button type="button" class="btn  btn-outline-danger  mt-1 " style="width:120px" >Reject</button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="~/lib/assets/js/scripts.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+        var table = $('#IM_datatable');
+        table.DataTable({
+            responsive: true,
+            pagingType: 'full_numbers',
+            order: [],
+            dom: 'lBfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ],
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+            ]
+        });
+        table.init();
+</script>
+
+<script>
+    function ViewDetails() {
+        window.location.href = '@Url.Action("DetailsPageForRequisitioner", "Home")'
+    }
+</script>
+
+
