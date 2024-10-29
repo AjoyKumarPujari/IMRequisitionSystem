@@ -77,8 +77,15 @@
                         </td>
                         <td>
                             <button type="button" class="btn btn-outline-primary" style="width:120px" onclick="ViewDetails()">View Details</button>
-                            <button type="button" class="btn  btn-outline-warning  mt-1" style="width:120px" >ISSUE</button>
-                            <button type="button" class="btn  btn-outline-danger  mt-1 " style="width:120px" >Reject</button>
+
+                            <button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm  btn-outline-warning mt-1" style="width:120px" data-toggle="modal" data-target="#IssueModal">
+                                ISSUE
+                            </button>
+                            <button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm   btn-outline-danger  mt-1" style="width:120px" data-toggle="modal" data-target="#RejectModal">
+                                REJECT
+                            </button>
+
+                            
                         </td>
 
                     </tr>
@@ -92,31 +99,111 @@
 
 
 </div>
+<div class="modal " id="IssueModal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
 
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-lg-4" style="width:200px">
+                        <label>
+                            Select Asset
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-control form-control-lg" id="AssetName">
+                            <option></option>
+                            <option>HF</option>
+                            <option>UHF</option>
+                            <option>VHF</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>
+                           Add Quantity
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input class="form-control" type="number" value="" id="Quantity" placeholder="Add Quantity"/>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" id="rejectRequestHOD"  data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal " id="RejectModal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="row">
+                   
+                    <div class="form-group col-lg-12">
+                        <label>
+                            Reason on Rejection
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input class="form-control" type="text" value="" id="RejectReason" placeholder="Write the Reason" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" id="rejectRequestHOD" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#AssetName').select2({
+        placeholder: "Select Asset"
+    });
+
+    $('#UserName').select2({
+        placeholder: "Select Employee Name"
+    });
+
+    $('#updateUserName').select2({
+        placeholder: "Select Employee Name"
+    });
+
+    $('#updateRole').select2({
+        placeholder: "Select Role Name"
+    });
+</script>
 
 <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
 <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
 <script src="~/lib/assets/js/scripts.bundle.js"></script>
 <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script>
-        var table = $('#IM_datatable');
-        table.DataTable({
-            responsive: true,
-            pagingType: 'full_numbers',
-            order: [],
-            dom: 'lBfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ],
-            lengthMenu: [
-                [10, 25, 50, 100, -1],
-                ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
-            ]
-        });
-        table.init();
+    var table = $('#IM_datatable');
+    table.DataTable({
+        responsive: true,
+        pagingType: 'full_numbers',
+        order: [],
+        dom: 'lBfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+        ]
+    });
+    table.init();
 </script>
 
 <script>
