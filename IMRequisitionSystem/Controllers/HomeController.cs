@@ -53,6 +53,12 @@ namespace IMRequisitionSystem.Controllers
 
             return View();
         }
+        public ActionResult AddUserRoleMapping()
+        {
+
+
+            return View();
+        }
         public ActionResult RequisitionRequest()
         {
 
@@ -109,5 +115,15 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
+
+        public ActionResult RequisitionIssueList()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnRequestDetailsEmployee()
+        {
+            return View();
+        }
     }
 }

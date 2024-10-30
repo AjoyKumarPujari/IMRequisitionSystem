@@ -1,17 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "RequisitionReturnList";
+    ViewBag.Title = "RequisitionIssueList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
-
-@{
-    ViewBag.Title = "RequisitionList";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 
 <head>
     <base href="../../../">
@@ -39,7 +30,7 @@
 
             <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
 
-                <span> RETURN REQUEST LIST</span>
+                <span> REQUISITION ISSUE LIST</span>
 
             </h2>
 
@@ -52,15 +43,17 @@
             <table class="table table-bordered table-checkable" id="IM_datatable">
                 <thead>
                     <tr>
-                        <th>Sl No</th>
-                        <th>Return Request No</th>
-                        <th>Return Requestor Name</th>
-                        <th>Return Request Date</th>
-                        <th>Return Requestor Department </th>
-
-                        <th>Asset ID</th>
-                        <th>Asset Serial No</th>
-                        <th>Request Status</th>
+                        <th>Sl No:</th>
+                        <th>Requisition ID </th>
+                        <th>Requisition By </th>
+                        <th>Requisition Date </th>
+                        <th>Type of Device </th>
+                        @*<th>Requisition Location </th>*@
+                        <th>Requisition Department </th>
+                        @*<th>Requisition Area </th>*@
+                        <th>Requisition For</th>
+                        @*<th>Approver Name</th>*@
+                        <th>Requisition Status</th>
                         <th style="width: 100px;">Action</th>
 
                     </tr>
@@ -68,12 +61,14 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>NRL-IM-RR-0001</td>
+                        <td>NRL-IM-0001</td>
                         <td>Jyotirmoy Deka</td>
-                        <td>28-10-2024</td>
+                        <td>12-10-2024</td>
+                        <td>VHF</td>
+                        @*<td>NRL</td>*@
                         <td>Mechanical Maintenance</td>
-                        <td>NRL-AID-0001</td>
-                        <td>NRL-VHF-00016</td>
+                        @*<td>CDU-VDU</td>*@
+                        <td>Self</td>
                         @*<td>Sanjeev Dibragede </td>*@
                         <td>
                             <span class="label label-inline label-light-warning font-weight-bold">
@@ -81,9 +76,9 @@
                             </span>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="ViewDetails()">View Details</button>
-                            @*<button type="button" class="btn btn-sm btn-outline-warning  mt-1 " >Return</button>
-                                <button type="button" class="btn btn-sm btn-outline-danger  mt-1  " >Reject</button>*@
+                            <button type="button" class="btn btn-outline-primary" style="width:120px" onclick="ViewDetails()">View Details</button>
+                            <button type="button" class="btn  btn-outline-warning  mt-1" style="width:120px" >ISSUE</button>
+                            <button type="button" class="btn  btn-outline-danger  mt-1 " style="width:120px" >Reject</button>
                         </td>
 
                     </tr>
@@ -104,35 +99,30 @@
 <script src="~/lib/assets/js/scripts.bundle.js"></script>
 <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script>
-    var table = $('#IM_datatable');
-    table.DataTable({
-        responsive: true,
-        pagingType: 'full_numbers',
-        order: [],
-        dom: 'lBfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ],
-        lengthMenu: [
-            [10, 25, 50, 100, -1],
-            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
-        ]
-    });
-    table.init();
+        var table = $('#IM_datatable');
+        table.DataTable({
+            responsive: true,
+            pagingType: 'full_numbers',
+            order: [],
+            dom: 'lBfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ],
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+            ]
+        });
+        table.init();
 </script>
 
 <script>
     function ViewDetails() {
-        window.location.href = '@Url.Action("ReturnRequestDetailsEmployee", "Home")'
+        window.location.href = '@Url.Action("DetailsPageForRequisitioner", "Home")'
     }
 </script>
-
-
-
-
-
 
 
