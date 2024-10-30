@@ -2175,6 +2175,7 @@
     <Content Include="Views\Home\AddMaster.cshtml" />
     <Content Include="Views\Home\AddUserRoleMapping.cshtml" />
     <Content Include="Views\Home\RequisitionIssueList.cshtml" />
+    <Content Include="Views\Home\ReturnRequestDetailsEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
