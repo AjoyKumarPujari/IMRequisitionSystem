@@ -18,7 +18,7 @@
                             Role Name
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control form-control-lg" id="UserName">
+                        <select class="form-control form-control-lg" id="UserRole">
                             <option></option>
                             <option>HOD</option>
                             <option>Area In-Charge</option>
@@ -50,7 +50,7 @@
                             Role Status
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control form-control-lg" id="UserName">
+                        <select class="form-control form-control-lg" id="UserStatus">
 
                             <option>Active</option>
                             <option>Deactive</option>
@@ -128,7 +128,9 @@
                             <td>HOD/Unit In-Charge</td>
                             <td>SanjeevDibragede</td>
                             <td>Saranga Pani Nath</td>
-                            <td><a href="#" class="btn btn-hover-bg-success btn-text-success btn-hover-text-white border-0 font-weight-bold mr-2">Active</a></td>
+                            <td><span class="label label-lg label-inline label-light-success font-weight-bold">
+                                Active
+                            </span></td>
                             <td>
                                 <button class="btn btn-md btn-success mr-1" id="activateButton">
                                     <span class="svg-icon svg-icon-white svg-icon-2x">
@@ -290,6 +292,14 @@
     });
 
     $('#UserName').select2({
+        placeholder: "Select Employee Name"
+    });
+
+    $('#UserRole').select2({
+        placeholder: "Select Employee Name"
+    });
+
+    $('#UserStatus').select2({
         placeholder: "Select Employee Name"
     });
 

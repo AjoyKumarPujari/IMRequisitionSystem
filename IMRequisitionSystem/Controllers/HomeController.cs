@@ -118,8 +118,11 @@ namespace IMRequisitionSystem.Controllers
 
         public ActionResult RequisitionIssueList()
         {
+            return View();
+        }
 
-
+        public ActionResult ReturnRequestDetailsEmployee()
+        {
             return View();
         }
     }
