@@ -1,6 +1,7 @@
 ﻿
+
 @{
-    ViewBag.Title = "DetailsPageForRequisitioner";
+    ViewBag.Title = "DetailPageForIssuer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -116,7 +117,7 @@
                 <div class="row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0  mx-0" style="border-radius:25px;">
                     <div class="col-md-10">
                         <div class="table-responsive">
-                              <table class="table">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="pl-0 font-weight-bold text-muted text-uppercase">Activity</th>
@@ -144,23 +145,23 @@
                                         <td class="text-right pt-7 align-middle">DGM</td>
                                         <td class="text-right pt-7 align-middle">12 Oct 2024</td>
                                         <td class="text-left pr-0 pt-7 align-middle max-width-300"></td>
-                                        
+
                                         @*<td class="border-top-0 text-right py-4 align-middle">Anjan Kumar Bora</td>
-                                            <td class="border-top-0 text-right py-4 align-middle">DGM</td>
-                                            <td class="text-right border-top-0 py-4 align-middle">24 May 2024 01:22 PM</td>
-                                            <td class="text-right pr-0 pt-7 align-middle">Lorem ipsum dolor sit amet</td>
-                                        </tr>
-                                        <tr class="font-weight-boldest border-bottom-0">
-                                            <td class="border-top-0 pl-0 py-4 d-flex align-items-center">
-                                                Hotel Executive
-                                            </td>
-                                            <td class="border-top-0 text-right py-4 align-middle">
-                                                <span class="badge badge-warning py-2 font-weight-bolder px-10 " style="width: 100px">Pending</span>
-                                            </td>
-                                            <td class="border-top-0 text-right py-4 align-middle">--</td>
-                                            <td class="text-right border-top-0 py-4 align-middle">--</td>
-                                            <td class="text-right pr-0 pt-7 align-middle">--</td>
-                                        </tr>*@
+                                                <td class="border-top-0 text-right py-4 align-middle">DGM</td>
+                                                <td class="text-right border-top-0 py-4 align-middle">24 May 2024 01:22 PM</td>
+                                                <td class="text-right pr-0 pt-7 align-middle">Lorem ipsum dolor sit amet</td>
+                                            </tr>
+                                            <tr class="font-weight-boldest border-bottom-0">
+                                                <td class="border-top-0 pl-0 py-4 d-flex align-items-center">
+                                                    Hotel Executive
+                                                </td>
+                                                <td class="border-top-0 text-right py-4 align-middle">
+                                                    <span class="badge badge-warning py-2 font-weight-bolder px-10 " style="width: 100px">Pending</span>
+                                                </td>
+                                                <td class="border-top-0 text-right py-4 align-middle">--</td>
+                                                <td class="text-right border-top-0 py-4 align-middle">--</td>
+                                                <td class="text-right pr-0 pt-7 align-middle">--</td>
+                                            </tr>*@
                                     </tr>
                                     <tr class="font-weight-boldest">
                                         <td class="border-0 pl-0 pt-7 d-flex align-items-center">
@@ -225,20 +226,21 @@
                 <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                     <div class="col-md-10">
                         <div class="d-flex justify-content-between">
-
-                            <button type="button" class="btn btn-success font-weight-bold" data-toggle="modal" data-target="#recallRequest">
+                            <button type="button" class="btn btn-warning font-weight-bold" data-toggle="modal" data-target="#rejectRequest">
                                 <span class="svg-icon svg-icon-white svg-icon-2x">
-                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Incoming-box.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Error-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24" />
-                                            <path d="M22,17 L22,21 C22,22.1045695 21.1045695,23 20,23 L4,23 C2.8954305,23 2,22.1045695 2,21 L2,17 L6.27924078,17 L6.82339262,18.6324555 C7.09562072,19.4491398 7.8598984,20 8.72075922,20 L15.381966,20 C16.1395101,20 16.8320364,19.5719952 17.1708204,18.8944272 L18.118034,17 L22,17 Z" fill="#000000" />
-                                            <path d="M2.5625,15 L5.92654389,9.01947752 C6.2807805,8.38972356 6.94714834,8 7.66969497,8 L16.330305,8 C17.0528517,8 17.7192195,8.38972356 18.0734561,9.01947752 L21.4375,15 L18.118034,15 C17.3604899,15 16.6679636,15.4280048 16.3291796,16.1055728 L15.381966,18 L8.72075922,18 L8.17660738,16.3675445 C7.90437928,15.5508602 7.1401016,15 6.27924078,15 L2.5625,15 Z" fill="#000000" opacity="0.3" />
-                                            <path d="M11.1288761,0.733697713 L11.1288761,2.69017121 L9.12120481,2.69017121 C8.84506244,2.69017121 8.62120481,2.91402884 8.62120481,3.19017121 L8.62120481,4.21346991 C8.62120481,4.48961229 8.84506244,4.71346991 9.12120481,4.71346991 L11.1288761,4.71346991 L11.1288761,6.66994341 C11.1288761,6.94608579 11.3527337,7.16994341 11.6288761,7.16994341 C11.7471877,7.16994341 11.8616664,7.12798964 11.951961,7.05154023 L15.4576222,4.08341738 C15.6683723,3.90498251 15.6945689,3.58948575 15.5161341,3.37873564 C15.4982803,3.35764848 15.4787093,3.33807751 15.4576222,3.32022374 L11.951961,0.352100892 C11.7412109,0.173666017 11.4257142,0.199862688 11.2472793,0.410612793 C11.1708299,0.500907473 11.1288761,0.615386087 11.1288761,0.733697713 Z" fill="#000000" fill-rule="nonzero" transform="translate(11.959697, 3.661508) rotate(-270.000000) translate(-11.959697, -3.661508) " />
+                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
                                         </g>
                                     </svg><!--end::Svg Icon-->
                                 </span>
-                                Recall
+                                Reject
                             </button>
+
+
+                           
                         </div>
                     </div>
                 </div>
@@ -252,11 +254,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="recallRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="rejectRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-weight-bold">Reason For Recall</h5>
+                <h5 class="modal-title font-weight-bold">Reason For Reject</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
@@ -334,4 +336,6 @@
     });
 
 </script>
+
+
 
