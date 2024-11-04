@@ -115,15 +115,34 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
-
+        #region IMIssuer
         public ActionResult RequisitionIssueList()
         {
             return View();
         }
-
+        public ActionResult DetailPageForIssuer()
+        {
+            return View();
+        }
+        #endregion
+        #region Return
         public ActionResult ReturnRequestDetailsEmployee()
         {
             return View();
         }
+        #endregion
+
+        #region IMAllocator
+        public ActionResult RequisitionAllocateList()
+        {
+            return View();
+        }
+       public ActionResult DetailPageForAlocator()
+        {
+            return View();
+        }
+        #endregion
+
+
     }
 }

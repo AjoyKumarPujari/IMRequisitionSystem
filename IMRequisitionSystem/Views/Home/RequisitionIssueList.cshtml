@@ -81,9 +81,7 @@
                             <button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm  btn-outline-warning mt-1" style="width:120px" data-toggle="modal" data-target="#IssueModal">
                                 ISSUE
                             </button>
-                            <button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm   btn-outline-danger  mt-1" style="width:120px" data-toggle="modal" data-target="#RejectModal">
-                                REJECT
-                            </button>
+                          
 
                             
                         </td>
@@ -102,10 +100,13 @@
 <div class="modal " id="IssueModal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
+            <div class="modal-header">
+                <h3>Choose Assets for Issue</h3>
+            </div>
 
             <div class="modal-body">
                 <div class="row">
-                    <div class="form-group col-lg-4" style="width:200px">
+                    <div class="form-group col-lg-3">
                         <label>
                             Select Asset Type
                             <span class="text-danger">*</span>
@@ -143,46 +144,53 @@
                             Add Quantity
                             <span class="text-danger">*</span>
                         </label>
+
                         <input class="form-control" type="number" value="" id="Quantity" placeholder="Add Quantity" />
                     </div>
-
-                </div>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-primary" id="rejectRequestHOD"  data-dismiss="modal">Save</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="modal " id="RejectModal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-
-            <div class="modal-body">
-                <div class="row">
-                   
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-lg-3">
+                        <button type="button" class="btn btn-outline-primary mt-8" style="width:180px" onclick="CheckAvaibilityDetails()">Check Avaibility</button>
+                    </div>
+                    <div class="form-group col-lg-3">
                         <label>
-                            Reason on Rejection
+                            Available Quantity
+                        </label>
+
+                        <input class="form-control" type="number" value="" id="AvlQuantity" placeholder="Available Quantity" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>
+                            Asset ID
+                        </label>
+
+                        <input class="form-control" type="text" value="" id="AvlQuantity" placeholder="Available Quantity" />
+                    </div>
+                    
+                    <div class="form-group col-lg-3">
+                        <label>
+                            Asset Serial Number
                             <span class="text-danger">*</span>
                         </label>
-                        <input class="form-control" type="text" value="" id="RejectReason" placeholder="Write the Reason" />
+                        <select class="form-control form-control-lg" id="AssetSerialN0">
+                            <option></option>
+                            <option>HF</option>
+                            <option>UHF</option>
+                            <option>VHF</option>
+
+                        </select>
                     </div>
 
                 </div>
             </div>
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-primary" id="rejectRequestHOD" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-primary" id="rejectRequestHOD" data-dismiss="modal">Issue</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
 </div>
+
+
 <script>
     $('#AssetName').select2({
         placeholder: "Select Asset"
@@ -228,7 +236,30 @@
 
 <script>
     function ViewDetails() {
-        window.location.href = '@Url.Action("DetailsPageForRequisitioner", "Home")'
+        window.location.href = '@Url.Action("DetailPageForIssuer", "Home")'
+    }
+    function CheckAvaibilityDetails() {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        toastr.success("Asset Available!");
+
+        document.getElementById("AvlQuantity").value = "5";
     }
 </script>
 

@@ -2176,6 +2176,10 @@
     <Content Include="Views\Home\AddUserRoleMapping.cshtml" />
     <Content Include="Views\Home\RequisitionIssueList.cshtml" />
     <Content Include="Views\Home\ReturnRequestDetailsEmployee.cshtml" />
+    <Content Include="Views\Home\DetailPageForIssuer.cshtml" />
+    <Content Include="Views\Home\RequisitionApproverList.cshtml" />
+    <Content Include="Views\Home\RequisitionAllocateList.cshtml" />
+    <Content Include="Views\Home\DetailPageForAlocator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
