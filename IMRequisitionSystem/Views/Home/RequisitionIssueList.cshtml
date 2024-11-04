@@ -160,12 +160,13 @@
                         <label>
                             Asset Serial Number
                             <span class="text-danger">*</span>
-                        </label>
+                        </label><br/>
                         <select class="form-control form-control-lg" id="AssetSerialN0">
                             <option></option>
-                            <option>HF</option>
-                            <option>UHF</option>
-                            <option>VHF</option>
+                            <option>NRL-VHF-00016</option>
+                            <option>NRL-UHF-00017</option>
+                            <option>NRL-VHF-00016</option>
+                            <option>NRL-UHF-00014</option>
 
                         </select>
                     </div>
@@ -201,6 +202,12 @@
 
     $('#AssetID').select2({
         placeholder: "Select Role Name"
+    });
+    $('#AssetSerialN0').select2({
+        placeholder: "Select Serial Number"
+    });
+    $('#AssetID').select2({
+        placeholder: "Select Asset ID"
     });
 </script>
 

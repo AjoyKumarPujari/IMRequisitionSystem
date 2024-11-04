@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "AllRequisitionIssueList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/lib/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
+</head>
+
+
+
+<div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
+
+    <div class="card-header">
+
+        <div class="card-title">
+
+            <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
+
+                <span> ISSUED ASSET LIST</span>
+
+            </h2>
+
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="card-body">
+
+            <table class="table table-bordered table-checkable" id="IM_datatable">
+                <thead>
+                    <tr>
+                        <th>Sl No:</th>
+                        <th>Asset ID </th>
+                        <th>Asset Serial No </th>
+                        <th>Make </th>
+                        <th>Model </th>
+                        <th>Requisition ID</th>
+                        <th>Allocated Date </th>
+                        <th style="width: 100px;">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>NRL-AID-0001</td>
+                        <td>NRL-VHF-00016</td>
+                        <td>Motorola</td>
+                        <td>M-VHF</td>
+                        <td>NRL-IM-00028</td>
+                        <td>12 Oct 2024</td>
+                        <td>
+                            <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#returnRequest">
+                                <span class="svg-icon svg-icon-white svg-icon-2x">
+                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Shift.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path d="M12.5936684,18.0752333 L12.5936684,14.4063316 L18.5936684,14.4063316 L18.5936684,8.40633161 L12.5936684,8.40633161 L12.5936684,4.73208782 L5.92209543,11.3984411 L12.5936684,18.0752333 Z M14.5936684,6.40633161 L19.5936684,6.40633161 C20.1459531,6.40633161 20.5936684,6.85404686 20.5936684,7.40633161 L20.5936684,15.4063316 C20.5936684,15.9586164 20.1459531,16.4063316 19.5936684,16.4063316 L14.5936684,16.4063316 L14.5936684,21.0946697 C14.5936684,21.2936837 14.5145702,21.484538 14.3737911,21.6252071 C14.0807833,21.9179858 13.6059096,21.9178001 13.313131,21.6247924 L3.62379074,11.9278722 C3.33101216,11.6348644 3.33119799,11.1599907 3.6242058,10.8672121 L13.3135459,1.18545264 C13.4541812,1.04492729 13.6448577,0.965990217 13.8436684,0.965990217 C14.257882,0.965990217 14.5936684,1.30177665 14.5936684,1.71599022 L14.5936684,6.40633161 Z" fill="#000000" fill-rule="nonzero" transform="translate(11.998998, 11.405330) scale(-1, 1) rotate(-270.000000) translate(-11.998998, -11.405330) " />
+                                        </g>
+                                    </svg><!--end::Svg Icon-->
+                                </span>
+                                Return
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<div class="modal fade" id="returnRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">REASON FOR RETURNING THE ASSET</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label class="font-weight-bold">Reason:</label>
+                        <div class="form-group">
+                            <textarea class="form-control form-control-solid" rows="2" required></textarea>
+                        </div>
+                        <span class="form-text" style="color:red;">This is a required field.</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label class="font-weight-bolder">Select Asset Condition:</label>
+                        <select class="form-control select2" style="width:100%" id="assetCondition" name="assetCondition">
+                            <option></option>
+                            <option>Good</option>
+                            <option>Damaged</option>
+                        </select>
+
+                        <span class="form-text text-muted">Select the asset condition to be returned.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="rejectRequestHOD">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal-->
+
+
+<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="~/lib/assets/js/scripts.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+    var table = $('#IM_datatable');
+    table.DataTable({
+        responsive: true,
+        pagingType: 'full_numbers',
+        order: [],
+        dom: 'lBfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+        ]
+    });
+    table.init();
+</script>
+
+<script>
+    $('#assetCondition').select2({
+        placeholder: "Select Asset Condition"
+    });
+</script>
+
+
+
