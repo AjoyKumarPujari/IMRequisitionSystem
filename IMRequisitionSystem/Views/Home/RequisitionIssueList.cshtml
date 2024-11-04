@@ -137,24 +137,32 @@
 
                         <input class="form-control" type="number" value="" id="AvlQuantity" placeholder="Available Quantity" />
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-3"  style="width:220px">
                         <label>
-                            Asset ID
-                        </label>
+                            Asset ID 
+                            <span class="text-danger">*</span>
+                        </label><br />
+                        <select class="form-control form-control-lg" id="AssetID">
+                            <option></option>
+                            <option>ASID-0001</option>
+                            <option>ASID-0001</option>
+                            <option>ASID-0001</option>
+                            <option>ASID-0001</option>
 
-                        <input class="form-control" type="text" value="" id="AvlQuantity" placeholder="Available Quantity" />
+                        </select>
                     </div>
                     
-                    <div class="form-group col-lg-3">
+                    <div class="form-group col-lg-3" style="width:220px">
                         <label>
                             Asset Serial Number
                             <span class="text-danger">*</span>
-                        </label>
+                        </label><br/>
                         <select class="form-control form-control-lg" id="AssetSerialN0">
                             <option></option>
-                            <option>HF</option>
-                            <option>UHF</option>
-                            <option>VHF</option>
+                            <option>NRL-VHF-00016</option>
+                            <option>NRL-UHF-00017</option>
+                            <option>NRL-VHF-00016</option>
+                            <option>NRL-UHF-00014</option>
 
                         </select>
                     </div>
@@ -186,6 +194,12 @@
 
     $('#updateRole').select2({
         placeholder: "Select Role Name"
+    });
+    $('#AssetSerialN0').select2({
+        placeholder: "Select Serial Number"
+    });
+    $('#AssetID').select2({
+        placeholder: "Select Asset ID"
     });
 </script>
 

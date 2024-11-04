@@ -2180,6 +2180,7 @@
     <Content Include="Views\Home\RequisitionApproverList.cshtml" />
     <Content Include="Views\Home\RequisitionAllocateList.cshtml" />
     <Content Include="Views\Home\DetailPageForAlocator.cshtml" />
+    <Content Include="Views\Home\AllRequisitionIssueList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
