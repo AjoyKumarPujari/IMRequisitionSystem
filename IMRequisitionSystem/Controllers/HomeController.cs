@@ -124,6 +124,12 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
+        public ActionResult AllRequisitionIssueList()
+        {
+            return View();
+        }
+
+
         #endregion
         #region Return
         public ActionResult ReturnRequestDetailsEmployee()
@@ -141,6 +147,7 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
+
         #endregion
 
 
