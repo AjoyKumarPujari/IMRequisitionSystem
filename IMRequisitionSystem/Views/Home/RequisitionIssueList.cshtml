@@ -76,7 +76,7 @@
                             </span>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-outline-primary" style="width:120px" onclick="ViewDetails()">View Details</button>
+                            <button type="button" class="btn btn-sm btn-outline-primary" style="width:120px" onclick="ViewDetails()">View Details</button>
 
                             <button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm  btn-outline-warning mt-1" style="width:120px" data-toggle="modal" data-target="#IssueModal">
                                 ISSUE
@@ -97,18 +97,18 @@
 
 
 </div>
-<div class="modal " id="IssueModal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal" id="IssueModal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Choose Assets for Issue</h3>
+                <h3>CHOOSE ASSET FOR ISSUE</h3>
             </div>
 
             <div class="modal-body">
-                <div class="row">
-                    <div class="form-group col-lg-3">
+                <div class="row ml-1 mr-1">
+                    <div class="form-group col-lg-4">
                         <label>
-                            Select Asset
+                            Select Asset Type
                             <span class="text-danger">*</span>
                         </label>
                         <select class="form-control form-control-lg" id="AssetName">
@@ -119,7 +119,8 @@
 
                         </select>
                     </div>
-                    <div class="form-group col-lg-3">
+
+                    <div class="form-group col-lg-4">
                         <label>
                             Add Quantity
                             <span class="text-danger">*</span>
@@ -127,32 +128,35 @@
 
                         <input class="form-control" type="number" value="" id="Quantity" placeholder="Add Quantity" />
                     </div>
-                    <div class="form-group col-lg-3">
+                    <div class="form-group col-lg-4">
                         <button type="button" class="btn btn-outline-primary mt-8" style="width:180px" onclick="CheckAvaibilityDetails()">Check Avaibility</button>
                     </div>
-                    <div class="form-group col-lg-3">
+
+                </div>
+                <div class="row ml-1 mr-1">
+                    <div class="form-group col-lg-4">
                         <label>
                             Available Quantity
                         </label>
 
                         <input class="form-control" type="number" value="" id="AvlQuantity" placeholder="Available Quantity" />
                     </div>
-                    <div class="form-group col-lg-3"  style="width:220px">
+
+                    <div class="form-group col-lg-4">
                         <label>
-                            Asset ID 
+                            Asset ID
                             <span class="text-danger">*</span>
-                        </label><br />
+                        </label>
                         <select class="form-control form-control-lg" id="AssetID">
                             <option></option>
-                            <option>ASID-0001</option>
-                            <option>ASID-0001</option>
-                            <option>ASID-0001</option>
-                            <option>ASID-0001</option>
+                            <option>NRL-IM-AID-0001</option>
+                            <option>NRL-IM-AID-0002</option>
+                            <option>NRL-IM-AID-0003</option>
 
                         </select>
                     </div>
-                    
-                    <div class="form-group col-lg-3" style="width:220px">
+
+                    <div class="form-group col-lg-4">
                         <label>
                             Asset Serial Number
                             <span class="text-danger">*</span>
@@ -166,9 +170,9 @@
 
                         </select>
                     </div>
-
                 </div>
-            </div>
+                
+                </div>
             <div class="modal-footer">
 
                 <button type="button" class="btn btn-primary" id="rejectRequestHOD" data-dismiss="modal">Issue</button>
@@ -181,7 +185,11 @@
 
 <script>
     $('#AssetName').select2({
-        placeholder: "Select Asset"
+        placeholder: "Select Asset Type"
+    });
+
+    $('#AssetSerialN0').select2({
+        placeholder: "Select Asset Serial Number"
     });
 
     $('#UserName').select2({
@@ -192,7 +200,7 @@
         placeholder: "Select Employee Name"
     });
 
-    $('#updateRole').select2({
+    $('#AssetID').select2({
         placeholder: "Select Role Name"
     });
     $('#AssetSerialN0').select2({
