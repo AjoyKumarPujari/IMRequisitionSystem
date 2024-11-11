@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "RequisitionIssueList";
+    ViewBag.Title = "IssuedRequisitionList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <head>
     <base href="../../../">
@@ -72,18 +73,11 @@
                         @*<td>Sanjeev Dibragede </td>*@
                         <td>
                             <span class="label label-inline label-light-success font-weight-bold">
-                                Approved-IM
+                                Issued
                             </span>
                         </td>
                         <td>
                             <button type="button" class="btn btn-sm btn-outline-primary" style="width:120px" onclick="ViewDetails()">View Details</button>
-
-                            <button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm  btn-outline-warning mt-1" style="width:120px" data-toggle="modal" data-target="#IssueModal">
-                                ISSUE
-                            </button>
-                          
-
-                            
                         </td>
 
                     </tr>
@@ -97,92 +91,6 @@
 
 
 </div>
-<div class="modal" id="IssueModal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>CHOOSE ASSET FOR ISSUE</h3>
-            </div>
-
-            <div class="modal-body">
-                <div class="row ml-1 mr-1">
-                    <div class="form-group col-lg-4">
-                        <label>
-                            Select Asset Type
-                            <span class="text-danger">*</span>
-                        </label>
-                        <select class="form-control form-control-lg" id="AssetName" style="width:100%;">
-                            <option></option>
-                            <option>HF</option>
-                            <option>UHF</option>
-                            <option>VHF</option>
-
-                        </select>
-                    </div>
-
-                    <div class="form-group col-lg-4">
-                        <label>
-                            Add Quantity
-                            <span class="text-danger">*</span>
-                        </label>
-
-                        <input class="form-control" type="number" value="" id="Quantity" placeholder="Add Quantity" />
-                    </div>
-
-                    <div class="form-group col-lg-4">
-                        <button type="button" class="btn btn-outline-primary mt-8" style="width:180px" onclick="CheckAvaibilityDetails()">Check Avaibility</button>
-                    </div>
-
-                </div>
-                <div class="row ml-1 mr-1">
-                    <div class="form-group col-lg-4">
-                        <label>
-                            Available Quantity
-                        </label>
-
-                        <input class="form-control" type="number" value="" id="AvlQuantity" placeholder="Available Quantity" />
-                    </div>
-
-                    <div class="form-group col-lg-4">
-                        <label>
-                            Asset ID
-                            <span class="text-danger">*</span>
-                        </label>
-                        <select class="form-control form-control-lg" id="AssetID" style="width:100%;">
-                            <option></option>
-                            <option>NRL-IM-AID-0001</option>
-                            <option>NRL-IM-AID-0002</option>
-                            <option>NRL-IM-AID-0003</option>
-
-                        </select>
-                    </div>
-
-                    <div class="form-group col-lg-4">
-                        <label>
-                            Asset Serial Number
-                            <span class="text-danger">*</span>
-                        </label><br/>
-                        <select class="form-control form-control-lg" id="AssetSerialN0" style="width:100%;">
-                            <option></option>
-                            <option>NRL-VHF-00016</option>
-                            <option>NRL-UHF-00017</option>
-                            <option>NRL-VHF-00016</option>
-                            <option>NRL-UHF-00014</option>
-
-                        </select>
-                    </div>
-                </div>
-                
-                </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-primary" id="rejectRequestHOD" data-dismiss="modal">Issue</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <script>
     $('#AssetName').select2({
@@ -239,7 +147,7 @@
 
 <script>
     function ViewDetails() {
-        window.location.href = '@Url.Action("DetailPageForIssuer", "Home")'
+        window.location.href = '@Url.Action("RequisitionDetailsPageIssued", "Home")'
     }
     function CheckAvaibilityDetails() {
         toastr.options = {
@@ -265,5 +173,7 @@
         document.getElementById("AvlQuantity").value = "5";
     }
 </script>
+
+
 
 

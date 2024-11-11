@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2181,6 +2182,16 @@
     <Content Include="Views\Home\RequisitionAllocateList.cshtml" />
     <Content Include="Views\Home\DetailPageForAlocator.cshtml" />
     <Content Include="Views\Home\AllRequisitionIssueList.cshtml" />
+    <Content Include="Views\Home\AssignLocationalAdmin.cshtml" />
+    <Content Include="Views\Home\RequisitionDetailsPage.cshtml" />
+    <Content Include="Views\Home\IssuedRequisitionList.cshtml" />
+    <Content Include="Views\Home\IssuedAssetList.cshtml" />
+    <Content Include="Views\Home\AssetReturnRequestList.cshtml" />
+    <Content Include="Views\Home\RequisitionDetailsPageIssued.cshtml" />
+    <Content Include="Views\Home\AllocatorAllocatedRequisition.cshtml" />
+    <Content Include="Views\Home\PeriodicHealthCheckupDueList.cshtml" />
+    <Content Include="Views\Home\PeriodicHealthCheckupHistory.cshtml" />
+    <Content Include="Views\Login\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
