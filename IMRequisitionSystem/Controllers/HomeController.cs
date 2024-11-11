@@ -159,6 +159,10 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
+        public ActionResult ReturnedRequisitionDetailsPage()
+        {
+            return View();
+        }
 
         public ActionResult IssuedRequisitionList()
         {
@@ -166,6 +170,10 @@ namespace IMRequisitionSystem.Controllers
         }
 
         public ActionResult IssuedAssetList()
+        {
+            return View();
+        }
+         public ActionResult IssuedAssetOnBehaveList()
         {
             return View();
         }
