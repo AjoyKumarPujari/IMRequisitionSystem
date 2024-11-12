@@ -2192,8 +2192,12 @@
     <Content Include="Views\Home\PeriodicHealthCheckupDueList.cshtml" />
     <Content Include="Views\Home\PeriodicHealthCheckupHistory.cshtml" />
     <Content Include="Views\Login\SignIn.cshtml" />
-    <Content Include="Views\Home\IssuedAssetOnBehaveList.cshtml" />
     <Content Include="Views\Home\ReturnedRequisitionDetailsPage.cshtml" />
+    <Content Include="Views\Home\IssuedAssetReturnRequestListOnBehalf.cshtml" />
+    <Content Include="Views\Home\ReturnReceivePendingList.cshtml" />
+    <Content Include="Views\Home\ReturnReceiveReceivedList.cshtml" />
+    <Content Include="Views\Home\ReturnReceiveReceivedDetailsPage.cshtml" />
+    <Content Include="Views\Home\AMCMappingPage.cshtml" />
     <Content Include="Views\Home\AdminDeshboard.cshtml" />
     <Content Include="Views\Home\LocationAdminDeshboard.cshtml" />
     <Content Include="Views\Home\EmployeeDeshboard.cshtml" />

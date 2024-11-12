@@ -173,7 +173,7 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
-         public ActionResult IssuedAssetOnBehaveList()
+        public ActionResult IssuedAssetReturnRequestListOnBehalf()
         {
             return View();
         }
@@ -199,6 +199,26 @@ namespace IMRequisitionSystem.Controllers
         }
 
         public ActionResult PeriodicHealthCheckupHistory()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnReceivePendingList()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnReceiveReceivedList()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnReceiveReceivedDetailsPage()
+        {
+            return View();
+        }
+
+        public ActionResult AMCMappingPage()
         {
             return View();
         }
