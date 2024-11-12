@@ -19,14 +19,22 @@
     <!--end::Global Theme Styles-->
     <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
     <style>
+       
         body {
-            background-color: #1e1e2d;
+            background-image: url('/lib/assets/media/svg/illustrations/RefinaryImage.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .login-container {
-            max-width: 600px; /* Increased width */
+            max-width: 600px;
             margin: auto;
-            padding: 50px 40px; /* Adjusted padding for a spacious feel */
+            padding: 50px 40px;
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -92,65 +100,49 @@
 </head>
 
 <body>
-
-    <div class="d-flex flex-column flex-root">
-        <div class="d-flex flex-column flex-center flex-column-fluid">
-            <div class="login-container">
-                <!--begin::Logo-->
-                <div class="login-header">
-                    <img src="~/lib/assets/media/svg/illustrations/nrl_logo.jpg" alt="Logo" />
-                    
-                    <h3>Instrumentation Maintenance Requisition System </h3>
-                </div>
-                <!--end::Logo-->
-                <!--begin::Form-->
-                <form id="kt_login_form">
-                    <!-- LAN ID Input -->
-                    <div class="form-group mb-5">
-                        <label class="font-weight-bolder text-dark">User ID/ LAN ID</label>
-                        <input type="text" class="form-control" name="lanid" placeholder="Enter your LAN ID" autocomplete="off" required />
-                    </div>
-
-                    <!-- Password Input -->
-                    <div class="form-group mb-5">
-                        <label class="font-weight-bolder text-dark">Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter your Password" autocomplete="off" required />
-                    </div>
-
-                    <!-- Sign In Button -->
-                    <div class="form-group text-center">
-                        <button type="button" class="btn btn-primary btn-block" onclick="GoToViewDetailsPage()">Sign In</button>
-
-                    </div>
-                </form>
-                <!--end::Form-->
-                <!--begin::Footer-->
-                <div class="login-footer">
-                    <p class="text-muted">Forgot your password? <a href="#">Reset it here</a></p>
-                </div>
-                <!--end::Footer-->
-            </div>
+    <div class="login-container">
+        <!--begin::Logo-->
+        <div class="login-header">
+            <img src="~/lib/assets/media/svg/illustrations/nrl_logo.jpg" alt="Logo" />
+            <h3>Instrumentation Maintenance Requisition System</h3>
         </div>
+        <!--end::Logo-->
+        <!--begin::Form-->
+        <form id="kt_login_form">
+            <!-- LAN ID Input -->
+            <div class="form-group mb-5">
+                <label class="font-weight-bolder text-dark">User ID/ LAN ID</label>
+                <input type="text" class="form-control" name="lanid" placeholder="Enter your LAN ID" autocomplete="off" required />
+            </div>
+
+            <!-- Password Input -->
+            <div class="form-group mb-5">
+                <label class="font-weight-bolder text-dark">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter your Password" autocomplete="off" required />
+            </div>
+
+            <!-- Sign In Button -->
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-primary btn-block" onclick="GoToViewDetailsPage()">Sign In</button>
+            </div>
+        </form>
+        <!--end::Form-->
+        <!--begin::Footer-->
+        <div class="login-footer">
+            <p class="text-muted">Forgot your password? <a href="#">Reset it here</a></p>
+        </div>
+        <!--end::Footer-->
     </div>
 
     <!--begin::Javascript-->
     <script>
-
         function GoToViewDetailsPage() {
-
-             
-     window.location.href = '@Url.Action("AdminDeshboard", "Home")'
- 
-
+            window.location.href = '@Url.Action("AdminDeshboard", "Home")';
         }
-
-
-
     </script>
     <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
     <script src="~/lib/assets/js/scripts.bundle.js"></script>
     <!--end::Javascript-->
-
 </body>
 
 </html>
