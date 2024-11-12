@@ -39,12 +39,27 @@
                             <span class="text-danger">*</span>
                         </label>
                         <select class="form-control form-control-lg" id="UserName">
-                          
+
                             <option>Active</option>
                             <option>Deactive</option>
                         </select>
 
-                       
+
+                    </div>
+
+                    <div class="form-group col-lg-4">
+                        <label>
+                            Role for Location:
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-control form-control-lg" id="RoleLocation">
+                            <option></option>
+                            <option>Numaligarh</option>
+                            <option>Siliguri</option>
+                            <option>Paradeep</option>
+                        </select>
+
+
                     </div>
 
 
@@ -100,6 +115,7 @@
                             <th>Sl No:</th>
                             <th>Role Name </th>
                             <th>Role Description</th>
+                            <th>Role Location</th>
                             <th>Role Status</th>
                             <th>Action</th>
 
@@ -111,7 +127,11 @@
                             <td>1</td>
                             <td>HOD</td>
                             <td>HOD of respective area</td>
-                            <td>Active</td>
+                            <td>Numaligarh</td>
+                            <td>
+                                <span class="label label-lg label-inline label-light-danger font-weight-bold">
+                                    Deactive
+                                </span></td>
                             <td>
                                 <!--<button class="btn btn-md btn-success mr-1" id="activateButton">
     <span class="svg-icon svg-icon-white svg-icon-2x">-->
@@ -306,6 +326,10 @@
 <script>
     $('#Role').select2({
         placeholder: "Select Role"
+    });
+
+    $('#RoleLocation').select2({
+        placeholder: "Select Role Location"
     });
 
     $('#UserName').select2({
