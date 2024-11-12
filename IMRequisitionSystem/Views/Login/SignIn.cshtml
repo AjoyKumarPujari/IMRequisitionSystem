@@ -1,201 +1,156 @@
-﻿
-@{
-    ViewBag.Title = "UserLogin";
+﻿@{
+    ViewBag.Title = "Login";
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <base href="../../../../">
     <meta charset="utf-8" />
-    <title>Sign In | Holiday Home</title>
-    <meta name="description" content="Singin page example" />
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="canonical" href="https://keenthemes.com/metronic" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
-    <!--begin::Page Custom Styles(used by this page)-->
-    <link href="~/lib/assets/css/pages/login/login-4.css" rel="stylesheet" type="text/css" />
-    <!--end::Page Custom Styles-->
     <!--begin::Global Theme Styles(used by all pages)-->
     <link href="~/lib/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
     <link href="~/lib/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/pages/login/login-4.css" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles-->
-    <!--begin::Layout Themes(used by all pages)-->
-    <link href="~/lib/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
-    <link href="~/lib/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
-    <link href="~/lib/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
-    <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
-    <!--end::Layout Themes-->
     <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
-
-
     <style>
-        @@use postcss-preset-env {
-              stage: 0;
+        body {
+            background-color: #1e1e2d;
+        }
+
+        .login-container {
+            max-width: 600px; /* Increased width */
+            margin: auto;
+            padding: 50px 40px; /* Adjusted padding for a spacious feel */
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+            .login-header img {
+                max-height: 80px;
+                margin-bottom: 20px;
             }
 
-            :root {
-              --color-background: #000119;
-              --stroke-width: calc(1em / 16);
-              --font-size: 30vmin;
-              --font-weight: 700;
-              --letter-spacing: calc(1em / 8);
+            .login-header h3 {
+                font-size: 30px;
+                font-weight: bold;
+                color: #3F4254;
             }
 
-            * {
-              box-sizing: border-box;
+        .form-control {
+            background-color: #f3f6f9;
+            border: none;
+            border-radius: 5px;
+            height: 50px;
+            padding: 12px;
+        }
+
+            .form-control:focus {
+                border-color: #3699ff;
+                background-color: #fff;
             }
 
-            h3 {
-              background-clip: text;
-              background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
-              color: var(--color-background);
-              font-size: var(--font-size);
-              font-weight: var(--font-weight);
-              letter-spacing: var(--letter-spacing);
-              padding: calc(--stroke-width / 2);
-              -webkit-text-stroke-color: transparent;
-              -webkit-text-stroke-width: var(--stroke-width);
+        .btn-primary {
+            background-color: #3699ff;
+            border: none;
+            border-radius: 5px;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
             }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+            .login-footer a {
+                color: #3699ff;
+                text-decoration: none;
+            }
+
+                .login-footer a:hover {
+                    text-decoration: underline;
+                }
     </style>
 </head>
-<!--end::Head-->
-<!--begin::Body-->
-<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
-    <!--begin::Main-->
+
+<body>
+
     <div class="d-flex flex-column flex-root">
-        <!--begin::Login-->
-
-        <div class="login login-4 wizard d-flex flex-column flex-lg-row flex-column-fluid">
-            <!--begin::Content-->
-            <div class="login-container order-2 order-lg-1 d-flex flex-center flex-row-fluid px-7 pt-lg-0 pb-lg-0 pt-4 pb-6" style="background-image: url(/lib/assets/media/svg/illustrations/bg_2.jpg); background-size:cover; background-repeat:no-repeat">
-                <!--begin::Wrapper-->
-
-
-                <div class="card " style="border-radius:20px;">
-
-                    <div class="login-content d-flex flex-column pt-lg-0 pt-10 pb-10 pl-10 pr-10">
-
-                        <!--begin::Logo-->
-                        <div class="login-logo pb-xl-10 pt-10 d-flex justify-content-center">
-                            <img src="~/lib/assets/media/svg/illustrations/nrl-logo.jpg" style="justify-content: flex-end" class="max-h-70px flex-right" alt="" />
-                        </div>
-                        <!--end::Logo-->
-                        <!--begin::Signin-->
-
-                        <div class="login-form">
-                            <!--begin::Form-->
-                            <form class="form" id="kt_login_singin_form" action="">
-                                <!--begin::Title-->
-                                <div class="pb-5 pb-lg-15">
-                                    <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Sign In</h3>
-                                    @*<div class="text-muted font-weight-bold font-size-h4">
-                                            New Here?
-                                            <a href="custom/pages/login/login-4/signup.html" class="text-primary font-weight-bolder">Create Account</a>
-                                        </div>*@
-                                </div>
-                                <!--begin::Title-->
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    <label class="font-size-h6 font-weight-bolder text-dark">Your LAN ID</label>
-                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" type="text" name="username" autocomplete="off" />
-                                </div>
-                                <!--end::Form group-->
-                                <!--begin::Form group-->
-                                <div class="form-group">
-                                    @*<div class="d-flex justify-content-between mt-n5">
-                                        <label class="font-size-h6 font-weight-bolder text-dark pt-5">Your Password</label>
-                                        <a href="custom/pages/login/login-4/forgot.html" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5">Forgot Password ?</a>
-                                    </div>*@
-                                    <label class="font-size-h6 font-weight-bolder text-dark">Password</label>
-                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" type="password" name="password" autocomplete="off" />
-                                </div>
-                                <!--end::Form group-->
-                                <!--begin::Action-->
-                                <div class="pb-lg-0 pb-5">
-                                    <button type="button" id="kt_login_singin_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3" onclick="GoToViewDetailsPage()">Sign In</button>
-
-                                </div>
-                                <!--end::Action-->
-                            </form>
-                            <!--end::Form-->
-                        </div>
-
-
-
+        <div class="d-flex flex-column flex-center flex-column-fluid">
+            <div class="login-container">
+                <!--begin::Logo-->
+                <div class="login-header">
+                    <img src="~/lib/assets/media/svg/illustrations/nrl_logo.jpg" alt="Logo" />
+                    
+                    <h3>Instrumentation Maintenance Requisition System </h3>
+                </div>
+                <!--end::Logo-->
+                <!--begin::Form-->
+                <form id="kt_login_form">
+                    <!-- LAN ID Input -->
+                    <div class="form-group mb-5">
+                        <label class="font-weight-bolder text-dark">User ID/ LAN ID</label>
+                        <input type="text" class="form-control" name="lanid" placeholder="Enter your LAN ID" autocomplete="off" required />
                     </div>
 
+                    <!-- Password Input -->
+                    <div class="form-group mb-5">
+                        <label class="font-weight-bolder text-dark">Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Enter your Password" autocomplete="off" required />
+                    </div>
+
+                    <!-- Sign In Button -->
+                    <div class="form-group text-center">
+                        <button type="button" class="btn btn-primary btn-block" onclick="GoToViewDetailsPage()">Sign In</button>
+
+                    </div>
+                </form>
+                <!--end::Form-->
+                <!--begin::Footer-->
+                <div class="login-footer">
+                    <p class="text-muted">Forgot your password? <a href="#">Reset it here</a></p>
                 </div>
-                <!--end::Wrapper-->
+                <!--end::Footer-->
             </div>
-            <!--begin::Content-->
-            <!--begin::Aside-->
-            <div class="login-aside order-1 order-lg-2 bgi-no-repeat bgi-position-x-right" style="background-color: #1e1e2d">
-                <div class="login-conteiner bgi-no-repeat bgi-position-x-right bgi-position-y-bottom">
-                    <!--begin::Aside title-->
-                    <h3 class="pt-20 pl-lg-10 d-flex justify-content-lg-start" style=" text-align: center; font-size: 60px; font-family: 'Playfair Display', serif; -webkit-background-clip: text;">
-                        Instrumentation
-                    </h3>
-
-                    <h3 class="pt-10 pl-lg-10 d-flex justify-content-lg-start" style=" text-align: center; font-size: 60px; font-family: 'Playfair Display', serif; -webkit-background-clip: text;">
-                        Maintenance
-                    </h3>
-
-                    <h3 class="pt-10 pl-lg-10 d-flex justify-content-lg-start" style=" text-align: center; font-size: 60px; font-family: 'Playfair Display', serif; -webkit-background-clip: text;">
-                        Communication
-                    </h3>
-
-                    <h3 class="pt-10 pl-lg-10 d-flex justify-content-lg-start" style=" text-align: center; font-size: 60px; font-family: 'Playfair Display', serif; -webkit-background-clip: text;">
-                        Asset
-                    </h3>
-
-                    <h3 class="pt-10 pl-lg-10 d-flex justify-content-lg-start" style=" text-align: center; font-size: 60px; font-family: 'Playfair Display', serif; -webkit-background-clip: text;">
-                        Requisition
-                    </h3>
-
-                    <h3 class="pt-10 pl-lg-10 d-flex justify-content-lg-start" style=" text-align: center; font-size: 60px; font-family: 'Playfair Display', serif; -webkit-background-clip: text;">
-                        System
-                    </h3>
-
-                    <!--end::Aside title-->
-                </div>
-            </div>
-            <!--end::Aside-->
         </div>
-        <!--end::Login-->
     </div>
 
+    <!--begin::Javascript-->
     <script>
 
         function GoToViewDetailsPage() {
 
-            var url = $('base').attr('href') + "Home/EmployeeDashboard";
-            window.location.href = url;
+             
+     window.location.href = '@Url.Action("AdminDeshboard", "Home")'
+ 
 
         }
 
 
 
     </script>
-
-    <!--end::Main-->
-    <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
-    <!--begin::Global Config(global config for global JS scripts)-->
-    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
-    <!--end::Global Config-->
-    <!--begin::Global Theme Bundle(used by all pages)-->
     <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
-    <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="~/lib/assets/js/scripts.bundle.js"></script>
-    <!--end::Global Theme Bundle-->
-    <!--begin::Page Scripts(used by this page)-->
-    <script src="~/lib/assets/js/pages/custom/login/login-4.js"></script>
-    <!--end::Page Scripts-->
-</body>
-<!--end::Body-->
-</html>
+    <!--end::Javascript-->
 
+</body>
+
+</html>

@@ -2194,6 +2194,13 @@
     <Content Include="Views\Login\SignIn.cshtml" />
     <Content Include="Views\Home\IssuedAssetOnBehaveList.cshtml" />
     <Content Include="Views\Home\ReturnedRequisitionDetailsPage.cshtml" />
+    <Content Include="Views\Home\AdminDeshboard.cshtml" />
+    <Content Include="Views\Home\LocationAdminDeshboard.cshtml" />
+    <Content Include="Views\Home\EmployeeDeshboard.cshtml" />
+    <Content Include="Views\Home\HODDeshboard.cshtml" />
+    <Content Include="Views\Home\ApproverDeshboard.cshtml" />
+    <Content Include="Views\Home\IssuerDeshboard.cshtml" />
+    <Content Include="Views\Home\AllocatorDeshboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

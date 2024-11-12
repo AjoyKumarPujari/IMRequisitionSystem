@@ -202,5 +202,36 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
+
+        public ActionResult AdminDeshboard()
+        {
+            return View();
+        }
+        public ActionResult LocationAdminDeshboard()
+        {
+            return View();
+        }
+         public ActionResult EmployeeDeshboard()
+        {
+            return View();
+        }
+          public ActionResult HODDeshboard()
+        {
+            return View();
+        }
+            public ActionResult ApproverDeshboard()
+        {
+            return View();
+        }
+            public ActionResult IssuerDeshboard()
+        {
+            return View();
+        }
+          public ActionResult AllocatorDeshboard()
+        {
+            return View();
+        }
+
+
     }
 }
