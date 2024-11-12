@@ -1,0 +1,330 @@
+﻿
+@{
+    ViewBag.Title = "ReturnedRequisitionDetailsPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+
+    .svg-icon svg {
+        fill: white !important
+    }
+
+        .svg-icon svg g [fill] {
+            fill: white !important
+        }
+
+    .max-width-300 {
+        max-width: 300px; /* Limit the width to 100px */
+        white-space: pre-wrap; /* Prevent text wrapping */
+        overflow: auto; /* Hide overflow text */
+        text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+    }
+</style>
+
+<div class="d-flex flex-column-fluid">
+    <div class="container-fluid">
+
+
+        <div class="card card-custom gutter-b" style="border-radius:25px">
+            <div class="card-body p-0">
+                <!-- begin: Invoice-->
+                <!-- begin: Invoice header-->
+                <div class="row justify-content-center py-8 px-8 py-md-18 px-md-0">
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between flex-column flex-md-row">
+                            <h1 class="display-4 font-weight-boldest mb-10">RETURN REQUEST DETAILS</h1>
+                            <div class="d-flex flex-column align-items-md-end px-0">
+                                <button type="button" class="btn btn-primary font-weight-bold">
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Back.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M11.0879549,18.2771971 L17.8286578,12.3976203 C18.0367595,12.2161036 18.0583109,11.9002555 17.8767943,11.6921539 C17.8622027,11.6754252 17.8465132,11.6596867 17.8298301,11.6450431 L11.0891271,5.72838979 C10.8815919,5.54622572 10.5656782,5.56679309 10.3835141,5.7743283 C10.3034433,5.86555116 10.2592899,5.98278612 10.2592899,6.10416552 L10.2592899,17.9003957 C10.2592899,18.1765381 10.4831475,18.4003957 10.7592899,18.4003957 C10.8801329,18.4003957 10.9968872,18.3566309 11.0879549,18.2771971 Z" fill="#000000" transform="translate(14.129645, 12.002277) scale(-1, 1) translate(-14.129645, -12.002277) " />
+                                                <rect fill="#000000" opacity="0.3" x="6" y="6" width="3" height="12" rx="1" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                    BACK
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border-bottom w-100"></div>
+                        <div class="d-flex justify-content-between pt-6">
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">RETURN REQUEST NUMBER</span>
+                                <span class="opacity-70">NRL-IM-RR-0001</span>
+                            </div>
+
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">RETURN REQUEST STATUS</span>
+                                <span class="opacity-70 badge badge-warning" style="width: 250px">Requested</span>
+                            </div>
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">RETURN REQUEST DATE</span>
+                                <span class="opacity-70">28-10-2024</span>
+                            </div>
+
+
+                        </div>
+
+                        <div class="d-flex justify-content-between pt-6">
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">RETURN ASSET ID</span>
+                                <span class="opacity-70">NRL-AID-0002</span>
+                            </div>
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">RETURN ASSET SERIAL NO</span>
+                                <span class="opacity-70">NRL-IM-VHF-0028</span>
+                            </div>
+
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">RETURNING DEVICE TYPE</span>
+                                <span class="opacity-70">VHF</span>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="d-flex justify-content-between pt-6">
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">RETURN REQUESTOR LOCATION</span>
+                                <span class="opacity-70">NRL</span>
+                            </div>
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">RETURN REQUESTOR AREA</span>
+                                <span class="opacity-70">PLANT</span>
+                            </div>
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">RETURN REQUESTOR DEPARTMENT</span>
+                                <span class="opacity-70">Mechanical Maintenance</span>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between pt-6">
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">ASSET CONDITION</span>
+                                <span class="opacity-70 badge badge-success" style="width: 150px">Good</span>
+                            </div>
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REQUEST FOR </span>
+                                <span class="opacity-70 ">Other</span>
+                            </div>
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REQUEST ON BEHALF OF </span>
+                                <span class="opacity-70 ">Jyotirmoy Deka</span>
+                            </div>
+                           
+
+                            
+                        </div>
+
+                        <div class="d-flex justify-content-between pt-6">
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REASON OF RETURN</span>
+                                <span class="opacity-70">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end: Invoice header-->
+                <!-- begin: Invoice body-->
+                <div class="row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0  mx-0" style="border-radius:25px;">
+                    <div class="col-md-10">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="pl-0 font-weight-bold text-muted text-uppercase">Activity</th>
+                                        <th class="text-right font-weight-bold text-muted text-uppercase">Username</th>
+                                        <th class="text-right font-weight-bold text-muted text-uppercase">Designation</th>
+                                        <th class="text-right font-weight-bold text-muted text-uppercase">Date</th>
+                                        <th class="text-left pr-0 font-weight-bold text-muted text-uppercase max-width-300">Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                    <tr class="font-weight-boldest border-bottom-0">
+                                        <td class="border-top-0 pl-0 py-4 d-flex align-items-center">
+                                            Requester/IM Issuer
+                                        </td>
+                                        <td class="text-right pt-7 align-middle">Ajit Kr Das</td>
+                                        <td class="text-right pt-7 align-middle">AM</td>
+                                        <td class="text-right pt-7 align-middle">12 Oct 2024</td>
+                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">Lorem Ipsum Solor Imit.</td>
+                                    </tr>
+                                    <tr class="font-weight-boldest">
+                                        <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                            Allocator
+                                        </td>
+                                        <td class="text-right pt-7 align-middle">--</td>
+                                        <td class="text-right pt-7 align-middle">--</td>
+                                        <td class="text-right pt-7 align-middle">--</td>
+                                        <td class="text-left pr-0 pt-7 align-middle max-width-300"></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Invoice body-->
+                <!-- begin: Invoice footer-->
+                @*<div class="row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0 mx-0">
+                        <div class="col-md-10">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="font-weight-bold text-muted text-uppercase">PAYMENT TYPE</th>
+                                            <th class="font-weight-bold text-muted text-uppercase">PAYMENT STATUS</th>
+                                            <th class="font-weight-bold text-muted text-uppercase">PAYMENT DATE</th>
+                                            <th class="font-weight-bold text-muted text-uppercase text-right">TOTAL PAID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="font-weight-bolder">
+                                            <td>Credit Card</td>
+                                            <td>Success</td>
+                                            <td>Jan 07, 2020</td>
+                                            <td class="text-primary font-size-h3 font-weight-boldest text-right">$789.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>*@
+                <!-- end: Invoice footer-->
+                <!-- begin: Invoice action-->
+                <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+
+                            <button type="button" class="btn btn-danger font-weight-bold" data-toggle="modal" data-target="#rejectRequest">
+                                <span class="svg-icon svg-icon-white svg-icon-2x">
+                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Error-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+                                        </g>
+                                    </svg><!--end::Svg Icon-->
+                                </span>
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Invoice action-->
+                <!-- end: Invoice-->
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<div class="modal fade" id="recallRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">Reason For Recall</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <label class="font-weight-bold">Reason:</label>
+                    <div class="form-group">
+                        <textarea class="form-control form-control-solid" rows="3" required></textarea>
+                    </div>
+                    <span class="form-text" style="color:red;">This is a required field.</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="rejectRequestHOD">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal-->
+
+
+<div class="modal fade" id="revertRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">Reason For Reverting</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <label class="font-weight-bold">Reason:</label>
+                    <div class="form-group">
+                        <textarea class="form-control form-control-solid" rows="3" required></textarea>
+                    </div>
+                    <span class="form-text" style="color:red;">This is a required field.</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="rejectRequestHOD">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal-->
+
+
+<script>
+
+
+    $("#approveButton").click(function (e) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Approve"
+        }).then(function (result) {
+            if (result.value) {
+                Swal.fire(
+                    "Approved",
+                    "Requisition has been approved successfully",
+                    "success"
+                )
+            }
+        });
+    });
+
+    $("#rejectRequestHOD").click(function (e) {
+        Swal.fire("Done", "Request has been recalled successfully", "success");
+    });
+
+</script>
+
+
+
+
+
+

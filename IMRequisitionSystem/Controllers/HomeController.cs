@@ -159,6 +159,10 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
+        public ActionResult ReturnedRequisitionDetailsPage()
+        {
+            return View();
+        }
 
         public ActionResult IssuedRequisitionList()
         {
@@ -166,6 +170,10 @@ namespace IMRequisitionSystem.Controllers
         }
 
         public ActionResult IssuedAssetList()
+        {
+            return View();
+        }
+        public ActionResult IssuedAssetReturnRequestListOnBehalf()
         {
             return View();
         }
@@ -191,6 +199,26 @@ namespace IMRequisitionSystem.Controllers
         }
 
         public ActionResult PeriodicHealthCheckupHistory()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnReceivePendingList()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnReceiveReceivedList()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnReceiveReceivedDetailsPage()
+        {
+            return View();
+        }
+
+        public ActionResult AMCMappingPage()
         {
             return View();
         }
