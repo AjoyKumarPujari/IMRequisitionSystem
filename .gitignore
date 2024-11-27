@@ -6,7 +6,9 @@
 /.vs/IMRequisitionSystem/v16
 /.vs/IMRequisitionSystem/v17
 /.vs/IMRequisitionSystem/FileContentIndex/84e0bdb1-4f2b-4ef4-b605-8fc381785d8d.vsidx
+
 *.vsidx
-/IMRequisitionSystem/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/IMRequisitionSystem/obj/Debug/IMRequisitionSystem.csproj.AssemblyReference.cache
-/.gitignore
+/.vs
+/.git
+/.bin
+/.obj
