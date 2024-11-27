@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2181,6 +2182,29 @@
     <Content Include="Views\Home\RequisitionAllocateList.cshtml" />
     <Content Include="Views\Home\DetailPageForAlocator.cshtml" />
     <Content Include="Views\Home\AllRequisitionIssueList.cshtml" />
+    <Content Include="Views\Home\AssignLocationalAdmin.cshtml" />
+    <Content Include="Views\Home\RequisitionDetailsPage.cshtml" />
+    <Content Include="Views\Home\IssuedRequisitionList.cshtml" />
+    <Content Include="Views\Home\IssuedAssetList.cshtml" />
+    <Content Include="Views\Home\AssetReturnRequestList.cshtml" />
+    <Content Include="Views\Home\RequisitionDetailsPageIssued.cshtml" />
+    <Content Include="Views\Home\AllocatorAllocatedRequisition.cshtml" />
+    <Content Include="Views\Home\PeriodicHealthCheckupDueList.cshtml" />
+    <Content Include="Views\Home\PeriodicHealthCheckupHistory.cshtml" />
+    <Content Include="Views\Login\SignIn.cshtml" />
+    <Content Include="Views\Home\ReturnedRequisitionDetailsPage.cshtml" />
+    <Content Include="Views\Home\IssuedAssetReturnRequestListOnBehalf.cshtml" />
+    <Content Include="Views\Home\ReturnReceivePendingList.cshtml" />
+    <Content Include="Views\Home\ReturnReceiveReceivedList.cshtml" />
+    <Content Include="Views\Home\ReturnReceiveReceivedDetailsPage.cshtml" />
+    <Content Include="Views\Home\AMCMappingPage.cshtml" />
+    <Content Include="Views\Home\AdminDeshboard.cshtml" />
+    <Content Include="Views\Home\LocationAdminDeshboard.cshtml" />
+    <Content Include="Views\Home\EmployeeDeshboard.cshtml" />
+    <Content Include="Views\Home\HODDeshboard.cshtml" />
+    <Content Include="Views\Home\ApproverDeshboard.cshtml" />
+    <Content Include="Views\Home\IssuerDeshboard.cshtml" />
+    <Content Include="Views\Home\AllocatorDeshboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

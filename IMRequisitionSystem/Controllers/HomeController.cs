@@ -150,6 +150,108 @@ namespace IMRequisitionSystem.Controllers
 
         #endregion
 
+        public ActionResult AssignLocationalAdmin()
+        {
+            return View();
+        }
+
+        public ActionResult RequisitionDetailsPage()
+        {
+            return View();
+        }
+        public ActionResult ReturnedRequisitionDetailsPage()
+        {
+            return View();
+        }
+
+        public ActionResult IssuedRequisitionList()
+        {
+            return View();
+        }
+
+        public ActionResult IssuedAssetList()
+        {
+            return View();
+        }
+        public ActionResult IssuedAssetReturnRequestListOnBehalf()
+        {
+            return View();
+        }
+
+        public ActionResult AssetReturnRequestList()
+        {
+            return View();
+        }
+
+        public ActionResult RequisitionDetailsPageIssued()
+        {
+            return View();
+        }
+
+        public ActionResult AllocatorAllocatedRequisition()
+        {
+            return View();
+        }
+
+        public ActionResult PeriodicHealthCheckupDueList()
+        {
+            return View();
+        }
+
+        public ActionResult PeriodicHealthCheckupHistory()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnReceivePendingList()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnReceiveReceivedList()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnReceiveReceivedDetailsPage()
+        {
+            return View();
+        }
+
+        public ActionResult AMCMappingPage()
+        {
+            return View();
+        }
+
+        public ActionResult AdminDeshboard()
+        {
+            return View();
+        }
+        public ActionResult LocationAdminDeshboard()
+        {
+            return View();
+        }
+         public ActionResult EmployeeDeshboard()
+        {
+            return View();
+        }
+          public ActionResult HODDeshboard()
+        {
+            return View();
+        }
+            public ActionResult ApproverDeshboard()
+        {
+            return View();
+        }
+            public ActionResult IssuerDeshboard()
+        {
+            return View();
+        }
+          public ActionResult AllocatorDeshboard()
+        {
+            return View();
+        }
+
 
     }
 }

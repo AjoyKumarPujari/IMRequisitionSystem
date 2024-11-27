@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "AddUserRoleMapping";
+    ViewBag.Title = "PeriodicHealthCheckupHistory";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,66 +15,65 @@
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <label>
-                            Role Name
+                            Asset ID:
                             <span class="text-danger">*</span>
                         </label>
                         <select class="form-control form-control-lg" id="UserRole">
                             <option></option>
-                            <option>HOD</option>
-                            <option>Area In-Charge</option>
-                            <option>IM Issuer</option>
-                            <option>IM Approver</option>
-                            <option>Requester</option>
+                            <option>NRL-AID-0001</option>
+                            <option>NRL-AID-0002</option>
+                            <option>NRL-AID-0003</option>
+                            <option>NRL-AID-0004</option>
+                            <option>NRL-AID-0005</option>
                         </select>
 
-                        <span class="form-text text-muted">Select the Role.</span>
+                        <span class="form-text text-muted">Select Asset ID</span>
                     </div>
                     <div class="form-group col-lg-4">
                         <label>
-                            Assign To 
+                            Asset Serial No:
                             <span class="text-danger">*</span>
                         </label>
                         <select class="form-control form-control-lg" id="UserName">
                             <option></option>
-                            <option>Sanjeev Dibragede</option>
-                            <option>Anjan Bora</option>
-                            <option>Bibhuti Sharma</option>
-                            <option>Ajit Das</option>
-                            <option>Tamanna Fernaz Hussain</option>
+                            <option>NRL-IM-0001</option>
+                            <option>NRL-IM-0002</option>
+                            <option>NRL-IM-0003</option>
+                            <option>NRL-IM-0004</option>
                         </select>
 
-                        <span class="form-text text-muted">Select the user to whom role to be assigned.</span>
+                        <span class="form-text text-muted">Select Asset Serial Number</span>
                     </div>
                     @*<div class="form-group col-lg-4">
-                        <label>
-                            Role Status
-                            <span class="text-danger">*</span>
-                        </label>
-                        <select class="form-control form-control-lg" id="UserStatus">
+                            <label>
+                                Role Status
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-control form-control-lg" id="UserStatus">
 
-                            <option>Active</option>
-                            <option>Deactive</option>
-                        </select>
+                                <option>Active</option>
+                                <option>Deactive</option>
+                            </select>
 
-                        <span class="form-text text-muted">Select Role Status.</span>
-                    </div>*@
+                            <span class="form-text text-muted">Select Role Status.</span>
+                        </div>*@
 
-                   
+
 
 
 
                     <div class="col-lg-4 col-md-12 mt-7">
                         <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-sm btn-primary mr-2">
                             <span class="svg-icon svg-icon-white svg-icon-2x">
-                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Search.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <polygon points="0 0 24 0 24 24 0 24" />
-                                        <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
-                                        <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                        <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
                                     </g>
                                 </svg><!--end::Svg Icon-->
                             </span>
-                            Save
+                            Search
                         </button>
                         @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
                         <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning">
@@ -100,84 +99,120 @@
         </div>
         <div class="card card-custom gutter-b" style="border-radius:8px;">
             <div class="card-header flex-wrap py-3">
-                <div class="card-title">
-                    <h3 class="card-label">
-                        Role Assign Details
-                    </h3>
+                <div class="card-title d-flex justify-content-between align-items-center w-100">
+                    <div class="card-title">
+                        <h2 class="card-label font-weight-bolder">
+                            HEALTH CHECKUP HISTORY
+                        </h2>
+                    </div>
+
+                    <button onclick="location.href='@Url.Action("AssetMasterTable", "Home")'" class="btn btn-primary d-flex align-items-center">
+                        <span class="svg-icon menu-icon">
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+                                    <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>
+                        ASSET MASTER LIST
+                    </button>
+
+
                 </div>
             </div>
+                <div class="card-body">
+                    <!--begin: Datatable-->
 
-            <div class="card-body">
-                <!--begin: Datatable-->
-                <table class="table table-bordered table-checkable" id="IM_datatable">
-                    <thead>
-                        <tr>
-                            <th>Sl No:</th>
-                            <th>Role Name </th>
-                            <th>Assign To</th>
-                            <th>Assign By</th>
-                            <th>Role Status</th>
-                            <th>Action</th>
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label class="font-weight-bolder">Make</label>
+                            <input class="form-control" type="text" value="Motorola" id="Make" disabled />
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="font-weight-bolder">Model</label>
+                            <input class="form-control" type="text" value="M-VHF" id="Model" disabled />
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="font-weight-bolder">Installation Date</label>
+                            <input class="form-control" type="text" value="12-10-2023" id="installationDate" disabled />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+                            <label class="font-weight-bolder">Category</label>
+                            <input class="form-control" type="text" value="VHF" id="VHF" disabled />
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="font-weight-bolder">Current Location</label>
+                            <input class="form-control" type="text" value="Numaligarh" id="location" disabled />
+                        </div>
+                    </div>
+
+                    <div class="card-title mt-1">
+                        <h4 class="card-label font-weight-bolder">
+                            DETAILS
+                        </h4>
+                    </div>
+
+                    <table class="table table-bordered table-checkable" id="IM_datatable">
+                        <thead>
+                            <tr>
+                                <th>Sl No</th>
+                                <th>Health Checkup ID</th>
+                                <th>Current Custodian</th>
+                                <th>Asset Allocation Date</th>
+                                <th>Health Checkup Date</th>
+                                <th>Health Checkup Done On</th>
+                                <th>Asset Status</th>
+                                <th>Remarks</th>
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>HOD/Unit In-Charge</td>
-                            <td>SanjeevDibragede</td>
-                            <td>Saranga Pani Nath</td>
-                            <td><span class="label label-lg label-inline label-light-success font-weight-bold">
-                                Active
-                            </span></td>
-                            <td>
-                                <button class="btn btn-md btn-success mr-1" id="activateButton">
-                                    <span class="svg-icon svg-icon-white svg-icon-2x">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Done-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>NRL-PH-001</td>
+                                <td>Jyotirmoy Deka</td>
+                                <td>24-12-2022</td>
+                                <td>25-12-2024</td>
+                                <td>Numaligarh</td>
+                                <td>
+                                    <span class="label label-inline label-light-success font-weight-bold">
+                                        Good
                                     </span>
-                                    Activate
-                                </button>
+                                </td>
+                                <td>
+                                    The Asset was found Ok.
+                                </td>
+                            </tr>
 
-                                <button class="btn btn-md btn-danger" id="deactivateButton" hidden>
-                                    <span class="svg-icon svg-icon-white svg-icon-2x">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Error-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
+                            <tr>
+                                <td>2</td>
+                                <td>NRL-PH-002</td>
+                                <td>Tamanna Fernaz Hussain</td>
+                                <td>24-12-2021</td>
+                                <td>25-12-2022</td>
+                                <td>Numaligarh</td>
+                                <td>
+                                    <span class="label label-inline label-light-success font-weight-bold">
+                                        Good
                                     </span>
-                                    Deactivate
-                                </button>
-
-                                <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#editUserRole">
-                                    <span class="svg-icon svg-icon-white svg-icon-2x">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) " />
-                                                <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2" rx="1" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
-                                    </span>
-                                    Edit
-                                </button>
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!--end: Datatable-->
+                                </td>
+                                <td>
+                                    The Asset was found Ok.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--end: Datatable-->
+                </div>
             </div>
-        </div>
     </div>
 
 </div>
@@ -214,12 +249,7 @@
                         <label class="font-weight-bolder">Select Role Name:</label>
                         <select class="form-control select2" style="width:100%" id="updateRole" name="updateRole">
                             <option></option>
-                            <option>Super Admin</option>
-                            <option>HOD</option>
-                            <option>IM Approver</option>
-                            <option>Approver</option>
-                            <option>Issuer</option>
-                            <option>Allocator</option>
+                            <option>Location Admin</option>
                         </select>
 
                         <span class="form-text text-muted">Select the role to be assigned.</span>
@@ -386,4 +416,8 @@
         deactivateButton.hidden = true;
     }
 </script>
+
+
+
+
 
