@@ -2205,6 +2205,8 @@
     <Content Include="Views\Home\ApproverDeshboard.cshtml" />
     <Content Include="Views\Home\IssuerDeshboard.cshtml" />
     <Content Include="Views\Home\AllocatorDeshboard.cshtml" />
+    <Content Include="Views\Home\AMCMappingList.cshtml" />
+    <Content Include="Views\Home\AMCMappingHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

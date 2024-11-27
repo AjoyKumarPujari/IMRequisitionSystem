@@ -26,10 +26,9 @@
 
                     <div class="form-group col-lg-4">
 
-                        <label>Role Description:</label>
+                        <label for="purpose">Role Description:</label>
 
-                        <input type="text" class="form-control" placeholder="Enter Role Description" />
-
+                        <textarea class="form-control form-control-solid" rows="1" required></textarea>
 
 
                     </div>
@@ -74,7 +73,7 @@
                                     </g>
                                 </svg><!--end::Svg Icon-->
                             </span>
-                            Save
+                            Create Role
                         </button>
                         @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
                         <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning">

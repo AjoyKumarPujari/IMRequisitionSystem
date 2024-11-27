@@ -74,7 +74,7 @@
                                     </g>
                                 </svg><!--end::Svg Icon-->
                             </span>
-                            Save
+                            Assign Role
                         </button>
                         @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
                         <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning">
@@ -196,17 +196,13 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 mt-2">
-                        <label class="font-weight-bolder">Select User Name:</label>
-                        <select class="form-control select2" style="width:100%" id="updateUserName" name="updateUserName">
-                            <option></option>
-                            <option>Sanjeev Dibragede</option>
-                            <option>Anjan Bora</option>
-                            <option>Bibhuti Sharma</option>
-                            <option>Ajit Das</option>
-                            <option>Tamanna Fernaz Hussain</option>
-                        </select>
+                        <label>
+                            User Name:
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input class="form-control" type="text" value="Sanjeev Dibragede" id="UserName" disabled />
 
-                        <span class="form-text text-muted">Select the user to whom role to be assigned.</span>
+                        <span class="form-text text-muted">Role Assigned To.</span>
                     </div>
 
 

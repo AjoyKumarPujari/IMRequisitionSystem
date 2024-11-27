@@ -1,5 +1,11 @@
 ﻿
 @{
+    ViewBag.Title = "AMCMappingHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
     ViewBag.Title = "PeriodicHealthCheckupHistory";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -13,6 +19,24 @@
             <div class="card-body">
 
                 <div class="row">
+
+                    <div class="form-group col-lg-4">
+                        <label class="font-weight-bolder">
+                            PO Number:
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-control form-control-lg" id="PONumber">
+                            <option></option>
+                            <option>430008764</option>
+                            <option>430008768</option>
+                            <option>430008766</option>
+                            <option>430008778</option>
+                            <option>430008794</option>
+                        </select>
+
+                        <span class="form-text text-muted">Select PO Number.</span>
+                    </div>
+
                     <div class="form-group col-lg-4">
                         <label class="font-weight-bolder">
                             Asset ID:
@@ -29,6 +53,7 @@
 
                         <span class="form-text text-muted">Select Asset ID</span>
                     </div>
+
                     <div class="form-group col-lg-4">
                         <label class="font-weight-bolder">
                             Asset Serial No:
@@ -44,19 +69,6 @@
 
                         <span class="form-text text-muted">Select Asset Serial Number</span>
                     </div>
-                    @*<div class="form-group col-lg-4">
-                            <label>
-                                Role Status
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select class="form-control form-control-lg" id="UserStatus">
-
-                                <option>Active</option>
-                                <option>Deactive</option>
-                            </select>
-
-                            <span class="form-text text-muted">Select Role Status.</span>
-                        </div>*@
 
 
 
@@ -102,7 +114,7 @@
                 <div class="card-title d-flex justify-content-between align-items-center w-100">
                     <div class="card-title">
                         <h2 class="card-label font-weight-bolder">
-                            HEALTH CHECKUP HISTORY
+                            AMC MAPPING HISTORY
                         </h2>
                     </div>
 
@@ -124,95 +136,81 @@
 
                 </div>
             </div>
-                <div class="card-body">
-                    <!--begin: Datatable-->
+            <div class="card-body">
+                <!--begin: Datatable-->
 
-                    <div class="form-group row">
-                        <div class="col-lg-4">
-                            <label class="font-weight-bolder">Make</label>
-                            <input class="form-control" type="text" value="Motorola" id="Make" disabled />
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="font-weight-bolder">Model</label>
-                            <input class="form-control" type="text" value="M-VHF" id="Model" disabled />
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="font-weight-bolder">Installation Date</label>
-                            <input class="form-control" type="text" value="12-10-2023" id="installationDate" disabled />
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-lg-4">
-                            <label class="font-weight-bolder">Category</label>
-                            <input class="form-control" type="text" value="VHF" id="VHF" disabled />
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="font-weight-bolder">Current Location</label>
-                            <input class="form-control" type="text" value="Numaligarh" id="location" disabled />
-                        </div>
-                    </div>
-
-                    <div class="card-title mt-1">
-                        <h4 class="card-label font-weight-bolder">
-                            DETAILS
-                        </h4>
-                    </div>
-
-                    <table class="table table-bordered table-checkable" id="IM_datatable">
-                        <thead>
-                            <tr>
-                                <th>Sl No</th>
-                                <th>Health Checkup ID</th>
-                                <th>Current Custodian</th>
-                                <th>Asset Allocation Date</th>
-                                <th>Health Checkup Date</th>
-                                <th>Health Checkup Done On</th>
-                                <th>Asset Status</th>
-                                <th>Remarks</th>
-
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>NRL-PH-001</td>
-                                <td>Jyotirmoy Deka</td>
-                                <td>24-12-2022</td>
-                                <td>25-12-2024</td>
-                                <td>Numaligarh</td>
-                                <td>
-                                    <span class="label label-inline label-light-success font-weight-bold">
-                                        Good
-                                    </span>
-                                </td>
-                                <td>
-                                    The Asset was found Ok.
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>2</td>
-                                <td>NRL-PH-002</td>
-                                <td>Tamanna Fernaz Hussain</td>
-                                <td>24-12-2021</td>
-                                <td>25-12-2022</td>
-                                <td>Numaligarh</td>
-                                <td>
-                                    <span class="label label-inline label-light-success font-weight-bold">
-                                        Good
-                                    </span>
-                                </td>
-                                <td>
-                                    The Asset was found Ok.
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!--end: Datatable-->
+                <div class="card-title mt-1">
+                    <h4 class="card-label font-weight-bolder">
+                        DETAILS
+                    </h4>
                 </div>
+
+                <table class="table table-bordered table-checkable" id="IM_datatable">
+                    <thead>
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Category</th>
+                            <th>Installation Date</th>
+                            <th>AMC Vendor Name</th>
+                            <th>AMC Vendor Code</th>
+                            <th>AMC Start Date</th>
+                            <th>AMC End Date</th>
+                            <th>AMC PO Number</th>
+                            <th>Asset Status</th>
+                            <th>Remarks</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Motorola</td>
+                            <td>M-VHF</td>
+                            <td>VHF</td>
+                            <td>12-10-2021</td>
+                            <td>Zenith Communications</td>
+                            <td>150086</td>
+                            <td>24-12-2022</td>
+                            <td>25-12-2024</td>
+                            <td>430008684</td>
+                            <td>
+                                <span class="label label-inline label-light-success font-weight-bold">
+                                    Good
+                                </span>
+                            </td>
+                            <td>
+                                AMC Started against PO 430008684.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Motorola</td>
+                            <td>M-VHF</td>
+                            <td>VHF</td>
+                            <td>12-10-2021</td>
+                            <td>CommTech Solutions.</td>
+                            <td>150010</td>
+                            <td>26-12-2024</td>
+                            <td>25-12-2026</td>
+                            <td>430004564</td>
+                            <td>
+                                <span class="label label-inline label-light-success font-weight-bold">
+                                    Good
+                                </span>
+                            </td>
+                            <td>
+                                AMC Started against PO 430004564.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--end: Datatable-->
             </div>
+        </div>
     </div>
 
 </div>
@@ -324,6 +322,10 @@
     $('#AssetSerialNo').select2({
         placeholder: "Select Asset Serial No"
     });
+
+    $('#PONumber').select2({
+        placeholder: "Select PO Number"
+    });
 </script>
 
 <script>
@@ -401,6 +403,8 @@
         deactivateButton.hidden = true;
     }
 </script>
+
+
 
 
 

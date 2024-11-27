@@ -75,6 +75,19 @@
 
                                 </select>
                             </div>
+
+                            <div class="col-lg-3">
+
+                                <label>Device Characteristics:</label>
+
+                                <select class="form-control select2" style="width:100%" id="DeviceCharacteristics" name="Category">
+                                    <option value=""></option>
+                                    <option value="Fixed">Fixed</option>
+                                    <option value="HandHeld">Hand Held</option>
+
+                                </select>
+                            </div>
+
                             <div class="form-group col-lg-3">
                                 <label>
                                     Make:
@@ -96,6 +109,12 @@
                                 </label>
                                 <input class="form-control" type="text" value="" id="slNo" />
                             </div>
+
+
+
+
+
+
                             <div class="form-group col-lg-3">
                                 <label>
                                     Asset id:
@@ -103,6 +122,32 @@
                                 </label>
                                 <input class="form-control" type="text" value="" id="AssetId" />
                             </div>
+
+                            <div class="form-group col-lg-3">
+                                <label>Is Licensed:</label>
+
+                                <div class="radio-inline">
+                                    <label class="radio radio-outline radio-success">
+                                        <input type="radio" name="toggle" value="hide" onclick="toggleVisibility(false)" />
+                                        <span></span>
+                                        Yes
+                                    </label>
+                                    <label class="radio radio-outline radio-success">
+                                        <input type="radio" name="toggle" value="show" onclick="toggleVisibility(true)" checked />
+                                        <span></span>
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-3" hidden id="LicenseNo">
+                                <label>
+                                    License No:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" value="" />
+                            </div>
+
                             <div class="form-group col-lg-3">
                                 <label>
                                     Installation Date:
@@ -124,9 +169,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group col-lg-3">
 
-                            </div>
+
                             <div class="form-group col-lg-3">
                                 <label>
                                     PO No:
@@ -155,6 +199,9 @@
                                 </label>
                                 <input class="form-control" type="text" value="" id="VendorName" />
                             </div>
+
+
+
 
                             <div class="col-lg-3">
 
@@ -206,100 +253,9 @@
                                 <input class="form-control" type="date" value="2011-08-19" id="WarrantyTill" />
                             </div>
 
-                            @*<div class="form-group col-lg-3" id="VC" hidden>
-                                <label>
-                                    AMC Vendor Code
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input class="form-control" type="text" value="" id="AMCVendorCode" />
-                            </div>
-                            <div class="form-group col-lg-3" id="VN" hidden>
-                                <label>
-                                    AMC Vendor Name
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input class="form-control" type="text" value="" id="AMCVendorName" />
-                            </div>
 
 
-                            <div class="form-group col-lg-3" id="ED" hidden>
-                                <label>
-                                    AMC Expiry Date
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input class="form-control" type="date" value="2011-10-14" id="AMCExpiryDate" />
-                            </div>*@
-                                                @*<div class="form-group col-lg-3">
-                                <label>
-                                    Asset Custodian Name
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input class="form-control" type="text" value="" id="asset_custodian_name" />
-                            </div>
-                            <div class="col-lg-3 form-group">
-                                <label>
-                                    Custodian Location
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control form-control-lg" id="CustodianLocation">
-                                    <option>NRL</option>
-                                    <option>SMT</option>
-                                    <option>NRL (Guwahati)</option>
 
-                                </select>
-                            </div>
-                            <div class="col-lg-3 form-group">
-                                <label>
-                                    Custodian Department
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control form-control-lg" id="CustodianDepartment">
-                                    <option>Refinery Mechanical Maintenance</option>
-                                    <option>Refinery Operation</option>
-                                    <option>SMT Control Room</option>
-                                    <option>Refinery Electrical</option>
-                                    <option>Refinery P&U Operation</option>
-                                    <option>NRMT Operation</option>
-                                    <option>Refinery P&U Operation</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3 form-group">
-                                <label>
-                                    Custodian Area
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control form-control-lg" id="CustodianArea">
-                                    <option>CPP</option>
-                                    <option>SRB</option>
-                                    <option>CDU-VDU</option>
-                                    <option>H2U</option>
-                                    <option>MSP</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3 form-group">
-                                <label>
-                                    Asset Physical Condition
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control form-control-lg" id="AssetPhysicalCondition">
-                                    <option>Good</option>
-                                    <option>Damage</option>
-
-                                </select>
-                            </div>
-                            <div class="col-lg-3 form-group">
-                                <label>
-                                    Issue Status
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control form-control-lg" id="IssueStatus">
-                                    <option>Not Issued</option>
-                                    <option>Issued</option>
-                                    <option>Returned</option>
-
-                                </select>
-                            </div>*@
-                           
                             <div class="col-lg-3">
 
                                 <label>  Asset Status:</label>
@@ -316,7 +272,8 @@
                             </div>
 
                         </div>
-
+                     </div>
+                <div>
 
 
                     </div>
@@ -324,8 +281,30 @@
                     <div class="card-footer">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <button type="reset" class="btn btn-primary mr-2">Submit</button>
-                                <button type="reset" class="btn btn-secondary">Cancel</button>
+                                <button type="reset" class="btn btn-primary mr-2">
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <polygon points="0 0 24 0 24 24 0 24" />
+                                                <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
+                                                <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                    Enter Asset
+                                </button>
+                                <button type="reset" class="btn btn-warning">
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Repeat.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000" />
+                                                <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                    Reset
+                                </button>
                             </div>
                             <button type="button" class="btn btn-success btn-sm font-weight-bold" id="approveButton">
                                 <span class="svg-icon svg-icon-white svg-icon-2x">
@@ -348,60 +327,6 @@
 
         </div>
 
-      
-        <!--begin: Datatable-->
-        <!--<table class="table table-bordered table-checkable" id="IM_datatable">
-        <thead>
-            <tr>
-                <th>Sl No:</th>
-                <th>Make No </th>
-                <th>Model No</th>
-                <th>Received Date</th>
-                <th>Category </th>
-                <th>Assets Status </th>
-                <th>Is Allocated  </th>
-                <th>Assets Original Location </th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>64616-103</td>
-                <td>Brazil</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>64616-103</td>
-                <td>Brazil</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-
-            <tr>
-                <td>1</td>
-                <td>64616-103</td>
-                <td>Brazil</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-                <td>São Félix do Xingu</td>
-
-            </tr>
-
-
-        </tbody>
-    </table>-->
-        <!--end: Datatable-->
         <!--</div>
         </div>
     </div>-->
@@ -416,6 +341,22 @@
     <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="~/lib/assets/js/scripts.bundle.js"></script>
     <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+
+
+<script>
+    function toggleVisibility(hide) {
+        const LicenseNumber = document.getElementById('LicenseNo');
+
+        if (hide === true) {
+            LicenseNumber.hidden = true;
+        }
+        else {
+            LicenseNumber.hidden = false;
+        }
+        // Set the hidden property based on the radio button
+    }
+</script>
+
 <script>
     $(document).ready(function () {
 
@@ -428,6 +369,13 @@
             placeholder: "Select Type of Device"
 
         });
+
+        $('#DeviceCharacteristics').select2({
+
+            placeholder: "Select Device Characteristics"
+
+        });
+
         $('#AssetStatus').select2({
 
             placeholder: "Select Asset Status"
@@ -497,20 +445,6 @@
 
         });
 
-        function toggleVisibility(hide) {
-            const vendorCode = document.getElementById('VC');
-            const vendorName = document.getElementById('VN');
-            const ExpiryDate = document.getElementById('ED');
-            if (hide === true) {
-                vendorCode.hidden = true;
-                vendorName.hidden = true; // Hide the content
-                ExpiryDate.hidden = true;
-            }
-            else if (hide === false) {
-                vendorCode.hidden = false;
-                vendorName.hidden = false; // Hide the content
-                ExpiryDate.hidden = false;
-            }
-        }
+       
     </script>
 
