@@ -251,6 +251,14 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
+        public ActionResult RoleMappingDeshboard()
+        {
+            return View();
+        }
+        public ActionResult AddRightsMaster()
+        {
+            return View();
+        }
 
 
     }
