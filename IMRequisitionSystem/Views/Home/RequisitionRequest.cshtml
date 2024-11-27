@@ -352,8 +352,12 @@
                             </span>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="ViewDetails()" style="width:120px">View Details</button>
-                            <button type="button" class="btn btn-sm btn-outline-success mt-2" style="width:120px">Generate </button>
+                            <button type="button" class="btn btn-sm btn-primary" onclick="ViewDetails()">
+                               View Details
+                            </button>
+                            <button type="button" class="btn btn-sm btn-success mt-2">
+                                Generate
+                            </button>
                             @*<button type="button" class="btn btn-sm btn-outline-warning  mt-1 " >Return</button>
                                 <button type="button" class="btn btn-sm btn-outline-danger  mt-1  " >Reject</button>*@
                         </td>
@@ -477,6 +481,7 @@
 
 
     function toggleVisibility(hide) {
+
         const additionalInput = document.getElementById('additionalInput');
         const nmStaffDD = document.getElementById('nmStaff');
         const tpOrdDet = document.getElementById('tpOrg');
