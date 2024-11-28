@@ -47,18 +47,7 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
-        public ActionResult AddRoleMaster()
-        {
-
-
-            return View();
-        }
-        public ActionResult AddUserRoleMapping()
-        {
-
-
-            return View();
-        }
+       
         public ActionResult RequisitionRequest()
         {
 
@@ -251,14 +240,8 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
-        public ActionResult RoleMappingDeshboard()
-        {
-            return View();
-        }
-        public ActionResult AddRightsMaster()
-        {
-            return View();
-        }
+       
+       
 
         public ActionResult AMCMappingList()
         {
@@ -270,6 +253,30 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
+        #region Role_Rights_mapping
+        public ActionResult AddRoleMaster()
+        {
+            return View();
+        }
+        public ActionResult AddRightsMaster()
+        {
+            return View();
+        }
+        public ActionResult RightsAssignRoleMaster()
+        {
+            return View();
+        }
 
+        public ActionResult RoleMappingDeshboard()
+        {
+            return View();
+        }
+        public ActionResult AddUserRoleMapping()
+        {
+
+
+            return View();
+        }
+        #endregion
     }
 }

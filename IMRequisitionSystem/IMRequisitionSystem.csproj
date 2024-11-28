@@ -2209,6 +2209,7 @@
     <Content Include="Views\Home\AMCMappingHistory.cshtml" />
     <Content Include="Views\Home\RoleMappingDeshboard.cshtml" />
     <Content Include="Views\Home\AddRightsMaster.cshtml" />
+    <Content Include="Views\Home\RightsAssignRoleMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
