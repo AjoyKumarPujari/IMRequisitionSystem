@@ -260,6 +260,16 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
+        public ActionResult AMCMappingList()
+        {
+            return View();
+        }
+
+        public ActionResult AMCMappingHistory()
+        {
+            return View();
+        }
+
 
     }
 }

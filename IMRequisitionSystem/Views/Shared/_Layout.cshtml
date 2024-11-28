@@ -264,7 +264,13 @@
                         @*<img alt="Logo" src="https://preview.keenthemes.com//metronic8/demo1/assets/media/logos/default-dark.svg" class="h-25px app-sidebar-logo-default" />*@
 
                        
-                        <span class="font-size-h4-lg text-light roboto-bold ml-2 brand-text">e-REQUISITION</span>
+                        <span class="font-size-h4-lg text-light roboto-bold ml-2 brand-text" style="letter-spacing:6px;">
+                            <span>R</span>
+                            <span>E</span>
+                            <span style="font-size:2rem">X</span>
+                            <span>Y</span>
+                            <span>S</span>
+                        </span>
                     </a>
 
                     <a href="index.html" class="brand-logo-minimze">
@@ -321,79 +327,84 @@
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Create Requisition</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
-                            </li>
+                            @* Common for All *@
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Requisition List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+                            <!--<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Create Requisition</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
+    </li>
 
-                            </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Requisition List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
+
+    </li>
 
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Allocated Asset List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Allocated Asset List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Return Request List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Return Request List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            @*</a>
 
-                            </li>
+        </li>-->*@
 
+                            @* Common for All *@
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="@Url.Action("AssignLocationalAdmin", "Home")" class="menu-link menu-toggle">
@@ -456,79 +467,84 @@
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Create Requisition</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
-                            </li>
+                            @* Common for All *@
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Requisition List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+                            <!--<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Create Requisition</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
+    </li>
 
-                            </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Requisition List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
+
+    </li>
 
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Allocated Asset List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Allocated Asset List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Return Request List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Return Request List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            @*</a>
 
-                            </li>
+        </li>-->*@
 
+                            @* Common for All *@
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="@Url.Action("AddCategoryMaster", "Home")" class="menu-link menu-toggle">
@@ -685,81 +701,85 @@
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Create Requisition</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+                            @* Common for All *@
 
-                            </li>
+                            <!--<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Create Requisition</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Requisition List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    </li>
 
-                            </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Requisition List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Allocated Asset List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
-
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Return Request List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
-
-                            </li>
+    </li>
 
 
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Allocated Asset List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
+
+    </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Return Request List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            @*</a>
+
+        </li>-->*@
+
+                            @* Common for All *@
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
@@ -818,80 +838,85 @@
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Create Requisition</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+                            @* Common for All *@
 
-                            </li>
+                            <!--<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Create Requisition</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Requisition List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    </li>
 
-                            </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Requisition List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
+
+    </li>
 
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Allocated Asset List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Allocated Asset List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Return Request List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Return Request List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            @*</a>
 
-                            </li>
+        </li>-->*@
 
+                            @* Common for All *@
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
@@ -952,79 +977,85 @@
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Create Requisition</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+                            @* Common for All *@
 
-                            </li>
+                            <!--<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Create Requisition</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Requisition List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    </li>
 
-                            </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Requisition List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
+
+    </li>
 
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Allocated Asset List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Allocated Asset List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Return Request List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Return Request List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            @*</a>
 
-                            </li>
+        </li>-->*@
+
+                            @* Common for All *@
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
@@ -1080,6 +1111,60 @@
                             </li>
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="svg-icon menu-icon">
+                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+                                            </g>
+                                        </svg>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-text">Periodic Health Checkup</span>
+
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu">
+                                    <i class="menu-arrow"></i>
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item" aria-haspopup="true">
+                                            <a href="@Url.Action("PeriodicHealthCheckupDueList", "Home")" class="menu-link menu-toggle">
+                                                <span class="svg-icon menu-icon">
+                                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                            <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+                                                        </g>
+                                                    </svg><!--end::Svg Icon-->
+                                                </span>
+                                                <span class="menu-text">Due</span>
+                                                @*<i class="menu-arrow"></i>*@
+                                            </a>
+
+                                            <a href="@Url.Action("PeriodicHealthCheckupHistory", "Home")" class="menu-link menu-toggle">
+                                                <span class="svg-icon menu-icon">
+                                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                            <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+                                                        </g>
+                                                    </svg><!--end::Svg Icon-->
+                                                </span>
+                                                <span class="menu-text">Health Checkup History</span>
+                                                @*<i class="menu-arrow"></i>*@
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="@Url.Action("IssuedAssetList", "Home")" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
@@ -1104,80 +1189,85 @@
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Create Requisition</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+                            @* Common for All *@
 
-                            </li>
+                            <!--<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Create Requisition</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Requisition List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    </li>
 
-                            </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Requisition List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
+
+    </li>
 
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Allocated Asset List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("AllocatedAssetList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Allocated Asset List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            <!--</a>
 
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                                <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Return Request List</span>
-                                    @*<i class="menu-arrow"></i>*@
-                                </a>
+    </li>
+    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="@Url.Action("RequisitionReturnList", "Home")" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">-->
+                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24" />
+            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+        </g>
+    </svg>-->
+                            <!--end::Svg Icon-->
+                            <!--</span>
+    <span class="menu-text">Return Request List</span>-->
+                            @*<i class="menu-arrow"></i>*@
+                            @*</a>
 
-                            </li>
+        </li>-->*@
 
+                            @* Common for All *@
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
@@ -1264,7 +1354,7 @@
                                                         </g>
                                                     </svg><!--end::Svg Icon-->
                                                 </span>
-                                                <span class="menu-text">Due</span>
+                                                <span class="menu-text">Scheduled Checkup</span>
                                                 @*<i class="menu-arrow"></i>*@
                                             </a>
 
@@ -2138,7 +2228,13 @@
                                     </li>-->
 
                                     <li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here menu-item-active">
-                                        <h1 class="roboto-bold font-weight-boldest display-4 animate-charcter">IM Requisition System</h1>
+                                        <h1 class="roboto-bold font-weight-boldest display-4 animate-charcter" style="letter-spacing:6px;">
+                                            <span style="font-size:2rem">R</span>
+                                            <span style="font-size:2rem">E</span>
+                                            <span>X</span>
+                                            <span style="font-size:2rem">Y</span>
+                                            <span style="font-size:2rem">S</span>
+                                        </h1>
                                     </li>
 
                                 </ul>
