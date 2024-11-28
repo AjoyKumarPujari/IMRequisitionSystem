@@ -1,6 +1,5 @@
-﻿
-@{
-    ViewBag.Title = "AddRoleMaster";
+﻿@{
+    ViewBag.Title = "AddRightsMaster";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,15 +11,14 @@
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <label>
-                            Role Name
+                            Right Name
                             <span class="text-danger">*</span>
                         </label>
-                        <input type="text" class="form-control" placeholder = "Enter Role Name" />
+                        <input type="text" class="form-control" placeholder="Enter Right Name" />
                     </div>
                     <div class="form-group col-lg-4">
-                        <label for="purpose">Role Description</label>
-                        <span class="text-danger">*</span>
-                        <textarea class="form-control form-control" rows="1" placeholder="Enter Description" required></textarea>
+                        <label for="purpose">Right Description:</label>
+                        <textarea class="form-control form-control" rows="1" placeholder="Enter Right Description" required></textarea>
                     </div>
                     
                     <div class="col-lg-4 col-md-12 mt-7">
@@ -34,7 +32,7 @@
                                     </g>
                                 </svg><!--end::Svg Icon-->
                             </span>
-                            Create Role
+                            Create Right
                         </button>
                         @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
                         <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning">
@@ -57,7 +55,7 @@
             <div class="card-header flex-wrap py-3">
                 <div class="card-title">
                     <h3 class="card-label">
-                        Role Master Details 
+                        Role Master Details
                     </h3>
                 </div>
             </div>
@@ -76,8 +74,9 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>HOD</td>
-                            <td>Functional Head</td>
+                            <td>Requisition_Approver</td>
+                            <td>For Approve Requisition</td>
+
                             <td>
                                 <span class="label label-lg label-inline label-light-danger font-weight-bold">
                                     Deactive
@@ -156,8 +155,9 @@
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>Location_Admin</td>
-                            <td>Functional Head</td>
+                            <td>Requisition_Issuer</td>
+                            <td>For Issue Requisition</td>
+
                             <td>
                                 <span class="label label-lg label-inline label-light-danger font-weight-bold">
                                     Deactive
@@ -234,7 +234,6 @@
 
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
                 <!--end: Datatable-->
@@ -456,3 +455,4 @@
         deactivateButton.hidden = true;
     }
 </script>
+
