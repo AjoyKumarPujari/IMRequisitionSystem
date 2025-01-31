@@ -1,0 +1,582 @@
+﻿@model IMRequisitionSystem.Models.Assets.RequisitionRequestModel
+@{
+    ViewBag.Title = "RequisitionRequest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/lib/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
+</head>
+
+
+@using (Html.BeginForm("RequisitionRequest", "Requisition", FormMethod.Post, new { enctype = "multipart/form-data", id = "createRequestForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
+
+        <div class="card-header">
+
+            <div class="card-title">
+
+                <h3 class="card-label roboto-bold font-weight-bolder">
+
+                    <span>CREATE  REQUEST</span>
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <form class="form">
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <div class="col-lg-4">
+
+                            <div class="form-group" style="width:100%" >
+                                <label>Type of Device:</label>
+                                @Html.DropDownListFor(model => model.DeviceType, new SelectList(ViewBag.AssetCategoryDD, "ID", "DeviceType"), "Select Device Type", new { @class = "form-control select2", @style = "width:100%" })
+
+                            </div>
+
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>
+                                Requisition Date:
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="input-group date">
+                                @Html.EditorFor(model => model.Requisition_Date, new { htmlAttributes = new { id = "Requisition_Date", placeholder = "Select IRequisition_ Date", @class = "form-control", @type = "date" } })
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3">
+                            <label> Location:</label>
+                            @Html.DropDownListFor(model => model.Use_Location,
+                             new SelectList(new[]
+                             {
+
+                                                new SelectListItem { Value = "NRL", Text = "NRL" },
+                                                new SelectListItem { Value = "SMT", Text = "SMT" },
+                                                new SelectListItem { Value = "NRL_Guwahati", Text = "NRL (Guwahati)" },
+
+                             }, "Value", "Text", Model.Use_Location),
+                             "Select Location", new { @class = "form-control select2", @style = "width:100%", @id = "Use_Location" })
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label> Department:</label>
+                            @*@Html.DropDownListFor(model => model.AssetDeliveredDepartment, new SelectList(ViewBag.AssetCategoryDD, "ID", "DeviceType"), "Select Delivered Location", new { @class = "form-control select2", @style = "width:100%" })*@
+                            @Html.DropDownListFor(model => model.Use_Department, new SelectList(ViewBag.DepartmentDD, "ID", "AssetDeliveredDepartment"), "Select Department", new { @class = "form-control select2", @style = "width:100%" })
+                        </div>
+                        <div class="col-lg-3">
+                            <label> Area:</label>
+                            @Html.DropDownListFor(model => model.Use_Area, new SelectList(ViewBag.AreaDD, "ID", "AssetDeliveredArea"), "Select Area", new { @class = "form-control select2", @style = "width:100%" })
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Requisition For:</label>
+                            <div class="radio-inline">
+
+                                <label class="radio">
+                                    @Html.EditorFor(model => model.RequisitionFor, new { htmlAttributes = new { @type = "radio", @Value = "Self", @onclick = "toggleVisibility(true)" } })
+                                    <span></span>Self
+                                </label>
+
+
+                                <label class="radio">
+                                    @Html.EditorFor(model => model.RequisitionFor, new { htmlAttributes = new { @type = "radio", @Value = "Others", @onclick = "toggleVisibility(false)" } })
+                                    <span></span>Others
+                                </label>
+
+                            </div>
+
+
+
+
+
+                            @*<label>Requisition For:</label>
+                                <div class="radio-inline">
+                                    <label class="radio radio-outline radio-success">
+                                        <input type="radio" name="toggle" value="hide" onclick="toggleVisibility(true)" checked />
+                                        <span></span>
+                                        Self
+                                    </label>
+                                    <label class="radio radio-outline radio-success">
+                                        <input type="radio" name="toggle" value="show" onclick="toggleVisibility(false)" />
+                                        <span></span>
+                                        Others
+                                    </label>
+                                </div>
+                                <span class="form-text text-muted">Requisition for Self/Others</span>*@
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-4" id="additionalInput" hidden>
+                            <label> Others Whom:</label>
+                            @Html.DropDownListFor(model => model.RequisitionForWhome,
+                             new SelectList(new[]
+                             {
+
+                                                new SelectListItem { Value = "NM", Text = "Non-Management Staff" },
+                                                new SelectListItem { Value = "CISF", Text = "CISF" },
+                                                new SelectListItem { Value = "TP", Text = "Third Party" },
+
+                             }, "Value", "Text", Model.RequisitionForWhome),
+                             "Select One", new { @class = "form-control select2", @style = "width:100%", @id = "req_for_oth", @name = "req_for_oth", @onchange = "toggleVisibility2()" })
+
+                        </div>
+                        <div class="col-lg-4" id="nmStaff" hidden>
+
+                            <label>Select Non Management Staff:</label>
+
+                            @Html.DropDownListFor(model => model.Non_Management_staff, new SelectList(ViewBag.NonMngmentUserMasterDataDD, "EmployeeCode", "EmployeeName"), "Select Non Management Staff", new { @class = "form-control select2", @style = "width:100%" })
+
+                        </div>
+                        <div class="col-lg-4" id="tpOrg" hidden>
+
+                            <label>Enter Third Party Details:</label>
+
+                            @Html.EditorFor(model => model.ThirdParty, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Third Party Personnel Details", autocomplete = "off" } })
+
+                        </div>
+                        <div class="col-lg-4" id="CISFPersonnel" hidden>
+
+                            <label>Enter CISF Personnel Details:</label>
+
+
+                            @Html.EditorFor(model => model.CISF, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter CISF Personnel Details", autocomplete = "off" } })
+
+
+                        </div>
+                        <div class="col-lg-4">
+
+                            <label>Approver Name:</label>
+
+                            @Html.DropDownListFor(model => model.Approve_By, new SelectList(ViewBag.ApproverDataDD, "EmployeeCode", "EmployeeName"), "Select Approver Name", new { @class = "form-control select2", @style = "width:100%" })
+
+
+                        </div>
+                        <div class="col-lg-8">
+
+                            <label for="purpose">Purpose of Requisition:</label>
+
+                            @Html.EditorFor(model => model.Purpose_Of_Use, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Purpose of Requisition", autocomplete = "off" } })
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="card-footer">
+
+            <div class="d-flex justify-content-between">
+
+                <!--<button type="submit" type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-success">
+                    <span class="svg-icon svg-icon-white svg-icon-2x">-->
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg-->
+                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <polygon points="0 0 24 0 24 24 0 24" />
+                        <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
+                        <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
+                    </g>
+                </svg>-->
+                <!--end::Svg Icon-->
+                <!--</span>
+                    Submit
+                </button>-->
+                <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+
+
+                    <button type="submit" onclick="FormValidation()" class="btn btn-success btn-sm font-weight-bold mr-4">
+                        <span class="svg-icon svg-icon-white svg-icon-2x">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
+                                    <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        Send
+                    </button>
+
+
+                    <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#recallRequest">
+                        <span class="svg-icon svg-icon-white svg-icon-2x">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
+                                    <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        Save as Draft
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+
+
+<div class="card card-custom  mt-10" id="kt_page_sticky_card" style="border-radius:20px;">
+
+
+
+    <div class="card-body">
+        <div class="card-body">
+
+            <table class="table table-bordered table-checkable" id="IM_datatable">
+                <thead>
+                    <tr>
+                        <th>Sl No:</th>
+                        <th>Requisition ID </th>
+                        <th>Requisition By </th>
+                        <th>Requisition Date </th>
+                        <th>Type of Device </th>
+                        <th>Use Location </th>
+                        <th>Use Department </th>
+                        <th>Requestor Department </th>
+                        <th>Requisition For</th>
+                        <th>Requisition Status</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 1; }
+                    @foreach (var item in ViewBag.RequisitionDetailsForRequestorDataDD)
+                    {
+                        <tr>
+
+                            <td>@i</td>
+                            <td>@item.Requisition_No</td>
+                            <td>@item.Requestor_Name</td>
+                            <td>@item.Requisition_Date</td>
+                            <td>@item.DeviceName</td>
+                            <td>@item.Use_Location</td>
+                            <td>@item.Use_Department_Name</td>
+                            <td>@item.Requestor_Department</td>
+                            <td>@item.Purpose_Of_Use</td>
+                            <td>@item.Requisition_Status</td>
+
+
+
+
+
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+    @*<table class="table table-bordered table-checkable" id="IM_datatable">
+        <thead>
+            <tr>
+                <th>Sl No:</th>
+                <th>Requisition ID </th>
+                <th>Requisition By </th>
+                <th>Requisition Date </th>
+                <th>Type of Device </th>
+                <th>Use Location </th>
+                <th>Use Department </th>
+                <th>Requestor Department </th>
+                <th>Requisition For</th>
+                <th>Requisition Status</th>
+               
+
+            </tr>
+        </thead>
+        <tbody>
+            @{ int i = 1; }
+            @foreach (var item in ViewBag.RequisitionDetailsForRequestorDataDD)
+            {
+                <tr>
+
+                    <td>@i</td>
+                    <td>@item.Requisition_No</td>
+                    <td>@item.Requestor_Name</td>
+                    <td>@item.Requisition_Date</td>
+                    <td>@item.DeviceName</td>
+                    <td>@item.Use_Location</td>
+                    <td>@item.Use_Department_Name</td>
+                    <td>@item.Requestor_Department</td>
+                    <td>@item.Purpose_Of_Use</td>
+                    <td>@item.Requisition_Status</td>
+
+
+                   
+
+
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>*@
+
+
+
+
+</div>
+<div class="modal " id="recallRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <p>
+
+                    <span class="form-text" style="color:red;">Are you Sure to Save the Requistion</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" id="rejectRequestHOD">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="~/lib/assets/js/scripts.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+    var table = $('#IM_datatable');
+    table.DataTable({
+        responsive: true,
+        pagingType: 'full_numbers',
+        order: [],
+        dom: 'lBfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+        ]
+    });
+    table.init();
+</script>
+
+<script>
+    function ViewDetails() {
+        window.location.href = '@Url.Action("DetailsPageForRequisitioner", "Home")'
+    }
+</script>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $('.select2').select2();
+
+
+
+        $('#kt_select2_1').select2({
+
+            placeholder: "Select Type of Device"
+
+        });
+        $('#kt_select2_2').select2({
+
+            placeholder: "Select type of device"
+
+        });
+
+        $('#location').select2({
+
+            placeholder: "Select Location"
+
+        });
+
+        $('#area').select2({
+
+            placeholder: "Select Area"
+
+        });
+
+        $('#department').select2({
+
+            placeholder: "Select Department"
+
+        });
+
+        $('#req_for_oth').select2({
+
+            placeholder: "Select to whom requisition is for"
+
+        });
+
+        $('#nm_staff').select2({
+
+            placeholder: "Select Non_Management Staff personnel"
+
+        });
+
+
+
+    });
+
+
+    function toggleVisibility(hide) {
+
+        const additionalInput = document.getElementById('additionalInput');
+        const nmStaffDD = document.getElementById('nmStaff');
+        const tpOrdDet = document.getElementById('tpOrg');
+        const CISFPersonnel = document.getElementById('CISFPersonnel');
+        const dropdown = document.getElementById('req_for_oth');
+
+        if (hide === true) {
+            additionalInput.hidden = true;
+            tpOrdDet.hidden = true; // Hide the content
+            nmStaffDD.hidden = true;
+            CISFPersonnel.hidden = true
+        }
+        else {
+            additionalInput.hidden = false;
+        }
+        // Set the hidden property based on the radio button
+    }
+
+    function toggleVisibility2() {
+        const dropdown = document.getElementById('req_for_oth');
+        const nmStaffDD = document.getElementById('nmStaff');
+        const tpOrdDet = document.getElementById('tpOrg');
+
+        // Check the selected value of the dropdown
+        if (dropdown.value === 'NM') {
+            nmStaffDD.hidden = false; // Show the content
+            tpOrdDet.hidden = true;
+            CISFPersonnel.hidden = true
+        } else if (dropdown.value === 'TP') {
+            tpOrdDet.hidden = false; // Hide the content
+            nmStaffDD.hidden = true;
+            CISFPersonnel.hidden = true
+        } else if (dropdown.value === 'CISF') {
+            CISFPersonnel.hidden = false;
+            nmStaffDD.hidden = true;
+            tpOrdDet.hidden = true;
+        }
+        else if (dropdown.value === '') {
+            tpOrdDet.hidden = true; // Hide the content
+            nmStaffDD.hidden = true;
+            CISFPersonnel.hidden = true
+        }
+    }
+
+</script>
+<script>
+    function FormValidation() {
+        
+        var validate = true;
+        var DeviceType = $("#DeviceType").val();
+        var Requisition_Date = $("#Requisition_Date").val();
+        var Use_Department = $("#Use_Department").val();
+        var Use_Location = $("#Use_Location").val();
+        var Use_Area = $("#Use_Area").val();
+        var Approve_By = $("#Approve_By").val();
+        debugger;
+        if (DeviceType == null || DeviceType == "") {
+            showSwalAlert("Type of Device is required.", "error");
+            validate = false;
+            return;
+        }
+        if (Requisition_Date == null || Requisition_Date == "") {
+            showSwalAlert("Requisition Date is required.", "error");
+            validate = false;
+            return;
+        }
+        if (Use_Department == null || Use_Department == "") {
+            showSwalAlert("Select Department ", "error");
+            validate = false;
+            return;
+        }
+        if (Use_Location == null || Use_Location == "") {
+            showSwalAlert("Select Location .", "error");
+            validate = false;
+            return;
+        }
+        if (Use_Area == null || Use_Area == "") {
+            showSwalAlert("Select Area.", "error");
+            validate = false;
+            return;
+        }
+        if (Approve_By == null || Approve_By == "") {
+            showSwalAlert("Select Approver.", "error");
+            validate = false;
+            return;
+        }
+
+       
+
+
+        if (validate) {
+            var text = "<strong>Device Type :</strong> " + DeviceType + "< br > ";
+            text += "<strong>Requisition Date :</strong> " + Requisition_Date + " < br > ";
+            text += "<strong>For Location :</strong> " + Use_Location + " < br > ";
+            text += "<strong>For Department :</strong> " + Use_Department + "< br > ";
+            text += "<strong>For Area :</strong> " + Use_Area + " < br> <br>";
+                    text += "<span style='color:red;'>Mail will be circulated to Approver.</span>";
+
+                    Swal.fire({
+                        title: "Requisition Request Confirmation",
+                    html: text,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes"
+          }).then(function (result) {
+              if (result.value) {
+                  $("#createRequestForm").submit();
+              }
+          });
+
+      }
+  }
+
+
+</script>
+
+  

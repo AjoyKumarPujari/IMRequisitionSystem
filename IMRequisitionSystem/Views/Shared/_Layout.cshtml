@@ -627,7 +627,7 @@
                             @* Common for All *@
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("AddCategoryMaster", "Home")" class="menu-link menu-toggle">
+                                <a href="@Url.Action("InsertAssetcategory", "AssetCategory")" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -644,7 +644,7 @@
                             </li>
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("AddAssetMaster", "Home")" class="menu-link menu-toggle">
+                                <a href="@Url.Action("AddAssetMaster", "Asset")" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -702,7 +702,7 @@
                             </li>
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="@Url.Action("RequisitionRequest", "Home")" class="menu-link menu-toggle">
+                                <a href="@Url.Action("RequisitionRequest", "Requisition")" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -4814,18 +4814,150 @@
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)*@
 
-    <script>
+<script>
 
 
-        $(document).ready(function () {
-            setTimeout(hideLoader, 2000);
-        });
+    $(document).ready(function () {
+        setTimeout(hideLoader, 2000);
 
-        function hideLoader() {
-            $("#loader").hide();
+        handleToastMessage();
+
+    });
+
+    function hideLoader() {
+        $("#loader").hide();
+    }
+
+    function handleToastMessage() {
+
+        var message = '@TempData["Message"]';
+        var swalMessage = '@TempData["SwalMessage"]';
+        var messageType = '@TempData["MessageType"]';
+        var isSwal = '@TempData["IsSwal"]';
+
+
+        if (isSwal == "True") {
+
+            if (message) {
+                var swalType;
+                switch (messageType) {
+                    case "Success":
+                        swalType = 'success';
+                        break;
+                    case "Error":
+                        swalType = 'error';
+                        break;
+                    case "Info":
+                        swalType = 'info';
+                        break;
+                    case "Warning":
+                        swalType = 'warning';
+                        break;
+                    default:
+                        swalType = 'info';
+                        break;
+                }
+
+                if (swalMessage == "" || swalMessage == null) {
+                    showSwalAlert(message, swalType);
+                }
+                else {
+                    showSwalAlertWithMessage(message, swalMessage, swalType);
+                }
+
+            }
+        }
+        else {
+            if (message) {
+
+                var swalType;
+                switch (messageType) {
+                    case "Success":
+                        swalType = 'success';
+                        break;
+                    case "Error":
+                        swalType = 'error';
+                        break;
+                    case "Info":
+                        swalType = 'info';
+                        break;
+                    case "Warning":
+                        swalType = 'warning';
+                        break;
+                    default:
+                        swalType = 'info';
+                        break;
+                }
+                showSwalToast(message, swalType);
+
+
+                /*switch (messageType) {
+                    case "Success":
+                        toastr.success(message);
+                        break;
+                    case "Error":
+                        toastr.error(message);
+                        break;
+                    case "Info":
+                        toastr.info(message);
+                        break;
+                    case "Warning":
+                        toastr.warning(message);
+                        break;
+                    default:
+                        toastr.info(message);
+                        break;
+                }*/
+            }
         }
 
-    </script>
+
+    }
+
+    function showSwalAlert(message, messageType) {
+
+        Swal.fire({
+            icon: messageType,
+            title: message,
+            showConfirmButton: true
+
+        }).then(function (result) {
+
+        });
+    }
+
+    function showSwalAlertWithMessage(title, message, messageType) {
+
+        Swal.fire({
+            icon: messageType,
+            title: title,
+            text: message,
+            showConfirmButton: true
+
+        }).then(function (result) {
+
+        });
+    }
+
+    function showSwalToast(message, messageType) {
+
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: messageType, // 'success', 'error', 'warning', 'info', 'question'
+            title: message,
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+    }
+
+
+</script>
 
 
 </body>
