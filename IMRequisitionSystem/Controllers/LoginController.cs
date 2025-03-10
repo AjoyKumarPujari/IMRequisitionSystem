@@ -98,7 +98,15 @@ namespace IMRequisitionSystem.Controllers
                 Session["SuperAdmin"] = Convert.ToString(result.SuperAdmin);
                 Session["ReadAccess"] = Convert.ToString(result.ReadAccess);
                 Session["WriteAccess"] = Convert.ToString(result.WriteAccess);
-                Session["Approver"] = Convert.ToString(result.Approver);
+                Session["IM_APPROVER"] = Convert.ToString(result.IM_APPROVER);
+                Session["ADMIN"] = Convert.ToString(result.ADMIN);
+                Session["SUPER_ADMIN"] = Convert.ToString(result.SUPER_ADMIN);
+                Session["EMPLOYEE"] = Convert.ToString(result.EMPLOYEE);
+                Session["HOD_UNIT_INCHARGE"] = Convert.ToString(result.HOD_UNIT_INCHARGE);
+                Session["IM_ISSUER"] = Convert.ToString(result.IM_ISSUER);
+                Session["ALLOCATOR"] = Convert.ToString(result.ALLOCATOR);
+                Session["LOCATIONAL_ADMIN"] = Convert.ToString(result.LOCATIONAL_ADMIN);
+                
 
                 Session["IsHotelExecutive"] = Convert.ToString("N");
 

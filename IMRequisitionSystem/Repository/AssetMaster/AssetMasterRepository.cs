@@ -8,6 +8,7 @@ using IMRequisitionSystem.Models;
 using Dapper;
 using Holiday_Home.Util;
 using System.Data;
+using IMRequisitionSystem.Models.RoleMaster;
 
 namespace IMRequisitionSystem.Repository
 {
@@ -87,5 +88,152 @@ namespace IMRequisitionSystem.Repository
                 return new List<AssetsModel>();
             }
         }
+
+       
+        public List<AssetsModel> GetAllAllocateAssetMaster()
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Type", "GET_ALL_ALLOCATED_ASSETDATA_FOR_LIST_VIEW");
+
+                return ExecuteStoredProcedure("Asset_Master_SP", parameters, reader =>
+                {
+                    return reader.Read<AssetsModel>().AsList();
+                });
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return new List<AssetsModel>();
+            }
+        }
+
+       
+        public SPOutputMessage UpdateActiveDeActiveAssetsStatus(AssetsModel assetsModel)
+        {
+            SPOutputMessage spResponse = new SPOutputMessage()
+            {
+                Status = 2,
+                Message = "Something went wrong, try again later."
+            };
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Type", "UPDATE_ASSET_ACTIVE_STATUS");
+                parameters.Add("@Asset_Code_System", assetsModel.Asset_Code_System);
+                parameters.Add("@Last_Modified_By", SessionData.GetSessionUserCode());
+
+                // Output parameters
+                parameters.Add("@Status", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 255, direction: ParameterDirection.Output);
+
+
+                ExecuteStoredProcedure("Asset_Master_SP", parameters, reader =>
+                {
+                    return reader.ReadFirstOrDefault<int>();
+                });
+
+                spResponse = new SPOutputMessage
+                {
+                    Status = parameters.Get<int>("@Status"),
+                    Message = parameters.Get<string>("@Message"),
+                };
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return spResponse;
+        }
+
+
+
+
+        public List<AssetsModel> GetHealthCheckupDueAsset()
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Type", "GET_HEALTH_CHECKUP_ASSET_DATA_FOR_LIST_VIEW");
+
+                return ExecuteStoredProcedure("Periodic_Health_Checkup_of_Assets_SP", parameters, reader =>
+                {
+                    return reader.Read<AssetsModel>().AsList();
+                });
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return new List<AssetsModel>();
+            }
+        }
+
+
+        public SPOutputMessage UpdateActiveDeActiveAsCreateHealthCheckUpUpdatesetsStatus(AssetsModel assetsModel)
+        {
+            SPOutputMessage spResponse = new SPOutputMessage()
+            {
+                Status = 2,
+                Message = "Something went wrong, try again later."
+            };
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Type", "HealthCheckUpUpdate");
+                parameters.Add("@Health_Checkup_Remarks", assetsModel.Health_Checkup_Remarks);
+                parameters.Add("@asset_Physical_Condition", assetsModel.asset_Physical_Condition);
+                parameters.Add("@Asset_Code_System", assetsModel.Asset_Code_System);
+                parameters.Add("@HealthCheckUpBy", SessionData.GetSessionUserCode());
+
+                // Output parameters
+                parameters.Add("@Status", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 255, direction: ParameterDirection.Output);
+
+
+                ExecuteStoredProcedure("Periodic_Health_Checkup_of_Assets_SP", parameters, reader =>
+                {
+                    return reader.ReadFirstOrDefault<int>();
+                });
+
+                spResponse = new SPOutputMessage
+                {
+                    Status = parameters.Get<int>("@Status"),
+                    Message = parameters.Get<string>("@Message"),
+                };
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return spResponse;
+        }
+
+        public List<AssetsModel> GetHealthCheckupHistory()
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Type", "GET_HEALTH_CHECKUP_HISTORY_ASSET_DATA_FOR_LIST_VIEW");
+
+                return ExecuteStoredProcedure("Periodic_Health_Checkup_of_Assets_SP", parameters, reader =>
+                {
+                    return reader.Read<AssetsModel>().AsList();
+                });
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return new List<AssetsModel>();
+            }
+        }
+
     }
+
+
+
 }

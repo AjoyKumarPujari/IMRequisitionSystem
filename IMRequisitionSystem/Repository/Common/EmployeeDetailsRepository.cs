@@ -50,7 +50,26 @@ namespace IMRequisitionSystem.Repository.Common
             }
         }
 
+        public List<EmployeeModel> GetAllManagementUserData()
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Type", "GET_ALL_MNGMNT_USER_DATA");
 
-        
+                return ExecuteStoredProcedure("UserMaster_SP", parameters, reader =>
+                {
+                    return reader.Read<EmployeeModel>().AsList();
+                });
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return new List<EmployeeModel>();
+            }
+        }
+
+
+
     }
 }

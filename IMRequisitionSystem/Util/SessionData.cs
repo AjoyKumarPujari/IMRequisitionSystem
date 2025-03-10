@@ -6,7 +6,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Helpers;
 
-namespace Holiday_Home.Util
+namespace IMRequisitionSystem.Util
 {
     public static class SessionData
     {
@@ -25,28 +25,14 @@ namespace Holiday_Home.Util
             return UserCode;
         }
 
-        public static string GetSessionHotelExecutiveID()
-        {
-            string HotelExecutiveID = "";
-            try
-            {
-                HotelExecutiveID = HttpContext.Current.Session["HotelExecutiveID"] as string;
-            }
-            catch (Exception ex)
-            {
-                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
-            }
-            return HotelExecutiveID;
-        }
-
-
+     
 
         public static string IsAdmin()
         {
             string UserCode = "";
             try
             {
-                UserCode = HttpContext.Current.Session["Admin"] as string;
+                UserCode = HttpContext.Current.Session["ADMIN"] as string;
             }
             catch (Exception ex)
             {
@@ -59,7 +45,7 @@ namespace Holiday_Home.Util
             string UserCode = "";
             try
             {
-                UserCode = HttpContext.Current.Session["SuperAdmin"] as string;
+                UserCode = HttpContext.Current.Session["SUPER_ADMIN"] as string;
             }
             catch (Exception ex)
             {
@@ -67,12 +53,12 @@ namespace Holiday_Home.Util
             }
             return UserCode;
         }
-        public static string IsHotelExecutive()
+        public static string IsAllocator()
         {
             string UserCode = "";
             try
             {
-                UserCode = HttpContext.Current.Session["IsHotelExecutive"] as string;
+                UserCode = HttpContext.Current.Session["ALLOCATOR"] as string;
             }
             catch (Exception ex)
             {
@@ -80,12 +66,12 @@ namespace Holiday_Home.Util
             }
             return UserCode;
         }
-        public static string IsApprover()
+        public static string IsImApprover()
         {
             string UserCode = "";
             try
             {
-                UserCode = HttpContext.Current.Session["Approver"] as string;
+                UserCode = HttpContext.Current.Session["IM_APPROVER"] as string;
             }
             catch (Exception ex)
             {
@@ -93,6 +79,61 @@ namespace Holiday_Home.Util
             }
             return UserCode;
         }
+         public static string IsImIssuer()
+        {
+            string UserCode = "";
+            try
+            {
+                UserCode = HttpContext.Current.Session["IM_ISSUER"] as string;
+            }
+            catch (Exception ex)
+            {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+            }
+            return UserCode;
+        }
+        public static string IsHodUnitIncharge()
+        {
+            string UserCode = "";
+            try
+            {
+                UserCode = HttpContext.Current.Session["HOD_UNIT_INCHARGE"] as string;
+            }
+            catch (Exception ex)
+            {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+            }
+            return UserCode;
+        }
+         public static string IsEmployee()
+        {
+            string UserCode = "";
+            try
+            {
+                UserCode = HttpContext.Current.Session["EMPLOYEE"] as string;
+            }
+            catch (Exception ex)
+            {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+            }
+            return UserCode;
+        }
+        public static string IsLocationAdmin()
+        {
+            string UserCode = "";
+            try
+            {
+                UserCode = HttpContext.Current.Session["LOCATIONAL_ADMIN"] as string;
+            }
+            catch (Exception ex)
+            {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+            }
+            return UserCode;
+        }
+
+
+
 
         public static string GetSessionData(string key)
         {

@@ -38,7 +38,16 @@ namespace IMRequisitionSystem.Models.Login
         public string Message { get; set; }
         public bool IsAuthenticated { get; set; } = false;
 
-    
+
+
+        public string SUPER_ADMIN { get; set; }
+        public string LOCATIONAL_ADMIN { get; set; }
+        public string EMPLOYEE { get; set; }
+        public string HOD_UNIT_INCHARGE { get; set; }
+        public string IM_APPROVER { get; set; }
+        public string IM_ISSUER { get; set; }
+        public string ALLOCATOR { get; set; }
+        public string ADMIN { get; set; }
 
 
 

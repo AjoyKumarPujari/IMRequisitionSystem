@@ -14,7 +14,7 @@ namespace IMRequisitionSystem.Repository
         List<AssetCategoryModel> GetAllAssetCategoryMaster();
         List<AssetCategoryModel> GetAllAssetCategoryForDropDown();
 
-        SPOutputMessage UpdateActiveStatus(int ID);
+        SPOutputMessage UpdateActiveStatus(AssetCategoryModel assetsCategoryModel);
         
         
     }

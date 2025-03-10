@@ -2,6 +2,7 @@
 using Holiday_Home.Util;
 using IMRequisitionSystem.Models;
 using IMRequisitionSystem.Models.Login;
+using IMRequisitionSystem.Models.SessionData;
 using IMRequisitionSystem.Util;
 using System;
 using System.Collections.Generic;
@@ -29,47 +30,43 @@ namespace IMRequisitionSystem.Repository.Login
 
                 if (spOutputMessageDev.Status == 1)
                 {
-                    //if (employeeDev != null)
-                    //{
+                    if (employeeDev != null)
+                    {
 
-                    //    user.UserName = employeeDev.Name;
-                    //    user.Password = password;
-                    //    user.UserCode = employeeDev.UserCode;
-                    //    user.Designation = employeeDev.Designation;
-                    //    user.DepartmentID = employeeDev.DepartmentID;
-                    //    user.DepartmentName = employeeDev.DepartmentName;
-                    //    user.Name = employeeDev.Name;
+                        user.UserName = employeeDev.Name;
+                        user.Password = password;
+                        user.UserCode = employeeDev.UserCode;
+                        user.Designation = employeeDev.Designation;
+                        user.DepartmentID = employeeDev.DepartmentID;
+                        user.DepartmentName = employeeDev.DepartmentName;
+                        user.Name = employeeDev.Name;
+                        user.Email = employeeDev.Email;
 
-                    //    user.Email = employeeDev.Email;
+                        SessionDataModel employeeAdmin = CheckAdminAccessByUserCode(employeeDev.UserCode);
 
-                    //    EmployeeModel employeeAdmin = CheckAdminAccessByUserCode(employeeDev.UserCode);
+                        if (employeeAdmin != null)
+                        {
+                            
+                            user.SUPER_ADMIN = employeeAdmin.SUPER_ADMIN;
+                            user.LOCATIONAL_ADMIN = employeeAdmin.LOCATIONAL_ADMIN;
+                            user.EMPLOYEE = employeeAdmin.EMPLOYEE;
+                            user.HOD_UNIT_INCHARGE = employeeAdmin.HOD_UNIT_INCHARGE;
+                            user.IM_ISSUER = employeeAdmin.IM_ISSUER;
+                            user.IM_APPROVER = employeeAdmin.IM_APPROVER;
+                            user.ALLOCATOR = employeeAdmin.ALLOCATOR;
+                            user.ADMIN = employeeAdmin.ADMIN;
+                        }
+                        
 
-                    //    if (employeeAdmin != null)
-                    //    {
-                    //        user.Admin = employeeAdmin.Admin;
-                    //        user.SuperAdmin = employeeAdmin.SuperAdmin;
-                    //        user.ReadAccess = employeeAdmin.ReadAccess;
-                    //        user.WriteAccess = employeeAdmin.WriteAccess;
-                    //        user.Approver = employeeAdmin.Approver;
-                    //    }
-                    //    else
-                    //    {
-                    //        user.Admin = "N";
-                    //        user.SuperAdmin = "N";
-                    //        user.ReadAccess = "N";
-                    //        user.WriteAccess = "N";
-                    //        user.Approver = "N";
-                    //    }
+                        user.Message = "Login Successfully";
+                        user.IsAuthenticated = true;
 
-                    //    user.Message = "Login Successfully";
-                    //    user.IsAuthenticated = true;
-
-                    //}
-                    //else
-                    //{
-                    //    user.Message = "Credentials are incorrect";
-                    //    user.IsAuthenticated = false;
-                    //}
+                    }
+                    else
+                    {
+                        user.Message = "Credentials are incorrect";
+                        user.IsAuthenticated = false;
+                    }
                     user.UserName = employeeDev.Name;
                     user.Password = password;
                     user.UserCode = employeeDev.UserCode;
@@ -100,23 +97,23 @@ namespace IMRequisitionSystem.Repository.Login
             return user;
         }
 
-        public EmployeeModel CheckAdminAccessByUserCode(string userCode)
+        public SessionDataModel CheckAdminAccessByUserCode(string userCode)
         {
             try
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@Type", "CHECK_USER_ADMIN_ROLE");
+                parameters.Add("@Type", "CHECK_USER_ROLE");
                 parameters.Add("@UserCode", userCode);
 
                 return ExecuteStoredProcedure("UserLogin", parameters, reader =>
                 {
-                    return reader.ReadFirstOrDefault<EmployeeModel>();
+                    return reader.ReadFirstOrDefault<SessionDataModel>();
                 });
             }
             catch (Exception ex)
             {
                 LoggingClass.SaveExceptionLog(ex);
-                return new EmployeeModel();
+                return new SessionDataModel();
             }
         }
 

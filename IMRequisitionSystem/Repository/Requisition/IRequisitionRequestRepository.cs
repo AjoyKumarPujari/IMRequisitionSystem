@@ -12,7 +12,17 @@ namespace IMRequisitionSystem.Repository.Requisition
     {
         SPOutputMessage CreateRequisitionRequest(RequisitionRequestModel requisitionRequestModel );
         List<RequisitionRequestModel> GetRequisitionDetailsForRequestor();
-        List<RequisitionRequestModel> GetRequisitionDetailsForAllocator();
+        List<RequisitionRequestModel> GetRequisitionRequestedList();
+
+
+        SPOutputMessage CreateRequisitionRequestSaveAsDraft(RequisitionRequestModel requisitionRequestModel);
+        List<RequisitionRequestModel> GetRequisitionDraftDetailsForRequestor();
+
+        RequisitionRequestModel GetDetailsDataForRequisiyioner(string requisition_No);
+
+        SPOutputMessage RequisitionCancaled(RequisitionRequestModel requisitionRequestModel);
+        SPOutputMessage RequisitionDraftGenerateUpdate(RequisitionRequestModel requisitionRequestModel);
+
 
     }
 }

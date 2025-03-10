@@ -23,6 +23,7 @@
 @using (Html.BeginForm("RequisitionRequest", "Requisition", FormMethod.Post, new { enctype = "multipart/form-data", id = "createRequestForm" }))
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.RequisitionType)
 
     <div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
 
@@ -42,7 +43,7 @@
 
         <div class="card-body">
 
-            <form class="form">
+            <form class="form" >
 
                 <div class="card-body">
 
@@ -180,8 +181,7 @@
                         <div class="col-lg-8">
 
                             <label for="purpose">Purpose of Requisition:</label>
-
-                            @Html.EditorFor(model => model.Purpose_Of_Use, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Purpose of Requisition", autocomplete = "off" } })
+                            @Html.TextAreaFor(model => model.Purpose_Of_Use, new { @class = "form-control", @placeholder = "Purpose of Requisition", autocomplete = "off", rows = "3" })
 
 
                         </div>
@@ -214,7 +214,19 @@
                 <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
 
 
-                    <button type="submit" onclick="FormValidation()" class="btn btn-success btn-sm font-weight-bold mr-4">
+                    <!--<button type="submit" onclick="FormValidation()" class="btn btn-danger btn-sm font-weight-bold mr-4">
+                        <span class="svg-icon svg-icon-white svg-icon-2x">-->
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
+                                    <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
+                                </g>
+                            </svg>--><!--end::Svg Icon-->
+                        <!--</span>
+                        Send
+                    </button>-->
+                    <button type="button" id="btnSubmit" name="btnSubmit"  onclick="FormValidation('RequisitionRequest')" class="btn btn-success btn-sm font-weight-bold mr-4">
                         <span class="svg-icon svg-icon-white svg-icon-2x">
                             <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -227,16 +239,15 @@
                         Send
                     </button>
 
-
-                    <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#recallRequest">
+                    <button type="button" id="btnDraft" name="btnDraft"  onclick="FormValidation('RequisitionRequestDraft')" class="btn btn-sm btn-warning">
                         <span class="svg-icon svg-icon-white svg-icon-2x">
-                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <polygon points="0 0 24 0 24 24 0 24" />
                                     <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
                                     <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
                                 </g>
-                            </svg><!--end::Svg Icon-->
+                            </svg>
                         </span>
                         Save as Draft
                     </button>
@@ -270,7 +281,7 @@
                         <th>Requestor Department </th>
                         <th>Requisition For</th>
                         <th>Requisition Status</th>
-
+                        <th>Action</th>
 
                     </tr>
                 </thead>
@@ -289,7 +300,18 @@
                             <td>@item.Use_Department_Name</td>
                             <td>@item.Requestor_Department</td>
                             <td>@item.Purpose_Of_Use</td>
-                            <td>@item.Requisition_Status</td>
+                            <td><span class="label label-lg label-inline label-light-success font-weight-bold">@item.Requisition_Status</span></td>
+                            
+                            <td>
+                                <button type="button" class="btn btn-sm btn-primary w-100" onclick="GoToViewDetailsPage('@item.Requisition_No')">
+                                    View Details
+                                </button>
+                                <button type="button" class="btn btn-sm btn-success mt-2 w-100" id="DraftRequestGeneratebtn" onclick="DraftRequestGenerate('@item.Requisition_No')">
+                                    Generate
+                                </button>
+
+                            </td>
+                          
 
 
 
@@ -304,51 +326,6 @@
         </div>
     </div>
 
-
-
-    @*<table class="table table-bordered table-checkable" id="IM_datatable">
-        <thead>
-            <tr>
-                <th>Sl No:</th>
-                <th>Requisition ID </th>
-                <th>Requisition By </th>
-                <th>Requisition Date </th>
-                <th>Type of Device </th>
-                <th>Use Location </th>
-                <th>Use Department </th>
-                <th>Requestor Department </th>
-                <th>Requisition For</th>
-                <th>Requisition Status</th>
-               
-
-            </tr>
-        </thead>
-        <tbody>
-            @{ int i = 1; }
-            @foreach (var item in ViewBag.RequisitionDetailsForRequestorDataDD)
-            {
-                <tr>
-
-                    <td>@i</td>
-                    <td>@item.Requisition_No</td>
-                    <td>@item.Requestor_Name</td>
-                    <td>@item.Requisition_Date</td>
-                    <td>@item.DeviceName</td>
-                    <td>@item.Use_Location</td>
-                    <td>@item.Use_Department_Name</td>
-                    <td>@item.Requestor_Department</td>
-                    <td>@item.Purpose_Of_Use</td>
-                    <td>@item.Requisition_Status</td>
-
-
-                   
-
-
-                </tr>
-                i++;
-            }
-        </tbody>
-    </table>*@
 
 
 
@@ -403,7 +380,27 @@
         window.location.href = '@Url.Action("DetailsPageForRequisitioner", "Home")'
     }
 </script>
+<script>
+     function GoToViewDetailsPage(requisition_No) {
+ debugger;
+     $.ajax({
+      url: "@Url.Action("SetSession","Common")",
+      type: 'POST',
+      data: { key: "requisition_No", requisition_No: requisition_No },
+      success: function (response) {
 
+          if (response.success) {
+              //var url = $('base').attr('href') + "DetailsPageForHODUnitInCharge";
+              var url ='@Url.Action("DetailsPageForRequisitioner", "Requisition")';
+          window.location.href = url;
+          }
+      },
+      error: function () {
+      }
+      });
+      }
+
+</script>
 
 
 
@@ -460,8 +457,22 @@
 
     });
 
+    
+    @*document.getElementById("btnGenerate").addEventListener("click", function () {
+        window.location.href = '@Url.Action("RequisitionRequestDraft", "Requisition")';
+    });*@
+
+
+   
+    
+
+    /*document.getElementById("btnSubmit").addEventListener("click", function () {
+        submitForm();
+    });*/
 
     function toggleVisibility(hide) {
+
+
 
         const additionalInput = document.getElementById('additionalInput');
         const nmStaffDD = document.getElementById('nmStaff');
@@ -507,17 +518,45 @@
         }
     }
 
+
+
+
 </script>
 <script>
-    function FormValidation() {
-        
+    var Use_Department = ""
+    var DeviceType = ""
+    var Use_Area = ""
+    var Approve_By = ""
+    $('#Use_Department').change(function () {
+        Use_Department = $("#Use_Department option:selected").text();
+        console.log("Selected Department: " + Use_Department);
+    });
+    $('#DeviceType').change(function () {
+        DeviceType = $("#DeviceType option:selected").text();
+        console.log("Selected Department: " + DeviceType);
+    });
+    $('#Use_Area').change(function () {
+        Use_Area = $("#Use_Area option:selected").text();
+        console.log("Selected Use_Area: " + DeviceType);
+    });
+    $('#Approve_By').change(function () {
+        Approve_By = $("#Approve_By option:selected").text();
+        console.log("Selected Approve_By: " + Approve_By);
+    });
+
+    function FormValidation(RequisitionType) {
+        debugger;
+        //submitForm();
         var validate = true;
-        var DeviceType = $("#DeviceType").val();
+        //var DeviceType = $("#DeviceType").val();
         var Requisition_Date = $("#Requisition_Date").val();
-        var Use_Department = $("#Use_Department").val();
+        //var Use_Department = $("#Use_Department").text();
+        //const selectedDeptName = document.getElementById('Use_Department').addEventListener('change', e => selectedDeptName = e.target.options[e.target.selectedIndex].text);
+
         var Use_Location = $("#Use_Location").val();
-        var Use_Area = $("#Use_Area").val();
-        var Approve_By = $("#Approve_By").val();
+        //var Use_Area = $("#Use_Area").val();
+        //var Approve_By = $("#Approve_By").val();
+
         debugger;
         if (DeviceType == null || DeviceType == "") {
             showSwalAlert("Type of Device is required.", "error");
@@ -550,15 +589,15 @@
             return;
         }
 
-       
 
 
+        debugger;
         if (validate) {
-            var text = "<strong>Device Type :</strong> " + DeviceType + "< br > ";
-            text += "<strong>Requisition Date :</strong> " + Requisition_Date + " < br > ";
-            text += "<strong>For Location :</strong> " + Use_Location + " < br > ";
-            text += "<strong>For Department :</strong> " + Use_Department + "< br > ";
-            text += "<strong>For Area :</strong> " + Use_Area + " < br> <br>";
+            var text = "<strong>Device Type :</strong> " + DeviceType + "<br> ";
+            text += "<strong>Requisition Date :</strong> " + Requisition_Date + " <br> ";
+            text += "<strong>For Location :</strong> " + Use_Location + " <br> ";
+            text += "<strong>For Department :</strong> " + Use_Department + "<br> ";
+            text += "<strong>For Area :</strong> " + Use_Area + " <br> <br>";
                     text += "<span style='color:red;'>Mail will be circulated to Approver.</span>";
 
                     Swal.fire({
@@ -569,12 +608,122 @@
                     confirmButtonText: "Yes"
           }).then(function (result) {
               if (result.value) {
+                  //$("#createRequestForm").submit();
+
+                  $("#RequisitionType").val("" + RequisitionType);
                   $("#createRequestForm").submit();
               }
           });
 
       }
   }
+
+
+    function FormValidation(RequisitionType) {
+        debugger;
+        //submitForm();
+        var validate = true;
+        //var DeviceType = $("#DeviceType").val();
+        var Requisition_Date = $("#Requisition_Date").val();
+        //var Use_Department = $("#Use_Department").text();
+        //const selectedDeptName = document.getElementById('Use_Department').addEventListener('change', e => selectedDeptName = e.target.options[e.target.selectedIndex].text);
+
+        var Use_Location = $("#Use_Location").val();
+        //var Use_Area = $("#Use_Area").val();
+        //var Approve_By = $("#Approve_By").val();
+
+        debugger;
+        if (DeviceType == null || DeviceType == "") {
+            showSwalAlert("Type of Device is required.", "error");
+            validate = false;
+            return;
+        }
+        if (Requisition_Date == null || Requisition_Date == "") {
+            showSwalAlert("Requisition Date is required.", "error");
+            validate = false;
+            return;
+        }
+        if (Use_Department == null || Use_Department == "") {
+            showSwalAlert("Select Department ", "error");
+            validate = false;
+            return;
+        }
+        if (Use_Location == null || Use_Location == "") {
+            showSwalAlert("Select Location .", "error");
+            validate = false;
+            return;
+        }
+        if (Use_Area == null || Use_Area == "") {
+            showSwalAlert("Select Area.", "error");
+            validate = false;
+            return;
+        }
+        if (Approve_By == null || Approve_By == "") {
+            showSwalAlert("Select Approver.", "error");
+            validate = false;
+            return;
+        }
+
+
+
+        debugger;
+        if (validate) {
+            var text = "<strong>Device Type :</strong> " + DeviceType + "<br> ";
+            text += "<strong>Requisition Date :</strong> " + Requisition_Date + " <br> ";
+            text += "<strong>For Location :</strong> " + Use_Location + " <br> ";
+            text += "<strong>For Department :</strong> " + Use_Department + "<br> ";
+            text += "<strong>For Area :</strong> " + Use_Area + " <br> <br>";
+            text += "<span style='color:red;'>Mail will be circulated to Approver.</span>";
+
+            Swal.fire({
+                title: "Requisition Request Confirmation",
+                html: text,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes"
+            }).then(function (result) {
+                if (result.value) {
+                    //$("#createRequestForm").submit();
+
+                    $("#RequisitionType").val("" + RequisitionType);
+                    $("#createRequestForm").submit();
+                }
+            });
+
+        }
+    }
+
+    function DraftRequestGenerate(Requisition_No) {
+       debugger;
+        var btnID = "DraftRequestGeneratebtn";
+        var requisition_No = Requisition_No;
+        
+        var requisitionRequestModel = {};
+        requisitionRequestModel.Requisition_No = requisition_No;
+
+       $.ajax({
+           url: '@Url.Action("RequisitionDraftGenerate", "Requisition")',
+           type: 'POST',
+           data: { requisitionRequestModel: requisitionRequestModel },
+           success: function (data) {
+
+           if (data.redirectUrl != '') {
+           location.href = data.redirectUrl;
+           } else {
+           $("#" + btnID).attr("disabled", false);
+           $("#" + btnID).html("Submit");
+           }
+           },
+           error: function (jqXHR, textStatus, errorThrown) {
+
+           $("#" + btnID).attr("disabled", false);
+           $("#" + btnID).html("Submit");
+
+           toastr.error("Failed to Allocate. Try again.");
+           }
+       });
+    }
+
 
 
 </script>

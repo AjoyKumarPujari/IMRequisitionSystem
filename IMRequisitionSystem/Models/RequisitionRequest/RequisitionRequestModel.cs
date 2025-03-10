@@ -11,8 +11,8 @@ namespace IMRequisitionSystem.Models.Assets
         public string Requisition_No { get; set; }
         public string Requisition_Date { get; set; }
         public string Requestor_Name { get; set; }
-        public string Requestor_ID { get; set; }
         public string Requestor_Designation { get; set; }
+        public string Requestor_ID { get; set; }
         public string RequisitionFor { get; set; }
         public string RequisitionForWhome { get; set; }
         public string Non_Management_staff { get; set; }
@@ -31,6 +31,8 @@ namespace IMRequisitionSystem.Models.Assets
         public string Created_By { get; set; }
         public string Created_DateTime { get; set; }
         public string Approve_By { get; set; }
+        public string Approver_Name { get; set; }
+        public string Approver_Designation { get; set; }
         public string Approve_DateTime { get; set; }
         public string Approver_Comment { get; set; }
         public string Approver_Role { get; set; }
@@ -55,5 +57,40 @@ namespace IMRequisitionSystem.Models.Assets
         public string Reject_By { get; set; }
         public string Reject_DateTime { get; set; }
         public string Reject_Reason { get; set; }
+        public string IM_Approver_Comment { get; set; }
+        public string IM_Approve_By { get; set; }
+        public string IM_Approve_DateTime { get; set; }
+        public string IM_Approver_Name { get; set; }
+        public string IM_Approver_Designation { get; set; }
+        public string DeviceQuantity { get; set; }
+        public string TotalAssetCount { get; set; }
+        public string Asset_Sl_No { get; set; }
+        public string Asset_Code_System { get; set; }
+       
+        
+        public string IM_Issuer_Comment { get; set; }
+        public string IM_Issued_By { get; set; }
+        public string IM_Issued_DateTime { get; set; }
+        public string IM_Issuer_Designation { get; set; }
+        public string IM_Issuer_Name { get; set; }
+
+
+        public string IM_Allocator_Comment { get; set; }
+        public string IM_Allocated_By { get; set; }
+        public string IM_Allocated_DateTime { get; set; }
+        public string IM_Allocator_Designation { get; set; }
+        public string IM_Allocator_Name { get; set; }
+
+        public string Return_Comment { get; set; }
+        public string asset_Physical_Condition { get; set; }
+        public string Cancelled_Reason { get; set; }
+        public string RequisitionType { get; set; }
+        
+
+
+
+
+
+
     }
 }

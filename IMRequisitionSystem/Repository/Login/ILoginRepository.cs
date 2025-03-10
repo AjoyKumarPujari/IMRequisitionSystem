@@ -1,5 +1,6 @@
 ﻿using IMRequisitionSystem.Models;
 using IMRequisitionSystem.Models.Login;
+using IMRequisitionSystem.Models.SessionData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace IMRequisitionSystem.Repository.Login
     {
 
         LoginModel CheckUserLogin(string username, string password);
-        EmployeeModel CheckAdminAccessByUserCode(string userCode);
+        SessionDataModel CheckAdminAccessByUserCode(string userCode);
         (SPOutputMessage, LoginModel) GetUserDetailsByUserCode(string userCode);
 
 

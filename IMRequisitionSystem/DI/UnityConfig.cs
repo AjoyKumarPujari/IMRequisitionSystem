@@ -10,6 +10,10 @@ using Unity.AspNet.Mvc;
 using IMRequisitionSystem.Repository.Login;
 using IMRequisitionSystem.Repository.Common;
 using IMRequisitionSystem.Repository.Requisition;
+using IMRequisitionSystem.Repository.Approver;
+using IMRequisitionSystem.Repository.RoleMaster;
+using IMRequisitionSystem.Repository.Issuer;
+using IMRequisitionSystem.Repository.Return;
 
 namespace IMRequisitionSystem.DI
 {
@@ -28,6 +32,12 @@ namespace IMRequisitionSystem.DI
             container.RegisterType<IAreaMasterRepository, AreaMasterRepository>();
             container.RegisterType<IRequisitionRequestRepository, RequisitionRequestRepository>();
             container.RegisterType<IEmployeeDetailsRepository, EmployeeDetailsRepository>();
+            container.RegisterType<IRequisitionApproveList, RequisitionApproveList>();
+            container.RegisterType<IRoleMasterRepository, RoleMasterRepository>();
+            container.RegisterType<IRoleMappingRepository, RoleMappingRepository>();
+            container.RegisterType<IIMRequisitionApproverList, IMRequisitionApproverList>();
+            container.RegisterType<IIMIssuerRepository, IMIssuerRepository>();
+            container.RegisterType<IReturnRepository, ReturnRepository>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

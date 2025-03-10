@@ -95,7 +95,7 @@ namespace IMRequisitionSystem.Repository
             }
         }
 
-        public SPOutputMessage UpdateActiveStatus(int ID)
+        public SPOutputMessage UpdateActiveStatus(AssetCategoryModel assetsCategoryModel)
         {
             SPOutputMessage spResponse = new SPOutputMessage()
             {
@@ -107,7 +107,7 @@ namespace IMRequisitionSystem.Repository
                 var parameters = new DynamicParameters();
 
                 parameters.Add("@Type", "UPDATE_ACTIVE_STATUS");
-                parameters.Add("@ID", ID);
+                parameters.Add("@ID", assetsCategoryModel.ID);
                 parameters.Add("@ModifiedBy", SessionData.GetSessionUserCode());
 
                 // Output parameters

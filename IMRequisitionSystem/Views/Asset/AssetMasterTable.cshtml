@@ -124,107 +124,107 @@
             </div>-->
 
             <table class="table table-bordered table-checkable" id="IM_datatable">
-                <thead>
-                    <tr>
-                        <th>Sl No</th>
-                        <th>Asset Sl No</th>
-                        <th>Asset id </th>
-                        <th>Assset Device Characteristics<th>
-                        <th>Make </th>
-                        <th>Model </th>
-                        <th>Device Type</th>
-                        <th>Installation Date</th>
-                        <th>Vendor Code </th>
-                        <th>Vendor Name</th>
-                        <th>PO No</th>
-                        <th>PO Date</th>
-                        <th>Asset Delivered Location</th>
-                        <th>Asset Delivered Department</th>
-                        <th>Asset Delivered Area</th>
-                        @*<th>Warranty Till</th>
-                        <th>Under AMC</th>
-                        <th>AMC Vendor Code </th>
-                        <th>AMC Vendor Name  </th>
-                        <th>AMC Expiry Date  </th>
-                        <th>Periodic Health Checkup date</th>
-                        <th>Asset Custodian Name  </th>
-                        <th>Asset Custodian Location  </th>
-                        <th>Asset Custodian Department  </th>
-                        <th>Asset Custodian Area  </th>
-                        <th>Asset Physical Condition  </th>*@
-                        @*<th>Issue Status </th>
-                        <th>Asset Status </th>*@
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @{ int i = 1; }
-                    @foreach (var item in ViewBag.AssetMasterDataDD)
-                    {
+               
+                    <thead>
                         <tr>
-
-                            <td>@i</td>
-                            <td>@item.Asset_Sl_No</td>
-                            <td>@item.Asset_Id_SAP</td>
-                            <td>@item.AsssetDeviceCharacteristics</td>
-                            <td>@item.AssetMakeNo</td>
-                            <td>@item.AssetModelNo</td>
-                            <td>@item.DeviceType</td>
-                            <td>@item.Installation_date</td>
-                            <td>@item.Vendor_code</td>
-                            <td>@item.Vendor_name</td>
-                            <td>@item.PO_No</td>
-                            <td>@item.PO_date</td>
-                            <td>@item.asset_custodian_location</td>
-                            <td>@item.asset_custodian_department</td>
-                            <td>@item.asset_custodian_area</td>
-                            <td>@item.asset_Status</td>
-
-                            <!--
-                             //if (item.IsActive == false)
-                            {
-                                <td><span class="label label-lg label-inline label-light-success font-weight-bold">Not Active</span></td>
-                            }
-                            else
-                            {
-                                <td><span class="label label-lg label-inline label-light-success font-weight-bold">Active</span></td>
-                            }
-                            <td>
-                                <button class="btn btn-md btn-success mr-1" id="activateButton" onclick="ActivetoDeactive(item.ID)">
-                                    <span class="svg-icon svg-icon-white svg-icon-2x">-->
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Done-circle.svg--><!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                            </g>
-                                        </svg>--><!--end::Svg Icon-->
-                                    <!--</span>
-                                    Activate
-
-                                </button>
-
-                                <button class="btn btn-md btn-danger" id="deactivateButton" hidden>
-                                    <span class="svg-icon svg-icon-white svg-icon-2x">-->
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Error-circle.svg--><!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
-                                            </g>
-                                        </svg>--><!--end::Svg Icon-->
-                                    <!--</span>
-                                    Deactivate
-                                </button>
-
-                            </td>-->
+                            <th>Sl No</th>
+                            <th>Asset Sl No</th>
+                            <th>Asset id </th>
+                            <th>Assset Device Characteristics</th>
+                            <th>Make </th>
+                            <th>Model </th>
+                            <th>Device Type</th>
+                            <th>Installation Date</th>
+                            <th>Vendor Code </th>
+                            <th>Vendor Name</th>
+                            <th>PO No</th>
+                            <th>PO Date</th>
+                            <th>Asset Delivered Location</th>
+                            <th>Asset Delivered Department</th>
+                            
+                            <th>Asset Status</th>
+                            <th>Active/Deactive Status</th>
+                            <th>Action</th>
+                            
 
 
                         </tr>
-                        i++;
-                    }
-                </tbody>
+                    </thead>
+                    <tbody>
+                        @{ int i = 1; }
+                        @foreach (var item in ViewBag.AssetMasterDataDD)
+                        {
+                            <tr>
+
+                                <td>@i</td>
+                                <td>@item.Asset_Sl_No</td>
+                                <td>@item.Asset_Id_SAP</td>
+                                <td>@item.AsssetDeviceCharacteristics</td>
+                                <td>@item.AssetMakeNo</td>
+                                <td>@item.AssetModelNo</td>
+                                <td>@item.DeviceType</td>
+                                <td>@item.Installation_date</td>
+                                <td>@item.Vendor_code</td>
+                                <td>@item.Vendor_name</td>
+                                <td>@item.PO_No</td>
+                                <td>@item.PO_date</td>
+                                <td>@item.asset_custodian_location</td>
+                                <td>@item.asset_custodian_department</td>
+                               
+                                <td>@item.asset_Status</td>
+                                <td>
+                                    @if (item.IsActive == true)
+                                    {
+                                        <span>Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Deactive</span>
+                                    }
+                                </td>
+
+                                <td>
+                                    @if (item.IsActive == true)
+                                    {
+                                        <button class="btn btn-md btn-danger" id="activateButton" onclick="ActivetoDeactive('@item.Asset_Code_System', 'Dectivated')">
+                                            <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24" />
+                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                        <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            Deactivate
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-md btn-success mr-1" id="activateButton" onclick="ActivetoDeactive('@item.Asset_Code_System', 'Activate')">
+                                            <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24" />
+                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                        <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            Activate
+                                        </button>
+                                    }
+
+                                </td>
+
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                
             </table>
+        
+        
         </div>
     </div>
 
@@ -277,7 +277,46 @@
         placeholder: "Select Asset Category"
     });
 </script>
+<script>
+    function ActivetoDeactive(Asset_Code_System, btnName) {
 
+    debugger;
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "" + btnName
+    }).then(function (result) {
+
+        if (result.value) {
+
+            var btnID = "activateButton";
+            //var ID = ID;
+
+            var assetsModel = {};
+            assetsModel.Asset_Code_System = Asset_Code_System;
+
+            $.ajax({
+                url: '@Url.Action("ActiveDeactiveAssets", "Asset")',
+                type: 'POST',
+                data: { assetsModel: assetsModel },
+                success: function (data) {
+
+                    location.href = data.redirectUrl;
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    toastr.error("Failed. Try again.");
+                }
+            });
+
+        }
+    });
+
+}
+</script>
 
 
 

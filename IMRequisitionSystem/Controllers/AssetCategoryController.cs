@@ -70,27 +70,15 @@ namespace IMRequisitionSystem.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult ActivetoDeactiveStatus(int ID)
+       
+        public JsonResult ActiveDeactiveCategory(AssetCategoryModel assetCategoryModel)
         {
-            try
-            {
-                SPOutputMessage response = _assetCategoryRepository.UpdateActiveStatus(ID);
+            var spResponse = _assetCategoryRepository.UpdateActiveStatus(assetCategoryModel);
 
-                if (response.Status == 1)
-                {
-                    return RedirectToAction("InsertAssetcategory", "AssetCategory", new { status = ToastMessageType.Success, message = response.Message, isSwal = true });
-                }
-                else
-                {
-                    return RedirectToAction("InsertAssetcategory", "AssetCategory", new { status = ToastMessageType.Error, message = response.Message,  isSwal = true });
-                }
-            }
-            catch (Exception ex)
-            {
-                LoggingClass.SaveExceptionLog(ex);
-                return RedirectToAction("InsertAssetcategory", "AssetCategory", new { status = ToastMessageType.Error, message = "Someting went wrong. Please try again", isSwal = true });
-            }
+            //Session["Requisition_No"] = requisitionRequestModel.Requisition_No;
+
+            var jsonResponseHandler = new JsonResponseHandler(Url);
+            return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "InsertAssetcategory", "AssetCategory", assetCategoryModel.ID);
         }
 
 

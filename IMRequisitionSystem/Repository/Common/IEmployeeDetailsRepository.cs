@@ -14,6 +14,7 @@ namespace IMRequisitionSystem.Repository.Common
     {
         List<EmployeeModel> GetAllNonmanagementUserData();
         List<EmployeeModel> GetApproverDataViaGreade(string employeeCode);
+        List<EmployeeModel> GetAllManagementUserData();
        
     }
 }

@@ -12,7 +12,15 @@ namespace IMRequisitionSystem.Repository
     {
         SPOutputMessage InsertAssetMaster(AssetsModel assetsModel);
         List<AssetsModel> GetAllAssetMaster();
+        List<AssetsModel> GetAllAllocateAssetMaster();
+
+        SPOutputMessage UpdateActiveDeActiveAssetsStatus(AssetsModel assetsModel);
+        
+        
+        List<AssetsModel> GetHealthCheckupDueAsset();
+        List<AssetsModel> GetHealthCheckupHistory();
 
 
+        SPOutputMessage UpdateActiveDeActiveAsCreateHealthCheckUpUpdatesetsStatus(AssetsModel assetsModel);
     }
 }

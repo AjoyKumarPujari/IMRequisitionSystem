@@ -104,10 +104,7 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
-        public ActionResult DetailPageForIssuer()
-        {
-            return View();
-        }
+       
         public ActionResult AllRequisitionIssueList()
         {
             return View();
