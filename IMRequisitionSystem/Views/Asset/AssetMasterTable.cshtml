@@ -1,0 +1,325 @@
+﻿@model IMRequisitionSystem.Models.Assets.AssetsModel
+@{
+    ViewBag.Title = "AssetMasterTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/lib/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
+</head>
+
+
+<div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
+
+    <div class="card-header">
+
+        <div class="card-title">
+
+            <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
+
+                <span> ASSET MASTER DATA</span>
+
+            </h2>
+
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="card-body">
+
+            <!--<div class="row">
+
+                <div class="form-group col-lg-3">
+                    <label class="font-weight-bolder">
+                        PO Number:
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-control form-control-lg" id="PONumber">
+                        <option></option>
+                        <option>430008764</option>
+                        <option>430008768</option>
+                        <option>430008766</option>
+                        <option>430008778</option>
+                        <option>430008794</option>
+                    </select>
+
+                    <span class="form-text text-muted">Select PO Number.</span>
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class="font-weight-bolder">
+                        Asset ID:
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-control form-control-lg" id="AssetID">
+                        <option></option>
+                        <option>NRL-AID-0001</option>
+                        <option>NRL-AID-0002</option>
+                        <option>NRL-AID-0003</option>
+                        <option>NRL-AID-0004</option>
+                        <option>NRL-AID-0005</option>
+                    </select>
+
+                    <span class="form-text text-muted">Select Asset ID.</span>
+                </div>
+                <div class="form-group col-lg-3">
+                    <label class="font-weight-bolder">
+                        Asset Category:
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-control form-control-lg" id="AssetCategory">
+                        <option></option>
+                        <option>HF</option>
+                        <option>UHF</option>
+                        <option>VHF</option>
+                    </select>
+
+                    <span class="form-text text-muted">Select Asset Category.</span>
+                </div>
+
+
+                <div class="col-lg-3 col-md-12 mt-7">
+                    <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-sm btn-primary mr-2">
+                        <span class="svg-icon svg-icon-white svg-icon-2x">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Search.svg--><!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                    <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
+                                </g>
+                            </svg>--><!--end::Svg Icon-->
+                        <!--</span>
+                        Search
+                    </button>-->
+                    @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
+                    @*<button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning">
+                        <span class="svg-icon svg-icon-white svg-icon-2x">-->*@
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Repeat.svg--><!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000" />
+                                    <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3" />
+                                </g>
+                            </svg>--><!--end::Svg Icon-->
+                        <!--</span>
+                        Reset
+                    </button>
+
+
+                </div>
+
+            </div>-->
+
+            <table class="table table-bordered table-checkable" id="IM_datatable">
+               
+                    <thead>
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Asset Sl No</th>
+                            <th>Asset id </th>
+                            <th>Assset Device Characteristics</th>
+                            <th>Make </th>
+                            <th>Model </th>
+                            <th>Device Type</th>
+                            <th>Installation Date</th>
+                            <th>Vendor Code </th>
+                            <th>Vendor Name</th>
+                            <th>PO No</th>
+                            <th>PO Date</th>
+                            <th>Asset Delivered Location</th>
+                            <th>Asset Delivered Department</th>
+                            
+                            <th>Asset Status</th>
+                            <th>Active/Deactive Status</th>
+                            <th>Action</th>
+                            
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 1; }
+                        @foreach (var item in ViewBag.AssetMasterDataDD)
+                        {
+                            <tr>
+
+                                <td>@i</td>
+                                <td>@item.Asset_Sl_No</td>
+                                <td>@item.Asset_Id_SAP</td>
+                                <td>@item.AsssetDeviceCharacteristics</td>
+                                <td>@item.AssetMakeNo</td>
+                                <td>@item.AssetModelNo</td>
+                                <td>@item.DeviceType</td>
+                                <td>@item.Installation_date</td>
+                                <td>@item.Vendor_code</td>
+                                <td>@item.Vendor_name</td>
+                                <td>@item.PO_No</td>
+                                <td>@item.PO_date</td>
+                                <td>@item.asset_custodian_location</td>
+                                <td>@item.asset_custodian_department</td>
+                               
+                                <td>@item.asset_Status</td>
+                                <td>
+                                    @if (item.IsActive == true)
+                                    {
+                                        <span>Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Deactive</span>
+                                    }
+                                </td>
+
+                                <td>
+                                    @if (item.IsActive == true)
+                                    {
+                                        <button class="btn btn-md btn-danger" id="activateButton" onclick="ActivetoDeactive('@item.Asset_Code_System', 'Dectivated')">
+                                            <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24" />
+                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                        <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            Deactivate
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-md btn-success mr-1" id="activateButton" onclick="ActivetoDeactive('@item.Asset_Code_System', 'Activate')">
+                                            <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24" />
+                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                        <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            Activate
+                                        </button>
+                                    }
+
+                                </td>
+
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                
+            </table>
+        
+        
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="~/lib/assets/js/scripts.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+    var table = $('#IM_datatable');
+    table.DataTable({
+        responsive: true,
+        scrollX: false,
+        pagingType: 'full_numbers',
+        order: [],
+        dom: 'lBfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+        ]
+    });
+    table.init();
+</script>
+
+<script>
+    $('#AssetID').select2({
+        placeholder: "Select Asset ID"
+    });
+
+    $('#PONumber').select2({
+        placeholder: "Select PO Number"
+    });
+
+    $('#AssetCategory').select2({
+        placeholder: "Select Asset Category"
+    });
+</script>
+<script>
+    function ActivetoDeactive(Asset_Code_System, btnName) {
+
+    debugger;
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "" + btnName
+    }).then(function (result) {
+
+        if (result.value) {
+
+            var btnID = "activateButton";
+            //var ID = ID;
+
+            var assetsModel = {};
+            assetsModel.Asset_Code_System = Asset_Code_System;
+
+            $.ajax({
+                url: '@Url.Action("ActiveDeactiveAssets", "Asset")',
+                type: 'POST',
+                data: { assetsModel: assetsModel },
+                success: function (data) {
+
+                    location.href = data.redirectUrl;
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    toastr.error("Failed. Try again.");
+                }
+            });
+
+        }
+    });
+
+}
+</script>
+
+
+
+
+
+

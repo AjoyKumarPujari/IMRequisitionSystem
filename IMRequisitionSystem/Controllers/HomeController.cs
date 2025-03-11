@@ -15,12 +15,7 @@ namespace IMRequisitionSystem.Controllers
 
        
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+      
         public ActionResult LoginPage()
         {
             
@@ -34,12 +29,7 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
-        public ActionResult AddAssetMaster()
-        {
-
-
-            return View();
-        }
+      
         public ActionResult AssetMasterTable()
         {
 
@@ -109,10 +99,7 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
-        public ActionResult DetailPageForIssuer()
-        {
-            return View();
-        }
+       
         public ActionResult AllRequisitionIssueList()
         {
             return View();
@@ -212,6 +199,7 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
+        #region Deshboard
         public ActionResult AdminDeshboard()
         {
             return View();
@@ -220,28 +208,31 @@ namespace IMRequisitionSystem.Controllers
         {
             return View();
         }
-         public ActionResult EmployeeDeshboard()
+        public ActionResult EmployeeDeshboard()
         {
             return View();
         }
-          public ActionResult HODDeshboard()
+        public ActionResult HODDeshboard()
         {
             return View();
         }
-            public ActionResult ApproverDeshboard()
+        public ActionResult ApproverDeshboard()
         {
             return View();
         }
-            public ActionResult IssuerDeshboard()
+        public ActionResult IssuerDeshboard()
         {
             return View();
         }
-          public ActionResult AllocatorDeshboard()
+        public ActionResult AllocatorDeshboard()
         {
             return View();
         }
-       
-       
+        #endregion
+
+
+
+
 
         public ActionResult AMCMappingList()
         {

@@ -1,0 +1,388 @@
+﻿@model IMRequisitionSystem.Models.Assets.RequisitionRequestModel
+@{
+    ViewBag.Title = "DetailsPageForIMApprover";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<style>
+
+    .svg-icon svg {
+        fill: white !important
+    }
+
+        .svg-icon svg g [fill] {
+            fill: white !important
+        }
+
+    .max-width-300 {
+        max-width: 300px; /* Limit the width to 100px */
+        white-space: pre-wrap; /* Prevent text wrapping */
+        overflow: auto; /* Hide overflow text */
+        text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+    }
+</style>
+
+<div class="d-flex flex-column-fluid">
+    <div class="container-fluid">
+
+
+        <div class="card card-custom gutter-b" style="border-radius:25px">
+            <div class="card-body p-0">
+                <!-- begin: Invoice-->
+                <!-- begin: Invoice header-->
+                <div class="row justify-content-center py-8 px-8 py-md-18 px-md-0">
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between flex-column flex-md-row">
+                            <h1 class="display-4 font-weight-boldest mb-10">REQUISITION DETAILS</h1>
+                            <div class="d-flex flex-column align-items-md-end px-0">
+                                <button type="button" class="btn btn-primary font-weight-bold " onclick="history.back()">
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Back.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M11.0879549,18.2771971 L17.8286578,12.3976203 C18.0367595,12.2161036 18.0583109,11.9002555 17.8767943,11.6921539 C17.8622027,11.6754252 17.8465132,11.6596867 17.8298301,11.6450431 L11.0891271,5.72838979 C10.8815919,5.54622572 10.5656782,5.56679309 10.3835141,5.7743283 C10.3034433,5.86555116 10.2592899,5.98278612 10.2592899,6.10416552 L10.2592899,17.9003957 C10.2592899,18.1765381 10.4831475,18.4003957 10.7592899,18.4003957 C10.8801329,18.4003957 10.9968872,18.3566309 11.0879549,18.2771971 Z" fill="#000000" transform="translate(14.129645, 12.002277) scale(-1, 1) translate(-14.129645, -12.002277) " />
+                                                <rect fill="#000000" opacity="0.3" x="6" y="6" width="3" height="12" rx="1" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                    BACK
+                                </button>
+                            </div>
+                        </div>
+                        <div class="border-bottom w-100"></div>
+                        <div class="d-flex justify-content-between pt-6">
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REQUISITION NUMBER</span>
+                                <span class="opacity-70">@Model.Requisition_No</span>
+                            </div>
+
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REQUISITION STATUS</span>
+                                <span class="opacity-70 badge badge-warning" style="width: 250px">@Model.Requisition_Status</span>
+                            </div>
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REQUESTED DEVICE TYPE</span>
+                                <span class="opacity-70">@Model.DeviceName</span>
+                            </div>
+
+
+                        </div>
+
+                        <div class="d-flex justify-content-between pt-6">
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REQUESTOR LOCATION</span>
+                                <span class="opacity-70">@Model.Requestor_Department</span>
+                            </div>
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">USE LOCATION</span>
+                                <span class="opacity-70">@Model.Use_Location</span>
+                            </div>
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">USE DEPARTMENT</span>
+                                <span class="opacity-70">@Model.Use_Department_Name</span>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between pt-6">
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REQUISITION FOR</span>
+                                <span class="opacity-70">@Model.RequisitionFor</span>
+                            </div>
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">PURPOSE OF REQUISITION</span>
+                                <span class="opacity-70">
+                                    @Model.Purpose_Of_Use
+                                </span>
+                            </div>
+                            <div class="d-flex flex-column flex-root">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end: Invoice header-->
+                <!-- begin: Invoice body-->
+                <div class="row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0  mx-0" style="border-radius:25px;">
+                    <div class="col-md-10">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="pl-0 font-weight-bold text-muted text-uppercase">Activity</th>
+                                        <th class="text-right font-weight-bold text-muted text-uppercase">Username</th>
+                                        <th class="text-right font-weight-bold text-muted text-uppercase">Designation</th>
+                                        <th class="text-right font-weight-bold text-muted text-uppercase">Date Time</th>
+                                        <th class="text-left pr-0 font-weight-bold text-muted text-uppercase max-width-300">Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="font-weight-boldest">
+                                        <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                            Requisitioner
+                                        </td>
+                                        <td class="text-right pt-7 align-middle">@Model.Requestor_Name</td>
+                                        <td class="text-right pt-7 align-middle">@Model.Requestor_Designation</td>
+                                        <td class="text-right pt-7 align-middle">@Model.Requisition_Date</td>
+                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.Purpose_Of_Use</td>
+                                    </tr>
+                                    <tr class="font-weight-boldest">
+                                        <td class="border-top-0 pl-0 py-4 d-flex align-items-center">
+                                            Approver HOD/Unit In-Charge
+                                        </td>
+                                        <td class="text-right pt-7 align-middle">@Model.Approver_Name</td>
+                                        <td class="text-right pt-7 align-middle">@Model.Approver_Designation</td>
+                                        <td class="text-right pt-7 align-middle">@Model.Approve_DateTime</td>
+                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.Approver_Comment</td>
+
+                                       
+                                    </tr>
+                                    <tr class="font-weight-boldest">
+                                        <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                            IM Approver
+                                        </td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Approver_Name</td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Approver_Designation</td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Approve_DateTime</td>
+                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Approver_Comment</td>
+                                    </tr>
+                                    <tr class="font-weight-boldest">
+                                        <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                            IM Issuer
+                                        </td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Issuer_Name</td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Issuer_Designation</td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Issued_DateTime</td>
+                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Issuer_Comment</td>
+                                    </tr>
+                                    <tr class="font-weight-boldest">
+                                        <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                            IM Workshop
+                                        </td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Allocator_Name</td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Allocator_Designation</td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Allocated_DateTime</td>
+                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Allocator_Comment</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Invoice body-->
+                <!-- begin: Invoice footer-->
+                @*<div class="row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0 mx-0">
+                        <div class="col-md-10">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="font-weight-bold text-muted text-uppercase">PAYMENT TYPE</th>
+                                            <th class="font-weight-bold text-muted text-uppercase">PAYMENT STATUS</th>
+                                            <th class="font-weight-bold text-muted text-uppercase">PAYMENT DATE</th>
+                                            <th class="font-weight-bold text-muted text-uppercase text-right">TOTAL PAID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="font-weight-bolder">
+                                            <td>Credit Card</td>
+                                            <td>Success</td>
+                                            <td>Jan 07, 2020</td>
+                                            <td class="text-primary font-size-h3 font-weight-boldest text-right">$789.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>*@
+                <!-- end: Invoice footer-->
+                <!-- begin: Invoice action-->
+                <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+
+                            @if (Model.Requisition_Status == "HOD_APPROVED")
+                            {
+                                <button type="button" class="btn btn-success font-weight-bold" data-toggle="modal" data-target="#approveRequest">
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Clipboard-check.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3" />
+                                                <path d="M10.875,15.75 C10.6354167,15.75 10.3958333,15.6541667 10.2041667,15.4625 L8.2875,13.5458333 C7.90416667,13.1625 7.90416667,12.5875 8.2875,12.2041667 C8.67083333,11.8208333 9.29375,11.8208333 9.62916667,12.2041667 L10.875,13.45 L14.0375,10.2875 C14.4208333,9.90416667 14.9958333,9.90416667 15.3791667,10.2875 C15.7625,10.6708333 15.7625,11.2458333 15.3791667,11.6291667 L11.5458333,15.4625 C11.3541667,15.6541667 11.1145833,15.75 10.875,15.75 Z" fill="#000000" />
+                                                <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                    Approve Requisition
+                                </button>
+                            }
+
+                                <!--<button type="button" class="btn btn-danger font-weight-bold" data-toggle="modal" data-target="#rejectRequest">
+            <span class="svg-icon svg-icon-white svg-icon-2x">-->
+                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Trash.svg-->
+                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <rect x="0" y="0" width="24" height="24" />
+                <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero" />
+                <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3" />
+            </g>
+        </svg>-->
+                                <!--end::Svg Icon-->
+                                <!--</span>
+            Reject Requisition
+        </button>-->
+                            </div>
+                    </div>
+                </div>
+                <!-- end: Invoice action-->
+                <!-- end: Invoice-->
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="approveRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">Approval remarks if any</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <label class="font-weight-bold">Remarks:</label>
+                    <div class="form-group">
+
+                        @Html.HiddenFor(model => model.Requisition_No)
+                        @Html.EditorFor(model => model.IM_Approver_Comment, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off" } })
+
+                    </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ApproveRequestByIMapprover()" id="ApproveRequest">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="rejectRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">Reason For Rejection</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <label class="font-weight-bold">Reason:</label>
+                    <div class="form-group">
+                        <textarea class="form-control form-control-solid" rows="3" required></textarea>
+                    </div>
+                    <span class="form-text" style="color:red;">This is a required field.</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="rejectRequestHOD">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal-->
+
+
+<script>
+
+
+    $("#approveButton").click(function (e) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Approve"
+        }).then(function (result) {
+            if (result.value) {
+                Swal.fire(
+                    "Approved",
+                    "Requisition has been approved successfully",
+                    "success"
+                )
+            }
+        });
+    });
+
+    $("#rejectRequestHOD").click(function (e) {
+        Swal.fire("Done", "Request has been rejected successfully", "success");
+    });
+
+    $("#sendBackHOD").click(function (e) {
+        Swal.fire("Done", "Request has been sent back successfully", "success");
+    });
+
+</script>
+
+
+<script>
+
+
+    function ApproveRequestByIMapprover() {
+        debugger;
+    var btnID = "ApproveRequest";
+    var requisition_No = $("#Requisition_No").val();
+        var iM_Approver_Comment = $("#IM_Approver_Comment").val();
+
+        if (IM_Approver_Comment == "" || IM_Approver_Comment == null) {
+        showSwalToast("Remarks is required." ,"error");
+        return;
+    }
+
+    $("#" + btnID).attr("disabled", true);
+    $("#" + btnID).html("Please Wait..");
+
+        var requisitionRequestModel = {};
+        requisitionRequestModel.Requisition_No = requisition_No;
+        requisitionRequestModel.IM_Approver_Comment = iM_Approver_Comment;
+
+    $.ajax({
+        url: '@Url.Action("RequisitionApproveByIMApprover", "Approver")',
+        type: 'POST',
+        data: { requisitionRequestModel: requisitionRequestModel },
+        success: function (data) {
+
+        if (data.redirectUrl != '') {
+        location.href = data.redirectUrl;
+        } else {
+        $("#" + btnID).attr("disabled", false);
+        $("#" + btnID).html("Submit");
+        }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        $("#" + btnID).attr("disabled", false);
+        $("#" + btnID).html("Submit");
+
+        toastr.error("Failed to Approve. Try again.");
+        }
+        });
+        }
+</script>

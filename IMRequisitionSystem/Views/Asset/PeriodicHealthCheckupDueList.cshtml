@@ -1,0 +1,278 @@
+﻿@model IMRequisitionSystem.Models.Assets.AssetsModel
+@{
+    ViewBag.Title = "PeriodicHealthCheckupDueList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/lib/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
+</head>
+
+
+
+<div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
+
+    <div class="card-header">
+        <div class="card-title d-flex justify-content-between align-items-center w-100">
+            <div class="card-title">
+
+                <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
+
+                    <span> HEALTH CHECK UP DUE ASSET LIST</span>
+
+                </h2>
+
+            </div>
+            <button onclick="location.href='@Url.Action("AssetMasterTable", "Asset")'" class="btn btn-primary d-flex align-items-center">
+                <span class="svg-icon menu-icon">
+                    <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+                            <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+                        </g>
+                    </svg>
+                    <!--end::Svg Icon-->
+                </span>
+                ASSET MASTER LIST
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="card-body">
+
+            <table class="table table-bordered table-checkable" id="IM_datatable">
+
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Asset Sl No</th>
+                        <th>Asset id </th>
+                        <th>Make </th>
+                        <th>Model </th>
+                        <th>Requisition ID</th>
+                        <th>Allocated Date</th>
+                        <th>Health Check Up due Date</th>
+                        <th>Action</th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 1; }
+                    @foreach (var item in ViewBag.HealthCheckupDueAssetDataDD)
+                    {
+                        <tr>
+
+                            <td>@i</td>
+                            <td>@item.Asset_Sl_No</td>
+                            <td>@item.Asset_Id_SAP</td>
+                            <td>@item.AssetMakeNo</td>
+                            <td>@item.AssetModelNo</td>
+                            <td>@item.Requisition_No</td>
+                            <td>@item.IM_Allocated_DateTime</td>
+                            <td>@item.Asset_Due_Date</td>
+                            <td>
+                                <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#returnRequest" onclick="ModalOpen('@Html.Raw(HttpUtility.JavaScriptStringEncode(item.Asset_Code_System))')">
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Component.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M12.7442084,3.27882877 L19.2473374,6.9949025 C19.7146999,7.26196679 20.003129,7.75898194 20.003129,8.29726722 L20.003129,15.7027328 C20.003129,16.2410181 19.7146999,16.7380332 19.2473374,17.0050975 L12.7442084,20.7211712 C12.2830594,20.9846849 11.7169406,20.9846849 11.2557916,20.7211712 L4.75266256,17.0050975 C4.28530007,16.7380332 3.99687097,16.2410181 3.99687097,15.7027328 L3.99687097,8.29726722 C3.99687097,7.75898194 4.28530007,7.26196679 4.75266256,6.9949025 L11.2557916,3.27882877 C11.7169406,3.01531506 12.2830594,3.01531506 12.7442084,3.27882877 Z M12,14.5 C13.3807119,14.5 14.5,13.3807119 14.5,12 C14.5,10.6192881 13.3807119,9.5 12,9.5 C10.6192881,9.5 9.5,10.6192881 9.5,12 C9.5,13.3807119 10.6192881,14.5 12,14.5 Z" fill="#000000" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                    Complete
+                                </button>
+
+                            </td>
+
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<div class="modal fade" id="returnRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">HEALTH CHECK UP REMARKS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label class="font-weight-bold">Remarks:</label>
+                        <div class="form-group">
+
+                            @Html.EditorFor(model => model.Health_Checkup_Remarks, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off" } })
+
+                        </div>
+                        <span class="form-text" style="color:red;">This is a required field.</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    
+
+                    <div class="col-lg-12">
+                        <label class="font-weight-bolder">Select Asset Condition:</label>
+                        @Html.DropDownListFor(model => model.asset_Physical_Condition,
+                        new SelectList(ViewBag.AssetConditions, "Value", "Text", Model?.asset_Physical_Condition),
+                        "Select Condition", new { @class = "form-control select2", @style = "width:100%" })
+
+                        <span class="form-text text-muted">Select the asset condition to be returned.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"  onclick="HealthCheckupUpdate()" id="HealthCheckupupdatesubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal-->
+
+
+<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="~/lib/assets/js/scripts.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+
+    var table = $('#IM_datatable');
+    table.DataTable({
+        responsive: true,
+        pagingType: 'full_numbers',
+        order: [],
+        dom: 'lBfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+        ]
+    });
+    table.init();
+</script>
+
+<script>
+    $('#asset_Physical_Conditionasset_Physical_Condition').select2({
+        placeholder: "Select Asset Condition"
+    });
+</script>
+
+<script>
+
+    $('#healthCheckupDoneBy').datepicker({
+
+        changeYear: true,
+
+        todayHighlight: true,
+
+        format: 'dd-mm-yyyy',
+
+        autoclose: true,
+
+        startDate: "-1d"
+
+    }).on('changeDate', function (ev) {
+
+        startDate = $('#healthCheckupDoneBy').val(),
+
+            $(this).datepicker('hide');
+
+    });
+
+    var Global_Asset_Code_System;
+    function ModalOpen(Asset_Code_System) {
+        debugger;
+        Global_Asset_Code_System = Asset_Code_System;
+        /* console.log("Requisition No:", requisitionNo); */
+        $('#returnRequest').modal('show');  // Open the modal
+    }
+
+    function HealthCheckupUpdate() {
+        debugger;
+        var btnID = "HealthCheckupupdatesubmit";
+        var Asset_Code_System = Global_Asset_Code_System;
+        var Health_Checkup_Remarks = $("#Health_Checkup_Remarks").val();
+        var asset_Physical_Condition = $("#asset_Physical_Condition").val();
+
+
+
+
+
+        $("#" + btnID).attr("disabled", true);
+        $("#" + btnID).html("Please Wait..");
+
+            var assetsModel = {};
+        assetsModel.Health_Checkup_Remarks = Health_Checkup_Remarks;
+        assetsModel.asset_Physical_Condition = asset_Physical_Condition;
+        assetsModel.Asset_Code_System = Asset_Code_System;
+
+
+
+        $.ajax({
+            url: '@Url.Action("HealthCheckUpUpdate", "Asset")',
+            type: 'POST',
+            data: { assetsModel: assetsModel },
+            success: function (data) {
+
+            if (data.redirectUrl != '') {
+            location.href = data.redirectUrl;
+            } else {
+            $("#" + btnID).attr("disabled", false);
+            $("#" + btnID).html("Submit");
+            }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            $("#" + btnID).attr("disabled", false);
+            $("#" + btnID).html("Submit");
+
+            toastr.error("Failed to Allocate. Try again.");
+            }
+            });
+            }
+
+
+</script>
+
+
+
+

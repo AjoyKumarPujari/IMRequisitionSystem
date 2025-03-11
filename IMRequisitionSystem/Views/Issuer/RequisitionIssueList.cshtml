@@ -1,0 +1,390 @@
+﻿@model IMRequisitionSystem.Models.Assets.RequisitionRequestModel
+@{
+    ViewBag.Title = "RequisitionIssueList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/lib/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="~/lib/assets/media/logos/favicon.ico" />
+</head>
+
+
+
+<div class="card card-custom card-sticky" id="kt_page_sticky_card" style="border-radius:20px;">
+
+    <div class="card-header">
+
+        <div class="card-title">
+
+            <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
+
+                <span> REQUISITION ISSUE LIST</span>
+
+            </h2>
+
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="card-body">
+
+            <table class="table table-bordered table-checkable" id="IM_datatable">
+                <thead>
+                    <tr>
+                        <th>Sl No:</th>
+                        <th>Requisition ID </th>
+                        <th>Requisition By </th>
+                        <th>Requisition Date </th>
+                        <th>Type of Device </th>
+                        <th>Use Location </th>
+                        <th>Use Department </th>
+                        <th>Requestor Department </th>
+                        <th>Requisition For</th>
+                        <th>Requisition Status</th>
+                        <th>Approved By</th>
+                        <th>Action</th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 1; }
+                    @foreach (var item in ViewBag.RequisitionDetailsForIssuerDataDD)
+                    {
+                        <tr>
+
+                            <td>@i</td>
+                            <td>@item.Requisition_No</td>
+                            <td>@item.Requestor_Name</td>
+                            <td>@item.Requisition_Date</td>
+                            <td>@item.DeviceName</td>
+                            <td>@item.Use_Location</td>
+                            <td>@item.Use_Department_Name</td>
+                            <td>@item.Requestor_Department</td>
+                            <td>@item.Purpose_Of_Use</td>
+                            <td>@item.Requisition_Status</td>
+                            <td>@item.Approver_Name</td>
+                            <td>
+                               
+                            <button type="button" id="btnViewDetails" name="btnViewDetails" class="btn btn-primary btn-block mr-2 mb-1" onclick="GoToViewDetailsPage('@item.Requisition_No')">View Details</button>
+
+                            @*<button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm  btn-outline-warning mt-1" style="width:120px" data-toggle="modal" data-target="#IssueModal"> ISSUE</button>*@
+                            @*<button type="button" class="btn btn-secondary" onclick="ModalOpen()">Open Modal</button>*@
+                            <button type="button" class="btn btn-secondary btn-outline-warning mt-1" style="width:120px" onclick="ModalOpen('@Html.Raw(HttpUtility.JavaScriptStringEncode(item.Requisition_No))')">Issue</button>
+
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+
+
+</div>
+<div class="modal" id="IssueModal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>CHOOSE ASSET FOR ISSUE</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row ml-1 mr-1">
+                    <div class="form-group col-lg-4">
+                        <div class="form-group" style="width:100%">
+                            <label>Type of Device:</label>
+                            @Html.DropDownListFor(model => model.DeviceType, new SelectList(ViewBag.AssetCategoryDD, "ID", "DeviceType"), "Select Device Type", new { @class = "form-control select2", @style = "width:100%" })
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <button type="button" class="btn btn-outline-primary mt-8" style="width:180px" id="btnCheckAvailability" onclick="GetAvailableQuantityandQuantityID()">Check Avaibility</button>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>
+                            Available Quantity
+                        </label>
+
+                        <input class="form-control" type="number" value="" id="AvlQuantity" placeholder="Available Quantity" />
+                    </div>
+                </div>
+                <div class="row ml-1 mr-1">
+
+                    <div class="form-group col-lg-4">
+                        <label>
+                            Asset ID
+                            <span class="text-danger">*</span>
+                        </label>
+                        @Html.DropDownListFor(model => model.Asset_Sl_No, new SelectList(""), "Select Device ID", new { @class = "form-control select2", @style = "width:100%", @id = "DeviceTypeDropdown" })
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>
+                            Issuer Remarks
+                            <span class="text-danger">*</span>
+                        </label>
+                        @Html.EditorFor(model => model.IM_Issuer_Comment, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off" } })
+                    </div>
+
+                    @Html.HiddenFor(model => model.Requisition_No)
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="IssueRequestByIMIssuer()" id="IssueRequest">Issue</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $('#AssetName').select2({
+        placeholder: "Select Asset Type"
+    });
+
+    $('#AssetSerialN0').select2({
+        placeholder: "Select Asset Serial Number"
+    });
+
+    $('#UserName').select2({
+        placeholder: "Select Employee Name"
+    });
+
+    $('#updateUserName').select2({
+        placeholder: "Select Employee Name"
+    });
+
+    $('#AssetID').select2({
+        placeholder: "Select Role Name"
+    });
+    $('#AssetSerialN0').select2({
+        placeholder: "Select Serial Number"
+    });
+    $('#AssetID').select2({
+        placeholder: "Select Asset ID"
+    });
+    $('#DeviceType').select2({
+        placeholder: "Select Asset "
+    });
+    $('#DeviceTypeDropdown').select2({
+        placeholder: "Select Asset ID "
+    });
+</script>
+
+<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="~/lib/assets/js/scripts.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+    var table = $('#IM_datatable');
+    table.DataTable({
+        responsive: true,
+        pagingType: 'full_numbers',
+        order: [],
+        dom: 'lBfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+        ]
+    });
+    table.init();
+</script>
+<script>
+    var globalRequisitionNo;
+
+    function ViewDetails() {
+        window.location.href = '@Url.Action("DetailPageForIssuer", "Home")'
+    }
+    //function CheckAvaibilityDetails() {
+    //    toastr.options = {
+    //        "closeButton": false,
+    //        "debug": false,
+    //        "newestOnTop": false,
+    //        "progressBar": false,
+    //        "positionClass": "toast-top-right",
+    //        "preventDuplicates": false,
+    //        "onclick": null,
+    //        "showDuration": "300",
+    //        "hideDuration": "1000",
+    //        "timeOut": "5000",
+    //        "extendedTimeOut": "1000",
+    //        "showEasing": "swing",
+    //        "hideEasing": "linear",
+    //        "showMethod": "fadeIn",
+    //        "hideMethod": "fadeOut"
+    //    };
+
+    //    toastr.success("Asset Available!");
+
+    //    document.getElementById("AvlQuantity").value = "5";
+    //}
+
+
+    function ModalOpen(requisitionNo) {
+        debugger;
+        globalRequisitionNo = requisitionNo;
+       /* console.log("Requisition No:", requisitionNo); */
+        $('#IssueModal').modal('show');  // Open the modal
+    }
+
+    function GetAvailableQuantityandQuantityID() {
+        //clearForm();
+        GetAvailableQuantity();
+        GetAvailableQuantityID();
+
+    }
+
+    function GetAvailableQuantity() {
+        var selectedDeviceType = $("#DeviceType").val();
+        debugger;
+        if (selectedDeviceType) {
+            $.ajax({
+                url: '@Url.Action("CheckAvailability", "Issuer")', // Replace with your actual controller
+                type: 'GET',
+                data: { deviceTypeId: selectedDeviceType },
+                success: function (response) {
+                    if (response.success) {
+                        $("#AvlQuantity").val(response.data.TotalAssetCount);
+                    } else {
+                        $("#AvlQuantity").val(0); // Set to 0 if no data found
+                    }
+                },
+                error: function () {
+                    alert("Error fetching available quantity.");
+                }
+            });
+        } else {
+            $("#AvlQuantity").val(""); // Clear field if no selection
+        }
+    }
+
+    function GetAvailableQuantityID() {
+        var selectedDeviceType = $("#DeviceType").val();
+        debugger;
+        if (selectedDeviceType) {
+             $.ajax({
+                 url: '@Url.Action("GetDeviceTypeID", "Issuer")',
+                 type: "GET",
+                 data: { deviceTypeId: selectedDeviceType },
+                 success: function (response) {
+                     var DeviceTypeDropdown = document.getElementById("DeviceTypeDropdown");
+                     DeviceTypeDropdown.innerHTML = "";
+                     response.forEach(function (subCategory) {
+                         var option = document.createElement("option");
+                         option.value = subCategory.Asset_Code_System;
+                         option.text = subCategory.Asset_Sl_No;
+                         DeviceTypeDropdown.appendChild(option);
+                     });
+                 },
+                 error: function (xhr, status, error) {
+                     console.error("Failed to load Device Type", status, error);
+                 }
+             });
+        } else {
+            $("#DeviceTypeDropdown").val(""); // Clear field if no selection
+        }
+    }
+
+    function clearForm() {
+        debugger;
+        $("#DeviceType").val(" ");
+        $("#DeviceTypeDropdown").val(" ");
+    }
+
+    function IssueRequestByIMIssuer() {
+    debugger;
+        var btnID = "IssueRequest";
+        var requisition_No = globalRequisitionNo;
+        var DeviceType = $("#DeviceType").val();
+        var Asset_Sl_No = document.getElementById("DeviceTypeDropdown").value;;
+        var IM_Issuer_Comment = $("#IM_Issuer_Comment").val();
+
+
+        if (Asset_Sl_No == "" || Asset_Sl_No == null) {
+        showSwalToast("Select Asset ID." ,"error");
+        return;
+    }
+
+    $("#" + btnID).attr("disabled", true);
+    $("#" + btnID).html("Please Wait..");
+
+        var requisitionRequestModel = {};
+        requisitionRequestModel.Requisition_No = requisition_No;
+        requisitionRequestModel.DeviceType = DeviceType;
+        requisitionRequestModel.Asset_Sl_No = Asset_Sl_No;
+        requisitionRequestModel.IM_Issuer_Comment = IM_Issuer_Comment;
+
+
+    $.ajax({
+        url: '@Url.Action("RequisitionIssueByIMIssuer", "Issuer")',
+        type: 'POST',
+        data: { requisitionRequestModel: requisitionRequestModel },
+        success: function (data) {
+
+        if (data.redirectUrl != '') {
+        location.href = data.redirectUrl;
+        } else {
+        $("#" + btnID).attr("disabled", false);
+        $("#" + btnID).html("Submit");
+        }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        $("#" + btnID).attr("disabled", false);
+        $("#" + btnID).html("Submit");
+
+        toastr.error("Failed to Issue. Try again.");
+        }
+        });
+        }
+
+    function GoToViewDetailsPage(requisition_No) {
+     debugger;
+    $.ajax({
+     url: "@Url.Action("SetSession","Common")",
+     type: 'POST',
+     data: { key: "requisition_No", requisition_No: requisition_No },
+     success: function (response) {
+
+         if (response.success) {
+             //var url = $('base').attr('href') + "DetailsPageForHODUnitInCharge";
+             var url ='@Url.Action("DetailPageForIssuer", "Issuer")';
+         window.location.href = url;
+         }
+     },
+     error: function () {
+     }
+     });
+     }
+
+
+
+</script>
+
+
+
