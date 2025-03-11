@@ -1739,7 +1739,9 @@
     <Content Include="lib\assets\media\svg\illustrations\login-visual-3.svg" />
     <Content Include="lib\assets\media\svg\illustrations\login-visual-4.svg" />
     <Content Include="lib\assets\media\svg\illustrations\login-visual-5.svg" />
+    <Content Include="lib\assets\media\svg\illustrations\nrl_logo.jpg" />
     <Content Include="lib\assets\media\svg\illustrations\progress.svg" />
+    <Content Include="lib\assets\media\svg\illustrations\RefinaryImage.jpg" />
     <Content Include="lib\assets\media\svg\illustrations\working.svg" />
     <Content Include="lib\assets\media\svg\logos\adidas-9.svg" />
     <Content Include="lib\assets\media\svg\logos\adidas.svg" />
@@ -2322,7 +2324,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\LoginPage.cshtml" />
     <Content Include="Views\Asset\AddAssetMaster.cshtml" />

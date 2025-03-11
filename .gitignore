@@ -12,3 +12,14 @@
 /.git
 /.bin
 /.obj
+
+/IMRequisitionSystem/bin/
+/IMRequisitionSystem/obj/
+/IMRequisitionSystem/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/IMRequisitionSystem/bin/IMRequisitionSystem.dll
+/IMRequisitionSystem/bin/IMRequisitionSystem.pdb
+/IMRequisitionSystem/obj/Debug/IMRequisitionSystem.csproj.FileListAbsolute.txt
+/IMRequisitionSystem/obj/Debug/IMRequisitionSystem.dll
+/IMRequisitionSystem/obj/Debug/IMRequisitionSystem.pdb
+/IMRequisitionSystem/obj/Release/IMRequisitionSystem.csproj.AssemblyReference.cache
+/IMRequisitionSystem/obj/Debug/IMRequisitionSystem.csproj.CopyComplete
