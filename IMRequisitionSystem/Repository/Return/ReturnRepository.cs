@@ -75,6 +75,25 @@ namespace IMRequisitionSystem.Repository.Return
             }
         }
 
+        public List<AssetsModel> GetAllReturnRequestedAssetMasterOnBehaveOf()
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Type", "GET_ASSET_RETURNED_LIST_OnBehave_Of");
+                //parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+                return ExecuteStoredProcedure("Return_Details_SP", parameters, reader =>
+                {
+                    return reader.Read<AssetsModel>().AsList();
+                });
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return new List<AssetsModel>();
+            }
+        }
+
         public SPOutputMessage RequisitionReturnAcknowledge(AssetsModel assetsModel)
         {
             SPOutputMessage spResponse = new SPOutputMessage()
@@ -116,7 +135,6 @@ namespace IMRequisitionSystem.Repository.Return
             return spResponse;
         }
 
-
         public List<AssetsModel> GetAllReturnReceivedAssetMaster()
         {
             try
@@ -133,6 +151,26 @@ namespace IMRequisitionSystem.Repository.Return
             {
                 LoggingClass.SaveExceptionLog(ex);
                 return new List<AssetsModel>();
+            }
+        }
+
+        public AssetsModel GetDetailsDataForReturn(string return_Request_ID)
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Type", "GET_RETURN_REQUISITION_DETAILS_BY_return_Request_ID");
+                parameters.Add("@Return_Request_ID", return_Request_ID);
+
+                return ExecuteStoredProcedure("Return_Details_SP", parameters, reader =>
+                {
+                    return reader.ReadFirstOrDefault<AssetsModel>();
+                });
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return new AssetsModel();
             }
         }
     }

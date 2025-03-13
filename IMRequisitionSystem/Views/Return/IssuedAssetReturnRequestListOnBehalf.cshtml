@@ -1,6 +1,6 @@
-﻿@model IMRequisitionSystem.Models.Assets.AssetsModel
+﻿
 @{
-    ViewBag.Title = "ReturnReceiveReceivedList";
+    ViewBag.Title = "IssuedAssetReturnRequestListOnBehalf";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -33,7 +33,7 @@
 
                 <h2 class="card-label roboto-bold font-weight-bolder font-size-h2-lg">
 
-                    <span> RETURN REQUEST RECEIVED LIST</span>
+                    <span> RETURN REQUEST LIST (Others)</span>
 
                 </h2>
 
@@ -45,6 +45,9 @@
 
     <div class="card-body">
         <div class="card-body">
+
+            
+
             <table class="table table-bordered table-checkable" id="IM_datatable">
                 <thead>
                     <tr>
@@ -56,11 +59,10 @@
 
                         <th>Asset ID</th>
                         <th>Asset Serial No</th>
-
+                        <th>On Behave Of</th>
                         <th>Request Status</th>
                         <th>Return Comment</th>
-                        <th>Action</th>
-                        
+                        <th style="width: 100px;">Action</th>
 
                     </tr>
                 </thead>
@@ -78,22 +80,28 @@
                             <td>@item.Asset_Code_System</td>
                             <td>@item.Asset_Serial_No</td>
 
-
+                            <td>@item.Issued_To</td>
                             <td>
                                 <span class="label label-inline label-light-warning font-weight-bold">
                                     @item.Returned_Request_Status
                                 </span>
                             </td>
                             <td>@item.Return_Comment</td>
-
                             <td>
+                                @*<button type="button" class="btn btn-sm btn-outline-primary" onclick="ViewDetails()">View Details</button>*@
+                                @*<button type="button" class="btn btn-sm btn-outline-warning mt-1" data-toggle="modal" data-target="#returnReceive">Receive</button>*@
+                                
+
                                 <button type="button" id="btnViewDetails" name="btnViewDetails" class="btn btn-primary btn-block mr-2 mb-1" onclick="GoToViewDetailsPage('@item.Return_Request_ID')">View Details</button>
+
                             </td>
+
                         </tr>
                         i++;
                     }
                 </tbody>
             </table>
+
 
         </div>
     </div>
@@ -103,6 +111,8 @@
 
 </div>
 
+
+<!-- Modal-->
 
 
 <script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
@@ -131,34 +141,25 @@
 </script>
 
 <script>
-    $('#assetCondition').select2({
-        placeholder: "Select Asset Condition"
-    });
-</script>
-<script>
     function GoToViewDetailsPage(return_Request_ID) {
-         debugger;
-        $.ajax({
-         url: "@Url.Action("SetSessionReturnID", "Common")",
-         type: 'POST',
-            data: { key: "return_Request_ID", return_Request_ID: return_Request_ID },
-         success: function (response) {
+     debugger;
+    $.ajax({
+     url: "@Url.Action("SetSessionReturnID", "Common")",
+     type: 'POST',
+        data: { key: "return_Request_ID", return_Request_ID: return_Request_ID },
+     success: function (response) {
 
-             if (response.success) {
-                 //var url = $('base').attr('href') + "DetailsPageForHODUnitInCharge";
-                 var url ='@Url.Action("ReturnedRequisitionDetailsPage", "Return")';
-             window.location.href = url;
-             }
-         },
-         error: function () {
+         if (response.success) {
+             //var url = $('base').attr('href') + "DetailsPageForHODUnitInCharge";
+             var url ='@Url.Action("ReturnedRequisitionDetailsPage", "Return")';
+         window.location.href = url;
          }
-         });
-        }
+     },
+     error: function () {
+     }
+     });
+    }
 </script>
-
-
-
-
 
 
 

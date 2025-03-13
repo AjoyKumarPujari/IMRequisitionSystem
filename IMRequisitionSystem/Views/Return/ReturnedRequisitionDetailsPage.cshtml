@@ -1,4 +1,4 @@
-﻿
+﻿@model IMRequisitionSystem.Models.Assets.AssetsModel
 @{
     ViewBag.Title = "ReturnedRequisitionDetailsPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -36,7 +36,7 @@
                         <div class="d-flex justify-content-between flex-column flex-md-row">
                             <h1 class="display-4 font-weight-boldest mb-10">RETURN REQUEST DETAILS</h1>
                             <div class="d-flex flex-column align-items-md-end px-0">
-                                <button type="button" class="btn btn-primary font-weight-bold">
+                                <button type="button" class="btn btn-primary font-weight-bold" onclick="history.back()">
                                     <span class="svg-icon svg-icon-white svg-icon-2x">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Back.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -55,18 +55,18 @@
                         <div class="d-flex justify-content-between pt-6">
                             <div class="d-flex flex-column flex-root">
                                 <span class="font-weight-bolder mb-2">RETURN REQUEST NUMBER</span>
-                                <span class="opacity-70">NRL-IM-RR-0001</span>
+                                <span class="opacity-70">@Model.Return_Request_ID</span>
                             </div>
 
 
                             <div class="d-flex flex-column flex-root">
                                 <span class="font-weight-bolder mb-2">RETURN REQUEST STATUS</span>
-                                <span class="opacity-70 badge badge-warning" style="width: 250px">Requested</span>
+                                <span class="opacity-70 badge badge-warning" style="width: 250px">@Model.Returned_Request_Status</span>
                             </div>
 
                             <div class="d-flex flex-column flex-root">
                                 <span class="font-weight-bolder mb-2">RETURN REQUEST DATE</span>
-                                <span class="opacity-70">28-10-2024</span>
+                                <span class="opacity-70">@Model.Return_Request_Date</span>
                             </div>
 
 
@@ -75,19 +75,19 @@
                         <div class="d-flex justify-content-between pt-6">
 
                             <div class="d-flex flex-column flex-root">
-                                <span class="font-weight-bolder mb-2">RETURN ASSET ID</span>
-                                <span class="opacity-70">NRL-AID-0002</span>
+                                <span class="font-weight-bolder mb-2">RETURN ASSET SERIAL NO</span>
+                                <span class="opacity-70">@Model.Asset_Serial_No</span>
                             </div>
 
                             <div class="d-flex flex-column flex-root">
-                                <span class="font-weight-bolder mb-2">RETURN ASSET SERIAL NO</span>
-                                <span class="opacity-70">NRL-IM-VHF-0028</span>
+                                <span class="font-weight-bolder mb-2">RETURN ASSET ID </span>
+                                <span class="opacity-70">@Model.Asset_Id_SAP</span>
                             </div>
 
 
                             <div class="d-flex flex-column flex-root">
                                 <span class="font-weight-bolder mb-2">RETURNING DEVICE TYPE</span>
-                                <span class="opacity-70">VHF</span>
+                                <span class="opacity-70">@Model.DeviceType</span>
                             </div>
 
 
@@ -107,7 +107,7 @@
 
                             <div class="d-flex flex-column flex-root">
                                 <span class="font-weight-bolder mb-2">RETURN REQUESTOR DEPARTMENT</span>
-                                <span class="opacity-70">Mechanical Maintenance</span>
+                                <span class="opacity-70">@Model.Return_Requestor_Department</span>
                             </div>
                         </div>
 
@@ -115,30 +115,30 @@
                         <div class="d-flex justify-content-between pt-6">
                             <div class="d-flex flex-column flex-root">
                                 <span class="font-weight-bolder mb-2">ASSET CONDITION</span>
-                                <span class="opacity-70 badge badge-success" style="width: 150px">Good</span>
+                                <span class="opacity-70 badge badge-success" style="width: 150px">@Model.Returned_Asset_Condition</span>
                             </div>
 
-                            <div class="d-flex flex-column flex-root">
+                            @*<div class="d-flex flex-column flex-root">
                                 <span class="font-weight-bolder mb-2">REQUEST FOR </span>
                                 <span class="opacity-70 ">Other</span>
                             </div>
                             <div class="d-flex flex-column flex-root">
                                 <span class="font-weight-bolder mb-2">REQUEST ON BEHALF OF </span>
                                 <span class="opacity-70 ">Jyotirmoy Deka</span>
-                            </div>
-                           
+                            </div>*@
 
-                            
+
+
                         </div>
 
-                        <div class="d-flex justify-content-between pt-6">
+                        @*<div class="d-flex justify-content-between pt-6">
                             <div class="d-flex flex-column flex-root">
                                 <span class="font-weight-bolder mb-2">REASON OF RETURN</span>
                                 <span class="opacity-70">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun
+                                    @Model.
                                 </span>
                             </div>
-                        </div>
+                        </div>*@
 
                     </div>
                 </div>
@@ -158,24 +158,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   
+
                                     <tr class="font-weight-boldest border-bottom-0">
                                         <td class="border-top-0 pl-0 py-4 d-flex align-items-center">
-                                            Requester/IM Issuer
+                                            Requester
                                         </td>
-                                        <td class="text-right pt-7 align-middle">Ajit Kr Das</td>
-                                        <td class="text-right pt-7 align-middle">AM</td>
-                                        <td class="text-right pt-7 align-middle">12 Oct 2024</td>
-                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">Lorem Ipsum Solor Imit.</td>
+                                        <th class="text-right pt-7 align-middle">@Model.Return_Requestor_Name</th>
+                                        <th class="text-right pt-7 align-middle">@Model.Return_Requestor_Designation</th>
+                                        <th class="text-right pt-7 align-middle">@Model.Return_Request_Date</th>
+                                        <th class="text-right pt-7 align-middle">@Model.Return_Comment</th>
                                     </tr>
                                     <tr class="font-weight-boldest">
                                         <td class="border-0 pl-0 pt-7 d-flex align-items-center">
-                                            Allocator
+                                            Receiever
                                         </td>
-                                        <td class="text-right pt-7 align-middle">--</td>
-                                        <td class="text-right pt-7 align-middle">--</td>
-                                        <td class="text-right pt-7 align-middle">--</td>
-                                        <td class="text-left pr-0 pt-7 align-middle max-width-300"></td>
+                                        <td class="text-right pt-7 align-middle">@Model.Returned_Received_By_Name</td>
+                                        <td class="text-right pt-7 align-middle">@Model.Returned_Received_By_Designation</td>
+                                        <td class="text-right pt-7 align-middle">@Model.Return_Acknowledge_DateTime</td>
+                                        <td class="text-right pt-7 align-middle">@Model.Return_Acknowledge_Comment</td>
                                     </tr>
 
                                 </tbody>
@@ -214,20 +214,21 @@
                 <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                     <div class="col-md-10">
                         <div class="d-flex justify-content-between">
-
-                            <button type="button" class="btn btn-danger font-weight-bold" data-toggle="modal" data-target="#rejectRequest">
-                                <span class="svg-icon svg-icon-white svg-icon-2x">
-                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Trash.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24" />
-                                            <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero" />
-                                            <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3" />
-                                        </g>
-                                    </svg><!--end::Svg Icon-->
-                                </span>
-                                Reject Requisition
-                            </button>
-                        </div>
+                          
+                                <!--<button type="button" class="btn btn-danger font-weight-bold" data-toggle="modal" data-target="#rejectRequest">
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">-->
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Trash.svg--><!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero" />
+                                                <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3" />
+                                            </g>
+                                        </svg>--><!--end::Svg Icon-->
+                                    <!--</span>
+                                    Reject Requisition
+                                </button>-->
+                            
+                            </div>
                     </div>
                 </div>
                 <!-- end: Invoice action-->

@@ -1,4 +1,4 @@
-﻿
+﻿@model IMRequisitionSystem.Models.Assets.AssetsModel
 @{
     ViewBag.Title = "IssuedAssetList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -39,7 +39,7 @@
 
             </div>
 
-            <button onclick="location.href='@Url.Action("IssuedAssetReturnRequestListOnBehalf", "Home")'" class="btn btn-primary d-flex align-items-center">
+            <button onclick="location.href='@Url.Action("IssuedAssetReturnRequestListOnBehalf", "Return")'" class="btn btn-primary d-flex align-items-center">
                 <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -51,43 +51,47 @@
                     </svg>
                     <!--end::Svg Icon-->
                 </span>
-               ISSUED ASSET RETURN REQUEST LIST
+                ISSUED ASSET RETURN REQUEST LIST
             </button>
-        
-        </div>
-        
+
         </div>
 
+    </div>
+
+    <div class="card-body">
         <div class="card-body">
-            <div class="card-body">
 
-                <table class="table table-bordered table-checkable" id="IM_datatable">
-                    <thead>
-                        <tr>
-                            <th>Sl No:</th>
-                            <th>Asset ID </th>
-                            <th>Asset Serial No </th>
-                            <th>Make </th>
-                            <th>Model </th>
-                            <th>Requisition ID</th>
-                            <th>Issued Date </th>
-                            <th>Issued To</th>
-                            <th style="width: 100px;">Action</th>
+            <table class="table table-bordered table-checkable" id="IM_datatable">
+                <thead>
+                    <tr>
+                        <th>Sl No:</th>
+                        <th>Asset Serial No </th>
+                        <th>Asset ID </th>
+                        <th>Make </th>
+                        <th>Model </th>
+                        <th>Requisition ID</th>
+                        <th>Issued Date </th>
+                        <th>Issued To</th>
+                        <th style="width: 100px;">Action</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 1; }
+                    @foreach (var item in ViewBag.AssetMasterDataDD)
+                    {
                         <tr>
-                            <td>1</td>
-                            <td>NRL-AID-0006</td>
-                            <td>NRL-VHF-00018</td>
-                            <td>Motorola</td>
-                            <td>M-VHF</td>
-                            <td>NRL-IM-00030</td>
-                            <td>12 Oct 2024</td>
-                            <td>Jyotirmoy Deka</td>
+                            <td>@i</td>
+                            <td>@item.Asset_Sl_No</td>
+                            <td>@item.Asset_Id_SAP</td>
+                            <td>@item.AssetMakeNo</td>
+                            <td>@item.AssetModelNo</td>
+                            <td>@item.Requisition_No</td>
+                            <td>@item.Asset_Issued_Datetime</td>
+                            <td>@item.Issued_To</td>
+
                             <td>
-                                <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#returnRequest">
+                                <button class="btn btn-md btn-warning" data-toggle="modal" data-target="#returnRequest" onclick="ModalOpen('@Html.Raw(HttpUtility.JavaScriptStringEncode(item.Asset_Code_System))','@Html.Raw(HttpUtility.JavaScriptStringEncode(item.Issued_To))')">
                                     <span class="svg-icon svg-icon-white svg-icon-2x">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Shift.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -101,16 +105,17 @@
                             </td>
 
                         </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
 
-                    </tbody>
-                </table>
-
-            </div>
         </div>
-
-
-
     </div>
+
+
+
+</div>
 
 
 <div class="modal fade" id="returnRequest" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
@@ -127,7 +132,8 @@
                     <div class="col-lg-12">
                         <label class="font-weight-bold">Reason:</label>
                         <div class="form-group">
-                            <textarea class="form-control form-control-solid" rows="2" required></textarea>
+                            @Html.TextAreaFor(model => model.Return_Comment, new { @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off", rows = "4", cols = "50" })
+
                         </div>
                         <span class="form-text" style="color:red;">This is a required field.</span>
                     </div>
@@ -136,26 +142,27 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <label class="font-weight-bolder">Select Asset Condition:</label>
-                        <select class="form-control select2" style="width:100%" id="assetCondition" name="assetCondition">
-                            <option></option>
-                            <option>Good</option>
-                            <option>Damaged</option>
-                        </select>
+                        @Html.DropDownListFor(model => model.asset_Physical_Condition,
+                        new SelectList(ViewBag.AssetConditions, "Value", "Text", Model?.asset_Physical_Condition),
+                        "Select Condition", new { @class = "form-control select2", @style = "width:100%" })
 
                         <span class="form-text text-muted">Select the asset condition to be returned.</span>
                     </div>
 
                     <div class="col-lg-6">
                         <label class="font-weight-bolder">Return on behalf of:</label>
-                        <input class="form-control" type="text" value="Jyotirmoy Deka" id="returnOnBehalf" disabled />
+
+                        @Html.EditorFor(model => model.Issued_To, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off" ,id="IssuedTo"} })
+
 
                         <span class="form-text text-muted">Returning asset on behalf of.</span>
                     </div>
+                    @Html.HiddenFor(model => model.Asset_Code_System)
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="rejectRequestHOD">Submit</button>
+                <button type="button" class="btn btn-primary" onclick="ReturnRequest()" id="ReturnRequest">Submit</button>
             </div>
         </div>
     </div>
@@ -189,9 +196,66 @@
 </script>
 
 <script>
-    $('#assetCondition').select2({
+    $('#asset_Physical_Condition').select2({
         placeholder: "Select Asset Condition"
     });
+</script>
+
+<script>
+    var globalAsset_Code_System;
+    function ModalOpen(asset_Code_System, Issued_To ) {
+        debugger;
+        globalAsset_Code_System = asset_Code_System;
+        $('#IssuedTo').val(Issued_To);
+        /* console.log("Requisition No:", requisitionNo); */
+        $('#returnRequest').modal('show');  // Open the modal
+    }
+
+    function ReturnRequest() {
+    debugger;
+    var btnID = "returnRequest";
+    var Asset_Code_System = globalAsset_Code_System;
+    var asset_Physical_Condition = $("#asset_Physical_Condition").val();
+    var Return_Comment = $("#Return_Comment").val();
+
+
+    if (asset_Physical_Condition == "" || asset_Physical_Condition == null) {
+        showSwalToast("Select asset Condition ." ,"error");
+    return;
+    }
+
+    $("#" + btnID).attr("disabled", true);
+    $("#" + btnID).html("Please Wait..");
+
+    var requisitionRequestModel = {};
+    requisitionRequestModel.Return_Comment = Return_Comment;
+    requisitionRequestModel.asset_Physical_Condition = asset_Physical_Condition;
+    requisitionRequestModel.Asset_Code_System = Asset_Code_System;
+
+
+
+    $.ajax({
+    url: '@Url.Action("RequisitionReturnRequestFRomIssuer", "Return")',
+    type: 'POST',
+    data: { requisitionRequestModel: requisitionRequestModel },
+    success: function (data) {
+
+    if (data.redirectUrl != '') {
+    location.href = data.redirectUrl;
+    } else {
+    $("#" + btnID).attr("disabled", false);
+    $("#" + btnID).html("Submit");
+    }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+
+    $("#" + btnID).attr("disabled", false);
+    $("#" + btnID).html("Submit");
+
+    toastr.error("Failed to Issue. Try again.");
+    }
+    });
+    }
 </script>
 
 

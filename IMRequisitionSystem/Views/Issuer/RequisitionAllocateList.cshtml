@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="card-body">v
+    <div class="card-body">
         <div class="card-body">
 
             <table class="table table-bordered table-checkable" id="IM_datatable">
@@ -76,7 +76,12 @@
                             <td>@item.Use_Department_Name</td>
                             <td>@item.Requestor_Department</td>
                             <td>@item.Purpose_Of_Use</td>
-                            <td>@item.Requisition_Status</td>
+                            <td>
+                                <label class="text-success">
+                                    <span class="badge bg-success text-white">@item.Requisition_Status </span>
+                                </label>
+                            </td>
+                           
                             <td>@item.Approver_Name</td>
                             <td>@item.IM_Issuer_Name</td>
                             <td>@item.IM_Issued_DateTime</td>
@@ -179,8 +184,7 @@
                 <p>
                     <label class="font-weight-bold">Remarks:</label>
                     <div class="form-group">
- 
-                        @Html.EditorFor(model => model.IM_Allocator_Comment, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off" } })
+                     @Html.TextAreaFor(model => model.IM_Allocator_Comment, new { @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off", rows = "4" })
 
                     </div>
                 </p>

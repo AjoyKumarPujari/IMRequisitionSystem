@@ -60,6 +60,17 @@ namespace IMRequisitionSystem.Models.Assets
         public string IM_Allocated_DateTime { get; set; }
         public string Health_Checkup_Remarks { get; set; }
         public string HealthCheckUpOn { get; set; }
+        public string Returned_Asset_Condition { get; set; }
+        public string Return_Requestor_Designation { get; set; }
+        public string Returned_Received_By_Name { get; set; }
+        public string Return_Acknowledge_DateTime { get; set; }
+        public string Returned_Received_By_Designation { get; set; }
+        public string Asset_Issued_Datetime { get; set; }
+        public string Issued_To { get; set; }
+        public string Supplier_Vendor_Code { get; set; }
+        public string Supplier_Vendor_Name { get; set; }
+        public string Supplier_Vendor_ExpireDate { get; set; }
+        
         
        
     }

@@ -56,6 +56,7 @@
 
                             <th>Request Status</th>
                             <th>Return Comment</th>
+                            <th>Action </th>
 
 
                         </tr>
@@ -81,7 +82,9 @@
                                     </span>
                                 </td>
                                 <td>@item.Return_Comment</td>
-
+                                <td>
+                                    <button type="button" id="btnViewDetails" name="btnViewDetails" class="btn btn-primary btn-block mr-2 mb-1" onclick="GoToViewDetailsPage('@item.Return_Request_ID')">View Details</button>
+                                </td>
 
                             </tr>
                             i++;
@@ -127,6 +130,25 @@
     function ViewDetails() {
         window.location.href = '@Url.Action("ReturnRequestDetailsEmployee", "Home")'
     }
+
+    function GoToViewDetailsPage(return_Request_ID) {
+     debugger;
+        $.ajax({
+         url: "@Url.Action("SetSession","Common")",
+         type: 'POST',
+            data: { key: "return_Request_ID", return_Request_ID: return_Request_ID },
+         success: function (response) {
+
+             if (response.success) {
+                 //var url = $('base').attr('href') + "DetailsPageForHODUnitInCharge";
+                 var url ='@Url.Action("ReturnedRequisitionDetailsPage", "Return")';
+             window.location.href = url;
+             }
+         },
+         error: function () {
+         }
+         });
+}
 </script>
 
 

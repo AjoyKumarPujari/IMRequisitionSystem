@@ -26,7 +26,9 @@
                         <div class="form-group col-lg-4">
                             <label for="purpose">Role Description</label>
                             <span class="text-danger">*</span>
-                            @Html.EditorFor(model => model.Role_Description, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Role Description", autocomplete = "off", id = "roleDescription" } })
+                            @Html.TextAreaFor(model => model.Role_Description, new { @class = "form-control", @placeholder = "Enter Role Description", autocomplete = "off", id = "roleDescription", rows = "2" })
+
+
                         </div>
 
                         <div class="col-lg-4 col-md-12 mt-7">

@@ -91,6 +91,9 @@
                                 <button type="button" class="btn btn-sm btn-outline-warning mt-1" style="width:120px" onclick="ModalOpen('@Html.Raw(HttpUtility.JavaScriptStringEncode(item.Return_Request_ID))')">
                                     Return Receive
                                 </button>
+
+                                <button type="button" id="btnViewDetails" name="btnViewDetails" class="btn btn-primary btn-block mr-2 mb-1" onclick="GoToViewDetailsPage('@item.Return_Request_ID')">View Details</button>
+
                             </td>
 
                         </tr>
@@ -121,7 +124,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <label class="font-weight-bolder">Remarks:</label>
-                        @Html.EditorFor(model => model.Return_Acknowledge_Comment, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off" } })
+                        @Html.TextAreaFor(model => model.Return_Acknowledge_Comment, new { @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off", rows = "4" })
 
                         <span class="form-text" style="color:red;">This is a required field.</span>
                     </div>
@@ -175,9 +178,31 @@
     });
 </script>
 <script>
-    function ViewDetails() {
-        window.location.href = '@Url.Action("ReturnedRequisitionDetailsPage", "Home")'
+    function GoToViewDetailsPage(return_Request_ID) {
+     debugger;
+    $.ajax({
+     url: "@Url.Action("SetSessionReturnID", "Common")",
+     type: 'POST',
+        data: { key: "return_Request_ID", return_Request_ID: return_Request_ID },
+     success: function (response) {
+
+         if (response.success) {
+             //var url = $('base').attr('href') + "DetailsPageForHODUnitInCharge";
+             var url ='@Url.Action("ReturnedRequisitionDetailsPage", "Return")';
+         window.location.href = url;
+         }
+     },
+     error: function () {
+     }
+     });
     }
+</script>
+<script>
+
+   function ViewDetails() {
+        window.location.href = '@Url.Action("ReturnedRequisitionDetailsPage", "Home")'
+   }
+
 
     function ModalOpen(Return_Request_ID) {
         debugger;
@@ -191,7 +216,7 @@
         var btnID = "returnRequest";
         var Return_Request_ID = globalReturn_Request_ID;
         var Return_Acknowledge_Comment = $("#Return_Acknowledge_Comment").val();
-     
+
 
 
         if (Return_Acknowledge_Comment == "" || Return_Acknowledge_Comment == null) {
@@ -205,7 +230,7 @@
         var assetsModel = {};
         assetsModel.Return_Acknowledge_Comment = Return_Acknowledge_Comment;
         assetsModel.Return_Request_ID = Return_Request_ID;
-     
+
 
 
 

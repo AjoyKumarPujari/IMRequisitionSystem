@@ -110,6 +110,7 @@ namespace IMRequisitionSystem.Controllers
             }
             return View();
         }
+       
         public JsonResult ActiveDeactiveAssets(AssetsModel assetsModel)
         {
             var spResponse = _assetMasterRepository.UpdateActiveDeActiveAssetsStatus(assetsModel);
@@ -189,5 +190,76 @@ namespace IMRequisitionSystem.Controllers
             }
             return View();
         }
+
+        public ActionResult IssuedAssetList(string status, string message, bool isSwal = false)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(status))
+                {
+                    TempData[ToastMessageParameter.MessageType.ToString()] = status;
+                }
+                if (!string.IsNullOrEmpty(message))
+                {
+                    TempData[ToastMessageParameter.Message.ToString()] = message;
+                }
+                TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
+                List<SelectListItem> assetConditions = new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "GOOD", Text = "GOOD" },
+                    new SelectListItem { Value = "DAMAGE", Text = "DAMAGE" }
+                };
+
+                ViewBag.AssetConditions = assetConditions;
+
+                ViewBag.AssetMasterDataDD = _assetMasterRepository.GetAllIssuedAssetMaster();
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return View();
+        }
+        public ActionResult AMCMappingPage(string status, string message, bool isSwal = false)
+        {
+            var model = new AssetsModel();
+            try
+            {
+                if (!string.IsNullOrEmpty(status))
+                {
+                    TempData[ToastMessageParameter.MessageType.ToString()] = status;
+                }
+                if (!string.IsNullOrEmpty(message))
+                {
+                    TempData[ToastMessageParameter.Message.ToString()] = message;
+                }
+                TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
+                ViewBag.AssetMasterDataDD = _assetMasterRepository.GetAllAssetMaster();
+
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return View(model);
+        }
+
+        //public JsonResult GetDetailsByWorkOrderNoOfProductionServer(string Id)
+        //{
+            
+        //    var spResponse = _assetMasterRepository.GetDetailsByWorkOrderNoFromProduction(Id);
+
+        //    var jsonResponseHandler = new JsonResponseHandler(Url);
+        //    return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "AssetMasterTable", "Asset", Id);
+        //}
+
+        public JsonResult GetDetailsByWorkOrderNoOfProductionServer(string id)
+        {
+            AssetModelForAPI spResponse = _assetMasterRepository.GetDetailsByWorkOrderNoFromProduction(id);
+            return Json(spResponse, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

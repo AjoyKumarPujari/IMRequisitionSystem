@@ -20,5 +20,8 @@ namespace IMRequisitionSystem.Repository.Return
         List<AssetsModel> GetAllReturnRequestedAssetMaster();
         List<AssetsModel> GetAllReturnReceivedAssetMaster();
 
+        AssetsModel GetDetailsDataForReturn(string return_Request_ID);
+        List<AssetsModel> GetAllReturnRequestedAssetMasterOnBehaveOf();
+
     }
 }

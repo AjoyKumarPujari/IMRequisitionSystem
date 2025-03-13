@@ -187,22 +187,22 @@
 
      function GoToViewDetailsPage(requisition_No) {
           debugger;
-         $.ajax({
-          url: "@Url.Action("SetSession","Common")",
-          type: 'POST',
-          data: { key: "requisition_No", requisition_No: requisition_No },
-          success: function (response) {
+             $.ajax({
+              url: "@Url.Action("SetSession","Common")",
+              type: 'POST',
+              data: { key: "requisition_No", requisition_No: requisition_No },
+              success: function (response) {
 
-              if (response.success) {
-                  //var url = $('base').attr('href') + "DetailsPageForHODUnitInCharge";
-                  var url ='@Url.Action("DetailPageForIssuer", "Issuer")';
-              window.location.href = url;
+                  if (response.success) {
+                      //var url = $('base').attr('href') + "DetailsPageForHODUnitInCharge";
+                      var url ='@Url.Action("DetailPageForIssuer", "Issuer")';
+                  window.location.href = url;
+                  }
+              },
+              error: function () {
               }
-          },
-          error: function () {
-          }
-          });
-  }
+              });
+     }
 
 </script>
 

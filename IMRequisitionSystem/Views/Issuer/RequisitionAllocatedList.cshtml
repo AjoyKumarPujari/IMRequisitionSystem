@@ -61,6 +61,7 @@
                         <th>Issued On</th>
                         <th>Asset Sl No</th>
                         <th style="width: 100px;">Allocator Name</th>
+                        <th style="width: 100px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,6 +86,10 @@
                             <td>@item.IM_Issued_DateTime</td>
                             <td>@item.Asset_Sl_No</td>
                             <td>@item.IM_Allocator_Name</td>
+                            <td>
+                                <button type="button" id="btnViewDetails" name="btnViewDetails" class="btn btn-primary btn-block mr-2 mb-1" onclick="GoToViewDetailsPage('@item.Requisition_No')">View Details</button>
+
+                            </td>
 
 
                         </tr>
@@ -342,9 +347,24 @@
               }
 
 
-    function ViewDetails() {
-        window.location.href = '@Url.Action("DetailPageForAlocator", "Home")'
-    }
+   function GoToViewDetailsPage(requisition_No) {
+     debugger;
+    $.ajax({
+             url: "@Url.Action("SetSession","Common")",
+             type: 'POST',
+             data: { key: "requisition_No", requisition_No: requisition_No },
+             success: function (response) {
+
+                 if (response.success) {
+                     //var url = $('base').attr('href') + "DetailsPageForHODUnitInCharge";
+                     var url ='@Url.Action("DetailPageForAlocator", "Issuer")';
+                 window.location.href = url;
+                 }
+             },
+             error: function () {
+             }
+         });
+ }
     function Allocatepopup() {
         toastr.options = {
             "closeButton": false,

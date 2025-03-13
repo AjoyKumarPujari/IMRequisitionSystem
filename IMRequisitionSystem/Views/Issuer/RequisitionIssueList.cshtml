@@ -75,15 +75,21 @@
                             <td>@item.Use_Department_Name</td>
                             <td>@item.Requestor_Department</td>
                             <td>@item.Purpose_Of_Use</td>
-                            <td>@item.Requisition_Status</td>
+                            
+                            <td>
+                                <label class="text-success">
+                                    <span class="badge bg-success text-white">@item.Requisition_Status </span>
+                                </label>
+
+                            </td>
                             <td>@item.Approver_Name</td>
                             <td>
-                               
-                            <button type="button" id="btnViewDetails" name="btnViewDetails" class="btn btn-primary btn-block mr-2 mb-1" onclick="GoToViewDetailsPage('@item.Requisition_No')">View Details</button>
 
-                            @*<button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm  btn-outline-warning mt-1" style="width:120px" data-toggle="modal" data-target="#IssueModal"> ISSUE</button>*@
-                            @*<button type="button" class="btn btn-secondary" onclick="ModalOpen()">Open Modal</button>*@
-                            <button type="button" class="btn btn-secondary btn-outline-warning mt-1" style="width:120px" onclick="ModalOpen('@Html.Raw(HttpUtility.JavaScriptStringEncode(item.Requisition_No))')">Issue</button>
+                                <button type="button" id="btnViewDetails" name="btnViewDetails" class="btn btn-primary btn-block mr-2 mb-1" onclick="GoToViewDetailsPage('@item.Requisition_No')">View Details</button>
+
+                                @*<button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm  btn-outline-warning mt-1" style="width:120px" data-toggle="modal" data-target="#IssueModal"> ISSUE</button>*@
+                                @*<button type="button" class="btn btn-secondary" onclick="ModalOpen()">Open Modal</button>*@
+                                <button type="button" class="btn btn-secondary btn-outline-warning mt-1" style="width:120px" onclick="ModalOpen('@Html.Raw(HttpUtility.JavaScriptStringEncode(item.Requisition_No))')">Issue</button>
 
                             </td>
                         </tr>
@@ -110,7 +116,7 @@
                     <div class="form-group col-lg-4">
                         <div class="form-group" style="width:100%">
                             <label>Type of Device:</label>
-                            @Html.DropDownListFor(model => model.DeviceType, new SelectList(ViewBag.AssetCategoryDD, "ID", "DeviceType"), "Select Device Type", new { @class = "form-control select2", @style = "width:100%" })
+                            @Html.DropDownListFor(model => model.DeviceType, new SelectList(ViewBag.AssetCategoryDD, "ID", "DeviceType"), "Select Device Type", new { @class = "form-control select2", @style = "width:100%", onchange = "setValueToZero()" })
                         </div>
                     </div>
                     <div class="form-group col-lg-4">
@@ -133,12 +139,14 @@
                         </label>
                         @Html.DropDownListFor(model => model.Asset_Sl_No, new SelectList(""), "Select Device ID", new { @class = "form-control select2", @style = "width:100%", @id = "DeviceTypeDropdown" })
                     </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-8">
                         <label>
                             Issuer Remarks
                             <span class="text-danger">*</span>
                         </label>
-                        @Html.EditorFor(model => model.IM_Issuer_Comment, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off" } })
+                       
+                        @Html.TextAreaFor(model => model.IM_Issuer_Comment, new { @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off", rows = "3" })
+
                     </div>
 
                     @Html.HiddenFor(model => model.Requisition_No)
@@ -220,30 +228,6 @@
     function ViewDetails() {
         window.location.href = '@Url.Action("DetailPageForIssuer", "Home")'
     }
-    //function CheckAvaibilityDetails() {
-    //    toastr.options = {
-    //        "closeButton": false,
-    //        "debug": false,
-    //        "newestOnTop": false,
-    //        "progressBar": false,
-    //        "positionClass": "toast-top-right",
-    //        "preventDuplicates": false,
-    //        "onclick": null,
-    //        "showDuration": "300",
-    //        "hideDuration": "1000",
-    //        "timeOut": "5000",
-    //        "extendedTimeOut": "1000",
-    //        "showEasing": "swing",
-    //        "hideEasing": "linear",
-    //        "showMethod": "fadeIn",
-    //        "hideMethod": "fadeOut"
-    //    };
-
-    //    toastr.success("Asset Available!");
-
-    //    document.getElementById("AvlQuantity").value = "5";
-    //}
-
 
     function ModalOpen(requisitionNo) {
         debugger;
@@ -260,6 +244,7 @@
     }
 
     function GetAvailableQuantity() {
+        //clearForm();
         var selectedDeviceType = $("#DeviceType").val();
         debugger;
         if (selectedDeviceType) {
@@ -283,32 +268,50 @@
         }
     }
 
+    
+
     function GetAvailableQuantityID() {
-        var selectedDeviceType = $("#DeviceType").val();
-        debugger;
-        if (selectedDeviceType) {
-             $.ajax({
-                 url: '@Url.Action("GetDeviceTypeID", "Issuer")',
-                 type: "GET",
-                 data: { deviceTypeId: selectedDeviceType },
-                 success: function (response) {
-                     var DeviceTypeDropdown = document.getElementById("DeviceTypeDropdown");
-                     DeviceTypeDropdown.innerHTML = "";
-                     response.forEach(function (subCategory) {
-                         var option = document.createElement("option");
-                         option.value = subCategory.Asset_Code_System;
-                         option.text = subCategory.Asset_Sl_No;
-                         DeviceTypeDropdown.appendChild(option);
-                     });
-                 },
-                 error: function (xhr, status, error) {
-                     console.error("Failed to load Device Type", status, error);
-                 }
-             });
-        } else {
-            $("#DeviceTypeDropdown").val(""); // Clear field if no selection
-        }
+    var selectedDeviceType = $("#DeviceType").val();
+    debugger;
+    if (selectedDeviceType) {
+        $.ajax({
+            url: '@Url.Action("GetDeviceTypeID", "Issuer")',
+            type: "GET",
+            data: { deviceTypeId: selectedDeviceType },
+            success: function (response) {
+                var DeviceTypeDropdown = document.getElementById("DeviceTypeDropdown");
+                DeviceTypeDropdown.innerHTML = "";
+
+                // Add the dummy option
+                var defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.text = "Select Device ID";
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                DeviceTypeDropdown.appendChild(defaultOption);
+
+                // Populate dropdown with data
+                response.forEach(function (subCategory) {
+                    var option = document.createElement("option");
+                    option.value = subCategory.Asset_Code_System;
+                    option.text = subCategory.Asset_Sl_No;
+                    DeviceTypeDropdown.appendChild(option);
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error("Failed to load Device Type", status, error);
+            }
+        });
+    } else {
+        $("#DeviceTypeDropdown").html('<option value="" disabled selected>Select Device ID</option>'); // Clear field if no selection
     }
+}
+
+    function setValueToZero() {
+        document.getElementById('AvlQuantity').value = "0";
+    }
+
+
 
     function clearForm() {
         debugger;

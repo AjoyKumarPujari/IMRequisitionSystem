@@ -15,5 +15,12 @@ namespace IMRequisitionSystem.Controllers
             Session["" + key] = requisition_No;
             return Json(new { success = true });
         }
+
+        [HttpPost]
+        public JsonResult SetSessionReturnID(string key, string return_Request_ID)
+        {
+            Session["" + key] = return_Request_ID;
+            return Json(new { success = true });
+        }
     }
 }

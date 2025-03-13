@@ -45,20 +45,41 @@
                         <div class="border-bottom w-100"></div>
                         <div class="d-flex justify-content-between pt-6">
                             <div class="d-flex flex-column flex-root">
-                                <span class="font-weight-bolder mb-2">REQUESTOR LOCATION</span>
-                                <span class="opacity-70">@Model.Requestor_Department</span>
+                                <span class="font-weight-bolder mb-2">REQUISITION NUMBER</span>
+                                <span class="opacity-70">@Model.Requisition_No</span>
+                            </div>
+
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REQUISITION STATUS</span>
+                                <span class="opacity-70 badge badge-warning" style="width: 250px">@Model.Requisition_Status</span>
                             </div>
 
                             <div class="d-flex flex-column flex-root">
-                                <span class="font-weight-bolder mb-2">USE LOCATION</span>
-                                <span class="opacity-70">@Model.Use_Location</span>
-                            </div>
-                            <div class="d-flex flex-column flex-root">
-                                <span class="font-weight-bolder mb-2">USE DEPARTMENT</span>
-                                <span class="opacity-70">@Model.Use_Department_Name</span>
+                                <span class="font-weight-bolder mb-2">REQUESTED DEVICE TYPE</span>
+                                <span class="opacity-70">@Model.DeviceName</span>
                             </div>
 
 
+                        </div>
+
+
+                        <div class="d-flex justify-content-between pt-6">
+                           
+                                <div class="d-flex flex-column flex-root">
+                                    <span class="font-weight-bolder mb-2">REQUESTOR LOCATION</span>
+                                    <span class="opacity-70">@Model.Requestor_Department</span>
+                                </div>
+
+                                <div class="d-flex flex-column flex-root">
+                                    <span class="font-weight-bolder mb-2">USE LOCATION</span>
+                                    <span class="opacity-70">@Model.Use_Location</span>
+                                </div>
+                                <div class="d-flex flex-column flex-root">
+                                    <span class="font-weight-bolder mb-2">USE DEPARTMENT</span>
+                                    <span class="opacity-70">@Model.Use_Department_Name</span>
+                                </div>
+                            
                         </div>
 
 
@@ -75,26 +96,7 @@
                                 </span>
                             </div>
                             <div class="d-flex flex-column flex-root">
-
-                            </div>
-                        </div>
-
-
-                        <div class="d-flex justify-content-between pt-6">
-                            <div class="d-flex flex-column flex-root">
-                                <span class="font-weight-bolder mb-2">REQUISITION FOR</span>
-                                <span class="opacity-70">Self</span>
-                            </div>
-
-                            <div class="d-flex flex-column flex-root">
-                                <span class="font-weight-bolder mb-2">PURPOSE OF REQUISITION</span>
-                                <span class="opacity-70">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun
-                                </span>
-                            </div>
-                            <div class="d-flex flex-column flex-root">
-                                <span class="font-weight-bolder mb-2">ISSUED ASSET</span>
-                                <span class="opacity-70">AS-NRL-0001</span>
+                                
                             </div>
 
 
@@ -175,10 +177,10 @@
                                         <td class="border-0 pl-0 pt-7 d-flex align-items-center">
                                             IM Workshop
                                         </td>
-                                        <td class="text-right pt-7 align-middle">--</td>
-                                        <td class="text-right pt-7 align-middle">--</td>
-                                        <td class="text-right pt-7 align-middle">--</td>
-                                        <td class="text-left pr-0 pt-7 align-middle max-width-300"></td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Allocator_Name</td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Allocator_Designation</td>
+                                        <td class="text-right pt-7 align-middle">@Model.IM_Allocated_DateTime</td>
+                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Allocator_Comment</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -216,17 +218,34 @@
                 <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                     <div class="col-md-10">
                         <div class="d-flex justify-content-between">
-                            <button type="button" class="btn btn-danger font-weight-bold" data-toggle="modal" data-target="#rejectRequest">
+
+                            @if (Model.Requisition_Status == "IM_ISSUED")
+                            {
+
+                                <button type="button" class="btn btn-danger font-weight-bold" data-toggle="modal" data-target="#rejectRequest">
+                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Electric\Shutdown.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M7.62302337,5.30262097 C8.08508802,5.000107 8.70490146,5.12944838 9.00741543,5.59151303 C9.3099294,6.05357769 9.18058801,6.67339112 8.71852336,6.97590509 C7.03468892,8.07831239 6,9.95030239 6,12 C6,15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,9.99549229 17.0108275,8.15969002 15.3875704,7.04698597 C14.9320347,6.73472706 14.8158858,6.11230651 15.1281448,5.65677076 C15.4404037,5.20123501 16.0628242,5.08508618 16.51836,5.39734508 C18.6800181,6.87911023 20,9.32886071 20,12 C20,16.418278 16.418278,20 12,20 C7.581722,20 4,16.418278 4,12 C4,9.26852332 5.38056879,6.77075716 7.62302337,5.30262097 Z" fill="#000000" fill-rule="nonzero" />
+                                                <rect fill="#000000" opacity="0.3" x="11" y="3" width="2" height="10" rx="1" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                    Short Close
+                                </button>
+                            }
+                            <button type="button" class="btn btn-success font-weight-bold" data-toggle="modal" data-target="#approveRequest">
                                 <span class="svg-icon svg-icon-white svg-icon-2x">
-                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Electric\Shutdown.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Devices\Printer.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24" />
-                                            <path d="M7.62302337,5.30262097 C8.08508802,5.000107 8.70490146,5.12944838 9.00741543,5.59151303 C9.3099294,6.05357769 9.18058801,6.67339112 8.71852336,6.97590509 C7.03468892,8.07831239 6,9.95030239 6,12 C6,15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,9.99549229 17.0108275,8.15969002 15.3875704,7.04698597 C14.9320347,6.73472706 14.8158858,6.11230651 15.1281448,5.65677076 C15.4404037,5.20123501 16.0628242,5.08508618 16.51836,5.39734508 C18.6800181,6.87911023 20,9.32886071 20,12 C20,16.418278 16.418278,20 12,20 C7.581722,20 4,16.418278 4,12 C4,9.26852332 5.38056879,6.77075716 7.62302337,5.30262097 Z" fill="#000000" fill-rule="nonzero" />
-                                            <rect fill="#000000" opacity="0.3" x="11" y="3" width="2" height="10" rx="1" />
+                                            <path d="M16,17 L16,21 C16,21.5522847 15.5522847,22 15,22 L9,22 C8.44771525,22 8,21.5522847 8,21 L8,17 L5,17 C3.8954305,17 3,16.1045695 3,15 L3,8 C3,6.8954305 3.8954305,6 5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,15 C21,16.1045695 20.1045695,17 19,17 L16,17 Z M17.5,11 C18.3284271,11 19,10.3284271 19,9.5 C19,8.67157288 18.3284271,8 17.5,8 C16.6715729,8 16,8.67157288 16,9.5 C16,10.3284271 16.6715729,11 17.5,11 Z M10,14 L10,20 L14,20 L14,14 L10,14 Z" fill="#000000" />
+                                            <rect fill="#000000" opacity="0.3" x="8" y="2" width="8" height="2" rx="1" />
                                         </g>
                                     </svg><!--end::Svg Icon-->
                                 </span>
-                                Short Close
+                                Issue Order
                             </button>
                         </div>
                     </div>

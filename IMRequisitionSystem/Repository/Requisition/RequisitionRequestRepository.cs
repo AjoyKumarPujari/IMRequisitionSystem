@@ -3,10 +3,13 @@ using Holiday_Home.Util;
 using IMRequisitionSystem.Models;
 using IMRequisitionSystem.Models.Assets;
 using IMRequisitionSystem.Util;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 namespace IMRequisitionSystem.Repository.Requisition
 {
@@ -234,7 +237,6 @@ namespace IMRequisitionSystem.Repository.Requisition
         }
 
 
-
         public SPOutputMessage RequisitionDraftGenerateUpdate(RequisitionRequestModel requisitionRequestModel)
         {
             SPOutputMessage spResponse = new SPOutputMessage()
@@ -276,5 +278,7 @@ namespace IMRequisitionSystem.Repository.Requisition
         }
 
 
+
+        
     }
 }

@@ -299,7 +299,8 @@
                     <div class="form-group">
 
                         @Html.HiddenFor(model => model.Requisition_No)
-                        @Html.EditorFor(model => model.Approver_Comment, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off" } })
+                      
+                        @Html.TextAreaFor(model => model.Approver_Comment, new { @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off", rows = "2" })
 
                     </div>
                 </p>
@@ -327,8 +328,7 @@
                     <div class="form-group">
 
                         @Html.HiddenFor(model => model.Requisition_No)
-                        @Html.EditorFor(model => model.Reject_Reason, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Reason", autocomplete = "off" } })
-
+                        @Html.TextAreaFor(model => model.Reject_Reason, new { @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off", rows = "2" })
                     </div>
                     <span class="form-text" style="color:red;">This is a required field.</span>
                 </p>

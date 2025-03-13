@@ -22,5 +22,12 @@ namespace IMRequisitionSystem.Repository
 
 
         SPOutputMessage UpdateActiveDeActiveAsCreateHealthCheckUpUpdatesetsStatus(AssetsModel assetsModel);
+      
+
+        List<AssetsModel> GetAllIssuedAssetMaster();
+
+        AssetModelForAPI GetDetailsByWorkOrderNoFromProduction(string id);
+
+
     }
 }

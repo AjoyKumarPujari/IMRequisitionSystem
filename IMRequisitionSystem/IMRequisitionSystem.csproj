@@ -162,6 +162,7 @@
     </Compile>
     <Compile Include="Models\Area\AreaModel.cs" />
     <Compile Include="Models\Assets\AssetCategoryModel.cs" />
+    <Compile Include="Models\Assets\AssetModelForAPI.cs" />
     <Compile Include="Models\Assets\AssetsModel.cs" />
     <Compile Include="Models\RequisitionRequest\RequisitionRequestModel.cs" />
     <Compile Include="Models\Department\DepartmentModel.cs" />
@@ -2352,19 +2353,19 @@
     <Content Include="Views\Home\AssignLocationalAdmin.cshtml" />
     <Content Include="Views\Approver\RequisitionDetailsPage.cshtml" />
     <Content Include="Views\Issuer\IssuedRequisitionList.cshtml" />
-    <Content Include="Views\Home\IssuedAssetList.cshtml" />
+    <Content Include="Views\Asset\IssuedAssetList.cshtml" />
     <Content Include="Views\Home\AssetReturnRequestList.cshtml" />
     <Content Include="Views\Home\RequisitionDetailsPageIssued.cshtml" />
     <Content Include="Views\Home\AllocatorAllocatedRequisition.cshtml" />
     <Content Include="Views\Asset\PeriodicHealthCheckupDueList.cshtml" />
     <Content Include="Views\Asset\PeriodicHealthCheckupHistory.cshtml" />
     <Content Include="Views\Login\UserLogin.cshtml" />
-    <Content Include="Views\Home\ReturnedRequisitionDetailsPage.cshtml" />
-    <Content Include="Views\Home\IssuedAssetReturnRequestListOnBehalf.cshtml" />
+    <Content Include="Views\Return\ReturnedRequisitionDetailsPage.cshtml" />
+    <Content Include="Views\Return\IssuedAssetReturnRequestListOnBehalf.cshtml" />
     <Content Include="Views\Return\ReturnReceivePendingList.cshtml" />
     <Content Include="Views\Return\ReturnReceiveReceivedList.cshtml" />
     <Content Include="Views\Home\ReturnReceiveReceivedDetailsPage.cshtml" />
-    <Content Include="Views\Home\AMCMappingPage.cshtml" />
+    <Content Include="Views\Asset\AMCMappingPage.cshtml" />
     <Content Include="Views\Home\AdminDeshboard.cshtml" />
     <Content Include="Views\Home\LocationAdminDeshboard.cshtml" />
     <Content Include="Views\Home\EmployeeDeshboard.cshtml" />

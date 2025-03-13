@@ -269,7 +269,8 @@
                     <div class="form-group">
 
                         @Html.HiddenFor(model => model.Requisition_No)
-                        @Html.EditorFor(model => model.IM_Approver_Comment, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off" } })
+                       
+                        @Html.TextAreaFor(model => model.IM_Approver_Comment, new { @class = "form-control", @placeholder = "Enter Remarks", autocomplete = "off", rows = "4" })
 
                     </div>
                 </p>

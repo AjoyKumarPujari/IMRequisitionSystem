@@ -59,6 +59,15 @@ namespace IMRequisitionSystem.Controllers
             var jsonResponseHandler = new JsonResponseHandler(Url);
             return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "AllocatedAssetList", "Return", requisitionRequestModel.Requisition_No);
         }
+        public JsonResult RequisitionReturnRequestFRomIssuer(RequisitionRequestModel requisitionRequestModel)
+        {
+            var spResponse = _iReturnRepository.RequisitionReturn(requisitionRequestModel);
+
+            Session["Requisition_No"] = requisitionRequestModel.Requisition_No;
+
+            var jsonResponseHandler = new JsonResponseHandler(Url);
+            return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "IssuedAssetList", "Asset", requisitionRequestModel.Requisition_No);
+        }
         public ActionResult ReturnReceivePendingList(string status, string message, bool isSwal = false)
         {
             try
@@ -128,6 +137,55 @@ namespace IMRequisitionSystem.Controllers
                 }
                 TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
                 ViewBag.AssetMasterDataDD = _iReturnRepository.GetAllReturnRequestedAssetMaster();
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return View();
+        }
+
+        public ActionResult ReturnedRequisitionDetailsPage(AssetsModel assetsModel, string status, string message, string return_Request_ID)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(status))
+                {
+                    TempData[ToastMessageParameter.MessageType.ToString()] = status;
+                }
+                if (!string.IsNullOrEmpty(message))
+                {
+                    TempData[ToastMessageParameter.Message.ToString()] = message;
+                }
+                TempData[ToastMessageParameter.IsSwal.ToString()] = true;
+                //ViewBag.CancelRequest = cancelRequest;
+                return_Request_ID = System.Web.HttpContext.Current.Session["return_Request_ID"] as string;
+                //ViewBag.RequisitionDetailsForRequestorDataDD = _requisitionApproveList.GetDetailsPageForUnitIncharge(requisition_No);
+                assetsModel = _iReturnRepository.GetDetailsDataForReturn(return_Request_ID);
+                return View(assetsModel);
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return View();
+        }
+        public ActionResult IssuedAssetReturnRequestListOnBehalf(string status, string message, bool isSwal = false)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(status))
+                {
+                    TempData[ToastMessageParameter.MessageType.ToString()] = status;
+                }
+                if (!string.IsNullOrEmpty(message))
+                {
+                    TempData[ToastMessageParameter.Message.ToString()] = message;
+                }
+                TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
+                ViewBag.AssetMasterDataDD = _iReturnRepository.GetAllReturnRequestedAssetMasterOnBehaveOf();
+                //ViewBag.AssetMasterDataDD = _iReturnRepository.GetAllReturnRequestedAssetMaster();
 
             }
             catch (Exception ex)

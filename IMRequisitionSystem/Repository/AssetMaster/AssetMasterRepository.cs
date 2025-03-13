@@ -8,6 +8,9 @@ using Dapper;
 using Holiday_Home.Util;
 using System.Data;
 using IMRequisitionSystem.Models.RoleMaster;
+using Newtonsoft.Json;
+using System.IO;
+using System.Net;
 
 namespace IMRequisitionSystem.Repository
 {
@@ -149,8 +152,6 @@ namespace IMRequisitionSystem.Repository
         }
 
 
-
-
         public List<AssetsModel> GetHealthCheckupDueAsset()
         {
             try
@@ -228,6 +229,65 @@ namespace IMRequisitionSystem.Repository
             {
                 LoggingClass.SaveExceptionLog(ex);
                 return new List<AssetsModel>();
+            }
+        }
+
+        
+        public List<AssetsModel> GetAllIssuedAssetMaster()
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Type", "GET_ALL_ISSUED_ASSETDATA_FOR_LIST_VIEW");
+
+                return ExecuteStoredProcedure("Asset_Master_SP", parameters, reader =>
+                {
+                    return reader.Read<AssetsModel>().AsList();
+                });
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return new List<AssetsModel>();
+            }
+        }
+
+        public AssetModelForAPI GetDetailsByWorkOrderNoFromProduction(string id)
+        {
+            try
+            {
+                List<AssetModelForAPI> workerDetails = new List<AssetModelForAPI>();
+                string url = string.Format("http://webprdev/APIValidatePO/api/icwcs/get_po_details?pono={0}", id);
+
+                HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+                request.Method = WebRequestMethods.Http.Get;
+                request.ContentType = "application/json; charset=utf-8";
+                WebResponse response = request.GetResponse();
+
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    string strsb = reader.ReadToEnd();
+
+                    var jsonResult = JsonConvert.DeserializeObject(strsb).ToString();
+                    workerDetails = JsonConvert.DeserializeObject<List<AssetModelForAPI>>(jsonResult);
+                }
+
+                if (workerDetails == null)
+                {
+                    return new AssetModelForAPI();
+                }
+                if (workerDetails.Count <= 0)
+                {
+                    return new AssetModelForAPI();
+                }
+
+                return workerDetails[0];
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return new AssetModelForAPI();
+
             }
         }
 
