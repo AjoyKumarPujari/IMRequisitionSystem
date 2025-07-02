@@ -83,7 +83,7 @@
                                 @if (item.Requisition_Status == "CANCALLED")
                                 {
                                     <label class="text-success">
-                                        <span class="badge bg-danger text-white">CANCALLED</span>
+                                        <span class="badge bg-danger text-white">CANCELLED</span>
                                     </label>
                                 }
                                 @if (item.Requisition_Status == "REQUESTED")
@@ -92,26 +92,31 @@
                                         <span class="badge bg-primary text-white">REQUESTED</span>
                                     </label>
                                 }
-                                 @if (item.Requisition_Status == "IM_ALLOCATED")
+                                @if (item.Requisition_Status == "IM_ALLOCATED")
                                 {
                                     <label class="text-success">
                                         <span class="badge bg-success text-white">IM ALLOCATED</span>
                                     </label>
                                 }
-                                 @if (item.Requisition_Status == "IM_ISSUED")
+                                @if (item.Requisition_Status == "IM_ISSUED")
                                 {
                                     <label class="text-success">
                                         <span class="badge bg-warning text-white">IM ISSUED</span>
                                     </label>
                                 }
-                                
-                                 @if (item.Requisition_Status == "HOD_APPROVED")
+
+                                @if (item.Requisition_Status == "HOD_APPROVED")
                                 {
                                     <label class="text-success">
                                         <span class="badge bg-danger text-white">HOD APPROVED </span>
                                     </label>
+                                } @if (item.Requisition_Status == "IM_APPROVED")
+                                {
+                                    <label class="text-success">
+                                        <span class="badge bg-danger text-white">IM APPROVED </span>
+                                    </label>
                                 }
-                                 @if (item.Requisition_Status == "IM_ISSUER_SORT_CLOSED")
+                                @if (item.Requisition_Status == "IM_ISSUER_SORT_CLOSED")
                                 {
                                     <label class="text-success">
                                         <span class="badge bg-danger text-white">SORT CLOSED </span>
@@ -123,7 +128,19 @@
                                         <span class="badge bg-danger text-white">HOD REJECTED  </span>
                                     </label>
                                 }
-                                
+                                @if (item.Requisition_Status == "IM_APPROVER_CANCELED")
+                                {
+                                    <label class="text-warning">
+                                        <span class="badge bg-danger text-white">IM APPROVER CANCELED  </span>
+                                    </label>
+                                }
+                                @if (item.Requisition_Status == "InDraft")
+                                {
+                                    <label class="text-warning">
+                                        <span class="badge bg-warning text-white">IN TRANSIT  </span>
+                                    </label>
+                                }
+
 
 
                             </td>

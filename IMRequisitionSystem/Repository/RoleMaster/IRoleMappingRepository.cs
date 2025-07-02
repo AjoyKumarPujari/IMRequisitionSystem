@@ -15,6 +15,7 @@ namespace IMRequisitionSystem.Repository.RoleMaster
         SPOutputMessage InsertUserRoleMapping(RoleMappingModel roleMappingModel);
         List<RoleMappingModel> GetAllRoleMappingMaster();
         SPOutputMessage UpdateActiveDeActiveMappingStatus(RoleMappingModel roleMappingModel);
+        SPOutputMessage UpdateArchive(RoleMappingModel roleMappingModel);
 
     }
 }

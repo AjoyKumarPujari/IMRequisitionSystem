@@ -134,7 +134,7 @@
     function GoToViewDetailsPage(return_Request_ID) {
      debugger;
         $.ajax({
-         url: "@Url.Action("SetSession","Common")",
+         url: "@Url.Action("SetSessionReturnID", "Common")",
          type: 'POST',
             data: { key: "return_Request_ID", return_Request_ID: return_Request_ID },
          success: function (response) {

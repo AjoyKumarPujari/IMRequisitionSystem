@@ -12,6 +12,7 @@ using IMRequisitionSystem.Models.Assets;
 
 namespace IMRequisitionSystem.Controllers
 {
+    [CustomAdminAuthorize]
     public class ReturnController : Controller
     {
         private readonly IReturnRepository _iReturnRepository;
@@ -59,6 +60,8 @@ namespace IMRequisitionSystem.Controllers
             var jsonResponseHandler = new JsonResponseHandler(Url);
             return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "AllocatedAssetList", "Return", requisitionRequestModel.Requisition_No);
         }
+
+
         public JsonResult RequisitionReturnRequestFRomIssuer(RequisitionRequestModel requisitionRequestModel)
         {
             var spResponse = _iReturnRepository.RequisitionReturn(requisitionRequestModel);
@@ -146,6 +149,17 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
+
+        public JsonResult RejectReturnRequest(AssetsModel assetsModel)
+        {
+            var spResponse = _iReturnRepository.RejectReturnRequestUpdate(assetsModel);
+
+            Session["Return_Request_ID"] = assetsModel.Return_Request_ID;
+
+            var jsonResponseHandler = new JsonResponseHandler(Url);
+            return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "ReturnedRequisitionDetailsPage", "Return", assetsModel.Return_Request_ID);
+        }
+
         public ActionResult ReturnedRequisitionDetailsPage(AssetsModel assetsModel, string status, string message, string return_Request_ID)
         {
             try
@@ -184,7 +198,7 @@ namespace IMRequisitionSystem.Controllers
                     TempData[ToastMessageParameter.Message.ToString()] = message;
                 }
                 TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
-                ViewBag.AssetMasterDataDD = _iReturnRepository.GetAllReturnRequestedAssetMasterOnBehaveOf();
+                ViewBag.AssetMasterDataDD = _iReturnRepository.GetAllReturnData();
                 //ViewBag.AssetMasterDataDD = _iReturnRepository.GetAllReturnRequestedAssetMaster();
 
             }

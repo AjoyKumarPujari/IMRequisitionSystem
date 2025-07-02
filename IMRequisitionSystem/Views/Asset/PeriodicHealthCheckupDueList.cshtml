@@ -70,9 +70,6 @@
                         <th>Allocated Date</th>
                         <th>Health Check Up due Date</th>
                         <th>Action</th>
-
-
-
                     </tr>
                 </thead>
                 <tbody>
@@ -80,7 +77,6 @@
                     @foreach (var item in ViewBag.HealthCheckupDueAssetDataDD)
                     {
                         <tr>
-
                             <td>@i</td>
                             <td>@item.Asset_Sl_No</td>
                             <td>@item.Asset_Id_SAP</td>
@@ -101,9 +97,7 @@
                                     </span>
                                     Complete
                                 </button>
-
                             </td>
-
                         </tr>
                         i++;
                     }

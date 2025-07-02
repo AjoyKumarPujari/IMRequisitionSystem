@@ -1,5 +1,6 @@
 ﻿using IMRequisitionSystem.Models;
 using IMRequisitionSystem.Models.Assets;
+using IMRequisitionSystem.Models.RoleMapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,6 @@ namespace IMRequisitionSystem.Repository.Requisition
         SPOutputMessage RequisitionCancaled(RequisitionRequestModel requisitionRequestModel);
         SPOutputMessage RequisitionDraftGenerateUpdate(RequisitionRequestModel requisitionRequestModel);
 
-
+        SPOutputMessage UpdateRequisitionArchive(RequisitionRequestModel requisitionRequestModel);
     }
 }

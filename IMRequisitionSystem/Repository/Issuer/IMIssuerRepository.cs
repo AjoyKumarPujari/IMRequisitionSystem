@@ -21,6 +21,7 @@ namespace IMRequisitionSystem.Repository.Issuer
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@Type", "REQUISITION_DATA_FOR_IM_ISSUER");
+                parameters.Add("@Emp_loc_code", SessionData.GetSessionData(SessionData.Emp_loc_code));
                 //parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
                 return ExecuteStoredProcedure("Requisition_Details_ISSUER_SP", parameters, reader =>
                 {
@@ -41,7 +42,8 @@ namespace IMRequisitionSystem.Repository.Issuer
                 var parameters = new DynamicParameters();
                 parameters.Add("@Type", "GET_DEVICE_Quantity_BY_deviceTypeId");
                 parameters.Add("@DeviceType", deviceTypeId);
-               
+                parameters.Add("@asset_custodian_location", SessionData.GetSessionData(SessionData.Emp_loc_code));
+
 
                 return ExecuteStoredProcedure("Requisition_Details_ISSUER_SP", parameters, reader =>
                 {
@@ -63,6 +65,7 @@ namespace IMRequisitionSystem.Repository.Issuer
                 var parameters = new DynamicParameters();
                 parameters.Add("@Type", "GET_DEVICE_Id");
                 parameters.Add("@DeviceType", deviceTypeId);
+                parameters.Add("@asset_custodian_location", SessionData.GetSessionData(SessionData.Emp_loc_code));
                 return ExecuteStoredProcedure("Requisition_Details_ISSUER_SP", parameters, reader =>
                 {
                     return reader.Read<RequisitionRequestModel>().AsList();
@@ -124,8 +127,9 @@ namespace IMRequisitionSystem.Repository.Issuer
             try
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@Type", "GET_IM_ISSUED_LIST");
-                //parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+                parameters.Add("@Type", "GET_IM_ISSUED_LIST_FOR_ALLOCATOR");
+                parameters.Add("@Emp_loc_code", SessionData.GetSessionData(SessionData.Emp_loc_code));
+                parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
                 return ExecuteStoredProcedure("Requisition_Details_ISSUER_SP", parameters, reader =>
                 {
                     return reader.Read<RequisitionRequestModel>().AsList();
@@ -207,7 +211,8 @@ namespace IMRequisitionSystem.Repository.Issuer
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@Type", "GET_IM_Allocated_LIST");
-                //parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+                parameters.Add("@Emp_loc_code", SessionData.GetSessionData(SessionData.Emp_loc_code));
+                parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
                 return ExecuteStoredProcedure("Requisition_Details_ISSUER_SP", parameters, reader =>
                 {
                     return reader.Read<RequisitionRequestModel>().AsList();

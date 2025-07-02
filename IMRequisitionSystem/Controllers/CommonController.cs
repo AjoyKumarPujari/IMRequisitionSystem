@@ -22,5 +22,12 @@ namespace IMRequisitionSystem.Controllers
             Session["" + key] = return_Request_ID;
             return Json(new { success = true });
         }
+
+        [HttpPost]
+        public JsonResult SetSession_Asset_Code_System(string key, string asset_Code_System)
+        {
+            Session["" + key] = asset_Code_System;
+            return Json(new { success = true });
+        }
     }
 }

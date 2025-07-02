@@ -1,12 +1,6 @@
-﻿
+﻿@model IMRequisitionSystem.Models.Assets.AssetsModel
 @{
     ViewBag.Title = "AMCMappingHistory";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-
-@{
-    ViewBag.Title = "PeriodicHealthCheckupHistory";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -25,14 +19,8 @@
                             PO Number:
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control form-control-lg" id="PONumber">
-                            <option></option>
-                            <option>430008764</option>
-                            <option>430008768</option>
-                            <option>430008766</option>
-                            <option>430008778</option>
-                            <option>430008794</option>
-                        </select>
+                        @Html.DropDownListFor(model => model.PO_No, new SelectList(ViewBag.AssetMasterDataDD, "PO_No", "PO_No"), "Select PO No ", new { @class = "form-control select2", @style = "width:100%" })
+
 
                         <span class="form-text text-muted">Select PO Number.</span>
                     </div>
@@ -42,40 +30,42 @@
                             Asset ID:
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control form-control-lg" id="AssetID">
-                            <option></option>
-                            <option>NRL-AID-0001</option>
-                            <option>NRL-AID-0002</option>
-                            <option>NRL-AID-0003</option>
-                            <option>NRL-AID-0004</option>
-                            <option>NRL-AID-0005</option>
-                        </select>
+                        @Html.DropDownListFor(model => model.Asset_Sl_No, new SelectList(ViewBag.AssetMasterDataDD, "Asset_Sl_No", "Asset_Sl_No"), "Select Serial No Type", new { @class = "form-control select2", @style = "width:100%" })
 
-                        <span class="form-text text-muted">Select Asset ID</span>
+                        <span class="form-text text-muted">Select Asset ID.</span>
                     </div>
-
                     <div class="form-group col-lg-4">
                         <label class="font-weight-bolder">
                             Asset Serial No:
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control form-control-lg" id="AssetSerialNo">
-                            <option></option>
-                            <option>NRL-IM-0001</option>
-                            <option>NRL-IM-0002</option>
-                            <option>NRL-IM-0003</option>
-                            <option>NRL-IM-0004</option>
-                        </select>
+                        @Html.DropDownListFor(model => model.Asset_Id_SAP, new SelectList(ViewBag.AssetMasterDataDD, "Asset_Id_SAP", "Asset_Id_SAP"), "Select Device Type", new { @class = "form-control select2", @style = "width:100%" })
 
-                        <span class="form-text text-muted">Select Asset Serial Number</span>
+
+
+                        <span class="form-text text-muted">Select Asset Serial Number.</span>
                     </div>
+
+                    @*<div class="form-group col-lg-4">
+                            <label>
+                                Role Status
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-control form-control-lg" id="UserStatus">
+
+                                <option>Active</option>
+                                <option>Deactive</option>
+                            </select>
+
+                            <span class="form-text text-muted">Select Role Status.</span>
+                        </div>*@
 
 
 
 
 
                     <div class="col-lg-4 col-md-12 mt-7">
-                        <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-sm btn-primary mr-2">
+                        <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-sm btn-primary mr-2" onclick="AMCMappingHistoryListWithFilter()">
                             <span class="svg-icon svg-icon-white svg-icon-2x">
                                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Search.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -88,7 +78,7 @@
                             Search
                         </button>
                         @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
-                        <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning">
+                        <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning" onclick="clearForm()">
                             <span class="svg-icon svg-icon-white svg-icon-2x">
                                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Repeat.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -105,6 +95,7 @@
                     </div>
 
                 </div>
+
             </div>
 
 
@@ -118,7 +109,7 @@
                         </h2>
                     </div>
 
-                    <button onclick="location.href='@Url.Action("AssetMasterTable", "Home")'" class="btn btn-primary d-flex align-items-center">
+                    <button onclick="location.href='@Url.Action("AssetMasterTable", "Asset")'" class="btn btn-primary d-flex align-items-center">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -146,67 +137,7 @@
                 </div>
 
                 <table class="table table-bordered table-checkable" id="IM_datatable">
-                    <thead>
-                        <tr>
-                            <th>Sl No</th>
-                            <th>Make</th>
-                            <th>Model</th>
-                            <th>Category</th>
-                            <th>Installation Date</th>
-                            <th>AMC Vendor Name</th>
-                            <th>AMC Vendor Code</th>
-                            <th>AMC Start Date</th>
-                            <th>AMC End Date</th>
-                            <th>AMC PO Number</th>
-                            <th>Asset Status</th>
-                            <th>Remarks</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Motorola</td>
-                            <td>M-VHF</td>
-                            <td>VHF</td>
-                            <td>12-10-2021</td>
-                            <td>Zenith Communications</td>
-                            <td>150086</td>
-                            <td>24-12-2022</td>
-                            <td>25-12-2024</td>
-                            <td>430008684</td>
-                            <td>
-                                <span class="label label-inline label-light-success font-weight-bold">
-                                    Good
-                                </span>
-                            </td>
-                            <td>
-                                AMC Started against PO 430008684.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>Motorola</td>
-                            <td>M-VHF</td>
-                            <td>VHF</td>
-                            <td>12-10-2021</td>
-                            <td>CommTech Solutions.</td>
-                            <td>150010</td>
-                            <td>26-12-2024</td>
-                            <td>25-12-2026</td>
-                            <td>430004564</td>
-                            <td>
-                                <span class="label label-inline label-light-success font-weight-bold">
-                                    Good
-                                </span>
-                            </td>
-                            <td>
-                                AMC Started against PO 430004564.
-                            </td>
-                        </tr>
-                    </tbody>
+                    
                 </table>
                 <!--end: Datatable-->
             </div>
@@ -293,6 +224,12 @@
 <script src="~/lib/assets/js/scripts.bundle.js"></script>
 <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script>
+   jQuery(document).ready(function () {
+       HealthCheckupListWithFilter();
+   ShowTostr("@ViewBag.Status", "@ViewBag.Message");
+});
+</script>
+<script>
     var table = $('#IM_datatable');
     table.DataTable({
         responsive: true,
@@ -312,23 +249,36 @@
     });
     table.init();
 </script>
+<script>
+   jQuery(document).ready(function () {
+       AMCMappingHistoryListWithFilter();
+   ShowTostr("@ViewBag.Status", "@ViewBag.Message");
+});
+</script>
 
 <script>
 
-    $('#AssetID').select2({
+    $('#Asset_Id_SAP').select2({
         placeholder: "Select Asset ID"
     });
 
-    $('#AssetSerialNo').select2({
+    $('#Asset_Sl_No').select2({
         placeholder: "Select Asset Serial No"
     });
 
-    $('#PONumber').select2({
+    $('#PO_No').select2({
         placeholder: "Select PO Number"
     });
 </script>
 
 <script>
+    function clearForm() {
+
+        $("#PO_No").val(" ").change();;
+        $("#Asset_Sl_No").val(" ").change();;
+        $("#Asset_Id_SAP").val(" ").change();;
+        AMCMappingHistoryListWithFilter();
+    }
     $("#activateButton").click(function (e) {
         Swal.fire({
             title: "Are you sure?",
@@ -402,6 +352,184 @@
         activateButton.hidden = false;
         deactivateButton.hidden = true;
     }
+
+     function AMCMappingHistoryListWithFilter() {
+     var i = 1;
+     debugger;
+     var AssetsModel = {};
+     AssetsModel.PO_No = $('#PO_No').val();
+     AssetsModel.Asset_Sl_No = $('#Asset_Sl_No').val();
+     AssetsModel.Asset_Id_SAP = $('#Asset_Id_SAP').val();
+     var url ='@Url.Action("AMCMappingHistoryListWithFilter", "Asset")';
+
+     var datatable = $('#IM_datatable').DataTable({
+         destroy: true,
+         scrollX: false,
+         responsive: true,
+         paging: false,
+         pagingType: 'full_numbers',
+         ajax: {
+             url: url,
+             type: 'POST',
+             data: { assetModel: AssetsModel },
+             dataSrc: '',
+         },
+         columns: [
+
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+
+
+         ],
+         columnDefs: [
+
+
+             {
+                 targets: 0,
+                 title: 'Sl No',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + i + '</span>';
+                     i++
+                 },
+             },
+             {
+                 targets: 1,
+                 title: 'Asset SAP ID',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Asset_Id_SAP + '</span>';
+                 },
+             },
+             {
+                 targets: 2,
+                 title: 'Asset Sl No ',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Asset_Sl_No + '</span>';
+                 },
+             },
+             {
+                 targets: 3,
+                 title: 'Make  ',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.AssetMakeNo + '</span>';
+                 },
+             },
+             {
+                 targets: 4,
+                 title: 'Model  ',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.AssetModelNo + '</span>';
+                 },
+             },
+             {
+                 targets: 5,
+                 title: 'Device Category  ',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.DeviceType + '</span>';
+                 },
+             },
+             {
+                 targets: 6,
+                 title: 'Installation date',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Installation_date + '</span>';
+                 },
+             },
+             {
+                 targets: 7,
+                 title: 'PO Number',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.PO_No + '</span>';
+                 },
+             },
+             {
+                 targets: 8,
+                 title: 'Vendor Name',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Vendor_name + '</span>';
+                 },
+             },
+             {
+                 targets: 9,
+                 title: 'Vendor Code',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Vendor_code + '</span>';
+                 },
+             },
+             {
+                 targets: 10,
+                 title: 'AMC Start Date',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.AMC_Start_Date + '</span>';
+                 },
+             },
+             {
+                 targets: 11,
+                 title: 'AMC End Date',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.AMC_End_Date + '</span>';
+                 },
+             },
+
+
+
+
+
+         ],
+         dom: '',
+         //dom: '<"bottom" B>',
+         buttons: [
+             {
+                 extend: 'excelHtml5',
+                 text: 'Export to Excel',
+                 filename: function () {
+                     return 'AMC Mapping istory List';
+                 }
+             }
+         ],
+     });
+
+     datatable_2 = datatable;
+
+     $('#btnExportExcel').on('click', function () {
+         datatable_2.button('.buttons-excel').trigger();
+     });
+
+ }
+
 </script>
 
 

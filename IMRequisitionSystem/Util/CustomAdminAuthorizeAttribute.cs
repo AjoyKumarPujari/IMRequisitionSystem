@@ -16,10 +16,10 @@ namespace IMRequisitionSystem.Util
             {
                 filterContext.Result = new RedirectResult("~/Login/UserLogin");
             }
-            else if((string)session["Admin"] != "Y" )
-            {
-                filterContext.Result = new RedirectResult("~/Employee/EmployeeDashboard?status=" + ToastMessageType.Error + "&message=You do not have admin right.");
-            }
+            //else if((string)session["Admin"] != "Y" )
+            //{
+            //    filterContext.Result = new RedirectResult("~/Employee/EmployeeDashboard?status=" + ToastMessageType.Error + "&message=You do not have admin right.");
+            //}
             base.OnActionExecuting(filterContext);
         }
     }

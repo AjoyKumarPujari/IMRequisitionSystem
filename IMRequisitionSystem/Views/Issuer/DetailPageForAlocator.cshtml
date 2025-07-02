@@ -65,21 +65,21 @@
 
 
                         <div class="d-flex justify-content-between pt-6">
-                           
-                                <div class="d-flex flex-column flex-root">
-                                    <span class="font-weight-bolder mb-2">REQUESTOR LOCATION</span>
-                                    <span class="opacity-70">@Model.Requestor_Department</span>
-                                </div>
 
-                                <div class="d-flex flex-column flex-root">
-                                    <span class="font-weight-bolder mb-2">USE LOCATION</span>
-                                    <span class="opacity-70">@Model.Use_Location</span>
-                                </div>
-                                <div class="d-flex flex-column flex-root">
-                                    <span class="font-weight-bolder mb-2">USE DEPARTMENT</span>
-                                    <span class="opacity-70">@Model.Use_Department_Name</span>
-                                </div>
-                            
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">REQUESTOR LOCATION</span>
+                                <span class="opacity-70">@Model.Requestor_Department</span>
+                            </div>
+
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">USE LOCATION</span>
+                                <span class="opacity-70">@Model.Use_Location</span>
+                            </div>
+                            <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">USE DEPARTMENT</span>
+                                <span class="opacity-70">@Model.Use_Department_Name</span>
+                            </div>
+
                         </div>
 
 
@@ -96,11 +96,63 @@
                                 </span>
                             </div>
                             <div class="d-flex flex-column flex-root">
-                                
+                                <span class="font-weight-bolder mb-2">ISSUED ASSET ID </span>
+                                <span class="opacity-70">
+                                    @Model.Asset_Sl_No
+                                </span>
                             </div>
 
 
                         </div>
+                        @if (Model.RequisitionFor == "Others")
+                        {
+                            <div class="d-flex justify-content-between pt-6">
+                                <div class="d-flex flex-column flex-root">
+                                    <span class="font-weight-bolder mb-2">REQUISITION FOR WHOME</span>
+
+                                    @if (Model.RequisitionForWhome == "TP")
+                                    {
+                                        <span class="opacity-70">Third Party</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "CISF")
+                                    {
+                                        <span class="opacity-70">CISF</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "NM")
+                                    {
+                                        <span class="opacity-70">Non Management Staff</span>
+                                    }
+                                </div>
+
+                                <div class="d-flex flex-column flex-root">
+
+                                    @if (Model.RequisitionForWhome == "TP")
+                                    {
+                                        <span class="font-weight-bolder mb-2">THIRD PARTY FOR </span>
+                                        <span class="opacity-70">@Model.ThirdParty</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "CISF")
+                                    {
+                                        <span class="font-weight-bolder mb-2"> CISF Personal Name</span>
+                                        <span class="opacity-70">@Model.CISF</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "NM")
+                                    {
+                                        <span class="font-weight-bolder mb-2"> NON MANAGEMENT PERSON NAME</span>
+                                        <span class="opacity-70">@Model.Non_Management_staff_Name</span>
+                                    }
+                                </div>
+                                <div class="d-flex flex-column flex-root">
+                                    @*<span class="font-weight-bolder mb-2">ISSUED ASSET ID </span>
+                    <span class="opacity-70">
+                        @Model.Asset_Sl_No
+                    </span>*@
+
+                                </div>
+
+                            </div>
+
+                        }
 
                     </div>
                 </div>
@@ -235,7 +287,7 @@
                                     Short Close
                                 </button>
                             }
-                            <button type="button" class="btn btn-success font-weight-bold" data-toggle="modal" data-target="#approveRequest">
+                            <button type="button" class="btn btn-success font-weight-bold" data-toggle="modal" data-target="#approveRequest" onclick="ViewDocumentFunction('@Model.Requisition_No')">
                                 <span class="svg-icon svg-icon-white svg-icon-2x">
                                     <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Devices\Printer.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -340,6 +392,18 @@
     $("#rejectRequestHOD").click(function (e) {
         Swal.fire("Done", "Request has been recalled successfully", "success");
     });
+
+
+
+    function ViewDocumentFunction(ID) {
+        debugger;
+        var url = $('base').attr('href') + "PrintPDF?ID=" + JSON.stringify(ID).toString().replace(/"/g, "");
+
+        window.open(
+            url,
+            '_blank'
+        );
+    }
 
 </script>
 

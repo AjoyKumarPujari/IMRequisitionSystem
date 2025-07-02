@@ -137,9 +137,9 @@
 
             <!--end::Form-->
             <!--begin::Footer-->
-            <div class="login-footer">
+            @*<div class="login-footer">
                 <p class="text-muted">Forgot your password? <a href="#">Reset it here</a></p>
-            </div>
+            </div>*@
             <!--end::Footer-->
         </div>
     }
@@ -148,4 +148,85 @@
 
 </body>
 
+
+
 </html>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(hideLoader, 2000);
+
+        handleToastMessage();
+
+    });
+      function handleToastMessage() {
+
+      var message = '@TempData["Message"]';
+      var swalMessage = '@TempData["SwalMessage"]';
+      var messageType = '@TempData["MessageType"]';
+      var isSwal = '@TempData["IsSwal"]';
+
+
+      if (isSwal == "True") {
+
+          if (message) {
+              var swalType;
+              switch (messageType) {
+                  case "Success":
+                      swalType = 'success';
+                      break;
+                  case "Error":
+                      swalType = 'error';
+                      break;
+                  case "Info":
+                      swalType = 'info';
+                      break;
+                  case "Warning":
+                      swalType = 'warning';
+                      break;
+                  default:
+                      swalType = 'info';
+                      break;
+              }
+
+              if (swalMessage == "" || swalMessage == null) {
+                  showSwalAlert(message, swalType);
+              }
+              else {
+                  showSwalAlertWithMessage(message, swalMessage, swalType);
+              }
+
+          }
+      }
+      else {
+          if (message) {
+
+              var swalType;
+              switch (messageType) {
+                  case "Success":
+                      swalType = 'success';
+                      break;
+                  case "Error":
+                      swalType = 'error';
+                      break;
+                  case "Info":
+                      swalType = 'info';
+                      break;
+                  case "Warning":
+                      swalType = 'warning';
+                      break;
+                  default:
+                      swalType = 'info';
+                      break;
+              }
+              showSwalToast(message, swalType);
+
+
+             
+          }
+      }
+
+
+  }
+
+</script>

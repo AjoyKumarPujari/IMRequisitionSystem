@@ -16,6 +16,7 @@ namespace IMRequisitionSystem.Repository.Approver
       RequisitionRequestModel GetDetailsDataForIMApprover(string requisition_No);
 
      SPOutputMessage IMApproverUpdate(RequisitionRequestModel requisitionRequestModel);
+     SPOutputMessage IMApprovercancelUpdate(RequisitionRequestModel requisitionRequestModel);
         
      List<RequisitionRequestModel> GetRequisitionIMApprovedList();
     }

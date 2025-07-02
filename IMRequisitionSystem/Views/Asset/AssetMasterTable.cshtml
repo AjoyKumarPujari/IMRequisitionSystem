@@ -40,92 +40,79 @@
     <div class="card-body">
         <div class="card-body">
 
-            <!--<div class="row">
+            <div class="row">
 
                 <div class="form-group col-lg-3">
                     <label class="font-weight-bolder">
-                        PO Number:
-                        <span class="text-danger">*</span>
+                        License No:
+                        <span class="text-danger"></span>
                     </label>
-                    <select class="form-control form-control-lg" id="PONumber">
-                        <option></option>
-                        <option>430008764</option>
-                        <option>430008768</option>
-                        <option>430008766</option>
-                        <option>430008778</option>
-                        <option>430008794</option>
-                    </select>
+                    @Html.DropDownListFor(model => model.LicenseNo, new SelectList(ViewBag.LicenseDataDD, "LicenseNo", "LicenseNo"), "Select License No", new { @class = "form-control select2", @style = "width:100%" })
 
-                    <span class="form-text text-muted">Select PO Number.</span>
+
                 </div>
 
                 <div class="form-group col-lg-3">
                     <label class="font-weight-bolder">
-                        Asset ID:
-                        <span class="text-danger">*</span>
+                        Model No:
+                        <span class="text-danger"></span>
                     </label>
-                    <select class="form-control form-control-lg" id="AssetID">
-                        <option></option>
-                        <option>NRL-AID-0001</option>
-                        <option>NRL-AID-0002</option>
-                        <option>NRL-AID-0003</option>
-                        <option>NRL-AID-0004</option>
-                        <option>NRL-AID-0005</option>
-                    </select>
 
-                    <span class="form-text text-muted">Select Asset ID.</span>
+                    @Html.DropDownListFor(model => model.AssetModelNo, new SelectList(ViewBag.AssetModelDataDD, "AssetModelNo", "AssetModelNo"), "Select Model No", new { @class = "form-control select2", @style = "width:100%" })
+
+
+                   
                 </div>
                 <div class="form-group col-lg-3">
                     <label class="font-weight-bolder">
-                        Asset Category:
-                        <span class="text-danger">*</span>
+                        Asset Status:
+                        <span class="text-danger"></span>
                     </label>
-                    <select class="form-control form-control-lg" id="AssetCategory">
-                        <option></option>
-                        <option>HF</option>
-                        <option>UHF</option>
-                        <option>VHF</option>
-                    </select>
-
-                    <span class="form-text text-muted">Select Asset Category.</span>
+                        @Html.DropDownListFor(Model => Model.asset_Status, (IEnumerable<SelectListItem>)(ViewBag.AssetStatusDD), "Select Asset Status", new { @class = "form-control" })
+                 
                 </div>
 
 
-                <div class="col-lg-3 col-md-12 mt-7">
-                    <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-sm btn-primary mr-2">
-                        <span class="svg-icon svg-icon-white svg-icon-2x">
-                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Search.svg--><!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <rect x="0" y="0" width="24" height="24" />
-                                    <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                    <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
-                                </g>
-                            </svg>--><!--end::Svg Icon-->
-                        <!--</span>
-                        Search
-                    </button>-->
-                    @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
-                    @*<button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning">
-                        <span class="svg-icon svg-icon-white svg-icon-2x">-->*@
-                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Repeat.svg--><!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <rect x="0" y="0" width="24" height="24" />
-                                    <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000" />
-                                    <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3" />
-                                </g>
-                            </svg>--><!--end::Svg Icon-->
-                        <!--</span>
-                        Reset
-                    </button>
+                
+
+                    <div class="form-group col-lg-3 mt-8">
+                        <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-sm btn-primary mr-2" onclick="AssetMasterListWithFilter()">
+                            <span class="svg-icon svg-icon-white svg-icon-2x">
+                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Search.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                        <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
+                                    </g>
+                                </svg><!--end::Svg Icon-->
+                            </span>
+                            Search
+                        </button>
+                        @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
+                        <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning" onclick="clearForm()">
+                            <span class="svg-icon svg-icon-white svg-icon-2x">
+                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Repeat.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000" />
+                                        <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3" />
+                                    </g>
+                                </svg><!--end::Svg Icon-->
+                            </span>
+                            Reset
+                        </button>
 
 
-                </div>
+                    </div>
 
-            </div>-->
 
-            <table class="table table-bordered table-checkable" id="IM_datatable">
                
-                    <thead>
+
+            </div>
+
+            <table class="table table-bordered" id="IM_datatable">
+               
+                    @*<thead>
                         <tr>
                             <th>Sl No</th>
                             <th>Asset Sl No</th>
@@ -141,11 +128,12 @@
                             <th>PO Date</th>
                             <th>Asset Delivered Location</th>
                             <th>Asset Delivered Department</th>
-                            
+                            <th>Issue Status</th>
                             <th>Asset Status</th>
+                            <th>Asset Physical Condition</th>
                             <th>Active/Deactive Status</th>
                             <th>Action</th>
-                            
+
 
 
                         </tr>
@@ -168,10 +156,29 @@
                                 <td>@item.Vendor_name</td>
                                 <td>@item.PO_No</td>
                                 <td>@item.PO_date</td>
-                                <td>@item.asset_custodian_location</td>
+                                <td>@item.asset_custodian_location_Name</td>
                                 <td>@item.asset_custodian_department</td>
+                                <td>
+                                    @if (item.Issue_status == "False" && item.asset_Physical_Condition == "DAMAGE")
+
+                                        {
+                                            <span class="badge bg-primary text-white"> Not Valid</span>
+                                        }
+                                    else if (item.Issue_status == "True")
+                                        {
+                                            <span class="badge bg-warning text-white">Issued</span>
+
+                                         }
+                                    else
+                                        {
+                                           <span class="badge bg-primary text-white">Available</span>
+                                        }
+
+
+                                </td>
                                
                                 <td>@item.asset_Status</td>
+                                <td>@item.asset_Physical_Condition</td>
                                 <td>
                                     @if (item.IsActive == true)
                                     {
@@ -214,13 +221,27 @@
                                             Activate
                                         </button>
                                     }
-
+                                    @if (item.asset_Physical_Condition == "DAMAGE" && item.Issue_status == "False")
+                                    {
+                                        <button class="btn btn-md btn-primary mr-1" id="activatePhysicalConditionButton" onclick="ChangePhysicalCondition('@item.Asset_Code_System')">
+                                            <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24" />
+                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                        <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            Change Physical Condition
+                                        </button>
+                                    }
                                 </td>
 
                             </tr>
                             i++;
                         }
-                    </tbody>
+                    </tbody>*@
                 
             </table>
         
@@ -243,6 +264,24 @@
 <script src="~/lib/assets/js/scripts.bundle.js"></script>
 <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script>
+
+    $('#AssetModelNo').select2({
+        placeholder: "Select Asset No"
+    });
+    $('#asset_Status').select2({
+        placeholder: "Select Asset Status"
+    });
+    $('#LicenseNo').select2({
+        placeholder: "Select License No"
+    });
+
+    $(document).ready(function () {
+
+        AssetMasterListWithFilter();
+        ShowTostr("@ViewBag.Status", "@ViewBag.Message");
+    });
+
+
     var table = $('#IM_datatable');
     table.DataTable({
         responsive: true,
@@ -315,7 +354,376 @@
         }
     });
 
-}
+    }
+
+    function ChangePhysicalCondition(Asset_Code_System) {
+
+        debugger;
+
+        Swal.fire({
+            title: "Are you sure to update the Asset Physical Condition?",
+            text: "",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "" + "Update"
+        }).then(function (result) {
+
+            if (result.value) {
+
+                var btnID = "activatePhysicalConditionButton";
+                //var ID = ID;
+
+                var assetsModel = {};
+                assetsModel.Asset_Code_System = Asset_Code_System;
+
+                $.ajax({
+                    url: '@Url.Action("ChangePhysicalCondition", "Asset")',
+                    type: 'POST',
+                    data: { assetsModel: assetsModel },
+                    success: function (data) {
+
+                        location.href = data.redirectUrl;
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        toastr.error("Failed. Try again.");
+                    }
+                });
+
+            }
+        });
+
+
+    }
+    function clearForm() {
+
+         $("#asset_Status").val(" ").change();;
+         $("#AssetModelNo").val(" ").change();;
+         $("#LicenseNo").val(" ").change();;
+         AssetMasterListWithFilter();
+    }
+    function AssetMasterListWithFilter() {
+     var i = 1;
+     debugger;
+     var AssetsModel = {};
+         AssetsModel.LicenseNo = $('#LicenseNo').val();
+         AssetsModel.AssetModelNo = $('#AssetModelNo').val();
+        AssetsModel.asset_Status = $('#asset_Status').val();
+     var url ='@Url.Action("GetMasterListWithFilter", "Asset")';
+
+     var datatable = $('#IM_datatable').DataTable({
+         destroy: true,
+         scrollX: false,
+         responsive: true,
+         paging: false,
+         pagingType: 'full_numbers',
+         ajax: {
+             url: url,
+             type: 'POST',
+             data: { assetModel: AssetsModel },
+             dataSrc: '',
+         },
+         columns: [
+
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+             { data: null },
+
+
+         ],
+         columnDefs: [
+
+
+             {
+                 targets: 0,
+                 title: 'Sl No',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + i + '</span>';
+                     i++
+                 },
+             },
+             {
+                 targets: 1,
+                 title: 'Asset Sl No',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Asset_Sl_No + '</span>';
+                 },
+             },
+             {
+                 targets: 2,
+                 title: 'Asset ID ',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Asset_Id_SAP + '</span>';
+                 },
+             },
+             {
+                 targets: 3,
+                 title: 'Assset Description  ',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.AsssetDeviceCharacteristics + '</span>';
+                 },
+             },
+             {
+                 targets: 4,
+                 title: 'Make',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.AssetMakeNo + '</span>';
+                 },
+             },
+             {
+                 targets: 5,
+                 title: 'Model No',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.AssetModelNo + '</span>';
+                 },
+             },
+             {
+                 targets: 6,
+                 title: 'Device Type',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.DeviceType + '</span>';
+                 },
+             },
+             {
+                 targets: 7,
+                 title: 'Issue Date',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Installation_date + '</span>';
+                 },
+             },
+             {
+                 targets: 8,
+                 title: 'Vendor Code',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Vendor_code + '</span>';
+                 },
+             },
+             {
+                 targets: 9,
+                 title: 'Vendor Name',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Vendor_name + '</span>';
+                 },
+             },
+             {
+                 targets: 10,
+                 title: 'PO No',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.PO_No + '</span>';
+                 },
+             },
+             {
+                 targets: 11,
+                 title: 'PO Sate',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.PO_date + '</span>';
+                 },
+             },
+             {
+                 targets: 12,
+                 title: 'Asset Physical Location',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.asset_custodian_location_Name + '</span>';
+                 },
+             },
+             {
+                 targets: 13,
+                 title: 'Asset Physical Department',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.asset_custodian_department + '</span>';
+                 },
+             },
+             {
+                 targets: 14,
+                 title: 'Issue Status',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.Issue_status + '</span>';
+                 },
+             },
+             {
+                 targets: 15,
+                 title: 'License No',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.LicenseNo + '</span>';
+                 },
+             },
+             {
+                 targets: 16,
+                 title: 'Asset Status',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + data.asset_Status + '</span>';
+                 },
+             },
+             {
+                 targets: 17,
+                 title: 'Asset Physical Condition',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     if (data.Issue_status === "False" && data.asset_Physical_Condition === "DAMAGE") {
+                         return '<span class="badge bg-primary text-white">Not Valid</span>';
+                     } else if (data.Issue_status === "True") {
+                         return '<span class="badge bg-warning text-white">Issued</span>';
+                     } else {
+                         return '<span class="badge bg-primary text-white">Available</span>';
+                     }
+                 },
+             },
+            
+             {
+                 targets: 18,
+                 title: 'Active/De-Active',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+
+                     return '<span style="font-size: 15px">' + (full.IsActive ? 'Active' : 'Deactive') + '</span>';
+
+                 },
+             },
+             {
+                 targets: 19,
+                 title: 'Action',
+                 orderable: false,
+                 render: function (data, type, full, meta) {
+                     var actionButtons = '';
+
+                     // Deactivate button (if active)
+                     if (data.IsActive === true) {
+                         actionButtons += `
+                <button class="btn btn-md btn-danger" onclick="ActivetoDeactive('${data.Asset_Code_System}', 'Dectivated')">
+                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                        <!-- Close SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+                            <g fill="none" fill-rule="evenodd">
+                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+                                <path d="M12.035,10.621 L14.864,7.793 C15.254,7.402 15.888,7.402 16.278,7.793 C16.669,8.183 16.669,8.817 16.278,9.207 L13.45,12.036 L16.278,14.864 C16.669,15.254 16.669,15.888 16.278,16.278 C15.888,16.669 15.254,16.669 14.864,16.278 L12.036,13.45 L9.207,16.278 C8.817,16.669 8.183,16.669 7.793,16.278 C7.402,15.888 7.402,15.254 7.793,14.864 L10.621,12.036 L7.793,9.207 C7.402,8.817 7.402,8.183 7.793,7.793 C8.183,7.402 8.817,7.402 9.207,7.793 L12.036,10.621 Z" fill="#000000"/>
+                            </g>
+                        </svg>
+                    </span>
+                    Deactivate
+                </button>`;
+                     } else {
+                         // Activate button (if not active)
+                         actionButtons += `
+                        <button class="btn btn-md btn-success mr-1" onclick="ActivetoDeactive('${data.Asset_Code_System}', 'Activate')">
+                            <span class="svg-icon svg-icon-white svg-icon-2x">
+                                <!-- Check SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+                                        <path d="M16.769,7.818 C17.146,7.414 17.779,7.392 18.182,7.769 C18.586,8.146 18.608,8.779 18.231,9.182 L11.231,16.682 C10.865,17.074 10.256,17.108 9.849,16.759 L6.349,13.759 C5.93,13.4 5.881,12.769 6.241,12.349 C6.6,11.93 7.231,11.881 7.651,12.241 L10.423,14.617 L16.769,7.818 Z" fill="#000000"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            Activate
+                        </button>`;
+                             }
+
+                     // Change Physical Condition button
+                     if (data.asset_Physical_Condition === "DAMAGE" && data.Issue_status === "False") {
+                         actionButtons += `
+                        <button class="btn btn-md btn-primary mr-1" onclick="ChangePhysicalCondition('${data.Asset_Code_System}')">
+                            <span class="svg-icon svg-icon-white svg-icon-2x">
+                                <!-- Check SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+                                        <path d="M16.769,7.818 C17.146,7.414 17.779,7.392 18.182,7.769 C18.586,8.146 18.608,8.779 18.231,9.182 L11.231,16.682 C10.865,17.074 10.256,17.108 9.849,16.759 L6.349,13.759 C5.93,13.4 5.881,12.769 6.241,12.349 C6.6,11.93 7.231,11.881 7.651,12.241 L10.423,14.617 L16.769,7.818 Z" fill="#000000"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            Change Physical Condition
+                        </button>`;
+                     }
+
+                     // View/Update button
+                     actionButtons += `
+                     <button type="button" class="btn btn-primary btn-block mr-2 mb-1" onclick="GoToViewEditPage('${data.Asset_Code_System}')">Update</button>`;
+
+                     return actionButtons;
+                    // return '<button type="button" id="btnViewDetails" name="btnViewDetails" class="btn btn-primary btn-block mr-2 mb-1" onclick="GoToViewEditPage(\'' + data.Asset_Code_System + '\')"> Update </button>';
+                 },
+             },
+
+
+
+
+
+         ],
+         dom: '',
+         //dom: '<"bottom" B>',
+         buttons: [
+             {
+                 extend: 'excelHtml5',
+                 text: 'Export to Excel',
+                 filename: function () {
+                     return 'AMC Mapping List';
+                 }
+             }
+         ],
+     });
+
+     datatable_2 = datatable;
+
+     $('#btnExportExcel').on('click', function () {
+         datatable_2.button('.buttons-excel').trigger();
+     });
+
+ }
+
+
+
 </script>
 
 

@@ -153,6 +153,24 @@ namespace IMRequisitionSystem.Repository.Return
                 return new List<AssetsModel>();
             }
         }
+        public List<AssetsModel> GetAllReturnData()
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Type", "GET_RETURN_ASSET_LIST");
+                //parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+                return ExecuteStoredProcedure("Return_Details_SP", parameters, reader =>
+                {
+                    return reader.Read<AssetsModel>().AsList();
+                });
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return new List<AssetsModel>();
+            }
+        }
 
         public AssetsModel GetDetailsDataForReturn(string return_Request_ID)
         {
@@ -172,6 +190,49 @@ namespace IMRequisitionSystem.Repository.Return
                 LoggingClass.SaveExceptionLog(ex);
                 return new AssetsModel();
             }
+        }
+
+
+
+        public SPOutputMessage RejectReturnRequestUpdate(AssetsModel assetsModel)
+        {
+            SPOutputMessage spResponse = new SPOutputMessage()
+            {
+                Status = 2,
+                Message = "Something went wrong, try again later."
+            };
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Type", "Return_Request_Reject");
+                parameters.Add("@Reject_Comment", assetsModel.Reject_Comment);
+                parameters.Add("@Return_Request_ID", assetsModel.Return_Request_ID);
+                parameters.Add("@Return_Reject_By", SessionData.GetSessionUserCode());
+
+
+                // Output parameters
+                parameters.Add("@Status", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 255, direction: ParameterDirection.Output);
+
+
+                ExecuteStoredProcedure("Return_Details_SP", parameters, reader =>
+                {
+                    return reader.ReadFirstOrDefault<int>();
+                });
+
+                spResponse = new SPOutputMessage
+                {
+                    Status = parameters.Get<int>("@Status"),
+                    Message = parameters.Get<string>("@Message"),
+                };
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return spResponse;
         }
     }
 }

@@ -103,10 +103,62 @@
                                 </span>
                             </div>
                             <div class="d-flex flex-column flex-root">
-
+                                <span class="font-weight-bolder mb-2">ISSUED ASSET ID </span>
+                                <span class="opacity-70">
+                                    @Model.Asset_Sl_No
+                                </span>
                             </div>
 
                         </div>
+                        @if (Model.RequisitionFor == "Others")
+                        {
+                            <div class="d-flex justify-content-between pt-6">
+                                <div class="d-flex flex-column flex-root">
+                                    <span class="font-weight-bolder mb-2">REQUISITION FOR WHOME</span>
+
+                                    @if (Model.RequisitionForWhome == "TP")
+                                    {
+                                        <span class="opacity-70">Third Party</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "CISF")
+                                    {
+                                        <span class="opacity-70">CISF</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "NM")
+                                    {
+                                        <span class="opacity-70">Non Management Staff</span>
+                                    }
+                                </div>
+
+                                <div class="d-flex flex-column flex-root">
+
+                                    @if (Model.RequisitionForWhome == "TP")
+                                    {
+                                        <span class="font-weight-bolder mb-2">THIRD PARTY FOR </span>
+                                        <span class="opacity-70">@Model.ThirdParty</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "CISF")
+                                    {
+                                        <span class="font-weight-bolder mb-2"> CISF Personal Name</span>
+                                        <span class="opacity-70">@Model.CISF</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "NM")
+                                    {
+                                        <span class="font-weight-bolder mb-2"> NON MANAGEMENT PERSON NAME</span>
+                                        <span class="opacity-70">@Model.Non_Management_staff_Name</span>
+                                    }
+                                </div>
+                                <div class="d-flex flex-column flex-root">
+                                    @*<span class="font-weight-bolder mb-2">ISSUED ASSET ID </span>
+                    <span class="opacity-70">
+                        @Model.Asset_Sl_No
+                    </span>*@
+
+                                </div>
+
+                            </div>
+
+                        }
 
                     </div>
                 </div>

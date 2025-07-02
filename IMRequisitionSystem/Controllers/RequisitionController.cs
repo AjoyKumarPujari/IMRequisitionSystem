@@ -11,9 +11,11 @@ using static IMRequisitionSystem.Util.Enums;
 using IMRequisitionSystem.Repository.Requisition;
 using Holiday_Home.Util;
 using IMRequisitionSystem.Models;
+using IMRequisitionSystem.Models.RoleMapping;
 
 namespace IMRequisitionSystem.Controllers
 {
+    [CustomAdminAuthorize]
     public class RequisitionController : Controller
     {
         private readonly IAssetCategoryRepository _assetCategoryRepository;
@@ -66,7 +68,7 @@ namespace IMRequisitionSystem.Controllers
                 ViewBag.ApproverDataDD = _employeeDetailsRepository.GetApproverDataViaGreade(SessionData.GetSessionUserCode());
                 ViewBag.RequisitionDetailsForRequestorDataDD = _requisitionRequestRepository.GetRequisitionDraftDetailsForRequestor();
                 //ViewBag.RequisitionDetailsForRequestorDataDD = _requisitionRequestRepository.GetRequisitionDetailsForRequestor();
-
+                model.Use_Location = SessionData.GetSessionData(SessionData.Emp_loc_code);
             }
             catch (Exception ex)
             {
@@ -81,6 +83,8 @@ namespace IMRequisitionSystem.Controllers
 
             if (requisitionRequestModel.RequisitionType == "RequisitionRequest")
             {
+                //requisitionRequestModel.Use_Location = SessionData.GetSessionData(SessionData.Emp_loc_code);
+
                 SPOutputMessage response = _requisitionRequestRepository.CreateRequisitionRequest(requisitionRequestModel);
 
                 if (response.Status == 1)
@@ -108,9 +112,6 @@ namespace IMRequisitionSystem.Controllers
 
         }
 
-
-
-        
 
         public ActionResult RequisitionList(string status, string message, bool isSwal = false)
         {
@@ -197,7 +198,15 @@ namespace IMRequisitionSystem.Controllers
             return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "RequisitionList", "Requisition", requisitionRequestModel.Requisition_No);
         }
 
-        
+        public JsonResult RequisitionArchive(RequisitionRequestModel requisitionRequestModel)
+        {
+            var spResponse = _requisitionRequestRepository.UpdateRequisitionArchive(requisitionRequestModel);
+
+            //Session["Requisition_No"] = requisitionRequestModel.Requisition_No;
+
+            var jsonResponseHandler = new JsonResponseHandler(Url);
+            return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "RequisitionRequest", "Requisition", requisitionRequestModel.Requisition_No);
+        }
 
 
     }

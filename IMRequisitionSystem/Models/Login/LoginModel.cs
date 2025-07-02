@@ -12,6 +12,7 @@ namespace IMRequisitionSystem.Models.Login
         public string UserName { get; set; }
 
         public string Name { get; set; }
+        public string Grade { get; set; }
         public string Designation { get; set; }
 
         public string DepartmentID { get; set; }
@@ -48,6 +49,7 @@ namespace IMRequisitionSystem.Models.Login
         public string IM_ISSUER { get; set; }
         public string ALLOCATOR { get; set; }
         public string ADMIN { get; set; }
+        public string Emp_loc_code { get; set; }
 
 
 

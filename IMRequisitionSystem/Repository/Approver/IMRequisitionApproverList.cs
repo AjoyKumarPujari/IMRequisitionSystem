@@ -21,7 +21,7 @@ namespace IMRequisitionSystem.Repository.Approver
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@Type", "REQUISITION_DATA_FOR_IM_APPROVER");
-                //parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+                parameters.Add("@Emp_loc_code", SessionData.GetSessionData(SessionData.Emp_loc_code));
                 return ExecuteStoredProcedure("Requisition_Details_SP", parameters, reader =>
                 {
                     return reader.Read<RequisitionRequestModel>().AsList();
@@ -97,13 +97,58 @@ namespace IMRequisitionSystem.Repository.Approver
         }
 
 
+
+        public SPOutputMessage IMApprovercancelUpdate(RequisitionRequestModel requisitionRequestModel)
+        {
+            SPOutputMessage spResponse = new SPOutputMessage()
+            {
+                Status = 2,
+                Message = "Something went wrong, try again later."
+            };
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Type", "CANCEL_UPDATE_IM_APPROVE");
+                parameters.Add("@Cancelled_Reason", requisitionRequestModel.Cancelled_Reason);
+                parameters.Add("@Requisition_No", requisitionRequestModel.Requisition_No);
+                parameters.Add("@IM_Approve_By", SessionData.GetSessionUserCode());
+
+
+                // Output parameters
+                parameters.Add("@Status", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 255, direction: ParameterDirection.Output);
+
+
+                ExecuteStoredProcedure("Requisition_Details_SP", parameters, reader =>
+                {
+                    return reader.ReadFirstOrDefault<int>();
+                });
+
+                spResponse = new SPOutputMessage
+                {
+                    Status = parameters.Get<int>("@Status"),
+                    Message = parameters.Get<string>("@Message"),
+                };
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return spResponse;
+        }
+
+
         public List<RequisitionRequestModel> GetRequisitionIMApprovedList()
         {
             try
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@Type", "GET_IM_APPROVED_LIST");
-                //parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+                parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+
+                parameters.Add("@Emp_loc_code", SessionData.GetSessionData(SessionData.Emp_loc_code));
                 return ExecuteStoredProcedure("Requisition_Details_SP", parameters, reader =>
                 {
                     return reader.Read<RequisitionRequestModel>().AsList();

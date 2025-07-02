@@ -29,13 +29,14 @@ namespace IMRequisitionSystem.Models.Assets
         public string Latest_AMC_vendor_code { get; set; }
         public string Latest_AMC_vendorname { get; set; }
         public string Latest_AMC_expiry { get; set; }
+        public string Latest_AMC_Start_Date { get; set; }
         public string asset_custodian_code { get; set; }
         public string asset_custodian_name { get; set; }
         public string asset_custodian_location { get; set; }
         public string asset_custodian_area { get; set; }
         public string asset_custodian_department { get; set; }
         public string asset_Physical_Condition { get; set; } = string.Empty;
-        public string Issue_status { get; set; }
+        public string Issue_status { get; set; } = string.Empty;
         public string asset_Status { get; set; }
         public string Remarks { get; set; }
         public string Created_On { get; set; }
@@ -70,6 +71,21 @@ namespace IMRequisitionSystem.Models.Assets
         public string Supplier_Vendor_Code { get; set; }
         public string Supplier_Vendor_Name { get; set; }
         public string Supplier_Vendor_ExpireDate { get; set; }
+        public string Vendor_code_For_AMC { get; set; }
+        public string Vendor_name_For_AMC { get; set; }
+        public string PO_No_For_AMC { get; set; }
+        public string AMC_expiry_For_AMC { get; set; }
+        public bool RPO { get; set; }
+        public string AMC_PO_NO { get; set; }
+        public string AMC_Start_Date { get; set; }
+        public string AMC_End_Date { get; set; }
+        public string Reject_Comment { get; set; }
+        public string Returned_By_Name { get; set; }
+        public string Returned_By_Designation { get; set; }
+        public string Return_Reject_DateTime { get; set; }
+        public string asset_custodian_location_Name { get; set; }
+        public string Latest_AMC_End_Date { get; set; }
+       
         
         
        

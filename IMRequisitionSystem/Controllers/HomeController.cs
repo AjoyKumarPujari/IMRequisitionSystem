@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IMRequisitionSystem.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 
 namespace IMRequisitionSystem.Controllers
 {
+    [CustomAdminAuthorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -225,6 +227,9 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
         public ActionResult AllocatorDeshboard()
+        {
+            return View();
+        }public ActionResult SuperAdminDeshboard()
         {
             return View();
         }

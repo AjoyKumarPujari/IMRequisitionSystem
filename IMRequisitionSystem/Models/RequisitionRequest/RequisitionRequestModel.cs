@@ -16,6 +16,7 @@ namespace IMRequisitionSystem.Models.Assets
         public string RequisitionFor { get; set; }
         public string RequisitionForWhome { get; set; }
         public string Non_Management_staff { get; set; }
+        public string Non_Management_staff_Name { get; set; }
         public string CISF { get; set; }
         public string ThirdParty { get; set; }
         public string Requestor_Department { get; set; }
@@ -66,6 +67,7 @@ namespace IMRequisitionSystem.Models.Assets
         public string TotalAssetCount { get; set; }
         public string Asset_Sl_No { get; set; }
         public string Asset_Code_System { get; set; }
+        public string Asset_Id_SAP { get; set; }
        
         
         public string IM_Issuer_Comment { get; set; }
@@ -85,6 +87,8 @@ namespace IMRequisitionSystem.Models.Assets
         public string asset_Physical_Condition { get; set; }
         public string Cancelled_Reason { get; set; }
         public string RequisitionType { get; set; }
+        public string asset_custodian_location { get; set; }
+        public string AssetDeliveredLocation { get; set; }
         
 
 

@@ -13,7 +13,7 @@ using static IMRequisitionSystem.Util.Enums;
 
 namespace IMRequisitionSystem.Controllers
 {
-
+    
     public class LoginController : Controller
     {
         private readonly ILoginRepository _loginRepository;
@@ -46,7 +46,7 @@ namespace IMRequisitionSystem.Controllers
 
                 if (UserCode != null)
                 {
-                    return RedirectToAction("EmployeeDashboard", "Employee");
+                    return RedirectToAction("AdminDeshboard", "Home");
                 }
             }
             catch (Exception ex)
@@ -89,6 +89,7 @@ namespace IMRequisitionSystem.Controllers
                 Session["UserCode"] = Convert.ToString(result.UserCode);
                 Session["EmailID"] = Convert.ToString(result.Email);
                 Session["Name"] = Convert.ToString(result.Name);
+                Session["Grade"] = Convert.ToString(result.Grade);
                 Session["DepartmentName"] = Convert.ToString(result.DepartmentName);
                 Session["Designation"] = Convert.ToString(result.Designation);
                 Session["Name"] = Convert.ToString(result.Name);
@@ -106,6 +107,7 @@ namespace IMRequisitionSystem.Controllers
                 Session["IM_ISSUER"] = Convert.ToString(result.IM_ISSUER);
                 Session["ALLOCATOR"] = Convert.ToString(result.ALLOCATOR);
                 Session["LOCATIONAL_ADMIN"] = Convert.ToString(result.LOCATIONAL_ADMIN);
+                Session["Emp_loc_code"] = Convert.ToString(result.Emp_loc_code);
                 
 
                 Session["IsHotelExecutive"] = Convert.ToString("N");
@@ -116,9 +118,33 @@ namespace IMRequisitionSystem.Controllers
                     {
                         return RedirectToAction("AdminDeshboard", "Home");
                     }
+                    if (result.SUPER_ADMIN == "Y")
+                    {
+                        return RedirectToAction("SuperAdminDeshboard", "Home");
+                    }
+                    if (result.HOD_UNIT_INCHARGE == "Y")
+                    {
+                        return RedirectToAction("HODDeshboard", "Home");
+                    }
+                    if (result.IM_ISSUER == "Y")
+                    {
+                        return RedirectToAction("IssuerDeshboard", "Home");
+                    }
+                    if (result.ALLOCATOR == "Y")
+                    {
+                        return RedirectToAction("AllocatorDeshboard", "Home");
+                    }
+                    if (result.IM_APPROVER == "Y")
+                    {
+                        return RedirectToAction("ApproverDeshboard", "Home");
+                    }
+                    if (result.LOCATIONAL_ADMIN == "Y")
+                    {
+                        return RedirectToAction("LocationAdminDeshboard", "Home");
+                    }
                     else
                     {
-                        return RedirectToAction("AdminDeshboard", "Home");
+                        return RedirectToAction("EmployeeDeshboard", "Home");
                     }
                 }
                 if (username == null && password == null)

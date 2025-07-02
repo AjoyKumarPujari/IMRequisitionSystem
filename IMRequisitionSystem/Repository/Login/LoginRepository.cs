@@ -41,6 +41,8 @@ namespace IMRequisitionSystem.Repository.Login
                         user.DepartmentName = employeeDev.DepartmentName;
                         user.Name = employeeDev.Name;
                         user.Email = employeeDev.Email;
+                        user.Grade = employeeDev.Grade;
+                        user.Emp_loc_code = employeeDev.Emp_loc_code;
 
                         SessionDataModel employeeAdmin = CheckAdminAccessByUserCode(employeeDev.UserCode);
 
@@ -55,6 +57,17 @@ namespace IMRequisitionSystem.Repository.Login
                             user.IM_APPROVER = employeeAdmin.IM_APPROVER;
                             user.ALLOCATOR = employeeAdmin.ALLOCATOR;
                             user.ADMIN = employeeAdmin.ADMIN;
+                        }
+                        else
+                        {
+                            user.SUPER_ADMIN = "N";
+                            user.LOCATIONAL_ADMIN = "N";
+                            user.EMPLOYEE = "N";
+                            user.HOD_UNIT_INCHARGE = "N";
+                            user.IM_ISSUER = "N";
+                            user.IM_APPROVER = "N";
+                            user.ALLOCATOR = "N";
+                            user.ADMIN = "N";
                         }
                         
 
@@ -75,6 +88,7 @@ namespace IMRequisitionSystem.Repository.Login
                     user.DepartmentName = employeeDev.DepartmentName;
                     user.Name = employeeDev.Name;
                     user.Email = employeeDev.Email;
+                    user.Emp_loc_code = employeeDev.Emp_loc_code;
                    
                 }
                 else

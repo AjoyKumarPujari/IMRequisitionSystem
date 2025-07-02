@@ -15,6 +15,7 @@ using static IMRequisitionSystem.Util.Enums;
 
 namespace IMRequisitionSystem.Controllers
 {
+    [CustomAdminAuthorize]
     public class RoleMasterController : Controller
     {
         // GET: RoleMaster
@@ -104,6 +105,11 @@ namespace IMRequisitionSystem.Controllers
             return View();
         }
 
+
+        
+
+
+
         [HttpPost]
         public ActionResult AddUserRoleMapping(RoleMappingModel roleMappingModel)
         {
@@ -127,6 +133,55 @@ namespace IMRequisitionSystem.Controllers
             }
         }
 
+        public ActionResult AddLocationalMapping(string status, string message, bool isSwal = false)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(status))
+                {
+                    TempData[ToastMessageParameter.MessageType.ToString()] = status;
+                }
+                if (!string.IsNullOrEmpty(message))
+                {
+                    TempData[ToastMessageParameter.Message.ToString()] = message;
+                }
+                TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
+
+                ViewBag.RoleMasterForDD = _roleMasterRepository.GetAllRoleMasterForDropDown();
+                //ViewBag.ManagementUserDD = _employeeDetailsRepository.GetAllManagementUserData();
+                ViewBag.ManagementUserDD = _employeeDetailsRepository.GetAllManagementForSuperAdminUserData();
+                ViewBag.RoleMappingDD = _roleMappingRepository.GetAllRoleMappingMaster();
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddLocationalMapping(RoleMappingModel roleMappingModel)
+        {
+            try
+            {
+                SPOutputMessage response = _roleMappingRepository.InsertUserRoleMapping(roleMappingModel);
+
+                if (response.Status == 1)
+                {
+                    return RedirectToAction("AddLocationalMapping", "RoleMaster", new { status = ToastMessageType.Success, message = response.Message, isSwal = true });
+                }
+                else
+                {
+                    return RedirectToAction("AddLocationalMapping", "RoleMaster", new { status = ToastMessageType.Error, message = response.Message, isSwal = true });
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return RedirectToAction("AddUserRoleMapping", "RoleMaster", new { status = ToastMessageType.Error, message = "Someting went wrong. Please try again", isSwal = true });
+            }
+        }
 
 
         public JsonResult ActiveDeactiveRole(RoleMasterModel roleMasterModel)
@@ -147,6 +202,34 @@ namespace IMRequisitionSystem.Controllers
 
             var jsonResponseHandler = new JsonResponseHandler(Url);
             return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "AddUserRoleMapping", "RoleMaster", roleMappingModel.Mapping_Id);
+        }
+         public JsonResult ActiveDeactiveLocationRoleMapping(RoleMappingModel roleMappingModel)
+        {
+            var spResponse = _roleMappingRepository.UpdateActiveDeActiveMappingStatus(roleMappingModel);
+
+            //Session["Requisition_No"] = requisitionRequestModel.Requisition_No;
+
+            var jsonResponseHandler = new JsonResponseHandler(Url);
+            return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "AddLocationalMapping", "RoleMaster", roleMappingModel.Mapping_Id);
+        }
+
+        public JsonResult RoleMappingArchive(RoleMappingModel roleMappingModel)
+        {
+            var spResponse = _roleMappingRepository.UpdateArchive(roleMappingModel);
+
+            //Session["Requisition_No"] = requisitionRequestModel.Requisition_No;
+
+            var jsonResponseHandler = new JsonResponseHandler(Url);
+            return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "AddUserRoleMapping", "RoleMaster", roleMappingModel.Mapping_Id);
+        }
+        public JsonResult RoleLocationMappingArchive(RoleMappingModel roleMappingModel)
+        {
+            var spResponse = _roleMappingRepository.UpdateArchive(roleMappingModel);
+
+            //Session["Requisition_No"] = requisitionRequestModel.Requisition_No;
+
+            var jsonResponseHandler = new JsonResponseHandler(Url);
+            return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "AddLocationalMapping", "RoleMaster", roleMappingModel.Mapping_Id);
         }
     }
 }

@@ -14,19 +14,22 @@ using static IMRequisitionSystem.Util.Enums;
 
 namespace IMRequisitionSystem.Controllers 
 {
-    
+    [CustomAdminAuthorize]
     public class ApproverController : Controller
     {
         private readonly IRequisitionApproveList _requisitionApproveList;
         private readonly IIMRequisitionApproverList _iMRequisitionApproverList;
+        private readonly IAssetCategoryRepository _assetCategoryRepository;
         // GET: Approver
         public ApproverController(
             IRequisitionApproveList requisitionApproveList,
-            IIMRequisitionApproverList iMRequisitionApproverList
+            IIMRequisitionApproverList iMRequisitionApproverList,
+            IAssetCategoryRepository assetCategoryRepository
             )
         {
             _requisitionApproveList = requisitionApproveList;
             _iMRequisitionApproverList = iMRequisitionApproverList;
+            _assetCategoryRepository = assetCategoryRepository;
 
         }
 
@@ -172,6 +175,8 @@ namespace IMRequisitionSystem.Controllers
                 requisition_No = System.Web.HttpContext.Current.Session["requisition_No"] as string;
                 //ViewBag.RequisitionDetailsForRequestorDataDD = _requisitionApproveList.GetDetailsPageForUnitIncharge(requisition_No);
                 requisitionRequestModel = _iMRequisitionApproverList.GetDetailsDataForIMApprover(requisition_No);
+
+                ViewBag.AssetCategoryDD = _assetCategoryRepository.GetAllAssetCategoryForDropDown();
                 return View(requisitionRequestModel);
             }
             catch (Exception ex)
@@ -190,6 +195,18 @@ namespace IMRequisitionSystem.Controllers
             var jsonResponseHandler = new JsonResponseHandler(Url);
             return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "DetailsPageForIMApprover", "Approver", requisitionRequestModel.Requisition_No);
         }
+
+        public JsonResult RequisitionCancelByIMApprover(RequisitionRequestModel requisitionRequestModel)
+        {
+            var spResponse = _iMRequisitionApproverList.IMApprovercancelUpdate(requisitionRequestModel);
+
+            Session["Requisition_No"] = requisitionRequestModel.Requisition_No;
+
+            var jsonResponseHandler = new JsonResponseHandler(Url);
+            return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "DetailsPageForIMApprover", "Approver", requisitionRequestModel.Requisition_No);
+        }
+
+
 
         public ActionResult RequisitionIMApprovedList(string status, string message, bool isSwal = false)
         {

@@ -92,72 +92,89 @@
                             <th>Assign To</th>
                             <th>Assign By</th>
                             <th>Assign On </th>
+                            <th>Department Name </th>
                             <th>Status </th>
-                            
                             <th>Action</th>
-
-
                         </tr>
                     </thead>
                     <tbody>
                         @{ int i = 1; }
                         @foreach (var item in ViewBag.RoleMappingDD)
                         {
-                            <tr>
 
-                                <td>@i</td>
-                                <td>@item.Role_Name</td>
-                                <td>@item.Assigned_To_Name</td>
-                                <td>@item.Assigned_By_Name</td>
-                                <td>@item.Assigned_DateTime</td>
-                                <td>
-                                    @if (item.Status == true)
-                                    {
-                                        <span class="badge bg-success text-white">ACTIVE</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge bg-warning text-white">DEACTIVE</span>
-                                    }
-                                </td>
-                                <td>
-                                    @if (item.Status == true)
-                                    {
-                                        <button class="btn btn-md btn-danger" id="activateButton" onclick="ActivetoDeactive(@item.Mapping_Id, 'Dectivated')">
+                            if (item.Role_Name != "LOCATIONAL_ADMIN" && item.Role_Name != "ADMIN" && item.Role_Name != "SUPER_ADMIN" && item.Role_Name != "EMPLOYEE")
+                            {
+                                <tr>
+
+                                    <td>@i</td>
+                                    <td>@item.Role_Name</td>
+                                    <td>@item.Assigned_To_Name</td>
+                                    <td>@item.Assigned_By_Name</td>
+                                    <td>@item.Assigned_DateTime</td>
+                                    <td>@item.Department_name</td>
+                                    <td>
+                                        @if (item.Status == true)
+                                        {
+                                            <span class="badge bg-success text-white">ACTIVE</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-warning text-white">DEACTIVE</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.Status == true)
+                                        {
+                                            <button class="btn btn-md btn-danger" id="activateButton" onclick="ActivetoDeactive(@item.Mapping_Id, 'Dectivated')">
+                                                <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                Deactivate
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-md btn-success mr-1" id="activateButton" onclick="ActivetoDeactive(@item.Mapping_Id, 'Activate')">
+                                                <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                Activate
+                                            </button>
+                                        }
+                                        <br />
+                                        <button class="btn btn-md btn-warning mr-1 mt-5" id="archiveButton" onclick="ArchiveData(@item.Mapping_Id)">
                                             <span class="svg-icon svg-icon-white svg-icon-2x">
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Clipboard-check.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                         <rect x="0" y="0" width="24" height="24" />
-                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                        <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+                                                        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3" />
+                                                        <path d="M10.875,15.75 C10.6354167,15.75 10.3958333,15.6541667 10.2041667,15.4625 L8.2875,13.5458333 C7.90416667,13.1625 7.90416667,12.5875 8.2875,12.2041667 C8.67083333,11.8208333 9.29375,11.8208333 9.62916667,12.2041667 L10.875,13.45 L14.0375,10.2875 C14.4208333,9.90416667 14.9958333,9.90416667 15.3791667,10.2875 C15.7625,10.6708333 15.7625,11.2458333 15.3791667,11.6291667 L11.5458333,15.4625 C11.3541667,15.6541667 11.1145833,15.75 10.875,15.75 Z" fill="#000000" />
+                                                        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000" />
                                                     </g>
-                                                </svg>
+                                                </svg><!--end::Svg Icon-->
                                             </span>
-                                            Deactivate
+                                            Archive
                                         </button>
-                                    }
-                                    else
-                                    {
-                                        <button class="btn btn-md btn-success mr-1" id="activateButton" onclick="ActivetoDeactive(@item.Mapping_Id, 'Activate')">
-                                            <span class="svg-icon svg-icon-white svg-icon-2x">
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24" height="24" />
-                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                                        <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                            Activate
-                                        </button>
-                                    }
-                                </td>
+                                    </td>
+
+                                </tr>
+
+                                i++;
+                            }
 
 
-
-
-                            </tr>
-                            i++;
                         }
                     </tbody>
                 </table>
@@ -242,10 +259,11 @@
 
 
 
-<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+@*<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
 <script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
 <script src="~/lib/assets/js/scripts.bundle.js"></script>
-<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>*@
+
 <script>
     var table = $('#IM_datatable');
     table.DataTable({
@@ -309,7 +327,7 @@
         if (result.value) {
 
             var btnID = "activateButton";
-            
+
             var roleMappingModel = {};
             roleMappingModel.Mapping_Id = Mapping_Id;
 
@@ -330,7 +348,97 @@
         }
     });
 
+    }
+
+
+    function SortCloseByIssuer() {
+        debugger;
+        var btnID = "sortClose";
+        var requisition_No = $("#Requisition_No").val();
+        var closed_Remarks = $("#Closed_Remarks").val();
+
+        if (closed_Remarks == "" || closed_Remarks == null) {
+            showSwalToast("Closed Remarks is required.", "error");
+            return;
+        }
+
+        $("#" + btnID).attr("disabled", true);
+        $("#" + btnID).html("Please Wait..");
+
+        var requisitionRequestModel = {};
+        requisitionRequestModel.Requisition_No = requisition_No;
+        requisitionRequestModel.Closed_Remarks = closed_Remarks;
+
+        $.ajax({
+            url: '@Url.Action("RequisitionSortCloseByIssuer", "Issuer")',
+            type: 'POST',
+            data: { requisitionRequestModel: requisitionRequestModel },
+            success: function (data) {
+
+                if (data.redirectUrl != '') {
+                    location.href = data.redirectUrl;
+                } else {
+                    $("#" + btnID).attr("disabled", false);
+                    $("#" + btnID).html("Submit");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+                $("#" + btnID).attr("disabled", false);
+                $("#" + btnID).html("Submit");
+
+                toastr.error("Failed to Approve. Try again.");
+            }
+        });
+    }
+</script>
+<script>
+
+
+    function ArchiveData(Mapping_Id) {
+    debugger;
+    var btnID = "archiveButton";
+    var mapping_ID = Mapping_Id;
+
+    if (!mapping_ID) {
+        toastr.error("Invalid Mapping ID.");
+        return;
+    }
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "This action will archive the data.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Archive"
+    }).then(function (result) {
+        if (result.isConfirmed) {
+            $("#" + btnID).attr("disabled", true).html("Please Wait..");
+
+            var roleMappingModel = { Mapping_Id: mapping_ID };
+
+            $.ajax({
+                url: '@Url.Action("RoleMappingArchive", "RoleMaster")',
+                type: 'POST',
+                data: JSON.stringify(roleMappingModel),
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.redirectUrl) {
+                        location.href = data.redirectUrl;
+                    } else {
+                        $("#" + btnID).attr("disabled", false).html("Submit");
+                        toastr.success("Archived Successfully");
+                    }
+                },
+                error: function () {
+                    $("#" + btnID).attr("disabled", false).html("Submit");
+                    toastr.error("Failed to Archive. Try again.");
+                }
+            });
+        }
+    });
 }
+
 </script>
 
 

@@ -21,6 +21,7 @@ namespace IMRequisitionSystem.Repository.Approver
                 var parameters = new DynamicParameters();
                 parameters.Add("@Type", "GetRequisitionApproveListViaApproverID");
                 parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+                parameters.Add("@Emp_loc_code", SessionData.GetSessionData(SessionData.Emp_loc_code));
 
                 return ExecuteStoredProcedure("Requisition_Details_SP", parameters, reader =>
                 {
@@ -100,7 +101,9 @@ namespace IMRequisitionSystem.Repository.Approver
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@Type", "HOD_APPROVED_REQUISITION_DATA");
-                //xparameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+                parameters.Add("@Approve_By", SessionData.GetSessionUserCode());
+
+                parameters.Add("@Emp_loc_code", SessionData.GetSessionData(SessionData.Emp_loc_code));
                 return ExecuteStoredProcedure("Requisition_Details_SP", parameters, reader =>
                 {
                     return reader.Read<RequisitionRequestModel>().AsList();

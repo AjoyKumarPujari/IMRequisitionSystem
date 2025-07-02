@@ -35,16 +35,16 @@
 
                             
                         </div>
-                        <div class="form-group col-lg-4">
+                        <!--<div class="form-group col-lg-4">
                             <label>
                                 Location
                                 <span class="text-danger">*</span>
-                            </label>
+                            </label>-->
                             @*<input class="form-control" type="text" value="Numaligarh" id="location" disabled />*@
-                            @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Device Type", autocomplete = "off", id = "location" } })
+                            <!--@Html.EditorFor(model => model.Location, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Device Type", autocomplete = "off", id = "location" } })
 
                             
-                        </div>
+                        </div>-->
 
                         <div class="form-group col-lg-4">
                             <label for="purpose">Asset Description:</label>
@@ -113,7 +113,7 @@
                                 <th>Sl no</th>
                                 <th>Type of Device</th>
                                 <th>Created By</th>
-                                <th>Location</th>
+                                @*<th>Location</th>*@
                                 <th>Asset Description</th>
                                 <th>Asset Status</th>
                                 <th>Action</th>
@@ -128,7 +128,7 @@
                                     <td>@i</td>
                                     <td>@item.DeviceType</td>
                                     <td>@item.CreatedBy</td>
-                                    <td>@item.Location</td>
+                                    @*<td>@item.Location</td>*@
                                     <td>@item.DeviceDescription</td>
 
                                     @if (item.IsActive == false)

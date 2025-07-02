@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-lg-3">
                             <label> Location:</label>
-                            @Html.DropDownListFor(model => model.Use_Location,
+                            @*@Html.DropDownListFor(model => model.Use_Location,
                              new SelectList(new[]
                              {
 
@@ -81,7 +81,22 @@
                                                 new SelectListItem { Value = "NRL_Guwahati", Text = "NRL (Guwahati)" },
 
                              }, "Value", "Text", Model.Use_Location),
-                             "Select Location", new { @class = "form-control select2", @style = "width:100%", @id = "Use_Location" })
+                             "Select Location", new { @class = "form-control select2", @style = "width:100%", @id = "Use_Location" })*@
+
+
+                            @Html.DropDownListFor(model => model.Use_Location,
+                             new SelectList(new[]
+                             {
+                                new SelectListItem { Value = "NL02", Text = "NRL" },
+                                new SelectListItem { Value = "NL03", Text = "Kolkata" },
+                                new SelectListItem { Value = "NL04", Text = "Delhi" },
+                                new SelectListItem { Value = "NL06", Text = "Prj-Pipeline-Odisha" },
+                                new SelectListItem { Value = "NL09", Text = "Deputation (NRL Employeees)" },
+                                new SelectListItem { Value = "NL01", Text = "Corporate Office" },
+
+                             }, "Value", "Text", Model.Use_Location),
+                             "Select Device Characteristics", new { @class = "form-control select2", @style = "width:100%", @id = "AssetDeliveredLocation" })
+
 
                         </div>
                     </div>
@@ -172,7 +187,7 @@
                         </div>
                         <div class="col-lg-4">
 
-                            <label>Approver Name:</label>
+                            <label>Approver/HOD/Unit-Incharge Name:</label>
 
                             @Html.DropDownListFor(model => model.Approve_By, new SelectList(ViewBag.ApproverDataDD, "EmployeeCode", "EmployeeName"), "Select Approver Name", new { @class = "form-control select2", @style = "width:100%" })
 
@@ -182,7 +197,7 @@
 
                             <label for="purpose">Purpose of Requisition:</label>
                             @Html.TextAreaFor(model => model.Purpose_Of_Use, new { @class = "form-control", @placeholder = "Purpose of Requisition", autocomplete = "off", rows = "3" })
-
+                            <span class="form-text" style="color:red;">Max 300 Words</span>
 
                         </div>
                     </div>
@@ -215,18 +230,20 @@
 
 
                     <!--<button type="submit" onclick="FormValidation()" class="btn btn-danger btn-sm font-weight-bold mr-4">
-                        <span class="svg-icon svg-icon-white svg-icon-2x">-->
-                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <polygon points="0 0 24 0 24 24 0 24" />
-                                    <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
-                                    <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
-                                </g>
-                            </svg>--><!--end::Svg Icon-->
-                        <!--</span>
-                        Send
-                    </button>-->
-                    <button type="button" id="btnSubmit" name="btnSubmit"  onclick="FormValidation('RequisitionRequest')" class="btn btn-success btn-sm font-weight-bold mr-4">
+        <span class="svg-icon svg-icon-white svg-icon-2x">-->
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg-->
+                    <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <polygon points="0 0 24 0 24 24 0 24" />
+            <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
+            <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
+        </g>
+    </svg>-->
+                    <!--end::Svg Icon-->
+                    <!--</span>
+        Send
+    </button>-->
+                    <button type="button" id="btnSubmit" name="btnSubmit" onclick="FormValidation('RequisitionRequest')" class="btn btn-success btn-sm font-weight-bold mr-4">
                         <span class="svg-icon svg-icon-white svg-icon-2x">
                             <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -239,7 +256,7 @@
                         Send
                     </button>
 
-                    <button type="button" id="btnDraft" name="btnDraft"  onclick="FormValidation('RequisitionRequestDraft')" class="btn btn-sm btn-warning">
+                    <button type="button" id="btnDraft" name="btnDraft" onclick="FormValidation('RequisitionRequestDraft')" class="btn btn-sm btn-warning">
                         <span class="svg-icon svg-icon-white svg-icon-2x">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -251,6 +268,7 @@
                         </span>
                         Save as Draft
                     </button>
+                   
                 </div>
             </div>
 
@@ -308,6 +326,9 @@
                                 </button>
                                 <button type="button" class="btn btn-sm btn-success mt-2 w-100" id="DraftRequestGeneratebtn" onclick="DraftRequestGenerate('@item.Requisition_No')">
                                     Generate
+                                </button>
+                                <button type="button" class="btn btn-sm btn-warning mt-2 w-100" id="archiveButton" onclick="ArchiveData('@item.Requisition_No')">
+                                    Archive
                                 </button>
 
                             </td>
@@ -452,8 +473,12 @@
             placeholder: "Select Non_Management Staff personnel"
 
         });
+        $('#AssetDeliveredLocation').select2({
 
+            placeholder: "Select Asset Delivered Location"
 
+        });
+        $("#AssetDeliveredLocation").prop('disabled', true);
 
     });
 
@@ -553,7 +578,7 @@
         //var Use_Department = $("#Use_Department").text();
         //const selectedDeptName = document.getElementById('Use_Department').addEventListener('change', e => selectedDeptName = e.target.options[e.target.selectedIndex].text);
 
-        var Use_Location = $("#Use_Location").val();
+        var Use_Location = $("#AssetDeliveredLocation").val();
         //var Use_Area = $("#Use_Area").val();
         //var Approve_By = $("#Approve_By").val();
 
@@ -628,7 +653,7 @@
         //var Use_Department = $("#Use_Department").text();
         //const selectedDeptName = document.getElementById('Use_Department').addEventListener('change', e => selectedDeptName = e.target.options[e.target.selectedIndex].text);
 
-        var Use_Location = $("#Use_Location").val();
+        var Use_Location = $("#AssetDeliveredLocation").val();
         //var Use_Area = $("#Use_Area").val();
         //var Approve_By = $("#Approve_By").val();
 
@@ -697,7 +722,7 @@
        debugger;
         var btnID = "DraftRequestGeneratebtn";
         var requisition_No = Requisition_No;
-        
+
         var requisitionRequestModel = {};
         requisitionRequestModel.Requisition_No = requisition_No;
 
@@ -724,7 +749,49 @@
        });
     }
 
+    function ArchiveData(Requisition_No) {
+        debugger;
+        var btnID = "archiveButton";
+        var requisition_No = Requisition_No;
 
+        if (!requisition_No) {
+            toastr.error("Invalid Mapping ID.");
+            return;
+        }
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "This action will archive the data.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Archive"
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                $("#" + btnID).attr("disabled", true).html("Please Wait..");
+
+                var requisitionRequestModel = { Requisition_No: requisition_No };
+
+                $.ajax({
+                    url: '@Url.Action("RequisitionArchive", "Requisition")',
+                    type: 'POST',
+                    data: JSON.stringify(requisitionRequestModel),
+                    contentType: "application/json",
+                    success: function (data) {
+                        if (data.redirectUrl) {
+                            location.href = data.redirectUrl;
+                        } else {
+                            $("#" + btnID).attr("disabled", false).html("Submit");
+                            toastr.success("Archived Successfully");
+                        }
+                    },
+                    error: function () {
+                        $("#" + btnID).attr("disabled", false).html("Submit");
+                        toastr.error("Failed to Archive. Try again.");
+                    }
+                });
+            }
+        });
+    }
 
 </script>
 

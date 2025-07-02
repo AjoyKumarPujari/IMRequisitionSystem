@@ -2,6 +2,7 @@
 using Holiday_Home.Util;
 using IMRequisitionSystem.Models;
 using IMRequisitionSystem.Models.Assets;
+using IMRequisitionSystem.Models.RoleMapping;
 using IMRequisitionSystem.Util;
 using Newtonsoft.Json;
 using System;
@@ -279,6 +280,45 @@ namespace IMRequisitionSystem.Repository.Requisition
 
 
 
-        
+        public SPOutputMessage UpdateRequisitionArchive(RequisitionRequestModel requisitionRequestModel)
+        {
+            SPOutputMessage spResponse = new SPOutputMessage()
+            {
+                Status = 2,
+                Message = "Something went wrong, try again later."
+            };
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Type", "UPDATE_ARCHIVE_STATUS");
+                parameters.Add("@Requisition_No", requisitionRequestModel.Requisition_No);
+                parameters.Add("@ModifiedBy", SessionData.GetSessionUserCode());
+
+                // Output parameters
+                parameters.Add("@Status", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 255, direction: ParameterDirection.Output);
+
+
+                ExecuteStoredProcedure("Requisition_Details_SP", parameters, reader =>
+                {
+                    return reader.ReadFirstOrDefault<int>();
+                });
+
+                spResponse = new SPOutputMessage
+                {
+                    Status = parameters.Get<int>("@Status"),
+                    Message = parameters.Get<string>("@Message"),
+                };
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return spResponse;
+        }
+
+
     }
 }

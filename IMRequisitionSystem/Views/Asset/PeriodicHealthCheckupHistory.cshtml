@@ -18,14 +18,9 @@
                             Asset ID:
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control form-control-lg" id="AssetID">
-                            <option></option>
-                            <option>NRL-AID-0001</option>
-                            <option>NRL-AID-0002</option>
-                            <option>NRL-AID-0003</option>
-                            <option>NRL-AID-0004</option>
-                            <option>NRL-AID-0005</option>
-                        </select>
+                        @Html.DropDownListFor(model => model.Asset_Id_SAP, new SelectList(ViewBag.AssetMasterDataDD, "Asset_Id_SAP", "Asset_Id_SAP"), "Select Device Type", new { @class = "form-control select2", @style = "width:100%" })
+
+
 
                         <span class="form-text text-muted">Select Asset ID</span>
                     </div>
@@ -34,13 +29,9 @@
                             Asset Serial No:
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control form-control-lg" id="AssetSerialNo">
-                            <option></option>
-                            <option>NRL-IM-0001</option>
-                            <option>NRL-IM-0002</option>
-                            <option>NRL-IM-0003</option>
-                            <option>NRL-IM-0004</option>
-                        </select>
+                        @Html.DropDownListFor(model => model.Asset_Sl_No, new SelectList(ViewBag.AssetMasterDataDD, "Asset_Sl_No", "Asset_Sl_No"), "Select Serial No Type", new { @class = "form-control select2", @style = "width:100%" })
+
+
 
                         <span class="form-text text-muted">Select Asset Serial Number</span>
                     </div>
@@ -63,7 +54,7 @@
 
 
                     <div class="col-lg-4 col-md-12 mt-7">
-                        <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-sm btn-primary mr-2">
+                        <button type="button" id="btnSubmit" name="btnSubmit" class="btn btn-sm btn-primary mr-2" onclick="HealthCheckupListWithFilter()">
                             <span class="svg-icon svg-icon-white svg-icon-2x">
                                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Search.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -76,7 +67,7 @@
                             Search
                         </button>
                         @*@Html.ActionLink("Reset", "AdminReport", new { }, new { @class = "btn btn-secondary" })*@
-                        <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning">
+                        <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning" onclick="clearForm()">
                             <span class="svg-icon svg-icon-white svg-icon-2x">
                                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Repeat.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -107,57 +98,56 @@
                     </div>
 
                     <!--<button onclick="location.href='@Url.Action("AssetMasterTable", "Home")'" class="btn btn-primary d-flex align-items-center">
-                        <span class="svg-icon menu-icon">-->
-                            <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
-                            <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <rect x="0" y="0" width="24" height="24" />
-                                    <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
-                                    <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
-                                </g>
-                            </svg>-->
-                            <!--end::Svg Icon-->
-                        <!--</span>
-                        ASSET MASTER LIST
-                    </button>-->
+                <span class="svg-icon menu-icon">-->
+                    <!--begin::Svg Icon | path:~/lib/assets/media/svg/icons/Layout/Layout-left-panel-2.svg-->
+                    <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <rect x="0" y="0" width="24" height="24" />
+                    <path d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000" />
+                    <rect fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1" />
+                </g>
+            </svg>-->
+                    <!--end::Svg Icon-->
+                    <!--</span>
+                ASSET MASTER LIST
+            </button>-->
 
 
                 </div>
             </div>
             <div class="card-body">
                 <!--begin: Datatable-->
-
                 @*<div class="form-group row">
-                    <div class="col-lg-4">
-                        <label class="font-weight-bolder">Make</label>
-                        <input class="form-control" type="text" value="Motorola" id="Make" disabled />
-                    </div>
-                    <div class="col-lg-4">
-                        <label class="font-weight-bolder">Model</label>
-                        <input class="form-control" type="text" value="M-VHF" id="Model" disabled />
-                    </div>
-                    <div class="col-lg-4">
-                        <label class="font-weight-bolder">Installation Date</label>
-                        <input class="form-control" type="text" value="12-10-2023" id="installationDate" disabled />
-                    </div>
+                <div class="col-lg-4">
+                    <label class="font-weight-bolder">Make</label>
+                    <input class="form-control" type="text" value="Motorola" id="Make" disabled />
                 </div>
-
-                <div class="form-group row">
-                    <div class="col-lg-4">
-                        <label class="font-weight-bolder">Category</label>
-                        <input class="form-control" type="text" value="VHF" id="VHF" disabled />
-                    </div>
-                    <div class="col-lg-4">
-                        <label class="font-weight-bolder">Current Location</label>
-                        <input class="form-control" type="text" value="Numaligarh" id="location" disabled />
-                    </div>
+                <div class="col-lg-4">
+                    <label class="font-weight-bolder">Model</label>
+                    <input class="form-control" type="text" value="M-VHF" id="Model" disabled />
                 </div>
+                <div class="col-lg-4">
+                    <label class="font-weight-bolder">Installation Date</label>
+                    <input class="form-control" type="text" value="12-10-2023" id="installationDate" disabled />
+                </div>
+            </div>
 
-                <div class="card-title mt-1">
-                    <h4 class="card-label font-weight-bolder">
-                        DETAILS
-                    </h4>
-                </div>*@
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label class="font-weight-bolder">Category</label>
+                    <input class="form-control" type="text" value="VHF" id="VHF" disabled />
+                </div>
+                <div class="col-lg-4">
+                    <label class="font-weight-bolder">Current Location</label>
+                    <input class="form-control" type="text" value="Numaligarh" id="location" disabled />
+                </div>
+            </div>
+
+            <div class="card-title mt-1">
+                <h4 class="card-label font-weight-bolder">
+                    DETAILS
+                </h4>
+            </div>*@
 
 
                 <table class="table table-bordered table-checkable" id="IM_datatable">
@@ -172,7 +162,7 @@
                             <th>Requisition ID</th>
                             <th>Health Check Up On</th>
                             <th>Next Health Check Up due Date</th>
-                           
+
 
 
 
@@ -192,7 +182,7 @@
                                 <td>@item.Requisition_No</td>
                                 <td>@item.HealthCheckUpOn</td>
                                 <td>@item.Asset_Due_Date</td>
-                                
+
 
                             </tr>
                             i++;
@@ -203,7 +193,15 @@
 
                 <!--end: Datatable-->
             </div>
+
+            <div class="card-body">
+                <!--begin: Datatable-->
+                <table class="table table-bordered " id="IM_datatable">
+                </table>
+                <!--end: Datatable-->
             </div>
+
+        </div>
     </div>
 
 </div>
@@ -286,6 +284,12 @@
 <script src="~/lib/assets/js/scripts.bundle.js"></script>
 <script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script>
+   jQuery(document).ready(function () {
+       HealthCheckupListWithFilter();
+   ShowTostr("@ViewBag.Status", "@ViewBag.Message");
+});
+</script>
+<script>
     var table = $('#IM_datatable');
     table.DataTable({
         responsive: true,
@@ -308,11 +312,11 @@
 
 <script>
 
-    $('#AssetID').select2({
+    $('#Asset_Id_SAP').select2({
         placeholder: "Select Asset ID"
     });
 
-    $('#AssetSerialNo').select2({
+    $('#Asset_Sl_No').select2({
         placeholder: "Select Asset Serial No"
     });
 </script>
@@ -376,6 +380,14 @@
         });
     });
 
+    function clearForm() {
+
+       
+        $("#Asset_Sl_No").val(" ").change();;
+        $("#Asset_Id_SAP").val(" ").change();;
+        HealthCheckupListWithFilter();
+    }
+
 
     function toggleDeactivateButton() {
         const activateButton = document.getElementById('activateButton');
@@ -391,6 +403,144 @@
         activateButton.hidden = false;
         deactivateButton.hidden = true;
     }
+
+    function HealthCheckupListWithFilter() {
+    var i = 1;
+    debugger;
+    var AssetsModel = {};
+    AssetsModel.Asset_Sl_No = $('#Asset_Sl_No').val();
+    AssetsModel.Asset_Id_SAP = $('#Asset_Id_SAP').val();
+    var url ='@Url.Action("GetHealthCheckupListWithFilter", "Asset")';
+
+    var datatable = $('#IM_datatable').DataTable({
+        destroy: true,
+        scrollX: false,
+        responsive: true,
+        paging: false,
+        pagingType: 'full_numbers',
+        ajax: {
+            url: url,
+            type: 'POST',
+            data: { assetModel: AssetsModel },
+            dataSrc: '',
+        },
+        columns: [
+
+            { data: null },
+            { data: null },
+            { data: null },
+            { data: null },
+            { data: null },
+            { data: null },
+            { data: null },
+            { data: null },
+         
+
+
+        ],
+        columnDefs: [
+
+            {
+                targets: 0,
+                title: 'Sl No',
+                orderable: false,
+                render: function (data, type, full, meta) {
+
+                    return '<span style="font-size: 15px">' + i + '</span>';
+                    i++
+                },
+            },
+            {
+                targets: 1,
+                title: 'Asset Id',
+                orderable: false,
+                render: function (data, type, full, meta) {
+
+                    return '<span style="font-size: 15px">' + data.Asset_Id_SAP + '</span>';
+                },
+            },
+            {
+                targets: 2,
+                title: 'Asset Sl No ',
+                orderable: false,
+                render: function (data, type, full, meta) {
+
+                    return '<span style="font-size: 15px">' + data.Asset_Sl_No + '</span>';
+                },
+            },
+            {
+                targets: 3,
+                title: 'Make  ',
+                orderable: false,
+                render: function (data, type, full, meta) {
+
+                    return '<span style="font-size: 15px">' + data.AssetMakeNo + '</span>';
+                },
+            },
+            {
+                targets: 4,
+                title: 'Model  ',
+                orderable: false,
+                render: function (data, type, full, meta) {
+
+                    return '<span style="font-size: 15px">' + data.AssetModelNo + '</span>';
+                },
+            },
+            {
+                targets: 5,
+                title: 'Requisition ID',
+                orderable: false,
+                render: function (data, type, full, meta) {
+
+                    return '<span style="font-size: 15px">' + data.Requisition_No + '</span>';
+                },
+            },
+            {
+                targets: 6,
+                title: 'Health Check Up On',
+                orderable: false,
+                render: function (data, type, full, meta) {
+
+                    return '<span style="font-size: 15px">' + data.HealthCheckUpOn + '</span>';
+                },
+            },
+            {
+                targets: 7,
+                title: 'Next Health Check Up due Date',
+                orderable: false,
+                render: function (data, type, full, meta) {
+
+                    return '<span style="font-size: 15px">' + data.Asset_Due_Date + '</span>';
+                },
+            },
+            
+            
+
+
+
+
+
+        ],
+        dom: '',
+        //dom: '<"bottom" B>',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: 'Export to Excel',
+                filename: function () {
+                    return 'Health Checkup History List';
+                }
+            }
+        ],
+    });
+
+    datatable_2 = datatable;
+
+    $('#btnExportExcel').on('click', function () {
+        datatable_2.button('.buttons-excel').trigger();
+    });
+
+}
 </script>
 
 

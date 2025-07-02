@@ -18,6 +18,7 @@ namespace IMRequisitionSystem.Models.RoleMapping
         public string Last_Modified_DateTime { get; set; }
         public string Last_Modified_By { get; set; }
         public bool Status { get; set; }
+        public string Department_name { get; set; }
       
     }
 }

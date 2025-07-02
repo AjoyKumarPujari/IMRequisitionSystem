@@ -1,0 +1,590 @@
+﻿@model IMRequisitionSystem.Models.Assets.AssetsModel
+@{
+    ViewBag.Title = "AMCMappingPageEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AMCMappingPageEdit</h2>
+
+
+
+<div class="d-flex flex-column-fluid" style="margin-top:-30px">
+    <div class="container-fluid">
+
+
+        <div class="card card-custom gutter-b" style="border-radius: 25px;">
+
+            <div class="card-header card-header-tabs-line">
+                <div class="card-title d-flex justify-content-between align-items-center w-100">
+                    <div class="card-toolbar">
+                        <h2>Edit AMC MApping with SAP PO</h2>
+                    </div>
+                   
+
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="tab-content">
+                    @using (Html.BeginForm("AMCMappingPageEditUpdate", "Asset", FormMethod.Post, new { enctype = "multipart/form-data", id = "createAssetMasterAMC" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="tab-pane fade show " id="kt_tab_pane_1_4" role="tabpanel" aria-labelledby="kt_tab_pane_1_4">
+                            <form class="form">
+
+                                <div class="card-body">
+
+
+
+                                    <div class="row">
+
+
+                                        <div class="form-group col-lg-4">
+                                            <label class="font-weight-bolder">
+                                                Asset ID (SAP):
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            @Html.EditorFor(model => model.Asset_Id_SAP, new { htmlAttributes = new { @type = "text", @class = "form-control from-control-solid", @placeholder = "Enter PO No", autocomplete = "off", @readonly = "readonly" } })
+                                            @Html.HiddenFor(model => model.Asset_Code_System, new { htmlAttributes = new { @type = "text", @class = "form-control from-control-solid", @placeholder = "Enter PO No", autocomplete = "off", @readonly = "readonly" } })
+
+                                        </div>
+                                        <div class="form-group col-lg-4">
+                                            <label class="font-weight-bolder">
+                                                Asset Serial No:
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            @Html.EditorFor(model => model.Asset_Sl_No, new { htmlAttributes = new { @type = "text", @class = "form-control from-control-solid", @placeholder = "", style = "width:100%", autocomplete = "off", @readonly = "readonly" } })
+                                        </div>
+                                        <div class="form-group col-lg-4">
+                                            <label class="font-weight-bolder">PO Number</label>
+
+                                            @Html.EditorFor(model => model.PO_No, new { htmlAttributes = new { @type = "text", @class = "form-control from-control-solid", @placeholder = "Enter PO No", autocomplete = "off", @readonly = "readonly" } })
+
+
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-12 mt-2">
+                                            <label class="font-weight-bolder">SAP PO or RPO:</label>
+
+                                            <div class="radio-inline">
+                                                <label class="radio radio-outline radio-success">
+                                                    <input type="radio" name="toggle" value="hide" onclick="ValidatePOShow(true)" checked />
+                                                    <span></span>
+                                                    RPO
+                                                </label>
+                                                <label class="radio radio-outline radio-success">
+                                                    <input type="radio" name="toggle" value="show" onclick="ValidatePOShow(false)" />
+                                                    <span></span>
+                                                    SAP PO
+                                                </label>
+                                            </div>
+
+                                            <span class="form-text text-muted">Is this a SAP PO or RPO?</span>
+                                        </div>
+
+
+                                        <div class="col-lg-4 col-md-12 mt-2">
+                                            <label class="font-weight-bolder">
+                                                AMC PO Number:
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <!--<input class="form-control" type="text"  id="AMCPONumber"/>-->
+                                            @Html.EditorFor(model => model.AMC_PO_NO, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter PO No", autocomplete = "off", id = "AMCPONumber" } })
+
+                                            <span class="form-text text-muted">Purchase Order Number.</span>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-12 mt-2 AMCPO">
+                                            <button type="button" name="btnSubmit" class="btn btn-sm btn-success mr-2 mt-7" id="btnVerifyPONo" onclick="VerifyPONo()">
+                                                <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Spy.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M12,3 C16.418278,3 20,6.581722 20,11 L20,21 C20,21.5522847 19.5522847,22 19,22 L5,22 C4.44771525,22 4,21.5522847 4,21 L4,11 C4,6.581722 7.581722,3 12,3 Z M9,10 C7.34314575,10 6,11.3431458 6,13 C6,14.6568542 7.34314575,16 9,16 L15,16 C16.6568542,16 18,14.6568542 18,13 C18,11.3431458 16.6568542,10 15,10 L9,10 Z" fill="#000000" />
+                                                            <path d="M15,14 C14.4477153,14 14,13.5522847 14,13 C14,12.4477153 14.4477153,12 15,12 C15.5522847,12 16,12.4477153 16,13 C16,13.5522847 15.5522847,14 15,14 Z M9,14 C8.44771525,14 8,13.5522847 8,13 C8,12.4477153 8.44771525,12 9,12 C9.55228475,12 10,12.4477153 10,13 C10,13.5522847 9.55228475,14 9,14 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg><!--end::Svg Icon-->
+                                                </span>
+                                                Validate
+                                            </button>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-12 mt-2">
+                                            <label class="font-weight-bolder ">
+                                                AMC Vendor Code:
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <!-- <input class="form-control" type="text" id="AMCVC" />-->
+
+                                            @Html.EditorFor(model => model.Latest_AMC_vendor_code, new { htmlAttributes = new { @type = "text", @class = "form-control ", @placeholder = "", style = "width:100%", autocomplete = "off", id = "AMCVC" } })
+
+                                            <span class="form-text text-muted">AMC Vendor Code.</span>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-12 mt-2">
+                                            <label class="font-weight-bolder">
+                                                AMC Vendor Name:
+                                                <span class="text-danger">*</span>
+                                            </label>
+
+                                            <!--  <input class="form-control" type="text" id="AMCVN" /> -->
+                                            @Html.EditorFor(model => model.Latest_AMC_vendorname, new { htmlAttributes = new { @type = "text", @class = "form-control ", @placeholder = "", style = "width:100%", autocomplete = "off", id = "AMCVN" } })
+
+                                            <span class="form-text text-muted">AMC Vendor Name.</span>
+                                        </div>
+                                        <div class="form-group col-lg-4">
+                                            <label>
+                                                AMC Start Date:
+                                                <span class="text-danger">*</span>
+                                            </label>
+
+                                            <div class="input-group date">
+                                                @Html.EditorFor(model => model.Latest_AMC_Start_Date, new { htmlAttributes = new { id = "Requisition_Date", placeholder = "Select IRequisition_ Date", @class = "form-control", @type = "date" } })
+
+
+                                            </div>
+
+                                        </div>
+                                         <div class="form-group col-lg-4">
+                                            <label>
+                                                AMC End Date:
+                                                <span class="text-danger">*</span>
+                                            </label>
+
+                                            <div class="input-group date">
+                                                @Html.EditorFor(model => model.Latest_AMC_End_Date, new { htmlAttributes = new { id = "Requisition_Date", placeholder = "Select IRequisition_ Date", @class = "form-control", @type = "date" } })
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row mt-5">
+
+                                        <div class="col-lg-6">
+
+                                            <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-sm btn-primary mr-2">
+                                                <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Save.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <polygon points="0 0 24 0 24 24 0 24" />
+                                                            <path d="M17,4 L6,4 C4.79111111,4 4,4.7 4,6 L4,18 C4,19.3 4.79111111,20 6,20 L18,20 C19.2,20 20,19.3 20,18 L20,7.20710678 C20,7.07449854 19.9473216,6.94732158 19.8535534,6.85355339 L17,4 Z M17,11 L7,11 L7,4 L17,4 L17,11 Z" fill="#000000" fill-rule="nonzero" />
+                                                            <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="5" rx="0.5" />
+                                                        </g>
+                                                    </svg><!--end::Svg Icon-->
+                                                </span>
+                                               Update
+                                            </button>
+
+                                            <button type="button" id="btnGenerate" name="btnGenerate" class="btn btn-sm btn-warning">
+                                                <span class="svg-icon svg-icon-white svg-icon-2x">
+                                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Repeat.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000" />
+                                                            <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg><!--end::Svg Icon-->
+                                                </span>
+                                                Reset
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+                            </form>
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="~/lib/assets/plugins/global/plugins.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="~/lib/assets/js/scripts.bundle.js"></script>
+<script src="~/lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+    var table = $('#IM_datatable');
+    table.DataTable({
+        responsive: true,
+        pagingType: 'full_numbers',
+        order: [],
+        dom: 'lBfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+        ]
+    });
+    table.init();
+</script>
+
+<script>
+    $('#Role').select2({
+        placeholder: "Select Role"
+    });
+
+
+    $('#AssetIDRPO').select2({
+        placeholder: "Select Asset ID"
+    });
+
+    $('#AssetSerialNoRPO').select2({
+        placeholder: "Select Asset Serial No"
+    });
+
+
+    $('#AssetIDSAPPO').select2({
+        placeholder: "Select Asset ID"
+    });
+
+    $('#AssetSerialNoSAPPO').select2({
+        placeholder: "Select Asset Serial No"
+    });
+   
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        $(".AMCPO").hide();
+        $(".AMCVD").hide();
+        ShowTostr("@ViewBag.Status", "@ViewBag.Message");
+    });
+
+
+    $("#activateButton").click(function (e) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Activate"
+        }).then(function (result) {
+            if (result.value) {
+                Swal.fire(
+                    "Activated",
+                    "User has been activated successfully",
+                    "success"
+                )
+                toggleDeactivateButton();
+            }
+        });
+    });
+
+
+    $("#deactivateButton").click(function (e) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Deactivate"
+        }).then(function (result) {
+            if (result.value) {
+                Swal.fire(
+                    "Dectivated",
+                    "User has been deactivated successfully",
+                    "success"
+                )
+                toggleActivateButton();
+            }
+        });
+    });
+
+
+    $("#updateButton").click(function (e) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Update"
+        }).then(function (result) {
+            if (result.value) {
+                Swal.fire(
+                    "Updated",
+                    "User Role has been updated successfully",
+                    "success"
+                )
+            }
+        });
+    });
+
+
+    function toggleVisibility(hide) {
+
+        //debugger;
+        //const AMCVendorDetails = document.getElementById("AMCVD");
+        const AMCVendorDetails = document.getElementsByClassName("AMCVD");
+
+
+        if (hide === true) {
+            //AMCVendorDetails.hidden = true;
+            $(".AMCVD").hide();
+        }
+        else {
+            //AMCVendorDetails.hidden = false;
+            $(".AMCVD").show();
+        }
+        // Set the hidden property based on the radio button
+    }
+
+    function Hide() {
+        $(".AMCVD").hide();
+    }
+
+    function toggleDeactivateButton() {
+        const activateButton = document.getElementById('activateButton');
+        const deactivateButton = document.getElementById('deactivateButton');
+        activateButton.hidden = true;
+        deactivateButton.hidden = false;
+
+    }
+
+    function toggleActivateButton() {
+        const activateButton = document.getElementById('activateButton');
+        const deactivateButton = document.getElementById('deactivateButton');
+        activateButton.hidden = false;
+        deactivateButton.hidden = true;
+    }
+
+    var validPONo = false;
+    var verifyPoNoClicked = false;
+
+
+    function VerifyPONo() {
+
+        debugger;
+
+        verifyPoNoClicked = true;
+
+        $('#btnVerifyPONo').attr('disabled', true);
+        $('#btnVerifyPONo').html('Please Wait...');
+
+        var po_no = $('#AMCPONumber').val();
+
+        $.ajax({
+            url: "@Url.Action("GetDetailsByWorkOrderNoOfProductionServer", "Asset")",
+            data: { Id: po_no },
+            type: 'GET',
+            success: function (workerDetails) {
+
+                $('#btnVerifyPONo').attr('disabled', false);
+                $('#btnVerifyPONo').html('Verify PO No');
+
+                if (workerDetails.VendorName != null && workerDetails.VendorName != "" && workerDetails.VendorName != null && workerDetails.VendorName != "") {
+                    validPONo = true;
+                    toastr.success("PO No verified");
+                    $('#AMCVC').val(workerDetails.VendorCode);
+                    $('#AMCVN').val(workerDetails.VendorName);
+                }
+                else {
+                    validPONo = false;
+                    toastr.error("Not a valid PO No");
+                    $('#AMCVC').val('');
+                    $('#AMCVN').val('');
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+                validPONo = false;
+                toastr.error("Not a valid PO No");
+                $('#AMCVC').val('');
+                $('#AMCVN').val('');
+
+                $('#btnVerifyPONo').attr('disabled', false);
+                $('#btnVerifyPONo').html('Verify PO No');
+            }
+        });
+
+    }
+
+    function GetAssetDataBySAPID() {
+
+     debugger;
+
+
+
+     var asset_sap_id = $('#Asset_Id_SAP').val();
+         debugger;
+     $.ajax({
+         url: "@Url.Action("GetAssetsDataBySAPID", "Asset")",
+         data: { Id: asset_sap_id },
+         type: 'GET',
+         success: function (assetDetails) {
+
+
+
+             $('#Asset_Sl_No').val(assetDetails.Asset_Sl_No);
+             $('#AssetMakeNo').val(assetDetails.AssetMakeNo);
+             $('#AssetModelNo').val(assetDetails.AssetModelNo);
+             $('#Installation_date').val(assetDetails.Installation_date);
+             $('#DeviceType').val(assetDetails.DeviceType);
+             $('#asset_custodian_department').val(assetDetails.asset_custodian_department);
+             $('#Latest_AMC_vendor_code').val(assetDetails.Latest_AMC_vendor_code);
+             $('#Latest_AMC_vendorname').val(assetDetails.Latest_AMC_vendorname);
+
+
+         },
+         error: function (jqXHR, textStatus, errorThrown) {
+
+             toastr.error("Not a valid AssetID");
+             $('#Asset_Sl_No').val('');
+             $('#AssetMakeNo').val('');
+             $('#AssetModelNo').val('');
+             $('#Installation_date').val('');
+             $('#DeviceType').val('');
+             $('#asset_custodian_department').val('');
+             $('#Latest_AMC_vendor_code').val('');
+             $('#Latest_AMC_vendorname').val('');
+
+         }
+     });
+
+ }
+
+    function VerifyPONoForAMC() {
+
+     debugger;
+
+     verifyPoNoClicked = true;
+
+      $('#btnVerifyPONoForAMC').attr('disabled', true);
+      $('#btnVerifyPONoForAMC').html('Please Wait...');
+
+      var po_no = $('#PO_No_For_AMC').val();
+
+     $.ajax({
+         url: "@Url.Action("GetDetailsByWorkOrderNoOfProductionServer", "Asset")",
+         data: { Id: po_no },
+         type: 'GET',
+         success: function (workerDetails) {
+
+             $('#btnVerifyPONoForAMC').attr('disabled', false);
+             $('#btnVerifyPONoForAMC').html('Verify PO No');
+
+             if (workerDetails.VendorName != null && workerDetails.VendorName != "" && workerDetails.VendorName != null && workerDetails.VendorName != "") {
+                 validPONo = true;
+                 toastr.success("PO No verified");
+                 $('#Vendor_code_For_AMC').val(workerDetails.VendorCode);
+                 $('#Vendor_name_For_AMC').val(workerDetails.VendorName);
+             }
+             else {
+                 validPONo = false;
+                 toastr.error("Not a valid PO No");
+                 $('#Vendor_code_For_AMC').val('');
+                 $('#Vendor_name_For_AMC').val('');
+             }
+
+         },
+         error: function (jqXHR, textStatus, errorThrown) {
+
+             validPONo = false;
+             toastr.error("Not a valid PO No");
+             $('#Vendor_code_For_AMC').val('');
+             $('#Vendor_name_For_AMC').val('');
+
+             $('#btnVerifyPONoForAMC').attr('disabled', false);
+             $('#btnVerifyPONoForAMC').html('Verify PO No');
+         }
+     });
+
+ }
+
+    function GetAssetDataBySAPIDFORRPO() {
+
+    debugger;
+
+
+
+    var asset_sap_id = $('#Asset_Id_SAP').val();
+        debugger;
+    $.ajax({
+        url: "@Url.Action("GetAssetsDataBySAPID", "Asset")",
+        data: { Id: asset_sap_id },
+        type: 'GET',
+        success: function (assetDetails) {
+
+
+
+            $('#Asset_Sl_No').val(assetDetails.Asset_Sl_No);
+            $('#AssetMakeNo').val(assetDetails.AssetMakeNo);
+            $('#AssetModelNo').val(assetDetails.AssetModelNo);
+            $('#Installation_date').val(assetDetails.Installation_date);
+            $('#DeviceType').val(assetDetails.DeviceType);
+            $('#asset_custodian_department').val(assetDetails.asset_custodian_department);
+            $('#Latest_AMC_vendor_code').val(assetDetails.Latest_AMC_vendor_code);
+            $('#Latest_AMC_vendorname').val(assetDetails.Latest_AMC_vendorname);
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+            toastr.error("Not a valid AssetID");
+            $('#Asset_Sl_No').val('');
+            $('#AssetMakeNo').val('');
+            $('#AssetModelNo').val('');
+            $('#Installation_date').val('');
+            $('#DeviceType').val('');
+            $('#asset_custodian_department').val('');
+            $('#Latest_AMC_vendor_code').val('');
+            $('#Latest_AMC_vendorname').val('');
+
+        }
+    });
+
+}
+
+    function ValidatePOShow(hide) {
+        if (hide === true) {
+            $(".AMCPO").hide();
+            document.getElementById("AMCVC").readOnly = false;
+            document.getElementById("AMCVN").readOnly = false;
+            document.getElementById("AMCVC").value = "";
+            document.getElementById("AMCVN").value = "";
+            document.getElementById("AMCPONumber").value = "";
+        }
+        else {
+            $(".AMCPO").show();
+            document.getElementById("AMCVC").readOnly = true;
+            document.getElementById("AMCVN").readOnly = true;
+        }
+    }
+
+</script>
+
+
+
+
+
+

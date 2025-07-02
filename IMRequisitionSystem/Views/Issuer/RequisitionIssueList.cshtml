@@ -89,7 +89,7 @@
 
                                 @*<button type="button" id="btnIssue" name="btnIssue" class="btn btn-sm  btn-outline-warning mt-1" style="width:120px" data-toggle="modal" data-target="#IssueModal"> ISSUE</button>*@
                                 @*<button type="button" class="btn btn-secondary" onclick="ModalOpen()">Open Modal</button>*@
-                                <button type="button" class="btn btn-secondary btn-outline-warning mt-1" style="width:120px" onclick="ModalOpen('@Html.Raw(HttpUtility.JavaScriptStringEncode(item.Requisition_No))')">Issue</button>
+                                <button type="button" class="btn btn-secondary btn-outline-warning mt-1" style="width:120px" onclick="ModalOpen('@Html.Raw(HttpUtility.JavaScriptStringEncode(item.Requisition_No))', '@Html.Raw(HttpUtility.JavaScriptStringEncode(item.DeviceType))')">Issue</button>
 
                             </td>
                         </tr>
@@ -113,12 +113,12 @@
             </div>
             <div class="modal-body">
                 <div class="row ml-1 mr-1">
-                    <div class="form-group col-lg-4">
+                    @*<div class="form-group col-lg-4">
                         <div class="form-group" style="width:100%">
                             <label>Type of Device:</label>
                             @Html.DropDownListFor(model => model.DeviceType, new SelectList(ViewBag.AssetCategoryDD, "ID", "DeviceType"), "Select Device Type", new { @class = "form-control select2", @style = "width:100%", onchange = "setValueToZero()" })
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group col-lg-4">
                         <button type="button" class="btn btn-outline-primary mt-8" style="width:180px" id="btnCheckAvailability" onclick="GetAvailableQuantityandQuantityID()">Check Avaibility</button>
                     </div>
@@ -150,6 +150,7 @@
                     </div>
 
                     @Html.HiddenFor(model => model.Requisition_No)
+                    @Html.HiddenFor(model => model.DeviceName, new { @id = "DeviceType" })
 
                 </div>
             </div>
@@ -229,23 +230,24 @@
         window.location.href = '@Url.Action("DetailPageForIssuer", "Home")'
     }
 
-    function ModalOpen(requisitionNo) {
+    function ModalOpen(requisitionNo, deviceName) {
         debugger;
         globalRequisitionNo = requisitionNo;
+        globaldeviceName = deviceName;
        /* console.log("Requisition No:", requisitionNo); */
         $('#IssueModal').modal('show');  // Open the modal
     }
 
     function GetAvailableQuantityandQuantityID() {
         //clearForm();
-        GetAvailableQuantity();
-        GetAvailableQuantityID();
+        GetAvailableQuantity(globaldeviceName);
+        GetAvailableQuantityID(globaldeviceName);
 
     }
 
-    function GetAvailableQuantity() {
+    function GetAvailableQuantity(globaldeviceName) {
         //clearForm();
-        var selectedDeviceType = $("#DeviceType").val();
+        var selectedDeviceType = globaldeviceName;
         debugger;
         if (selectedDeviceType) {
             $.ajax({
@@ -255,6 +257,7 @@
                 success: function (response) {
                     if (response.success) {
                         $("#AvlQuantity").val(response.data.TotalAssetCount);
+                        console.log(response.data.TotalAssetCount);
                     } else {
                         $("#AvlQuantity").val(0); // Set to 0 if no data found
                     }
@@ -270,8 +273,8 @@
 
     
 
-    function GetAvailableQuantityID() {
-    var selectedDeviceType = $("#DeviceType").val();
+    function GetAvailableQuantityID(globaldeviceName) {
+        var selectedDeviceType = globaldeviceName;
     debugger;
     if (selectedDeviceType) {
         $.ajax({

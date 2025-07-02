@@ -14,6 +14,7 @@ using IMRequisitionSystem.Models.RoleMapping;
 
 namespace IMRequisitionSystem.Controllers
 {
+    [CustomAdminAuthorize]
     public class AssetController : Controller
     {
         // GET: Asset
@@ -53,6 +54,7 @@ namespace IMRequisitionSystem.Controllers
                 ViewBag.DepartmentDD = _departmentMasterRepository.GetAllDepartmentMaster();
                 ViewBag.AreaDD = _areaMasterRepository.GetAllAreaMaster();
 
+                model.asset_custodian_location = SessionData.GetSessionData(SessionData.Emp_loc_code);
 
             }
             catch (Exception ex)
@@ -66,6 +68,7 @@ namespace IMRequisitionSystem.Controllers
         {
             try
             {
+                assetsModel.asset_custodian_location = SessionData.GetSessionData(SessionData.Emp_loc_code);
                 SPOutputMessage response = _assetMasterRepository.InsertAssetMaster(assetsModel);
 
                 if (response.Status == 1)
@@ -101,8 +104,17 @@ namespace IMRequisitionSystem.Controllers
                     TempData[ToastMessageParameter.Message.ToString()] = message;
                 }
                 TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
+                List<SelectListItem> AssetStatus = new List<SelectListItem>()
+                {    new SelectListItem { Value = "Good", Text = "Good" },
+                     new SelectListItem { Value = "Defective", Text = "Defective" },
+                     new SelectListItem { Value = "BER", Text = "BER" },
+                     new SelectListItem { Value = "Condemn with DoT", Text = "Condemn with DoT" },
+                };
+                ViewBag.AssetStatusDD = AssetStatus;
 
                 ViewBag.AssetMasterDataDD = _assetMasterRepository.GetAllAssetMaster();
+                ViewBag.AssetModelDataDD = _assetMasterRepository.GetAllModelNo();
+                ViewBag.LicenseDataDD = _assetMasterRepository.GetAllLicenseNo();
             }
             catch (Exception ex)
             {
@@ -114,6 +126,15 @@ namespace IMRequisitionSystem.Controllers
         public JsonResult ActiveDeactiveAssets(AssetsModel assetsModel)
         {
             var spResponse = _assetMasterRepository.UpdateActiveDeActiveAssetsStatus(assetsModel);
+
+            //Session["Requisition_No"] = requisitionRequestModel.Requisition_No;
+
+            var jsonResponseHandler = new JsonResponseHandler(Url);
+            return jsonResponseHandler.HandleResponseWithBookingRequestNo(spResponse, "AssetMasterTable", "Asset", assetsModel.Asset_Code_System);
+        }
+        public JsonResult ChangePhysicalCondition(AssetsModel assetsModel)
+        {
+            var spResponse = _assetMasterRepository.UpdateActivePhysicalCondition(assetsModel);
 
             //Session["Requisition_No"] = requisitionRequestModel.Requisition_No;
 
@@ -159,11 +180,13 @@ namespace IMRequisitionSystem.Controllers
 
             if (response.Status == 1)
             {
-                return RedirectToAction("PeriodicHealthCheckupDueList", "Asset", new { status = ToastMessageType.Success, message = response.Message });
+                return Json(new { redirectUrl = Url.Action("PeriodicHealthCheckupDueList", "Asset", new { status = ToastMessageType.Success, message = response.Message }) });
+               
             }
             else
             {
-                return RedirectToAction("PeriodicHealthCheckupDueList", "Asset", new { status = ToastMessageType.Error, message = "Unable to Create Requisition Request", swalMessage = response.Message, isSwal = true });
+                return Json(new { redirectUrl = Url.Action("PeriodicHealthCheckupDueList", "Asset", new { status = ToastMessageType.Error, message = response.Message }) });
+                
             }
         }
 
@@ -181,7 +204,8 @@ namespace IMRequisitionSystem.Controllers
                 }
                 TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
 
-                
+                ViewBag.AssetMasterDataDD = _assetMasterRepository.GetAllAssetMaster();
+
                 ViewBag.HealthCheckupDueAssetDataDD = _assetMasterRepository.GetHealthCheckupHistory();
             }
             catch (Exception ex)
@@ -245,9 +269,33 @@ namespace IMRequisitionSystem.Controllers
             return View(model);
         }
 
+        
+        [HttpPost]
+        public ActionResult AMCMappingPage(AssetsModel assetsModel)
+        {
+            try
+            {
+                SPOutputMessage response = _assetMasterRepository.InsertAssetAMCMasterMapping(assetsModel);
+
+                if (response.Status == 1)
+                {
+                    return RedirectToAction("AMCMappingPage", "Asset", new { status = ToastMessageType.Success, message = response.Message, isSwal = true });
+                }
+                else
+                {
+                    return RedirectToAction("AMCMappingPage", "Asset", new { status = ToastMessageType.Error, message = response.Message, isSwal = true });
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return RedirectToAction("AMCMappingPage", "Asset", new { status = ToastMessageType.Error, message = "Something went wrong. Please try again", isSwal = true });
+            }
+        }
+
         //public JsonResult GetDetailsByWorkOrderNoOfProductionServer(string Id)
         //{
-            
+
         //    var spResponse = _assetMasterRepository.GetDetailsByWorkOrderNoFromProduction(Id);
 
         //    var jsonResponseHandler = new JsonResponseHandler(Url);
@@ -259,7 +307,232 @@ namespace IMRequisitionSystem.Controllers
             AssetModelForAPI spResponse = _assetMasterRepository.GetDetailsByWorkOrderNoFromProduction(id);
             return Json(spResponse, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetAssetsDataBySAPID(string id)
+        {
+            AssetsModel spResponse = _assetMasterRepository.GetAssetsDataBySAPID(id);
+            return Json(spResponse, JsonRequestBehavior.AllowGet);
+        }
 
 
+        public ActionResult AMCMappingRPOPage(string status, string message, bool isSwal = false)
+        {
+            var model = new AssetsModel();
+            try
+            {
+                if (!string.IsNullOrEmpty(status))
+                {
+                    TempData[ToastMessageParameter.MessageType.ToString()] = status;
+                }
+                if (!string.IsNullOrEmpty(message))
+                {
+                    TempData[ToastMessageParameter.Message.ToString()] = message;
+                }
+                TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
+                ViewBag.AssetMasterDataDD = _assetMasterRepository.GetAllAssetMaster();
+
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AMCMappingRPOPage(AssetsModel assetsModel)
+        {
+            try
+            {
+                assetsModel.RPO = true;
+                SPOutputMessage response = _assetMasterRepository.InsertAssetAMCMasterMapping(assetsModel);
+
+                if (response.Status == 1)
+                {
+                    return RedirectToAction("AMCMappingPage", "Asset", new { status = ToastMessageType.Success, message = response.Message, isSwal = true });
+                }
+                else
+                {
+                    return RedirectToAction("AMCMappingPage", "Asset", new { status = ToastMessageType.Error, message = response.Message, isSwal = true });
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return RedirectToAction("AMCMappingPage", "Asset", new { status = ToastMessageType.Error, message = "Something went wrong. Please try again", isSwal = true });
+            }
+        }
+        public ActionResult AMCMappingList(string status, string message, bool isSwal = false)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(status))
+                {
+                    TempData[ToastMessageParameter.MessageType.ToString()] = status;
+                }
+                if (!string.IsNullOrEmpty(message))
+                {
+                    TempData[ToastMessageParameter.Message.ToString()] = message;
+                }
+                TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
+
+                ViewBag.AssetMasterDataDD = _assetMasterRepository.GetAllAssetMaster();
+                ViewBag.AssetMasterMappingDataDD = _assetMasterRepository.GetAllAMCMappingAssetMaster();
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return View();
+        }
+
+        public ActionResult AMCMappingPageEdit(string status, string message,  string asset_Code_System, bool isSwal = false)
+        {
+            var model = new AssetsModel();
+            try
+            {
+                if (!string.IsNullOrEmpty(status))
+                {
+                    TempData[ToastMessageParameter.MessageType.ToString()] = status;
+                }
+                if (!string.IsNullOrEmpty(message))
+                {
+                    TempData[ToastMessageParameter.Message.ToString()] = message;
+                }
+                TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
+                asset_Code_System= System.Web.HttpContext.Current.Session["asset_Code_System"] as string;
+
+                model = _assetMasterRepository.GetMappingAssetDataByID(asset_Code_System);
+
+
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult AMCMappingPageEditUpdate(AssetsModel assetsModel)
+        {
+            try
+            {
+                assetsModel.RPO = true;
+                SPOutputMessage response = _assetMasterRepository.AMCMappingPageEditUpdate(assetsModel);
+
+                if (response.Status == 1)
+                {
+                    return RedirectToAction("AMCMappingList", "Asset", new { status = ToastMessageType.Success, message = response.Message, isSwal = true });
+                }
+                else
+                {
+                    return RedirectToAction("AMCMappingList", "Asset", new { status = ToastMessageType.Error, message = response.Message, isSwal = true });
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+                return RedirectToAction("AMCMappingList", "Asset", new { status = ToastMessageType.Error, message = "Something went wrong. Please try again", isSwal = true });
+            }
+        }
+
+        public ActionResult AMCMappingHistory(string status, string message, bool isSwal = false)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(status))
+                {
+                    TempData[ToastMessageParameter.MessageType.ToString()] = status;
+                }
+                if (!string.IsNullOrEmpty(message))
+                {
+                    TempData[ToastMessageParameter.Message.ToString()] = message;
+                }
+                TempData[ToastMessageParameter.IsSwal.ToString()] = isSwal;
+
+                ViewBag.AssetMasterDataDD = _assetMasterRepository.GetAllAssetMaster();
+                ViewBag.AssetMasterMappingHistoryDataDD = _assetMasterRepository.GetAllAMCMappingHistoryAssetMaster();
+            }
+            catch (Exception ex)
+            {
+                LoggingClass.SaveExceptionLog(ex);
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetAMCMappingListWithFilter(AssetsModel assetModel)
+        {
+            try
+            {
+                //List<BBSObservationCreateModel> filterData = _bbsMethod.PlantWiseObservationCounts(bbsObservationCreateModel);
+                List<AssetsModel> assetsList = _assetMasterRepository.GetAMCMappingListWithFilterData(assetModel);
+                var jsonResult = Json(assetsList, JsonRequestBehavior.AllowGet);
+                jsonResult.MaxJsonLength = int.MaxValue;
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new List<AssetsModel>(), JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult GetMasterListWithFilter(AssetsModel assetModel)
+        {
+            try
+            {
+                //List<BBSObservationCreateModel> filterData = _bbsMethod.PlantWiseObservationCounts(bbsObservationCreateModel);
+                List<AssetsModel> assetsList = _assetMasterRepository.GetMasterListWithFilterData(assetModel);
+                var jsonResult = Json(assetsList, JsonRequestBehavior.AllowGet);
+                jsonResult.MaxJsonLength = int.MaxValue;
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new List<AssetsModel>(), JsonRequestBehavior.AllowGet);
+            }
+
+        }
+        [HttpPost]
+        public ActionResult AMCMappingHistoryListWithFilter(AssetsModel assetModel)
+        {
+            try
+            {
+                //List<BBSObservationCreateModel> filterData = _bbsMethod.PlantWiseObservationCounts(bbsObservationCreateModel);
+                List<AssetsModel> assetsList = _assetMasterRepository.GetAMCMappingHistoryListWithFilterData(assetModel);
+                var jsonResult = Json(assetsList, JsonRequestBehavior.AllowGet);
+                jsonResult.MaxJsonLength = int.MaxValue;
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+               
+                return Json(new List<AssetsModel>(), JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult GetHealthCheckupListWithFilter(AssetsModel assetModel)
+        {
+            try
+            {
+                //List<BBSObservationCreateModel> filterData = _bbsMethod.PlantWiseObservationCounts(bbsObservationCreateModel);
+                List<AssetsModel> assetsList = _assetMasterRepository.GetHealthCheckupListWithFilterData(assetModel);
+                var jsonResult = Json(assetsList, JsonRequestBehavior.AllowGet);
+                jsonResult.MaxJsonLength = int.MaxValue;
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new List<AssetsModel>(), JsonRequestBehavior.AllowGet);
+            }
+
+        }
+        
     }
 }

@@ -82,9 +82,24 @@
 
                             <td>@item.Issued_To</td>
                             <td>
-                                <span class="label label-inline label-light-warning font-weight-bold">
-                                    @item.Returned_Request_Status
-                                </span>
+                                @if (item.Returned_Request_Status == "RETURN_REJECTED")
+                                {
+                                    <span class="label label-inline label-light-danger font-weight-bold">
+                                        @item.Returned_Request_Status
+                                    </span>
+                                }
+                                @if (item.Returned_Request_Status == "RETURN_REQUESTED")
+                                {
+                                    <span class="label label-inline label-light-warning font-weight-bold">
+                                        @item.Returned_Request_Status
+                                    </span>
+                                }
+                                @if (item.Returned_Request_Status == "RETURN_RECEIVED")
+                                {
+                                    <span class="label label-inline label-light-success font-weight-bold">
+                                        @item.Returned_Request_Status
+                                    </span>
+                                }
                             </td>
                             <td>@item.Return_Comment</td>
                             <td>

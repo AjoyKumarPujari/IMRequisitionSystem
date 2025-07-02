@@ -15,6 +15,7 @@ using System.Data;
 
 namespace IMRequisitionSystem.Controllers
 {
+    [CustomAdminAuthorize]
     public class AssetCategoryController : Controller
     {
         // GET: AssetCategory

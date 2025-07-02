@@ -177,6 +177,7 @@ namespace IMRequisitionSystem.Util
         public const string Grade = "Grade";
         public const string GradeCategory = "GradeCategory";
         public const string Email = "Email";
+        public const string Emp_loc_code = "Emp_loc_code";
         public const string StaffLocation = "StaffLocation";
         public const string ReportingStaffNo = "ReportingStaffNo";
         public const string ReportingStaffName = "ReportingStaffName";

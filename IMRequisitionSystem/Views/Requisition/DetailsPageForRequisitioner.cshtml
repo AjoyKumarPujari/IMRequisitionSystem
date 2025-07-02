@@ -103,10 +103,63 @@
                                 </span>
                             </div>
                             <div class="d-flex flex-column flex-root">
+                                <span class="font-weight-bolder mb-2">ISSUED ASSET ID </span>
+                                <span class="opacity-70">
+                                    @Model.Asset_Sl_No
+                                </span>
 
                             </div>
 
                         </div>
+                        @if (Model.RequisitionFor == "Others")
+                        {
+                            <div class="d-flex justify-content-between pt-6">
+                                <div class="d-flex flex-column flex-root">
+                                    <span class="font-weight-bolder mb-2">REQUISITION FOR WHOME</span>
+
+                                    @if (Model.RequisitionForWhome == "TP")
+                                    {
+                                        <span class="opacity-70">Third Party</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "CISF")
+                                    {
+                                        <span class="opacity-70">CISF</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "NM")
+                                    {
+                                        <span class="opacity-70">Non Management Staff</span>
+                                    }
+                                </div>
+
+                                <div class="d-flex flex-column flex-root">
+
+                                    @if (Model.RequisitionForWhome == "TP")
+                                    {
+                                        <span class="font-weight-bolder mb-2">THIRD PARTY FOR </span>
+                                        <span class="opacity-70">@Model.ThirdParty</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "CISF")
+                                    {
+                                        <span class="font-weight-bolder mb-2"> CISF Personal Name</span>
+                                        <span class="opacity-70">@Model.CISF</span>
+                                    }
+                                    @if (Model.RequisitionForWhome == "NM")
+                                    {
+                                        <span class="font-weight-bolder mb-2"> NON MANAGEMENT PERSON NAME</span>
+                                        <span class="opacity-70">@Model.Non_Management_staff_Name</span>
+                                    }
+                                </div>
+                                <div class="d-flex flex-column flex-root">
+                                    @*<span class="font-weight-bolder mb-2">ISSUED ASSET ID </span>
+                                    <span class="opacity-70">
+                                        @Model.Asset_Sl_No
+                                    </span>*@
+
+                                </div>
+
+                            </div>
+
+                        }
 
                     </div>
                 </div>
@@ -145,49 +198,66 @@
                                         <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.Approver_Comment</td>
 
                                         @*<td class="border-top-0 text-right py-4 align-middle">Anjan Kumar Bora</td>
-                                                <td class="border-top-0 text-right py-4 align-middle">DGM</td>
-                                                <td class="text-right border-top-0 py-4 align-middle">24 May 2024 01:22 PM</td>
-                                                <td class="text-right pr-0 pt-7 align-middle">Lorem ipsum dolor sit amet</td>
-                                            </tr>
-                                            <tr class="font-weight-boldest border-bottom-0">
-                                                <td class="border-top-0 pl-0 py-4 d-flex align-items-center">
-                                                    Hotel Executive
-                                                </td>
-                                                <td class="border-top-0 text-right py-4 align-middle">
-                                                    <span class="badge badge-warning py-2 font-weight-bolder px-10 " style="width: 100px">Pending</span>
-                                                </td>
-                                                <td class="border-top-0 text-right py-4 align-middle">--</td>
-                                                <td class="text-right border-top-0 py-4 align-middle">--</td>
-                                                <td class="text-right pr-0 pt-7 align-middle">--</td>
-                                            </tr>*@
+                <td class="border-top-0 text-right py-4 align-middle">DGM</td>
+                <td class="text-right border-top-0 py-4 align-middle">24 May 2024 01:22 PM</td>
+                <td class="text-right pr-0 pt-7 align-middle">Lorem ipsum dolor sit amet</td>
+            </tr>
+            <tr class="font-weight-boldest border-bottom-0">
+                <td class="border-top-0 pl-0 py-4 d-flex align-items-center">
+                    Hotel Executive
+                </td>
+                <td class="border-top-0 text-right py-4 align-middle">
+                    <span class="badge badge-warning py-2 font-weight-bolder px-10 " style="width: 100px">Pending</span>
+                </td>
+                <td class="border-top-0 text-right py-4 align-middle">--</td>
+                <td class="text-right border-top-0 py-4 align-middle">--</td>
+                <td class="text-right pr-0 pt-7 align-middle">--</td>
+            </tr>*@
                                     </tr>
-                                    <tr class="font-weight-boldest">
-                                        <td class="border-0 pl-0 pt-7 d-flex align-items-center">
-                                            IM Approver
-                                        </td>
-                                        <td class="text-right pt-7 align-middle">@Model.IM_Approver_Name</td>
-                                        <td class="text-right pt-7 align-middle">@Model.IM_Approver_Designation</td>
-                                        <td class="text-right pt-7 align-middle">@Model.IM_Approve_DateTime</td>
-                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Approver_Comment</td>
-                                    </tr>
-                                    <tr class="font-weight-boldest">
-                                        <td class="border-0 pl-0 pt-7 d-flex align-items-center">
-                                            IM Issuer
-                                        </td>
-                                        <td class="text-right pt-7 align-middle">@Model.IM_Issuer_Name</td>
-                                        <td class="text-right pt-7 align-middle">@Model.IM_Issuer_Designation</td>
-                                        <td class="text-right pt-7 align-middle">@Model.IM_Issued_DateTime</td>
-                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Issuer_Comment</td>
-                                    </tr>
-                                    <tr class="font-weight-boldest">
-                                        <td class="border-0 pl-0 pt-7 d-flex align-items-center">
-                                            IM Workshop
-                                        </td>
-                                        <td class="text-right pt-7 align-middle">@Model.IM_Allocator_Name</td>
-                                        <td class="text-right pt-7 align-middle">@Model.IM_Allocator_Designation</td>
-                                        <td class="text-right pt-7 align-middle">@Model.IM_Allocated_DateTime</td>
-                                        <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Allocator_Comment</td>
-                                    </tr>
+
+
+                                    @if (Model.Requisition_Status == "IM_APPROVER_CANCELED")
+                                    {
+                                        <tr class="font-weight-boldest">
+                                            <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                                IM Approver
+                                            </td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Approver_Name</td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Approver_Designation</td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Approve_DateTime</td>
+                                            <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.Cancelled_Reason</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr class="font-weight-boldest">
+                                            <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                                IM Approver
+                                            </td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Approver_Name</td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Approver_Designation</td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Approve_DateTime</td>
+                                            <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Approver_Comment</td>
+                                        </tr>
+                                        <tr class="font-weight-boldest">
+                                            <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                                IM Issuer
+                                            </td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Issuer_Name</td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Issuer_Designation</td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Issued_DateTime</td>
+                                            <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Issuer_Comment</td>
+                                        </tr>
+                                        <tr class="font-weight-boldest">
+                                            <td class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                                IM Workshop
+                                            </td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Allocator_Name</td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Allocator_Designation</td>
+                                            <td class="text-right pt-7 align-middle">@Model.IM_Allocated_DateTime</td>
+                                            <td class="text-left pr-0 pt-7 align-middle max-width-300">@Model.IM_Allocator_Comment</td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -264,7 +334,8 @@
                     <label class="font-weight-bold">Reason:</label>
                     <div class="form-group">
                         @Html.HiddenFor(model => model.Requisition_No)
-                        @Html.EditorFor(model => model.Closed_Remarks, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Close Remarks", autocomplete = "off" } })
+                        @Html.TextAreaFor(model => model.Closed_Remarks, new { @class = "form-control", @placeholder = "Enter Close Remarks", autocomplete = "off", rows = "3" })
+
                     </div>
                     <span class="form-text" style="color:red;">This is a required field.</span>
                 </p>
@@ -365,7 +436,7 @@
                 <p>
                     <label class="font-weight-bold">Reason:</label>
                     @Html.HiddenFor(model => model.Requisition_No)
-                    @Html.EditorFor(model => model.Cancelled_Reason, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Enter Close Remarks", autocomplete = "off" } })
+                    @Html.TextAreaFor(model => model.Cancelled_Reason, new { @class = "form-control", @placeholder = "Enter Cancel Remarks", autocomplete = "off", rows = "3" })
 
 
                     <span class="form-text" style="color:red;">This is a required field.</span>
